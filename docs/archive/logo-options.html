@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEKO DELICE — Logo & Wordmark Options (P05)</title>
+  <style>
+    @font-face {
+      font-family: 'Cormorant Garamond';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url('../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-500-normal.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Cormorant Garamond';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url('../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-600-normal.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'DM Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('../node_modules/@fontsource/dm-sans/files/dm-sans-latin-400-normal.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'DM Sans';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url('../node_modules/@fontsource/dm-sans/files/dm-sans-latin-500-normal.woff2') format('woff2');
+    }
+
+    :root {
+      --cream: #FBF6EE;
+      --oat: #E5D8BC;
+      --beige: #DDD0BA;
+      --sand: #D9C3A5;
+      --espresso: #2B211A;
+      --terracotta: #A94F33;
+      --sage: #8FA388;
+      --font-serif: 'Cormorant Garamond', Garamond, 'Times New Roman', Georgia, serif;
+      --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--cream);
+      color: var(--espresso);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      padding: 48px 24px 96px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 56px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--sand);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      background: var(--oat);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-family: var(--font-serif);
+      font-size: 2.75rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      color: var(--espresso);
+      opacity: 0.8;
+      font-size: 1.0625rem;
+      max-width: 680px;
+      margin: 0 auto 20px;
+    }
+
+    .spelling-strip {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 24px;
+      background: white;
+      border: 1px solid var(--sand);
+      border-radius: 9999px;
+      font-size: 0.875rem;
+    }
+
+    .spelling-letters {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      color: var(--espresso);
+      font-size: 1.125rem;
+    }
+
+    .tag-ok {
+      background: #E8F5E9;
+      color: #2E6930;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-bottom: 64px;
+    }
+
+    @media (max-width: 1024px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      border: 1px solid var(--sand);
+      padding: 36px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .card.recommended {
+      border: 2px solid var(--terracotta);
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 16px;
+      left: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+    }
+
+    .card-title {
+      font-family: var(--font-serif);
+      font-size: 1.625rem;
+      font-weight: 600;
+      color: var(--espresso);
+      margin-top: 14px;
+      margin-bottom: 4px;
+      text-align: center;
+    }
+
+    .card-desc {
+      font-size: 0.875rem;
+      color: var(--espresso);
+      opacity: 0.75;
+      margin-bottom: 28px;
+      text-align: center;
+      min-height: 42px;
+    }
+
+    /* Stacked Lockup: Primary for Footer, About, Splash */
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--espresso);
+      opacity: 0.5;
+      margin-bottom: 12px;
+      align-self: flex-start;
+      width: 100%;
+      border-bottom: 1px solid var(--sand);
+      padding-bottom: 4px;
+    }
+
+    .lockup-stacked {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 0 28px;
+      width: 100%;
+      background: var(--cream);
+      border-radius: 12px;
+      margin-bottom: 24px;
+    }
+
+    .glyph-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--espresso);
+      margin-bottom: 12px;
+    }
+
+    .wordmark-stacked {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--espresso);
+      text-align: center;
+      line-height: 1.12;
+      letter-spacing: 0.22em;
+      padding-left: 0.22em; /* optical balance for trailing letter-spacing */
+    }
+
+    .wordmark-stacked .neko {
+      display: block;
+      font-size: 1.5rem;
+      letter-spacing: 0.22em;
+    }
+
+    .wordmark-stacked .delice {
+      display: block;
+      font-size: 1.05rem;
+      letter-spacing: 0.28em;
+      padding-left: 0.06em;
+      opacity: 0.95;
+    }
+
+    /* Compact Horizontal Lockup: Primary for Header / Sticky Nav */
+    .lockup-compact {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 16px 20px;
+      background: var(--cream);
+      border-radius: 12px;
+      width: 100%;
+      margin-bottom: 24px;
+    }
+
+    .wordmark-compact {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--espresso);
+      line-height: 1.08;
+      letter-spacing: 0.2em;
+      padding-left: 0.2em;
+    }
+
+    .wordmark-compact .neko-sm {
+      display: block;
+      font-size: 1.0625rem;
+    }
+
+    .wordmark-compact .delice-sm {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 0.26em;
+      opacity: 0.95;
+    }
+
+    /* Scale Row */
+    .scale-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-around;
+      width: 100%;
+      padding: 16px 8px;
+      background: #FAFAFA;
+      border-radius: 10px;
+      margin-bottom: 24px;
+    }
+
+    .scale-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .scale-label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      opacity: 0.55;
+    }
+
+    /* Inverted Swatch */
+    .swatch-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      width: 100%;
+      margin-bottom: 24px;
+    }
+
+    .swatch {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px;
+      border-radius: 8px;
+      font-family: var(--font-serif);
+      font-weight: 600;
+      font-size: 0.8125rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .swatch-espresso {
+      background: var(--espresso);
+      color: var(--cream);
+    }
+
+    .swatch-terracotta {
+      background: var(--terracotta);
+      color: var(--cream);
+    }
+
+    /* Evaluation bullets */
+    .bullets {
+      list-style: none;
+      width: 100%;
+      font-size: 0.8125rem;
+      color: var(--espresso);
+      opacity: 0.85;
+      padding-top: 16px;
+      border-top: 1px dashed var(--sand);
+    }
+
+    .bullets li {
+      margin-bottom: 6px;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .bullets li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--terracotta);
+    }
+
+    /* Summary Card */
+    .summary-card {
+      background: white;
+      border: 1px solid var(--sand);
+      border-radius: 16px;
+      padding: 36px 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .summary-card h2 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .summary-card p {
+      margin-bottom: 16px;
+      font-size: 0.9375rem;
+      line-height: 1.7;
+    }
+
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+      font-size: 0.875rem;
+    }
+
+    .summary-table th, .summary-table td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--sand);
+    }
+
+    .summary-table th {
+      background: var(--cream);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">Phase P05 &bull; Brand Identity Handover</div>
+      <h1>NEKO DELICE Logo & Wordmark Options</h1>
+      <p class="subtitle">
+        Monoline vector glyph (64&times;64, stroke 2, round caps/joins, currentColor) with Cormorant Garamond 600 wordmark. Quiet apothecary aesthetic, high-contrast serif, wide tracking.
+      </p>
+      <div class="spelling-strip">
+        <span>Exact Spelling:</span>
+        <span class="spelling-letters">N &bull; E &bull; K &bull; O &nbsp;&nbsp; D &bull; E &bull; L &bull; I &bull; C &bull; E</span>
+        <span class="tag-ok">&check; Verified</span>
+      </div>
+    </header>
+
+    <div class="grid">
+      <!-- ================= OPTION A ================= -->
+      <div class="card">
+        <div class="card-badge">Option A</div>
+        <h2 class="card-title">Minimal Silhouette</h2>
+        <p class="card-desc">Pure contour, gentle ears & chin curve with calm closed eye arcs</p>
+
+        <div class="section-label">Stacked Lockup (About / Footer / Splash)</div>
+        <div class="lockup-stacked">
+          <div class="glyph-wrapper">
+            <!-- SVG A -->
+            <svg width="56" height="56" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M 25 22.5 C 28 24 36 24 39 22.5 L 46 13 C 48 19 49.5 24 49.5 29 C 49.5 40.5 41.5 49 32 49 C 22.5 49 14.5 40.5 14.5 29 C 14.5 24 16 19 18 13 Z" />
+              <path d="M 23 34 C 25 36 27 36 29 34" />
+              <path d="M 35 34 C 37 36 39 36 41 34" />
+              <path d="M 32 38 L 32 40" />
+            </svg>
+          </div>
+          <div class="wordmark-stacked">
+            <span class="neko">NEKO</span>
+            <span class="delice">DELICE</span>
+          </div>
+        </div>
+
+        <div class="section-label">Compact Lockup (Header / Sticky Nav)</div>
+        <div class="lockup-compact">
+          <svg width="28" height="28" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M 25 22.5 C 28 24 36 24 39 22.5 L 46 13 C 48 19 49.5 24 49.5 29 C 49.5 40.5 41.5 49 32 49 C 22.5 49 14.5 40.5 14.5 29 C 14.5 24 16 19 18 13 Z" />
+            <path d="M 23 34 C 25 36 27 36 29 34" />
+            <path d="M 35 34 C 37 36 39 36 41 34" />
+          </svg>
+          <div class="wordmark-compact">
+            <span class="neko-sm">NEKO</span>
+            <span class="delice-sm">DELICE</span>
+          </div>
+        </div>
+
+        <div class="section-label">Scale Checks (48px, 32px, 24px, 16px)</div>
+        <div class="scale-row">
+          <div class="scale-item">
+            <svg width="48" height="48" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M 25 22.5 C 28 24 36 24 39 22.5 L 46 13 C 48 19 49.5 24 49.5 29 C 49.5 40.5 41.5 49 32 49 C 22.5 49 14.5 40.5 14.5 29 C 14.5 24 16 19 18 13 Z" /><path d="M 23 34 C 25 36 27 36 29 34" /><path d="M 35 34 C 37 36 39 36 41 34" /></svg>
+            <span class="scale-label">48 px</span>
+          </div>
+          <div class="scale-item">
+            <svg width="32" height="32" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M 25 22.5 C 28 24 36 24 39 22.5 L 46 13 C 48 19 49.5 24 49.5 29 C 49.5 40.5 41.5 49 32 49 C 22.5 49 14.5 40.5 14.5 29 C 14.5 24 16 19 18 13 Z" /><path d="M 23 34 C 25 36 27 36 29 34" /><path d="M 35 34 C 37 36 39 36 41 34" /></svg>
+            <span class="scale-label">32 px</span>
+          </div>
+          <div class="scale-item">
+            <svg width="24" height="24" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M 25 22.5 C 28 24 36 24 39 22.5 L 46 13 C 48 19 49.5 24 49.5 29 C 49.5 40.5 41.5 49 32 49 C 22.5 49 14.5 40.5 14.5 29 C 14.5 24 16 19 18 13 Z" /></svg>
+            <span class="scale-label">24 px</span>
+          </div>
+          <div class="scale-item">
+            <svg width="16" height="16" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M 25 22.5 C 28 24 36 24 39 22.5 L 46 13 C 48 19 49.5 24 49.5 29 C 49.5 40.5 41.5 49 32 49 C 22.5 49 14.5 40.5 14.5 29 C 14.5 24 16 19 18 13 Z" /></svg>
+            <span class="scale-label">16 px</span>
+          </div>
+        </div>
+
+        <div class="section-label">Contrast Swatches</div>
+        <div class="swatch-row">
+          <div class="swatch swatch-espresso">
+            <svg width="20" height="20" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M 25 22.5 C 28 24 36 24 39 22.5 L 46 13 C 48 19 49.5 24 49.5 29 C 49.5 40.5 41.5 49 32 49 C 22.5 49 14.5 40.5 14.5 29 C 14.5 24 16 19 18 13 Z" /></svg>
+            <span>Espresso</span>
+          </div>
+          <div class="swatch swatch-terracotta">
+            <svg width="20" height="20" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M 25 22.5 C 28 24 36 24 39 22.5 L 46 13 C 48 19 49.5 24 49.5 29 C 49.5 40.5 41.5 49 32 49 C 22.5 49 14.5 40.5 14.5 29 C 14.5 24 16 19 18 13 Z" /></svg>
+            <span>Terracotta</span>
+          </div>
+        </div>
+
+        <ul class="bullets">
+          <li>Purest Japanese/Scandinavian minimal aesthetic.</li>
+          <li>Symmetric silhouette centers naturally over two-line wordmark.</li>
+          <li>Highest legibility at tiny 16 px favicon scale.</li>
+        </ul>
+      </div>
+
+      <!-- ================= OPTION B ================= -->
+      <div class="card recommended">
+        <div class="card-badge">Option B &bull; Recommended</div>
+        <h2 class="card-title">Whisker Ticks</h2>
+        <p class="card-desc">Warm apothecary charm, subtle whisker ticks & delicate nose</p>
+
+        <div class="section-label">Stacked Lockup (About / Footer / Splash)</div>
+        <div class="lockup-stacked">
+          <div class="glyph-wrapper">
+            <!-- SVG B -->
+            <svg width="56" height="56" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M 25 22.5 C 28 24 36 24 39 22.5 L 46 13 C 48 19 49.5 24 49.5 29 C 49.5 40.5 41.5 49 32 49 C 22.5 49 14.5 40.5 14.5 29 C 14.5 24 16 19 18 13 Z" />
+              <path d="M 23 33 C 25 35 27 35 29 33" />
+              <path d="M 35 33 C 37 35 39 35 41 33" />
+              <path d="M 32 37.5 L 32 39.5" />
+              <path d="M 30.5 40.5 C 31.5 41.5 32.5 41.5 33.5 40.5" />
+              <line x1="12" y1="36" x2="6" y2="35" />
+              <line x1="12.5" y1="40" x2="7" y2="41.5" />
+              <line x1="52" y1="36" x2="58" y2="35" />
+              <line x1="51.5" y1="40" x2="57" y2="41.5" />
+            </svg>
+          </div>
+          <div class="wordmark-stacked">
+            <span class="neko">NEKO</span>
+            <span class="delice">DELICE</span>
+          </div>
+        </div>
+
+        <div class="section-label">Compact Lockup (Header / Sticky Nav)</div>
+        <div class="lockup-compact">
+          <svg width="28" height="28" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M 25 22.5 C 28 24 36 24 39 22.5 L 46 13 C 48 19 49.5 24 49.5 29 C 49.5 40.5 41.5 49 32 49 C 22.5 49 14.5 40.5 14.5 29 C 14.5 24 16 19 18 13 Z" />
+            <line x1="12" y1="36" x2="6" y2="35" />
+            <line x1="52" y1="36" x2="58" y2="35" />
+          </svg>
+          <div class="wordmark-compact">
+            <span class="neko-sm">NEKO</span>
+            <span class="delice-sm">DELICE</span>
+          </div>
+        </div>
+
+        <div class="section-label">Scale Checks (48px, 32px, 24px, 16px)</div>
+        <div class="scale-row">
+          <div class="scale-item">
+            <svg width="48" height="48" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M 25 22.5 C 28 24 36 24 39 22.5 L 46 13 C 48 19 49.5 24 49.5 29 C 49.5 40.5 41.5 49 32 49 C 22.5 49 14.5 40.5 14.5 29 C 14.5 24 16 19 18 13 Z" /><line x1="12" y1="36" x2="6" y2="35" /><line x1="12.5" y1="40" x2="7" y2="41.5" /><line x1="52" y1="36" x2="58" y2="35" /><line x1="51.5" y1="40" x2="57" y2="41.5" /></svg>
+            <span class="scale-label">48 px</span>
+          </div>
+          <div class="scale-item">
+            <svg width="32" height="32" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M 25 22.5 C 28 24 36 24 39 22.5 L 46 13 C 48 19 49.5 24 49.5 29 C 49.5 40.5 41.5 49 32 49 C 22.5 49 14.5 40.5 14.5 29 C 14.5 24 16 19 18 13 Z" /><line x1="12" y1="36" x2="6" y2="35" /><line x1="52" y1="36" x2="58" y2="35" /></svg>
+            <span class="scale-label">32 px</span>
+          </div>
+          <div class="scale-item">
+            <svg width="24" height="24" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M 25 22.5 C 28 24 36 24 39 22.5 L 46 13 C 48 19 49.5 24 49.5 29 C 49.5 40.5 41.5 49 32 49 C 22.5 49 14.5 40.5 14.5 29 C 14.5 24 16 19 18 13 Z" /><line x1="12" y1="36" x2="7" y2="35" /><line x1="52" y1="36" x2="57" y2="35" /></svg>
+            <span class="scale-label">24 px</span>
+          </div>
+          <div class="scale-item">
+            <svg width="16" height="16" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M 25 22.5 C 28 24 36 24 39 22.5 L 46 13 C 48 19 49.5 24 49.5 29 C 49.5 40.5 41.5 49 32 49 C 22.5 49 14.5 40.5 14.5 29 C 14.5 24 16 19 18 13 Z" /></svg>
+            <span class="scale-label">16 px</span>
+          </div>
+        </div>
+
+        <div class="section-label">Contrast Swatches</div>
+        <div class="swatch-row">
+          <div class="swatch swatch-espresso">
+            <svg width="20" height="20" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M 25 22.5 C 28 24 36 24 39 22.5 L 46 13 C 48 19 49.5 24 49.5 29 C 49.5 40.5 41.5 49 32 49 C 22.5 49 14.5 40.5 14.5 29 C 14.5 24 16 19 18 13 Z" /><line x1="12" y1="36" x2="7" y2="35" /><line x1="52" y1="36" x2="57" y2="35" /></svg>
+            <span>Espresso</span>
+          </div>
+          <div class="swatch swatch-terracotta">
+            <svg width="20" height="20" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M 25 22.5 C 28 24 36 24 39 22.5 L 46 13 C 48 19 49.5 24 49.5 29 C 49.5 40.5 41.5 49 32 49 C 22.5 49 14.5 40.5 14.5 29 C 14.5 24 16 19 18 13 Z" /><line x1="12" y1="36" x2="7" y2="35" /><line x1="52" y1="36" x2="57" y2="35" /></svg>
+            <span>Terracotta</span>
+          </div>
+        </div>
+
+        <ul class="bullets">
+          <li><strong>Direct match:</strong> mirrors packaging line art in actual photos (04 Salmon Oil & cartons).</li>
+          <li>Whisker ticks give immediate feline recognition at any distance.</li>
+          <li>Tactile pantry bottle feel; friendly without sacrificing editorial elegance.</li>
+        </ul>
+      </div>
+
+      <!-- ================= OPTION C ================= -->
+      <div class="card">
+        <div class="card-badge">Option C</div>
+        <h2 class="card-title">Poised Profile</h2>
+        <p class="card-desc">Sitting cat head bust profile &bull; Architectural and serene</p>
+
+        <div class="section-label">Stacked Lockup (About / Footer / Splash)</div>
+        <div class="lockup-stacked">
+          <div class="glyph-wrapper">
+            <!-- SVG C -->
+            <svg width="56" height="56" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M 28 20 L 32 11 C 34.5 14 36.5 17 38 19" />
+              <path d="M 37 15 L 40 12 C 41.5 14.5 42.5 17 43 19" />
+              <path d="M 28 20 C 25.5 22 23.5 24.5 21.5 28 C 21 29.5 21.8 30.5 23 31 C 24 31.5 24.5 33 25.5 34.5 C 27 37 28 41 29 46" />
+              <path d="M 43 19 C 44 24 44.5 30 45 36 C 45.5 40 46 43 47 46" />
+              <path d="M 26 27 C 27.5 28 29.5 27.5 30.5 26.5" />
+              <path d="M 27 46 C 33 48.5 41 48.5 49 46" />
+            </svg>
+          </div>
+          <div class="wordmark-stacked">
+            <span class="neko">NEKO</span>
+            <span class="delice">DELICE</span>
+          </div>
+        </div>
+
+        <div class="section-label">Compact Lockup (Header / Sticky Nav)</div>
+        <div class="lockup-compact">
+          <svg width="28" height="28" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M 28 20 L 32 11 C 34.5 14 36.5 17 38 19" />
+            <path d="M 28 20 C 25.5 22 23.5 24.5 21.5 28 C 21 29.5 21.8 30.5 23 31 C 24 31.5 24.5 33 25.5 34.5 C 27 37 28 41 29 46" />
+            <path d="M 38 19 C 43 25 44 33 46 46" />
+            <path d="M 28 46 C 34 48 40 48 46 46" />
+          </svg>
+          <div class="wordmark-compact">
+            <span class="neko-sm">NEKO</span>
+            <span class="delice-sm">DELICE</span>
+          </div>
+        </div>
+
+        <div class="section-label">Scale Checks (48px, 32px, 24px, 16px)</div>
+        <div class="scale-row">
+          <div class="scale-item">
+            <svg width="48" height="48" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M 28 20 L 32 11 C 34.5 14 36.5 17 38 19" /><path d="M 37 15 L 40 12 C 41.5 14.5 42.5 17 43 19" /><path d="M 28 20 C 25.5 22 23.5 24.5 21.5 28 C 21 29.5 21.8 30.5 23 31 C 24 31.5 24.5 33 25.5 34.5 C 27 37 28 41 29 46" /><path d="M 43 19 C 44 24 44.5 30 45 36 C 45.5 40 46 43 47 46" /><path d="M 27 46 C 33 48.5 41 48.5 49 46" /></svg>
+            <span class="scale-label">48 px</span>
+          </div>
+          <div class="scale-item">
+            <svg width="32" height="32" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M 28 20 L 32 11 C 34.5 14 36.5 17 38 19" /><path d="M 28 20 C 25.5 22 23.5 24.5 21.5 28 C 21 29.5 21.8 30.5 23 31 C 24 31.5 24.5 33 25.5 34.5 C 27 37 28 41 29 46" /><path d="M 38 19 C 43 25 44 33 46 46" /><path d="M 28 46 C 34 48 40 48 46 46" /></svg>
+            <span class="scale-label">32 px</span>
+          </div>
+          <div class="scale-item">
+            <svg width="24" height="24" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M 28 20 L 32 11 C 34.5 14 36.5 17 38 19" /><path d="M 28 20 C 25.5 22 23.5 24.5 21.5 28 C 21 29.5 21.8 30.5 23 31 C 24 31.5 24.5 33 25.5 34.5 C 27 37 28 41 29 46" /><path d="M 38 19 C 43 25 44 33 46 46" /></svg>
+            <span class="scale-label">24 px</span>
+          </div>
+          <div class="scale-item">
+            <svg width="16" height="16" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M 28 20 L 32 11 L 38 19" /><path d="M 28 20 C 24 24 21.5 28 23 31 C 25 34 27 38 29 46" /></svg>
+            <span class="scale-label">16 px</span>
+          </div>
+        </div>
+
+        <div class="section-label">Contrast Swatches</div>
+        <div class="swatch-row">
+          <div class="swatch swatch-espresso">
+            <svg width="20" height="20" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M 28 20 L 32 11 L 38 19" /><path d="M 28 20 C 24 24 21.5 28 23 31 C 25 34 27 38 29 46" /><path d="M 38 19 C 43 25 44 33 46 46" /></svg>
+            <span>Espresso</span>
+          </div>
+          <div class="swatch swatch-terracotta">
+            <svg width="20" height="20" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M 28 20 L 32 11 L 38 19" /><path d="M 28 20 C 24 24 21.5 28 23 31 C 25 34 27 38 29 46" /><path d="M 38 19 C 43 25 44 33 46 46" /></svg>
+            <span>Terracotta</span>
+          </div>
+        </div>
+
+        <ul class="bullets">
+          <li>Distinctive side profile inspired by gallery art and studio sculpture.</li>
+          <li>Strong editorial personality and proud, alert posture.</li>
+          <li>Asymmetric posture creates dynamic tension when placed beside compact wordmark.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Summary & Pick Section -->
+    <div class="summary-card">
+      <h2>Comparison & Recommendation</h2>
+      <p>
+        The brand name is spelled strictly <strong>NEKO DELICE</strong>. In all three lockups, the wordmark is rendered in live text using self-hosted <strong>Cormorant Garamond 600</strong> with wide tracking (<code>0.22em</code> for NEKO, <code>0.28em</code> for DELICE), rendered in rich espresso (<code>#2B211A</code>) on warm cream (<code>#FBF6EE</code>), yielding a contrast ratio exceeding <strong>13:1</strong> (WCAG AAA).
+      </p>
+
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th>Option</th>
+            <th>Glyph Style</th>
+            <th>Symmetry</th>
+            <th>Best Suited For</th>
+            <th>Recommendation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Option A</strong></td>
+            <td>Minimal Ears & Chin Contour</td>
+            <td>Symmetrical</td>
+            <td>Ultra-minimalist modern identities, perfect 16px favicon</td>
+            <td>Strong contender</td>
+          </tr>
+          <tr style="background: rgba(169, 79, 51, 0.05);">
+            <td><strong>Option B</strong></td>
+            <td>Whisker Ticks + Soft Cheeks</td>
+            <td>Symmetrical</td>
+            <td>Apothecary packaging, aligns directly with product carton artwork</td>
+            <td><strong style="color: var(--terracotta);">&star; Recommended</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Option C</strong></td>
+            <td>Poised Sitting Cat Profile</td>
+            <td>Asymmetrical</td>
+            <td>High-fashion boutique, sculptural studio mark</td>
+            <td>Artistic alternative</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
