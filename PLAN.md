@@ -23,7 +23,7 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 - [x] P03 Image optimisation pipeline
 - [x] P04 Design tokens, fonts, base UI
 - [x] P05 Logo & wordmark (**stop for owner pick**)
-- [ ] P06 Monoline cat illustration set (**stop for owner approval**)
+- [x] P06 Monoline cat illustration set (**stop for owner approval**)
 - [ ] P07 Layout shell, routing, prerender, SEO
 - [ ] P08 Product data, content, currency formatting
 - [ ] P09 Planner engine + tests (pure logic)
@@ -40,6 +40,7 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 - 2026-10-24: P03 completed. Sharp image optimization pipeline with caching, budgets (all <85 KB), typed image manifest, ProductImage component, and vitest tests.
 - 2026-10-24: P04 completed. Sampled pack-band and backdrop colors from hero photos; configured Tailwind v4 @theme tokens; self-hosted WOFF2 fonts (@fontsource/cormorant-garamond@5.3.0 and @fontsource/dm-sans@5.3.0, 73.45 KiB total); base UI primitives (Button, Chip, Container, Section, Heading, SkipLink, VisuallyHidden, Icon); WCAG AA contrast tests passing.
 - 2026-10-24: P05 completed. User selected custom debossed cat glyph from packaging photo; built vector Logo component with stacked, compact, and glyph variants; generated public/favicon.svg and public/apple-touch-icon.png (180x180); verified crispness at 24/48/160px; test suite passing.
+- 2026-10-25: P06 completed. Created 6 monoline cat SVG components (`CatSleeping`, `CatSitting`, `CatStretching`, `CatPlayful`, `CatPeeking`, `CatHead`) in `src/components/cat-art/` matching packaging artwork; all under 1.5 KB (7.18 KB total code, average ~1.19 KB); created `docs/cats-preview.html` matrix at 48/96/160px across sage, cream, and oat; vitest suite passing; approved by owner.
 - *Reminders for P07:*
   - Preload Cormorant Garamond 600 WOFF2 font in `<Head>`.
   - Add `<link rel="icon" type="image/svg+xml" href="/favicon.svg">` and `<link rel="apple-touch-icon" href="/apple-touch-icon.png">` to `<Head>`.
