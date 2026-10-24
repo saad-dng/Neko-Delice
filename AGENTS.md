@@ -36,5 +36,5 @@ No runtime CSS-in-JS. No UI kit. No icon library (inline SVG). No animation libr
 - If something is ambiguous or blocked, stop and ask one precise question instead of guessing.
 - Keep replies short: what changed, how to verify, what is next.
 
-## Skills available on demand (`.agent/skills/`)
+## Skills available on demand (`.agents/skills/`)
 `neko-planner-logic` · `neko-image-pipeline` · `neko-audit`. External design skills may also be installed; **docs/DESIGN.md overrides any skill that pushes a louder, trendier look.**
