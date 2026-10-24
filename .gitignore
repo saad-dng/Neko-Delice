@@ -23,11 +23,9 @@ dist-ssr
 *.sln
 *.sw?
 
-# Raw photos
+# Project specific ignores
 Photo collection/
 neko-delice-agent-kit.zip
-
-Photo collection/
 .lighthouseci/
 playwright-report/
 test-results/

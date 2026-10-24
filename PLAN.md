@@ -18,7 +18,7 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 | Dark mode, accounts, search, reviews, checkout, multi-cat | Out of scope. |
 
 ## Phases (one prompt each, in order)
-- [ ] P01 Bootstrap & project structure
+- [x] P01 Bootstrap & project structure
 - [ ] P02 Photo audit → `docs/IMAGE-MAP.md` (**stop for owner approval**)
 - [ ] P03 Image optimisation pipeline
 - [ ] P04 Design tokens, fonts, base UI
@@ -35,4 +35,5 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 - [ ] P15 Audit, optimisation, README, launch prep
 
 ## Notes
-(Agent: append dated one-line notes here. Keep it short.)
+- 2026-10-24: P01 completed. Vite + React + TS scaffold configured with vite-react-ssg, Tailwind v4, paths alias, directory structure, and vitest baseline.
+

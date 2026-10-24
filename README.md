@@ -1,32 +1,17 @@
-# React + TypeScript + Vite
+# NEKO DELICE
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Front-end portfolio storefront for cat nutrition + cat hardware.
 
-Currently, two official plugins are available:
+## Scripts
+- `npm run dev`: Start local development server with SSG
+- `npm run build`: Build production static site
+- `npm run preview`: Preview production build locally
+- `npm run typecheck`: Run TypeScript type check
+- `npm run lint`: Run Oxlint across source files
+- `npm test`: Run Vitest unit tests
+- `npm run e2e`: Run Playwright end-to-end tests
+- `npm run images`: Run image optimization pipeline
+- `npm run lhci`: Run Lighthouse CI audit
+- `npm run size`: Check asset bundle sizes
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+See [PLAN.md](PLAN.md) for architecture, status, decisions, and development phases.

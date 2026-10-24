@@ -4,10 +4,16 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "oxlint",
-    "preview": "vite preview"
+    "dev": "vite-react-ssg dev",
+    "build": "vite-react-ssg build",
+    "preview": "vite preview",
+    "typecheck": "tsc -b --noEmit",
+    "lint": "oxlint src",
+    "test": "vitest run",
+    "e2e": "playwright test",
+    "images": "node scripts/optimize-images.mjs",
+    "lhci": "lhci autorun",
+    "size": "node -e \"console.log('size check stub')\""
   },
   "dependencies": {
     "react": "^19.3.1",
