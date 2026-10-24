@@ -1,8 +1,9 @@
 import type { CatArtProps } from './types'
 
 /**
- * CatPlayful — Energetic cat in playful pounce crouch
+ * CatPlayful — Energetic cat with raised curious paw & high waving tail
  * Mapping: High-Energy profile
+ * Harmonized with CatSitting anatomy and brand line aesthetic.
  */
 export function CatPlayful({ className = '', title, ...props }: CatArtProps) {
   return (
@@ -19,8 +20,8 @@ export function CatPlayful({ className = '', title, ...props }: CatArtProps) {
       {...props}
     >
       {title ? <title>{title}</title> : null}
-      <path d="M 62 48 L 65 34 C 66 32 68 33 69 35 L 72 45 L 75 45 L 80 35 C 81 34 83 35 83 37 L 81 48 M 81 48 C 84 50 86 53 84 56 C 83 58 80 59 76 59 C 72 61 66 61 62 60 M 84 54 L 94 53 M 83 57 L 92 59 M 62 60 C 58 64 56 72 58 80 L 68 88 L 76 88 M 66 76 L 76 84 L 84 84 M 62 48 C 52 48 44 46 36 44 M 58 68 C 48 68 40 68 34 72 M 36 44 C 26 50 20 60 18 72 L 24 88 L 32 88 M 28 58 C 30 68 28 78 24 86 M 36 44 C 26 34 22 22 25 15 C 28 9 36 10 40 14 C 43 18 40 23 35 24" />
-      <circle cx="76" cy="50" r="1.3" fill="currentColor" />
+      <path d="M 44 34 C 42 31 38 28 39 24 C 40 21 43 20 46 20 M 46 20 L 49 7 C 50 6 52 7 53 9 L 56 15 L 58 15 L 64 8 C 65 7 67 8 67 10 L 66 20 M 45 23 C 47 20 52 21 53 25 M 39 28 L 28 27 M 40 32 L 29 34 M 44 52 C 38 50 32 44 32 38 C 32 34 36 34 38 38 C 40 42 43 46 46 50 M 33 36 L 36 38 M 44 34 C 42 44 40 56 42 68 L 44 94 C 44 96 48 96 52 96 C 54 96 55 94 55 91 L 55 70 M 48 92 L 48 96 M 55 76 L 58 92 L 62 94 M 66 20 C 71 34 78 50 82 64 C 88 72 92 80 88 94 M 76 94 L 86 94 M 78 66 C 83 74 83 84 78 92 M 88 94 C 98 90 104 74 100 54 C 96 36 84 28 76 34 C 72 38 76 44 82 42 C 88 40 90 34 86 30" />
+      <circle cx="49" cy="23" r="1.2" fill="currentColor" />
     </svg>
   )
 }

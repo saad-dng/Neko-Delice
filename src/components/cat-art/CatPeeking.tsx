@@ -3,6 +3,7 @@ import type { CatArtProps } from './types'
 /**
  * CatPeeking — Cat peeking curiously over botanical tea leaves
  * Mapping: Empty bag & curious discovery states
+ * Calibrated directly from authentic NEKO DELICE packaging illustration (Matcha Tofu Litter pack).
  */
 export function CatPeeking({ className = '', title, ...props }: CatArtProps) {
   return (
@@ -19,7 +20,8 @@ export function CatPeeking({ className = '', title, ...props }: CatArtProps) {
       {...props}
     >
       {title ? <title>{title}</title> : null}
-      <path d="M 60 104 L 60 76 M 60 76 C 44 70 30 68 18 72 C 24 82 42 84 60 76 M 60 76 C 44 74 32 73 18 72 M 60 76 C 76 70 90 68 102 72 C 96 82 78 84 60 76 M 60 76 C 76 74 88 73 102 72 M 38 73 C 37 66 42 63 46 63 C 50 63 54 66 54 73 M 43 64 L 43 70 M 48 64 L 48 70 M 66 73 C 66 66 70 63 74 63 C 78 63 83 66 82 73 M 71 64 L 71 70 M 76 64 L 76 70 M 34 68 C 29 57 33 46 40 40 M 86 68 C 91 57 87 46 80 40 M 40 40 L 34 20 C 36 19 39 19 42 22 L 51 31 M 51 31 C 56 29 64 29 69 31 M 69 31 L 78 22 C 81 19 84 19 86 20 L 80 40 M 45 48 C 47 44 51 44 53 48 M 67 48 C 69 44 73 44 75 48 M 58 53 C 60 55 62 55 62 53 M 60 55 L 60 57 C 58 59 55 59 53 57 M 60 57 C 62 59 65 59 67 57 M 28 49 L 16 48 M 28 54 L 17 56 M 92 49 L 104 48 M 92 54 L 103 56" />
+      <path d="M 50 111 C 50 100 48 89 47 83 M 47 83 C 31 88 18 75 11 54 C 20 54 35 56 47 64 M 47 83 C 35 77 25 68 20 60 M 47 83 C 69 89 89 72 104 45 C 86 51 69 58 49 73 M 47 83 C 64 73 78 63 92 51 M 39 36 C 38 43 39 51 45 58 M 39 36 L 40 18 C 40 17 42 17 42 18 L 53 26 M 53 26 L 68 25 M 68 25 L 76 14 C 77 13 79 13 79 15 L 85 33 M 85 33 C 86 37 86 40 84 43 M 79 45 C 79 40 90 38 92 44 C 90 47 83 48 79 45 M 83 40 L 83 43 M 88 41 L 87 44 M 48 65 C 49 59 59 59 59 66 C 56 70 49 69 48 65 M 53 61 L 53 65 M 56 62 L 55 65 M 38 46 L 31 46 M 39 50 L 32 51 M 48 42 C 50 40 54 40 56 42 M 67 38 C 69 36 72 36 74 38" />
+      <circle cx="61" cy="44" r="1.4" fill="currentColor" />
     </svg>
   )
 }

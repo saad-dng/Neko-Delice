@@ -3,6 +3,7 @@ import type { CatArtProps } from './types'
 /**
  * CatStretching — Classic downward-cat stretch
  * Mapping: Playful Explorer profile
+ * Calibrated directly from authentic NEKO DELICE packaging illustration (Duck Kibble pack).
  */
 export function CatStretching({ className = '', title, ...props }: CatArtProps) {
   return (
@@ -19,7 +20,7 @@ export function CatStretching({ className = '', title, ...props }: CatArtProps) 
       {...props}
     >
       {title ? <title>{title}</title> : null}
-      <path d="M 14 90 L 32 90 C 38 90 44 84 48 74 L 52 66 M 22 86 L 22 90 M 18 86 C 24 86 34 84 40 76 M 32 72 C 28 70 27 66 28 63 C 29 59 33 58 37 58 M 37 58 L 37 42 C 38 40 40 40 41 42 L 45 52 L 47 52 L 52 40 C 53 39 55 40 55 42 L 54 54 M 33 63 C 36 65 40 64 42 62 M 28 65 L 18 64 M 29 68 L 20 70 M 54 54 C 64 66 74 66 88 46 M 88 46 C 96 56 96 70 94 78 L 88 90 L 96 90 M 48 72 C 58 76 70 76 80 78 M 84 64 C 86 72 84 80 80 86 M 88 46 C 96 36 102 24 98 16 C 94 10 86 10 82 14 C 79 17 80 22 85 22 C 88 22 90 19 88 16" />
+      <path d="M 37 82 C 30 89 22 95 13 100 C 11 102 10 99 11 98 C 15 95 26 86 35 79 M 41 85 C 32 93 21 101 11 105 C 8 107 8 105 9 103 C 14 98 27 89 33 81 M 33 81 C 26 82 24 76 26 70 C 28 66 31 64 33 64 M 33 64 L 32 55 C 32 54 34 54 35 55 L 36 63 M 36 63 L 38 63 M 38 63 L 39 56 C 39 55 41 55 41 56 L 43 63 M 43 63 C 56 69 70 64 96 42 M 96 42 C 106 30 105 18 90 16 C 75 15 66 23 67 25 C 68 26 77 20 90 20 C 100 21 101 31 95 43 M 96 42 C 107 56 110 71 107 87 C 105 96 104 101 100 102 C 96 103 94 100 94 96 C 95 90 96 82 91 75 M 92 69 C 94 78 91 86 87 92 M 88 86 L 85 94 C 84 96 86 97 88 96 L 90 93 M 41 85 C 55 94 70 92 85 85 M 29 71 C 30 72 32 72 33 70" />
     </svg>
   )
 }
