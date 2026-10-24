@@ -20,7 +20,7 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 ## Phases (one prompt each, in order)
 - [x] P01 Bootstrap & project structure
 - [x] P02 Photo audit → `docs/IMAGE-MAP.md` (**stop for owner approval**)
-- [ ] P03 Image optimisation pipeline
+- [x] P03 Image optimisation pipeline
 - [ ] P04 Design tokens, fonts, base UI
 - [ ] P05 Logo & wordmark (**stop for owner pick**)
 - [ ] P06 Monoline cat illustration set (**stop for owner approval**)
@@ -37,4 +37,6 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 ## Notes
 - 2026-10-24: P01 completed. Vite + React + TS scaffold configured with vite-react-ssg, Tailwind v4, paths alias, directory structure, and vitest baseline.
 - 2026-10-24: P02 completed. Audited all 48 photos; verified roles, pack forms, and alt texts in docs/IMAGE-MAP.md and src/data/image-map.source.json; owner approved.
+- 2026-10-24: P03 completed. Sharp image optimization pipeline with caching, budgets (all <85 KB), typed image manifest, ProductImage component, and vitest tests.
+
 
