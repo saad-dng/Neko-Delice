@@ -1,0 +1,38 @@
+# NEKO DELICE — Plan & status
+
+Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
+
+## Decisions (these override the PRD where they differ)
+| Topic | Decision |
+| --- | --- |
+| Wet-food format | **Stick sachets**, matching the approved packs. 1 carton = **24 sachets × 40 g**. Kitten Mousse **45 kcal/sachet** (≈1.12 kcal/g), Salmon & Quail Paté **38 kcal/sachet** (≈0.94 kcal/g). Same energy density as the PRD's 85 g pouches, so results stay realistic. Kept as placeholders in `src/config/nutrition.ts`. |
+| Planner wet maths | sachets/day = wet kcal ÷ kcal per sachet; boxes = ceil(30 days × sachets/day ÷ 24); duration = boxes × 24 ÷ sachets/day. |
+| Product 05 pack | Paper-based pack with the food inside (not aluminium). Verify in photos. Alt text must say "paper pouch". |
+| Palette | Handover palette (`docs/DESIGN.md`). Primary button/terracotta text uses **#A94F33** (5.07:1 on cream), not the PRD's #B5573A (4.45:1, fails AA). |
+| Logo | Built in code: SVG cat-head glyph + live-text wordmark (NEKO over DELICE). Photos are inspiration only. |
+| Illustration | Monoline cat SVGs only. |
+| Images | 48 JPGs in `Photo collection/` (4–5 per product, **not** six). Gallery uses what exists, ordered by role (see `docs/IMAGE-MAP.md`). No new generation. No site-wide images exist: hero, bento tiles and About imagery reuse product photos. |
+| Currency | Fixed `USD_TO_BDT = 123`, shown as "approximate", BDT rounded to nearest ৳10. As-of label: "Oct 2026". Never fetch live rates. |
+| Case study | A "Behind the build" section on `/about`. **No extra route.** |
+| Framework | Vite + React + TS + `vite-react-ssg` (react-router-dom v6). |
+| Dark mode, accounts, search, reviews, checkout, multi-cat | Out of scope. |
+
+## Phases (one prompt each, in order)
+- [ ] P01 Bootstrap & project structure
+- [ ] P02 Photo audit → `docs/IMAGE-MAP.md` (**stop for owner approval**)
+- [ ] P03 Image optimisation pipeline
+- [ ] P04 Design tokens, fonts, base UI
+- [ ] P05 Logo & wordmark (**stop for owner pick**)
+- [ ] P06 Monoline cat illustration set (**stop for owner approval**)
+- [ ] P07 Layout shell, routing, prerender, SEO
+- [ ] P08 Product data, content, currency formatting
+- [ ] P09 Planner engine + tests (pure logic)
+- [ ] P10 Shop: filters, URL sync, cards, bag/currency stores
+- [ ] P11 Product detail page
+- [ ] P12 Planner UI (wizard + results)
+- [ ] P13 Smart Bag modal + currency toggle UI
+- [ ] P14 Home, About (+ Behind the build), micro-interactions
+- [ ] P15 Audit, optimisation, README, launch prep
+
+## Notes
+(Agent: append dated one-line notes here. Keep it short.)
