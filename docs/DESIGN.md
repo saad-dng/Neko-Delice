@@ -9,20 +9,21 @@ Brand promise: *Honest food, quiet design, no guesswork.*
 | --- | --- | --- |
 | cream-50 | #FBF6EE | Page background |
 | oat-100 | #E5D8BC | Cards, sections, pack colour |
-| beige-200 | #DDD0BA | Photo tiles (matches photo backdrop so images blend in) |
+| beige-200 | #DDD0BA | Photo tiles (matches photo backdrop #D2C5B3 so images blend in) |
 | sand-300 | #D9C3A5 | Borders, dividers |
 | espresso-900 | #2B211A | Text, headings, wordmark |
 | terracotta-600 | #A94F33 | Primary buttons, accent text (5.07:1 on cream) |
 | oak-600 | #8B6A45 | Wood-tone details, hardware accent (4.6:1 on cream) |
-| band-sage | #93A88E | Product 01, 04 accent (**fill only**, 2.37:1) |
-| band-terracotta | #B66A4C | Product 02 accent (**fill only**, 3.79:1) |
-| band-ochre | #B5834F | Product 03 accent (**fill only**, 3.09:1) |
-| band-matcha | #6E8B62 | Product 06 accent (**fill only**; text variant #56744B = 4.89:1) |
+| band-sage | #8FA388 | Product 01, 04 accent (**fill only**, sampled #8FA388) |
+| band-terracotta | #A66445 | Product 02 accent (**fill only**, sampled #A66445) |
+| band-ochre | #9B6E3A | Product 03 accent (**fill only**, sampled #9B6E3A) |
+| band-matcha | #8A9A74 | Product 06 accent (**fill only**, sampled #8A9A74; text variant #56744B = 4.89:1) |
 | line-cream | #F1E9D6 | Monoline art on dark/band fills |
 
-Band hexes were estimated by eye. In prompt P04 sample the real pack-band colours from the photos and adjust.
+Sampled from hero packaging photos in P04 (backdrop #D2C5B3, sage #8FA388, terracotta #A66445, ochre #9B6E3A, matcha #8A9A74).
 Rules: body text is always espresso on cream/oat/beige (≥10:1). Band colours are **never** body text. Small text in accent colour must be terracotta-600, oak-600 or matcha text variant. Cream text on terracotta-600 passes (5.07:1).
 Per-product accent: set CSS variable `--accent` on the product page/card from its band colour (01,04 sage · 02 terracotta · 03 ochre · 06 matcha · 05 and hardware 07–10 oak).
+
 
 ## Typography
 - Display: **Cormorant Garamond** 500 + 600. Use for h1–h3 and the wordmark. Never below 24 px (hairlines vanish).

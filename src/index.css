@@ -1,1 +1,88 @@
 @import "tailwindcss";
+@import "./styles/tokens.css";
+
+/* Font imports (Latin subset, weights 500/600 for Cormorant Garamond, 400/500 for DM Sans) */
+@import "@fontsource/cormorant-garamond/latin-500.css";
+@import "@fontsource/cormorant-garamond/latin-600.css";
+@import "@fontsource/dm-sans/latin-400.css";
+@import "@fontsource/dm-sans/latin-500.css";
+
+:root {
+  color-scheme: light;
+  scroll-padding-top: 80px;
+}
+
+html {
+  font-family: var(--font-sans);
+  background-color: var(--color-cream-50);
+  color: var(--color-espresso-900);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-cream-50);
+  color: var(--color-espresso-900);
+  min-height: 100vh;
+}
+
+/* Accessible focus ring: 2 px espresso + 2 px cream offset */
+:focus-visible {
+  outline: 2px solid var(--color-espresso-900);
+  outline-offset: 2px;
+}
+
+/* Fluid display headings */
+h1, .font-display-h1 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.15;
+  font-size: clamp(2rem, 1.4rem + 2.5vw, 4rem);
+}
+
+h2, .font-display-h2 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.2;
+  font-size: clamp(1.6rem, 1.2rem + 1.8vw, 2.5rem);
+}
+
+h3, .font-display-h3 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  line-height: 1.25;
+  font-size: clamp(1.3rem, 1.1rem + 1vw, 1.75rem);
+}
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Motion preference override: switch to opacity-only transitions */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
