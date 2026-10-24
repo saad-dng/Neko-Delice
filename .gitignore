@@ -26,3 +26,8 @@ dist-ssr
 # Raw photos
 Photo collection/
 neko-delice-agent-kit.zip
+
+Photo collection/
+.lighthouseci/
+playwright-report/
+test-results/
