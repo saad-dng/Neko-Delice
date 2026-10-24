@@ -21,7 +21,7 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 - [x] P01 Bootstrap & project structure
 - [x] P02 Photo audit → `docs/IMAGE-MAP.md` (**stop for owner approval**)
 - [x] P03 Image optimisation pipeline
-- [ ] P04 Design tokens, fonts, base UI
+- [x] P04 Design tokens, fonts, base UI
 - [ ] P05 Logo & wordmark (**stop for owner pick**)
 - [ ] P06 Monoline cat illustration set (**stop for owner approval**)
 - [ ] P07 Layout shell, routing, prerender, SEO
@@ -38,5 +38,7 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 - 2026-10-24: P01 completed. Vite + React + TS scaffold configured with vite-react-ssg, Tailwind v4, paths alias, directory structure, and vitest baseline.
 - 2026-10-24: P02 completed. Audited all 48 photos; verified roles, pack forms, and alt texts in docs/IMAGE-MAP.md and src/data/image-map.source.json; owner approved.
 - 2026-10-24: P03 completed. Sharp image optimization pipeline with caching, budgets (all <85 KB), typed image manifest, ProductImage component, and vitest tests.
+- 2026-10-24: P04 completed. Sampled pack-band and backdrop colors from hero photos; configured Tailwind v4 @theme tokens; self-hosted WOFF2 fonts (@fontsource/cormorant-garamond@5.3.0 and @fontsource/dm-sans@5.3.0, 73.45 KiB total); base UI primitives (Button, Chip, Container, Section, Heading, SkipLink, VisuallyHidden, Icon); WCAG AA contrast tests passing.
+- *Reminder for P07:* Preload Cormorant Garamond 600 WOFF2 font in `<Head>` during layout shell implementation.
 
 

@@ -15,17 +15,17 @@ export interface IconProps extends React.SVGProps<SVGSVGElement> {
 }
 
 export function Icon({ name, size = 24, className = '', ...props }: IconProps) {
-  const commonProps = {
+  const commonProps: React.SVGProps<SVGSVGElement> = {
     width: size,
     height: size,
     viewBox: '0 0 24 24',
     fill: 'none',
     stroke: 'currentColor',
     strokeWidth: 1.5,
-    strokeLinecap: 'round' as const,
-    strokeLinejoin: 'round' as const,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
     className: `inline-block shrink-0 ${className}`,
-    'aria-hidden': 'true',
+    'aria-hidden': true,
     ...props,
   }
 
