@@ -31,7 +31,7 @@ test.describe('Product Detail Page (P11)', () => {
     await expect(h1).toContainText("We couldn't find that page")
 
     // Link back to collection on 404 page
-    await expect(page.locator('main a[href="/shop"]')).toBeVisible()
+    await expect(page.locator('main a[href="/#shop"]')).toBeVisible()
   })
 
 

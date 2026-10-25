@@ -20,6 +20,7 @@ export function ShopPage() {
         path="/shop"
       />
       <div className="py-24 text-center">
+        <h1 className="sr-only">Shop the collection</h1>
         <p className="text-espresso-700">Redirecting to the collection...</p>
       </div>
     </>

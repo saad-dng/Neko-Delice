@@ -3,7 +3,6 @@ import { products } from '../../src/data/products'
 
 const CORE_ROUTES = [
   '/',
-  '/shop',
   '/meal-plan',
   '/about',
   '/404',
@@ -30,6 +29,18 @@ test.describe('E2E Smoke Suite: Route Integrity, Console Errors & Controls (P15)
       expect(consoleErrors).toEqual([])
     })
   }
+
+  test('route /shop redirects cleanly to /#shop with zero console errors', async ({ page }) => {
+    const consoleErrors: string[] = []
+    page.on('console', (msg) => {
+      if (msg.type() === 'error') consoleErrors.push(msg.text())
+    })
+    page.on('pageerror', (err) => consoleErrors.push(err.message))
+
+    await page.goto('/shop')
+    await expect(page).toHaveURL(/#shop/)
+    expect(consoleErrors).toEqual([])
+  })
 
   for (const slug of ALL_PRODUCT_SLUGS) {
     test(`product route /product/${slug} loads with zero console errors and single h1`, async ({

@@ -19,12 +19,10 @@ test.describe('Home Page (P14)', () => {
     await expect(planCta).toHaveAttribute('href', '/meal-plan')
 
     const shopCta = page.locator('a:has-text("Shop the collection")').first()
-    await expect(shopCta).toHaveAttribute('href', '/shop')
+    await expect(shopCta).toHaveAttribute('href', '/#shop')
 
     // Unified Collection Section
-    await expect(page.locator('h2:has-text("Everything your cat needs")')).toBeVisible()
-    const shopLink = page.locator('a[href="/shop"]:has-text("Full catalog")')
-    await expect(shopLink).toBeVisible()
+    await expect(page.locator('h2:has-text("Shop the collection")')).toBeVisible()
 
     // Eager/Priority LCP image on the first collection item
     const lcpImg = page.locator('section img[fetchpriority="high"]').first()
