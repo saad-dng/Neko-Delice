@@ -58,6 +58,7 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
   - Hosting-neutral cache config created: `public/_headers` (Netlify/Cloudflare) and `vercel.json` with immutable 1-year asset caching and clean URLs.
   - Updated "Behind the build" table in `src/pages/About.tsx` with verified audit metrics.
   - Created detailed `docs/AUDIT.md` and complete project `README.md`.
+- 2026-10-25: Refinement completed. Replaced header bottom border with seamless multi-stop progressive glass blur. Removed currency switcher from sticky header; integrated contextual CurrencyToggle in Smart Bag modal, Shop catalog toolbar, and global footer beside BDT exchange rate disclosure.
 
 
 

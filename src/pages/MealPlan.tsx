@@ -51,16 +51,22 @@ export function MealPlanPage() {
     return () => clearTimeout(timer)
   }, [urlStep])
 
+  const profileRef = useRef(profile)
+  useEffect(() => {
+    profileRef.current = profile
+  })
+
   // Helper to update profile and synchronize with URL
   const updateProfile = (patch: Partial<CatProfile>) => {
-    const next = { ...profile, ...patch }
+    const next = { ...profileRef.current, ...patch }
+    profileRef.current = next
     setStoreProfile(next)
     navigate(`/meal-plan?${encodeProfile(next, urlStep)}`, { replace: true })
   }
 
   // Navigate to step
   const goToStep = (nextStep: PlannerStep) => {
-    navigate(`/meal-plan?${encodeProfile(profile, nextStep)}`, { replace: true })
+    navigate(`/meal-plan?${encodeProfile(profileRef.current, nextStep)}`, { replace: true })
   }
 
   const handleNext = () => {

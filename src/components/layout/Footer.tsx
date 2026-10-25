@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Logo } from '@/components/brand/Logo'
+import { CurrencyToggle } from '@/components/ui/CurrencyToggle'
 
 export function Footer() {
   const currentYear = 2026
@@ -62,9 +63,16 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-espresso-600">
+        {/* Bottom Bar: Copyright, Currency Selector, and FX Disclosure */}
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-espresso-600">
           <p>© {currentYear} NEKO DELICE. All rights reserved.</p>
+
+          {/* Global Store Currency Selector */}
+          <div className="flex items-center gap-2.5">
+            <span className="text-espresso-700 font-medium">Currency:</span>
+            <CurrencyToggle ariaLabel="Currency selection" size="sm" />
+          </div>
+
           <p className="text-espresso-500">
             BDT prices are approximate (USD 1 = ৳123, Oct 2026)
           </p>

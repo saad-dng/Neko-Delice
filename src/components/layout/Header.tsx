@@ -3,19 +3,17 @@ import { NavLink, useLocation } from 'react-router-dom'
 import { Logo } from '@/components/brand/Logo'
 import { Icon } from '@/components/ui/Icon'
 import { ProgressiveBlur } from '@/components/ui/ProgressiveBlur'
+import { CurrencyToggle } from '@/components/ui/CurrencyToggle'
 import { useBag } from '@/store/bag'
 import { useBagUi } from '@/store/bag-ui'
-import { useCurrency } from '@/store/currency'
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const location = useLocation()
-  const currency = useCurrency((s) => s.currency)
   const bagCount = useBag((s) => s.lines.reduce((total, l) => total + l.qty, 0))
 
   const [isBouncing, setIsBouncing] = useState(false)
   const prevCountRef = useRef(bagCount)
-  const setCurrency = useCurrency((s) => s.setCurrency)
   const openBag = useBagUi((s) => s.openBag)
 
   // Trigger bounce animation when bagCount increments
@@ -80,40 +78,8 @@ export function Header() {
           ))}
         </nav>
 
-        {/* Header Actions (Currency toggle + Bag button + Mobile Toggle) */}
+        {/* Header Actions (Bag button + Mobile Toggle) */}
         <div className="flex items-center gap-2 sm:gap-3">
-          {/* Currency Segmented Control */}
-          <fieldset
-            aria-label="Currency selection"
-            className="hidden sm:inline-flex items-center rounded-full bg-oat-100/75 backdrop-blur-md p-0.5 border border-sand-300/60 m-0 shadow-2xs"
-          >
-            <legend className="sr-only">Currency selection</legend>
-            <button
-              type="button"
-              onClick={() => setCurrency('USD')}
-              aria-pressed={currency === 'USD'}
-              className={`min-w-[40px] min-h-[38px] px-2.5 py-1 text-xs font-semibold rounded-full transition-colors cursor-pointer ${
-                currency === 'USD'
-                  ? 'bg-cream-50 text-espresso-950 shadow-xs'
-                  : 'text-espresso-600 hover:text-espresso-950'
-              }`}
-            >
-              USD
-            </button>
-            <button
-              type="button"
-              onClick={() => setCurrency('BDT')}
-              aria-pressed={currency === 'BDT'}
-              className={`min-w-[40px] min-h-[38px] px-2.5 py-1 text-xs font-semibold rounded-full transition-colors cursor-pointer ${
-                currency === 'BDT'
-                  ? 'bg-cream-50 text-espresso-950 shadow-xs'
-                  : 'text-espresso-600 hover:text-espresso-950'
-              }`}
-            >
-              BDT
-            </button>
-          </fieldset>
-
           {/* Bag Button with Bounce Animation */}
           <button
             type="button"
@@ -193,36 +159,7 @@ export function Header() {
 
             <div className="pt-3 mt-2 border-t border-oat-200/60 flex items-center justify-between px-2">
               <span className="text-xs text-espresso-700">Display Currency</span>
-              <fieldset
-                aria-label="Mobile currency selection"
-                className="inline-flex rounded-full bg-oat-200/70 p-0.5 border border-sand-300/60 m-0"
-              >
-                <legend className="sr-only">Mobile currency selection</legend>
-                <button
-                  type="button"
-                  onClick={() => setCurrency('USD')}
-                  aria-pressed={currency === 'USD'}
-                  className={`min-w-[40px] min-h-[38px] px-2.5 py-1 text-xs font-semibold rounded-full transition-colors cursor-pointer ${
-                    currency === 'USD'
-                      ? 'bg-cream-50 text-espresso-950 shadow-xs'
-                      : 'text-espresso-600 hover:text-espresso-950'
-                  }`}
-                >
-                  USD
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setCurrency('BDT')}
-                  aria-pressed={currency === 'BDT'}
-                  className={`min-w-[40px] min-h-[38px] px-2.5 py-1 text-xs font-semibold rounded-full transition-colors cursor-pointer ${
-                    currency === 'BDT'
-                      ? 'bg-cream-50 text-espresso-950 shadow-xs'
-                      : 'text-espresso-600 hover:text-espresso-950'
-                  }`}
-                >
-                  BDT
-                </button>
-              </fieldset>
+              <CurrencyToggle ariaLabel="Mobile currency selection" size="sm" />
             </div>
           </nav>
         </div>

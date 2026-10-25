@@ -10,6 +10,7 @@ import { formatDays, formatPrice, TABULAR_NUMS } from '@/lib/format'
 import { supplyDays } from '@/lib/planner'
 import { ProductImage } from '@/components/ui/ProductImage'
 import { CatPeeking } from '@/components/cat-art/CatPeeking'
+import { CurrencyToggle } from '@/components/ui/CurrencyToggle'
 
 export function SmartBag() {
   const dialogRef = useRef<HTMLDialogElement>(null)
@@ -96,12 +97,15 @@ export function SmartBag() {
     >
       {/* Dialog Header */}
       <div className="flex items-center justify-between px-6 py-4 border-b border-sand-300/80 shrink-0">
-        <h2
-          id="smart-bag-title"
-          className="font-serif text-2xl font-semibold text-espresso-950"
-        >
-          Your Bag
-        </h2>
+        <div className="flex items-center gap-3">
+          <h2
+            id="smart-bag-title"
+            className="font-serif text-2xl font-semibold text-espresso-950"
+          >
+            Your Bag
+          </h2>
+          <CurrencyToggle ariaLabel="Bag currency selection" size="sm" />
+        </div>
 
         <button
           type="button"

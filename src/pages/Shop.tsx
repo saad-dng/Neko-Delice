@@ -6,6 +6,7 @@ import { SeoHead } from '@/components/seo/SeoHead'
 import { Container } from '@/components/ui/Container'
 import { Heading } from '@/components/ui/Heading'
 import { Section } from '@/components/ui/Section'
+import { CurrencyToggle } from '@/components/ui/CurrencyToggle'
 import { products } from '@/data/products'
 import type { HealthGoal, LifeStage, ProductCategory } from '@/data/types'
 import {
@@ -323,24 +324,28 @@ export function ShopPage() {
               {filteredProducts.length === 1 ? 'product' : 'products'}
             </div>
 
-            {/* Sort Selector */}
-            <div className="flex items-center gap-2.5 ml-auto">
-              <label
-                htmlFor={sortSelectId}
-                className="text-xs font-medium uppercase tracking-wider text-espresso-700"
-              >
-                Sort by
-              </label>
-              <select
-                id={sortSelectId}
-                value={filters.sort}
-                onChange={(e) => setSort(e.target.value as ShopSort)}
-                className="rounded-lg border border-sand-300 bg-cream-50 px-3 py-1.5 text-sm text-espresso-900 focus:border-espresso-900 focus:outline-none focus:ring-1 focus:ring-espresso-900 cursor-pointer"
-              >
-                <option value="featured">Featured</option>
-                <option value="price-asc">Price: Low to High</option>
-                <option value="price-desc">Price: High to Low</option>
-              </select>
+            {/* Right Controls: Currency Toggle + Sort Selector */}
+            <div className="flex items-center gap-3 sm:gap-4 ml-auto">
+              <CurrencyToggle ariaLabel="Shop currency selection" size="sm" />
+
+              <div className="flex items-center gap-2">
+                <label
+                  htmlFor={sortSelectId}
+                  className="text-xs font-medium uppercase tracking-wider text-espresso-700 whitespace-nowrap"
+                >
+                  Sort by
+                </label>
+                <select
+                  id={sortSelectId}
+                  value={filters.sort}
+                  onChange={(e) => setSort(e.target.value as ShopSort)}
+                  className="rounded-lg border border-sand-300 bg-cream-50 px-3 py-1.5 text-sm text-espresso-900 focus:border-espresso-900 focus:outline-none focus:ring-1 focus:ring-espresso-900 cursor-pointer"
+                >
+                  <option value="featured">Featured</option>
+                  <option value="price-asc">Price: Low to High</option>
+                  <option value="price-desc">Price: High to Low</option>
+                </select>
+              </div>
             </div>
           </div>
 
