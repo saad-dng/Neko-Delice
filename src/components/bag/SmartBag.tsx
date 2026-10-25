@@ -178,7 +178,7 @@ export function SmartBag() {
                       <div className="font-serif text-base sm:text-lg font-semibold text-espresso-950 truncate">
                         {product.name}
                       </div>
-                      <div className="text-xs text-espresso-600 mt-0.5">
+                      <div className="text-xs text-espresso-700 mt-0.5">
                         {product.unit.packSizeLabel}
                       </div>
                     </div>
@@ -229,7 +229,7 @@ export function SmartBag() {
                       type="button"
                       onClick={() => remove(product.id)}
                       aria-label={`Remove ${product.name} from bag`}
-                      className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] text-xs font-medium text-espresso-600 hover:text-terracotta-700 underline underline-offset-2 transition-colors cursor-pointer"
+                      className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] text-xs font-medium text-espresso-700 hover:text-terracotta-700 underline underline-offset-2 transition-colors cursor-pointer"
                     >
                       Remove
                     </button>

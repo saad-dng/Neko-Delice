@@ -62,17 +62,17 @@ export function ProductCard({
       <div className="mt-4 flex flex-1 flex-col justify-between">
         <div>
           {/* Category & Price Row */}
-          <div className="flex items-center justify-between gap-2 text-xs">
-            <span className="font-medium uppercase tracking-wider text-espresso-700">
+          <div className="flex items-center justify-between gap-2">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-espresso-700">
               {categoryLabel}
             </span>
-            <span className="font-sans font-medium text-espresso-950 tabular-nums">
+            <span className="font-sans text-sm font-semibold text-espresso-950 tabular-nums">
               {formatPrice(product.priceUSD, currency)}
             </span>
           </div>
 
           {/* Product Name (Stretched Link to PDP) */}
-          <h2 className="mt-1 font-serif text-lg font-semibold text-espresso-950 transition-colors group-hover:text-terracotta-700">
+          <h2 className="mt-1.5 font-serif text-lg font-semibold text-espresso-950 transition-colors group-hover:text-terracotta-700">
             <Link
               to={`/product/${product.slug}`}
               className="focus:outline-none"
@@ -83,14 +83,14 @@ export function ProductCard({
           </h2>
 
           {/* Packaging / Spec Line */}
-          <p className="mt-1 text-xs text-espresso-600 line-clamp-1">
+          <p className="mt-1 text-xs text-espresso-700 line-clamp-1">
             {product.unit.packSizeLabel}
           </p>
         </div>
 
         {/* Footer Actions Row (Button elevated above stretched link) */}
-        <div className="mt-4 flex items-center justify-between pt-2 border-t border-sand-300/40">
-          <span className="inline-flex items-center gap-1 text-xs font-medium text-espresso-600 transition-colors group-hover:text-terracotta-700">
+        <div className="mt-4 flex items-center justify-between pt-2.5 border-t border-sand-300/40">
+          <span className="inline-flex items-center gap-1 text-xs font-medium text-espresso-700 transition-colors group-hover:text-terracotta-700">
             View details <span aria-hidden="true">→</span>
           </span>
 
@@ -103,7 +103,7 @@ export function ProductCard({
               useBagUi.getState().openBag(e.currentTarget)
             }}
             aria-label={`Add ${product.name} to bag`}
-            className="relative z-10 inline-flex items-center justify-center rounded-full bg-terracotta-600 px-3 py-1.5 text-xs font-medium text-cream-50 transition-all hover:bg-terracotta-700 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 active:scale-95 cursor-pointer"
+            className="relative z-10 inline-flex items-center justify-center rounded-full bg-terracotta-600 px-3.5 py-1.5 text-xs font-semibold text-cream-50 transition-all hover:bg-terracotta-700 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 active:scale-95 cursor-pointer shadow-2xs"
           >
             <span className="mr-1" aria-hidden="true">
               +

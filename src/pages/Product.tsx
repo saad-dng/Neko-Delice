@@ -313,7 +313,7 @@ export function ProductPage() {
                 <span className="font-serif text-2xl sm:text-3xl font-semibold text-espresso-950 tabular-nums">
                   {formatPrice(product.priceUSD, currency)}
                 </span>
-                <span className="text-xs text-espresso-600">
+                <span className="text-sm text-espresso-700">
                   {product.category === 'hardware'
                     ? 'One-time purchase'
                     : product.category === 'litter'
@@ -448,20 +448,20 @@ export function ProductPage() {
                     </summary>
                     <div className="pb-4 pt-1 px-1">
                       <table className="w-full text-sm text-left text-espresso-800">
-                        <tbody>
+                        <tbody className="divide-y divide-sand-300/40">
                           {Object.entries(product.analysis).map(
                             ([key, val]) => (
                               <tr
                                 key={key}
-                                className="border-b border-sand-300/30 last:border-none"
+                                className="transition-colors hover:bg-sage-50/30"
                               >
                                 <th
                                   scope="row"
-                                  className="py-1.5 pr-4 font-normal text-espresso-700"
+                                  className="py-2.5 pr-4 font-normal text-espresso-800"
                                 >
                                   {key}
                                 </th>
-                                <td className="py-1.5 text-right font-semibold text-espresso-950">
+                                <td className="py-2.5 text-right font-semibold text-espresso-950 tabular-nums">
                                   {val}
                                 </td>
                               </tr>
@@ -487,19 +487,19 @@ export function ProductPage() {
                     </summary>
                     <div className="pb-4 pt-1 px-1">
                       <table className="w-full text-sm text-left text-espresso-800">
-                        <tbody>
+                        <tbody className="divide-y divide-sand-300/40">
                           {Object.entries(product.specs).map(([key, val]) => (
                             <tr
                               key={key}
-                              className="border-b border-sand-300/30 last:border-none"
+                              className="transition-colors hover:bg-sage-50/30"
                             >
                               <th
                                 scope="row"
-                                className="py-1.5 pr-4 font-normal text-espresso-700"
+                                className="py-2.5 pr-4 font-normal text-espresso-800"
                               >
                                 {key}
                               </th>
-                              <td className="py-1.5 text-right font-semibold text-espresso-950">
+                              <td className="py-2.5 text-right font-semibold text-espresso-950 tabular-nums">
                                 {val}
                               </td>
                             </tr>

@@ -332,7 +332,7 @@ export function PlanResult({ bundle, profile, onEditAnswers }: PlanResultProps) 
                   <span className="font-serif text-lg sm:text-xl font-semibold text-espresso-950 block">
                     {formatPrice(line.price, currency)}
                   </span>
-                  <span className="text-[11px] text-espresso-500">
+                  <span className="text-xs text-espresso-700">
                     {formatPrice(line.unitPrice ?? line.price / line.qty, currency)} / unit
                   </span>
                 </div>

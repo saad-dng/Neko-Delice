@@ -380,11 +380,11 @@ export function ShopPage() {
                   type="button"
                   onClick={() => toggleStage(st)}
                   aria-label={`Remove filter ${STAGE_LABELS[st]}`}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-oat-100 border border-sand-300 px-3 py-1 text-xs font-medium text-espresso-900 hover:bg-sand-300/40 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 transition-colors"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-sage-100/90 border border-sage-300/80 px-3 py-1 text-xs font-medium text-sage-900 hover:bg-sage-200/80 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-600 transition-colors cursor-pointer"
                 >
                   <span>{STAGE_LABELS[st]}</span>
                   <span
-                    className="text-espresso-500 hover:text-espresso-900"
+                    className="text-sage-700 hover:text-sage-950 font-bold"
                     aria-hidden="true"
                   >
                     ×
@@ -398,11 +398,11 @@ export function ShopPage() {
                   type="button"
                   onClick={() => toggleGoal(gl)}
                   aria-label={`Remove filter ${GOAL_LABELS[gl]}`}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-oat-100 border border-sand-300 px-3 py-1 text-xs font-medium text-espresso-900 hover:bg-sand-300/40 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 transition-colors"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-sage-100/90 border border-sage-300/80 px-3 py-1 text-xs font-medium text-sage-900 hover:bg-sage-200/80 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-600 transition-colors cursor-pointer"
                 >
                   <span>{GOAL_LABELS[gl]}</span>
                   <span
-                    className="text-espresso-500 hover:text-espresso-900"
+                    className="text-sage-700 hover:text-sage-950 font-bold"
                     aria-hidden="true"
                   >
                     ×

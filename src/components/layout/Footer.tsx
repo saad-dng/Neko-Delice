@@ -29,7 +29,7 @@ export function Footer() {
 
           {/* Navigation Links */}
           <div className="md:col-span-3">
-            <h2 className="text-xs font-semibold uppercase tracking-wider text-espresso-500 mb-4">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-espresso-800 mb-4">
               Navigation
             </h2>
             <nav aria-label="Footer Navigation" className="flex flex-col gap-2.5">
@@ -46,34 +46,34 @@ export function Footer() {
           </div>
 
           {/* Disclosures & Accessibility Statement */}
-          <div className="md:col-span-4 flex flex-col gap-3.5 text-xs text-espresso-700 leading-relaxed">
-            <h2 className="text-xs font-semibold uppercase tracking-wider text-espresso-500 mb-1">
+          <div className="md:col-span-4 flex flex-col gap-3.5 text-xs text-espresso-800 leading-relaxed">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-espresso-800 mb-1">
               Disclosures
             </h2>
-            <p className="p-3 bg-cream-50/80 rounded-lg border border-oat-200/80">
-              <strong className="font-semibold text-espresso-900 block mb-0.5">Storefront Preview:</strong>
+            <p className="p-3 bg-cream-50/90 rounded-xl border border-oat-300/60 shadow-2xs">
+              <strong className="font-semibold text-espresso-950 block mb-0.5">Storefront Preview:</strong>
               This is a storefront preview. Checkout is not connected yet.
             </p>
-            <p className="text-espresso-600">
+            <p className="text-espresso-700">
               Concept imagery generated with AI. Products are fictional.
             </p>
-            <p className="text-espresso-600 pt-1">
+            <p className="text-espresso-700 pt-1">
               NEKO DELICE is committed to digital accessibility. We aim to conform to WCAG 2.1 AA standards so every cat companion can navigate with ease.
             </p>
           </div>
         </div>
 
         {/* Bottom Bar: Copyright, Currency Selector, and FX Disclosure */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-espresso-600">
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-espresso-700">
           <p>© {currentYear} NEKO DELICE. All rights reserved.</p>
 
           {/* Global Store Currency Selector */}
           <div className="flex items-center gap-2.5">
-            <span className="text-espresso-700 font-medium">Currency:</span>
+            <span className="text-espresso-800 font-medium">Currency:</span>
             <CurrencyToggle ariaLabel="Currency selection" size="sm" />
           </div>
 
-          <p className="text-espresso-500">
+          <p className="text-espresso-700">
             BDT prices are approximate (USD 1 = ৳123, Oct 2026)
           </p>
         </div>

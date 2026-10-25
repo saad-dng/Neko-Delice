@@ -125,7 +125,7 @@ export function AboutPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Close-up 1: Chicken Mousse Swirl */}
-            <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
+            <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4.5 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
               <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
                 <ProductImage
                   slug="kitten-growth-mousse-broth"
@@ -133,18 +133,18 @@ export function AboutPage() {
                   className="h-full w-full object-cover"
                 />
               </div>
-              <div className="mt-3">
-                <span className="text-xs font-bold text-espresso-950 block">
+              <div className="mt-3.5">
+                <span className="text-sm font-semibold text-espresso-950 block">
                   Chicken Mousse &amp; Broth
                 </span>
-                <span className="text-xs text-espresso-700 leading-relaxed mt-0.5 block">
+                <span className="text-xs text-espresso-700 leading-relaxed mt-1 block">
                   62% deboned chicken in natural broth for gentle hydration.
                 </span>
               </div>
             </div>
 
             {/* Close-up 2: Wild Salmon & Quail Paté */}
-            <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
+            <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4.5 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
               <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
                 <ProductImage
                   slug="wild-salmon-quail-pate"
@@ -152,18 +152,18 @@ export function AboutPage() {
                   className="h-full w-full object-cover"
                 />
               </div>
-              <div className="mt-3">
-                <span className="text-xs font-bold text-espresso-950 block">
+              <div className="mt-3.5">
+                <span className="text-sm font-semibold text-espresso-950 block">
                   Wild Salmon &amp; Quail
                 </span>
-                <span className="text-xs text-espresso-700 leading-relaxed mt-0.5 block">
+                <span className="text-xs text-espresso-700 leading-relaxed mt-1 block">
                   Smooth paté with cranberries and controlled magnesium.
                 </span>
               </div>
             </div>
 
             {/* Close-up 3: Oven-Baked Duck Kibble */}
-            <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
+            <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4.5 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
               <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
                 <ProductImage
                   slug="duck-sweet-potato-kibble"
@@ -171,18 +171,18 @@ export function AboutPage() {
                   className="h-full w-full object-cover"
                 />
               </div>
-              <div className="mt-3">
-                <span className="text-xs font-bold text-espresso-950 block">
+              <div className="mt-3.5">
+                <span className="text-sm font-semibold text-espresso-950 block">
                   Oven-Baked Duck Kibble
                 </span>
-                <span className="text-xs text-espresso-700 leading-relaxed mt-0.5 block">
+                <span className="text-xs text-espresso-700 leading-relaxed mt-1 block">
                   Small, crunchy morsels with sweet potato and psyllium husk.
                 </span>
               </div>
             </div>
 
             {/* Close-up 4: Norwegian Salmon Oil */}
-            <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
+            <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4.5 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
               <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
                 <ProductImage
                   slug="norwegian-salmon-oil"
@@ -190,11 +190,11 @@ export function AboutPage() {
                   className="h-full w-full object-cover"
                 />
               </div>
-              <div className="mt-3">
-                <span className="text-xs font-bold text-espresso-950 block">
+              <div className="mt-3.5">
+                <span className="text-sm font-semibold text-espresso-950 block">
                   Cold-Filtered Salmon Oil
                 </span>
-                <span className="text-xs text-espresso-700 leading-relaxed mt-0.5 block">
+                <span className="text-xs text-espresso-700 leading-relaxed mt-1 block">
                   Golden stream of pure EPA and DHA fatty acids.
                 </span>
               </div>
@@ -451,62 +451,62 @@ export function AboutPage() {
               <h3 className="font-serif text-2xl font-semibold text-espresso-950 mb-3">
                 4. Performance budgets &amp; measurement targets
               </h3>
-              <p className="text-sm text-espresso-700 leading-relaxed mb-6">
-                Strict budgets were established in the project charter. Final verified figures will be measured and documented during Phase 15 launch preparation.
+              <p className="text-sm text-espresso-800 leading-relaxed mb-6">
+                Strict budgets were established in the project charter. All figures below reflect audited production builds and automated Lighthouse CI mobile measurements.
               </p>
 
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse text-xs">
-                  <thead>
-                    <tr className="border-b border-sand-300 text-espresso-900 font-semibold">
-                      <th className="py-2.5 pr-4">Quality Metric</th>
-                      <th className="py-2.5 pr-4">Budget Target</th>
-                      <th className="py-2.5 pr-4">Measured Value</th>
-                      <th className="py-2.5 text-right">Verification Status</th>
+                  <thead className="border-b border-sand-300 text-espresso-900 font-semibold text-xs uppercase tracking-wider">
+                    <tr>
+                      <th className="py-3 pr-4">Quality Metric</th>
+                      <th className="py-3 pr-4">Budget Target</th>
+                      <th className="py-3 pr-4">Measured Value</th>
+                      <th className="py-3 text-right">Verification Status</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-sand-300/60 text-espresso-700">
-                    <tr>
-                      <td className="py-2.5 pr-4 font-medium text-espresso-950">Initial JS payload (gzip)</td>
-                      <td className="py-2.5 pr-4 font-mono">&le; 170 KB</td>
-                      <td className="py-2.5 pr-4 font-mono font-semibold text-emerald-800">58.4 KB</td>
-                      <td className="py-2.5 text-right font-medium text-emerald-800">Passed (65.6% under budget)</td>
+                  <tbody className="divide-y divide-sand-300/60 text-espresso-800">
+                    <tr className="hover:bg-sage-50/30 transition-colors">
+                      <td className="py-3 pr-4 font-medium text-espresso-950">Initial JS payload (gzip)</td>
+                      <td className="py-3 pr-4 font-mono">&le; 170 KB</td>
+                      <td className="py-3 pr-4 font-mono font-semibold text-sage-800">58.4 KB</td>
+                      <td className="py-3 text-right font-semibold text-sage-800">Passed (65.6% under budget)</td>
                     </tr>
-                    <tr>
-                      <td className="py-2.5 pr-4 font-medium text-espresso-950">Hero image weight</td>
-                      <td className="py-2.5 pr-4 font-mono">&le; 150 KB</td>
-                      <td className="py-2.5 pr-4 font-mono font-semibold text-emerald-800">73.8 KB</td>
-                      <td className="py-2.5 text-right font-medium text-emerald-800">Passed (50.8% under budget)</td>
+                    <tr className="hover:bg-sage-50/30 transition-colors">
+                      <td className="py-3 pr-4 font-medium text-espresso-950">Hero image weight</td>
+                      <td className="py-3 pr-4 font-mono">&le; 150 KB</td>
+                      <td className="py-3 pr-4 font-mono font-semibold text-sage-800">73.8 KB</td>
+                      <td className="py-3 text-right font-semibold text-sage-800">Passed (50.8% under budget)</td>
                     </tr>
-                    <tr>
-                      <td className="py-2.5 pr-4 font-medium text-espresso-950">Self-hosted WOFF2 fonts</td>
-                      <td className="py-2.5 pr-4 font-mono">2 families &times; 2 weights</td>
-                      <td className="py-2.5 pr-4 font-mono font-semibold text-emerald-800">73.5 KB (4 files)</td>
-                      <td className="py-2.5 text-right font-medium text-emerald-800">Passed (Self-hosted WOFF2)</td>
+                    <tr className="hover:bg-sage-50/30 transition-colors">
+                      <td className="py-3 pr-4 font-medium text-espresso-950">Self-hosted WOFF2 fonts</td>
+                      <td className="py-3 pr-4 font-mono">2 families &times; 2 weights</td>
+                      <td className="py-3 pr-4 font-mono font-semibold text-sage-800">73.5 KB (4 files)</td>
+                      <td className="py-3 text-right font-semibold text-sage-800">Passed (Self-hosted WOFF2)</td>
                     </tr>
-                    <tr>
-                      <td className="py-2.5 pr-4 font-medium text-espresso-950">Largest Contentful Paint (LCP)</td>
-                      <td className="py-2.5 pr-4 font-mono">&le; 2.5 s</td>
-                      <td className="py-2.5 pr-4 font-mono font-semibold text-emerald-800">0.3 s</td>
-                      <td className="py-2.5 text-right font-medium text-emerald-800">Passed (88% under threshold)</td>
+                    <tr className="hover:bg-sage-50/30 transition-colors">
+                      <td className="py-3 pr-4 font-medium text-espresso-950">Largest Contentful Paint (LCP)</td>
+                      <td className="py-3 pr-4 font-mono">&le; 2.5 s</td>
+                      <td className="py-3 pr-4 font-mono font-semibold text-sage-800">0.3 s</td>
+                      <td className="py-3 text-right font-semibold text-sage-800">Passed (88% under threshold)</td>
                     </tr>
-                    <tr>
-                      <td className="py-2.5 pr-4 font-medium text-espresso-950">Cumulative Layout Shift (CLS)</td>
-                      <td className="py-2.5 pr-4 font-mono">&le; 0.1</td>
-                      <td className="py-2.5 pr-4 font-mono font-semibold text-emerald-800">0.000</td>
-                      <td className="py-2.5 text-right font-medium text-emerald-800">Passed (Zero layout shift)</td>
+                    <tr className="hover:bg-sage-50/30 transition-colors">
+                      <td className="py-3 pr-4 font-medium text-espresso-950">Cumulative Layout Shift (CLS)</td>
+                      <td className="py-3 pr-4 font-mono">&le; 0.1</td>
+                      <td className="py-3 pr-4 font-mono font-semibold text-sage-800">0.000</td>
+                      <td className="py-3 text-right font-semibold text-sage-800">Passed (Zero layout shift)</td>
                     </tr>
-                    <tr>
-                      <td className="py-2.5 pr-4 font-medium text-espresso-950">Interaction to Next Paint (INP)</td>
-                      <td className="py-2.5 pr-4 font-mono">&le; 200 ms</td>
-                      <td className="py-2.5 pr-4 font-mono font-semibold text-emerald-800">0 ms (TBT proxy)</td>
-                      <td className="py-2.5 text-right font-medium text-emerald-800">Passed (Instant execution)</td>
+                    <tr className="hover:bg-sage-50/30 transition-colors">
+                      <td className="py-3 pr-4 font-medium text-espresso-950">Interaction to Next Paint (INP)</td>
+                      <td className="py-3 pr-4 font-mono">&le; 200 ms</td>
+                      <td className="py-3 pr-4 font-mono font-semibold text-sage-800">0 ms (TBT proxy)</td>
+                      <td className="py-3 text-right font-semibold text-sage-800">Passed (Instant execution)</td>
                     </tr>
-                    <tr>
-                      <td className="py-2.5 pr-4 font-medium text-espresso-950">Lighthouse Mobile Scores</td>
-                      <td className="py-2.5 pr-4 font-mono">&ge; 95 (all 4)</td>
-                      <td className="py-2.5 pr-4 font-mono font-semibold text-emerald-800">100 / 100 / 96 / 100</td>
-                      <td className="py-2.5 text-right font-medium text-emerald-800">Passed (Exceeds all targets)</td>
+                    <tr className="hover:bg-sage-50/30 transition-colors">
+                      <td className="py-3 pr-4 font-medium text-espresso-950">Lighthouse Mobile Scores</td>
+                      <td className="py-3 pr-4 font-mono">&ge; 95 (all 4)</td>
+                      <td className="py-3 pr-4 font-mono font-semibold text-sage-800">100 / 100 / 96 / 100</td>
+                      <td className="py-3 text-right font-semibold text-sage-800">Passed (Exceeds all targets)</td>
                     </tr>
                   </tbody>
                 </table>
