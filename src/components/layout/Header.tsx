@@ -40,13 +40,13 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 transition-colors">
-      {/* Seamless 7-layer progressive banded glass blur strictly fitted to header bounds */}
+      {/* Seamless progressive banded glass blur with smooth cubic decay */}
       <ProgressiveBlur
         height="100%"
         tint={
           mobileMenuOpen
-            ? 'rgba(254, 252, 247, 0.98)'
-            : 'linear-gradient(to bottom, rgba(254, 252, 247, 0.90) 0%, rgba(254, 252, 247, 0.60) 65%, rgba(254, 252, 247, 0) 100%)'
+            ? 'rgba(251, 246, 238, 0.98)'
+            : 'linear-gradient(to bottom, rgba(251, 246, 238, 0.92) 0%, rgba(251, 246, 238, 0.88) 40%, rgba(251, 246, 238, 0.75) 65%, rgba(251, 246, 238, 0.50) 82%, rgba(251, 246, 238, 0.20) 93%, rgba(251, 246, 238, 0) 100%)'
         }
       />
 
