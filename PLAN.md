@@ -78,7 +78,11 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
   - Verification: 0 typecheck errors, 0 lint warnings, 83/83 Vitest unit tests passing, 90/90 Playwright E2E tests passing. Prerendered static site build verified on localhost preview.
 - 2026-10-26: Restored 404 page to original quiet layout with CatSitting monoline artwork, concise error copy, and primary action buttons (Shop the collection & Try the meal planner). Removed canvas audio game component and associated test suite.
 - 2026-10-26: Unified Shop into Homepage: Made homepage collection the primary shop storefront (`#shop` with `#collection` alias); added product sorting dropdown (Featured, Price asc/desc), currency toggle, and category filter URL parameter synchronization (`/?category=...`); updated Header/Footer/PDP/About/Bag navigation links to point to `/#shop` with smooth scrolling and hash restoration in RouteAnnouncer; configured `/shop` to redirect to the unified homepage storefront; 83/83 Vitest and 90/90 Playwright tests passing.
-- 2026-10-26: Refinement completed. Redesigned ProductCard layout: enlarged product photos into full-width edge-to-edge aspect-square tiles (+28% surface area) at the top of cards; replaced oversized display serif names with crisp DM Sans typography (`font-sans text-sm sm:text-[15px] font-semibold leading-snug line-clamp-2 min-h-[2.5rem]`); compacted bottom product bar from ~190px down to ~110px with tighter padding, subtle category tag, and sleek 32px pill quick-add button; harmonized editorial discovery tiles; 83/83 Vitest and 89/89 Playwright tests passing.
+- 2026-10-26: Refinement completed. Harmonized ProductCard info bar sizing and grid shape consistency:
+  - Fixed root cause of oversized desktop typography: wrapped global `h1, h2, h3` display heading rules in `@layer base` in `src/index.css` so Tailwind utility classes (`font-sans text-[13px]`) override unlayered defaults correctly.
+  - Compacted product bar across desktop and mobile to ~142px with uniform DM Sans typography, fixed 2-line title height (34px), and aligned baselines for category, price, specs, and add button.
+  - Re-architected editorial discovery tiles (Meal Plan & Honest Standards) to mirror ProductCard's 2-part anatomy (aspect-square visual header with monoline cat art + compact info bar), creating 100% geometric uniformity across all 12 grid cards.
+  - Verification: 0 typecheck errors, 0 lint warnings, 83/83 Vitest tests passing, static build passing, live visual inspection verified.
 
 
 

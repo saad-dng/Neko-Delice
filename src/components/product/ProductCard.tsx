@@ -57,21 +57,21 @@ export function ProductCard({
         </div>
       </div>
 
-      {/* Compact Product Information Bar */}
-      <div className="p-3.5 sm:p-4 flex flex-1 flex-col justify-between">
+      {/* Compact Consistent Product Information Bar */}
+      <div className="p-3 sm:px-3 sm:py-2.5 flex flex-col justify-between">
         <div>
           {/* Category & Price Row */}
-          <div className="flex items-center justify-between gap-2">
-            <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-sage-800">
+          <div className="flex items-center justify-between gap-2 h-4">
+            <span className="text-[10px] font-semibold uppercase tracking-wider text-sage-800 leading-none">
               {categoryLabel}
             </span>
-            <span className="font-sans text-sm font-semibold text-espresso-950 tabular-nums">
+            <span className="font-sans text-xs sm:text-[13px] font-semibold text-espresso-950 tabular-nums leading-none">
               {formatPrice(product.priceUSD, currency)}
             </span>
           </div>
 
-          {/* Product Name (Clean DM Sans, compact size, tight leading, line-clamp-2) */}
-          <h2 className="mt-1 font-sans text-sm sm:text-[15px] font-semibold text-espresso-950 transition-colors group-hover:text-terracotta-700 leading-snug line-clamp-2 min-h-[2.5rem] flex items-start">
+          {/* Product Name (Consistent DM Sans, compact 13px, fixed 2-line height 34px) */}
+          <h2 className="mt-1 font-sans text-[13px] font-semibold text-espresso-950 transition-colors group-hover:text-terracotta-700 leading-snug line-clamp-2 h-[34px] flex items-start">
             <Link
               to={`/product/${product.slug}`}
               className="focus:outline-none"
@@ -82,14 +82,14 @@ export function ProductCard({
           </h2>
 
           {/* Packaging / Spec Line */}
-          <p className="mt-0.5 text-[11px] sm:text-xs text-espresso-600 line-clamp-1">
+          <p className="mt-0.5 text-[10.5px] sm:text-[11px] text-espresso-600 line-clamp-1 h-3.5 leading-none">
             {product.unit.packSizeLabel}
           </p>
         </div>
 
         {/* Compact Footer Actions Row */}
-        <div className="mt-3 flex items-center justify-between pt-2 border-t border-sand-300/40">
-          <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-medium text-espresso-700 transition-colors group-hover:text-terracotta-700">
+        <div className="mt-2 flex items-center justify-between pt-1.5 border-t border-sand-300/40">
+          <span className="inline-flex items-center gap-1 text-[11px] font-medium text-espresso-700 transition-colors group-hover:text-terracotta-700 leading-none">
             View details <span aria-hidden="true">→</span>
           </span>
 
@@ -102,9 +102,9 @@ export function ProductCard({
               useBagUi.getState().openBag(e.currentTarget)
             }}
             aria-label={`Add ${product.name} to bag`}
-            className="relative z-10 inline-flex items-center justify-center rounded-full bg-terracotta-600 px-3.5 py-1 min-h-[32px] text-xs font-semibold text-cream-50 transition-all hover:bg-terracotta-700 active:scale-95 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 cursor-pointer shadow-2xs"
+            className="relative z-10 inline-flex items-center justify-center rounded-full bg-terracotta-600 px-2.5 py-1 min-h-[28px] text-[11px] font-semibold text-cream-50 transition-all hover:bg-terracotta-700 active:scale-95 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 cursor-pointer shadow-2xs leading-none"
           >
-            <span className="mr-1" aria-hidden="true">
+            <span className="mr-0.5" aria-hidden="true">
               +
             </span>{' '}
             Add

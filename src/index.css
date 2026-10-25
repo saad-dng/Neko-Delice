@@ -57,25 +57,27 @@ summary:focus {
 }
 
 /* Fluid display headings */
-h1, .font-display-h1 {
-  font-family: var(--font-serif);
-  font-weight: 600;
-  line-height: 1.15;
-  font-size: clamp(2rem, 1.4rem + 2.5vw, 4rem);
-}
+@layer base {
+  h1, .font-display-h1 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    line-height: 1.15;
+    font-size: clamp(2rem, 1.4rem + 2.5vw, 4rem);
+  }
 
-h2, .font-display-h2 {
-  font-family: var(--font-serif);
-  font-weight: 600;
-  line-height: 1.2;
-  font-size: clamp(1.6rem, 1.2rem + 1.8vw, 2.5rem);
-}
+  h2, .font-display-h2 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    line-height: 1.2;
+    font-size: clamp(1.6rem, 1.2rem + 1.8vw, 2.5rem);
+  }
 
-h3, .font-display-h3 {
-  font-family: var(--font-serif);
-  font-weight: 500;
-  line-height: 1.25;
-  font-size: clamp(1.3rem, 1.1rem + 1vw, 1.75rem);
+  h3, .font-display-h3 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    line-height: 1.25;
+    font-size: clamp(1.3rem, 1.1rem + 1vw, 1.75rem);
+  }
 }
 
 /* Screen reader only utility */
