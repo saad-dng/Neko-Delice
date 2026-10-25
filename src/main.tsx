@@ -1,13 +1,11 @@
 import { ViteReactSSG } from 'vite-react-ssg'
-import type { RouteRecord } from 'vite-react-ssg'
-import App from './App.tsx'
+import { routes } from './routes.tsx'
 import './index.css'
 
-const routes: RouteRecord[] = [
-  {
-    path: '/',
-    element: <App />,
+export const createRoot = ViteReactSSG({
+  routes,
+  future: {
+    v7_startTransition: true,
+    v7_relativeSplatPath: true,
   },
-]
-
-export const createRoot = ViteReactSSG({ routes })
+})
