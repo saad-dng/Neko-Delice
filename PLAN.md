@@ -76,11 +76,7 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
   - Interactive Audit & Dead Element Remediation: Connected SmartBag product thumbnails and titles as clickable links navigating to PDP and closing drawer; connected PlanResult recommended monthly bundle items and ceramic fountain add-on directly to PDP; added direct "Explore the collection" shopping return path on PlanResult; added 44px+ touch targets and `active:scale-95` tactile feedback to gallery arrows, quantity steppers, bag buttons, and currency switcher.
   - Visual Hierarchy & Grid Polish: Balanced the final incomplete homepage collection grid row with 2 curated editorial discovery cards (Personalized Meal Plan & Our Standards) providing a balanced 12-tile layout across 1, 2, 3, and 4 columns; unified ProductCard title wrapping heights (`min-h-[3.25rem] flex items-start`) so price, specs, and Add buttons align across adjacent cards.
   - Verification: 0 typecheck errors, 0 lint warnings, 83/83 Vitest unit tests passing, 90/90 Playwright E2E tests passing. Prerendered static site build verified on localhost preview.
-- 2026-10-25: 404 Easter Egg completed. Added `CatGame` (Neko's Trail Leap) to `src/pages/NotFound.tsx`:
-  - Visual & Aesthetic Integration: Built in the quiet apothecary monoline aesthetic (cream #FBF6EE, sage #778A6F, terracotta #A94F33, espresso #2B211A); high-DPI retina canvas scaling; parallax sage hills and botanical path.
-  - Interactive Gameplay: Spacebar / Up Arrow / Click / Mobile Tap to jump; Neko leaps over ceramic whisker bowls, birch scratchers, and botanical sprouts while catching floating crunchy treats (+25 pts with floating particle sparkles and "Purr! ✨").
-  - Audio & Tactile: Zero-dependency Web Audio API synthesizer for soft jump boops, pleasant 3-tone treat chimes, and catnap chords; sound mute/unmute toggle button with SVG icons; score and high-score persisted in `localStorage`.
-  - Accessible & Safe: Semantic `<section>`, accessible controls, zero layout shift or scroll hijacking; graceful fallback for screen readers and search engines; zero external audio/game dependencies; 87/87 Vitest unit tests passing and 90/90 Playwright E2E tests passing.
+- 2026-10-26: Restored 404 page to original quiet layout with CatSitting monoline artwork, concise error copy, and primary action buttons (Shop the collection & Try the meal planner). Removed canvas audio game component and associated test suite.
 
 
 
