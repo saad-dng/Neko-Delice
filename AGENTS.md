@@ -30,6 +30,7 @@ No runtime CSS-in-JS. No UI kit. No icon library (inline SVG). No animation libr
 - Do exactly what the current prompt in `prompts/` asks. Do not start the next phase.
 - Prefer small diffs. Do not rewrite files you were not asked to change. Delete code you replace.
 - Before finishing: run `npm run typecheck`, `npm run lint`, `npm test`, `npm run build` and report each result in 1 line.
+- After every fix: host the website on localhost (via `npm run dev` or preview) and report the live local URL/port for immediate review.
 - Update the checkbox + notes for the phase in `PLAN.md`.
 - Commit locally with a clear message (`feat: …`). **Never push, never create remotes, never deploy.** I push myself.
 - Never commit `Photo collection/` (originals). Only optimised output in `public/images/`.
