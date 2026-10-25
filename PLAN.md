@@ -61,6 +61,7 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 - 2026-10-25: Refinement completed. Replaced header bottom border with seamless multi-stop progressive glass blur. Removed currency switcher from sticky header; integrated contextual CurrencyToggle in Smart Bag modal, Shop catalog toolbar, and global footer beside BDT exchange rate disclosure.
 - 2026-10-25: Fix completed. Resolved issue where active category tabs turned blank/white on tap. Root cause was missing @theme color scale tokens (espresso-950/800/700/600/500/400, terracotta-700/800, oat-200/300) in Tailwind v4, resulting in missing background-color rules and invisible cream text on cream background. Defined full tonal scales with WCAG AA compliance across all components.
 - 2026-10-25: Polish completed. Switched active category filter pills from harsh dark espresso to warm signature terracotta-600 with cream text and high-contrast count badge. Resolved container outline clipping by adding vertical padding and transitioning to focus-visible. Updated CurrencyToggle active chip to serene cream-on-oat.
+- 2026-10-25: Fix completed. Confined ProgressiveBlur to 100% of header height instead of extending 128px downwards. Completely eliminated blur spill and mobile overlap onto breadcrumbs, PDP headers, and product imagery while preserving seamless glass header blur.
 
 
 

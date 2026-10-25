@@ -40,13 +40,13 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 transition-colors">
-      {/* Seamless 7-layer progressive banded glass blur from C:\Projects\Resources\Fixed glasspannel */}
+      {/* Seamless 7-layer progressive banded glass blur strictly fitted to header bounds */}
       <ProgressiveBlur
-        height={mobileMenuOpen ? '100%' : 128}
+        height="100%"
         tint={
           mobileMenuOpen
             ? 'rgba(254, 252, 247, 0.98)'
-            : 'linear-gradient(to bottom, rgba(254, 252, 247, 0.85) 0%, rgba(254, 252, 247, 0.45) 55%, rgba(254, 252, 247, 0) 100%)'
+            : 'linear-gradient(to bottom, rgba(254, 252, 247, 0.90) 0%, rgba(254, 252, 247, 0.60) 65%, rgba(254, 252, 247, 0) 100%)'
         }
       />
 

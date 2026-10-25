@@ -13,7 +13,7 @@ export interface ProgressiveBlurProps {
 }
 
 export function ProgressiveBlur({
-  height = 112,
+  height = '100%',
   tint = 'linear-gradient(to bottom, rgba(254, 252, 247, 0.88) 0%, rgba(254, 252, 247, 0.55) 60%, rgba(254, 252, 247, 0) 100%)',
   direction = 'top',
   className = '',
