@@ -3,17 +3,17 @@ import { SeoHead } from '@/components/seo/SeoHead'
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
 import { Button } from '@/components/ui/Button'
-import { isProductSlug, PRODUCT_META } from '@/data/slugs'
+import { getProductBySlug } from '@/data/products'
+import { formatPrice } from '@/lib/format'
 import { NotFoundPage } from '@/pages/NotFound'
 
 export function ProductPage() {
   const { slug } = useParams<{ slug: string }>()
+  const product = getProductBySlug(slug)
 
-  if (!isProductSlug(slug)) {
+  if (!product) {
     return <NotFoundPage />
   }
-
-  const product = PRODUCT_META[slug]
 
   return (
     <>
@@ -45,15 +45,24 @@ export function ProductPage() {
 
             {/* Product Meta & Information */}
             <div className="lg:col-span-5 flex flex-col gap-4">
-              <span className="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider text-terracotta-800 bg-terracotta-100/70 rounded-full w-fit">
-                {product.category}
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider text-terracotta-800 bg-terracotta-100/70 rounded-full w-fit">
+                  {product.category}
+                </span>
+                <span className="text-xs text-espresso-500 font-medium">
+                  {product.unit.packSizeLabel}
+                </span>
+              </div>
 
               <h1 className="font-serif text-3xl sm:text-4xl font-semibold text-espresso-950 leading-tight">
                 {product.name}
               </h1>
 
-              <p className="text-base text-espresso-700 leading-relaxed mt-2">
+              <p className="text-2xl font-serif font-semibold text-espresso-900 tabular-nums">
+                {formatPrice(product.priceUSD, 'USD')}
+              </p>
+
+              <p className="text-base text-espresso-700 leading-relaxed">
                 {product.short}
               </p>
 

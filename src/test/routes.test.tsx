@@ -14,9 +14,9 @@ describe('Route Architecture & Layout Shell (P07)', () => {
       expect(isProductSlug(slug)).toBe(true)
       const meta = PRODUCT_META[slug]
       expect(meta).toBeDefined()
-      expect(meta.slug).toBe(slug)
-      expect(meta.name.length).toBeGreaterThan(0)
-      expect(meta.short.length).toBeGreaterThan(0)
+      expect(meta?.slug).toBe(slug)
+      expect(meta?.name.length).toBeGreaterThan(0)
+      expect(meta?.short.length).toBeGreaterThan(0)
     }
   })
 
