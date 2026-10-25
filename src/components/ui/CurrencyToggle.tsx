@@ -30,9 +30,9 @@ export function CurrencyToggle({
           isSmall
             ? 'min-w-[36px] min-h-[30px] px-2 py-0.5 text-[11px]'
             : 'min-w-[42px] min-h-[34px] px-2.5 py-1 text-xs'
-        } font-semibold rounded-full transition-colors cursor-pointer ${
+        } font-semibold rounded-full transition-colors cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-600 ${
           currency === 'USD'
-            ? 'bg-espresso-950 text-cream-50 shadow-xs'
+            ? 'bg-cream-50 text-espresso-950 shadow-xs'
             : 'text-espresso-700 hover:text-espresso-950'
         }`}
       >
@@ -46,9 +46,9 @@ export function CurrencyToggle({
           isSmall
             ? 'min-w-[36px] min-h-[30px] px-2 py-0.5 text-[11px]'
             : 'min-w-[42px] min-h-[34px] px-2.5 py-1 text-xs'
-        } font-semibold rounded-full transition-colors cursor-pointer ${
+        } font-semibold rounded-full transition-colors cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-600 ${
           currency === 'BDT'
-            ? 'bg-espresso-950 text-cream-50 shadow-xs'
+            ? 'bg-cream-50 text-espresso-950 shadow-xs'
             : 'text-espresso-700 hover:text-espresso-950'
         }`}
       >

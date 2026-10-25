@@ -118,7 +118,7 @@ export function HomePage() {
 
           {/* Category Filter Tabs */}
           <div
-            className="flex items-center gap-2 overflow-x-auto pb-2 mb-8 scrollbar-none"
+            className="flex items-center gap-2 overflow-x-auto py-1 px-0.5 -my-1 mb-8 scrollbar-none"
             role="tablist"
             aria-label="Filter products by category"
           >
@@ -142,18 +142,18 @@ export function HomePage() {
                   aria-selected={isSelected}
                   aria-controls="home-products-panel"
                   onClick={() => setSelectedCategory(cat.id)}
-                  className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full px-4 py-2 text-xs font-medium transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-espresso-900 focus:ring-offset-2 ${
+                  className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full px-4 py-2 text-xs font-medium transition-all cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-600 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50 ${
                     isSelected
-                      ? 'bg-espresso-950 text-cream-50 shadow-xs'
-                      : 'bg-oat-100/75 border border-sand-300/80 text-espresso-800 hover:bg-oat-100 hover:text-espresso-950'
+                      ? 'bg-terracotta-600 text-cream-50 border border-terracotta-600 shadow-sm'
+                      : 'bg-oat-100/75 border border-sand-300/80 text-espresso-800 hover:bg-oat-100 hover:border-sand-300 hover:text-espresso-950'
                   }`}
                 >
                   <span>{cat.label}</span>
                   <span
-                    className={`inline-flex items-center justify-center rounded-full px-1.5 py-0.5 text-[10px] font-semibold leading-none ${
+                    className={`inline-flex items-center justify-center rounded-full px-1.5 py-0.5 text-[10px] font-bold leading-none ${
                       isSelected
-                        ? 'bg-cream-50/20 text-cream-50'
-                        : 'bg-sand-300/70 text-espresso-800'
+                        ? 'bg-cream-50 text-terracotta-800'
+                        : 'bg-sand-300/80 text-espresso-900'
                     }`}
                   >
                     {count}
