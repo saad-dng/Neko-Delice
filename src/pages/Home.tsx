@@ -1,3 +1,4 @@
+import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { SeoHead } from '@/components/seo/SeoHead'
 import { Container } from '@/components/ui/Container'
@@ -9,19 +10,35 @@ import { ProductCard } from '@/components/product/ProductCard'
 import { CatSitting } from '@/components/cat-art/CatSitting'
 import { CatStretching } from '@/components/cat-art/CatStretching'
 import { products } from '@/data/products'
-import type { Product } from '@/data/types'
+import type { ProductCategory } from '@/data/types'
 
-const FEATURED_SLUGS = [
-  'kitten-growth-mousse-broth',
-  'wild-salmon-quail-pate',
-  'duck-sweet-potato-kibble',
-  'ceramic-water-fountain',
+type HomeCategoryFilter = 'all' | ProductCategory
+
+interface CategoryTab {
+  id: HomeCategoryFilter
+  label: string
+}
+
+const CATEGORY_TABS: readonly CategoryTab[] = [
+  { id: 'all', label: 'All Items' },
+  { id: 'wet-food', label: 'Wet Food' },
+  { id: 'dry-food', label: 'Dry Food' },
+  { id: 'treat-topper', label: 'Treats & Toppers' },
+  { id: 'litter', label: 'Litter' },
+  { id: 'hardware', label: 'Hardware' },
 ]
 
 export function HomePage() {
-  const featuredProducts = products.filter((p: Product) =>
-    FEATURED_SLUGS.includes(p.slug)
-  )
+  const [selectedCategory, setSelectedCategory] = useState<HomeCategoryFilter>('all')
+
+  const displayedProducts = useMemo(() => {
+    if (selectedCategory === 'all') return products
+    return products.filter(
+      (p) =>
+        p.category === selectedCategory ||
+        p.secondaryCategories.includes(selectedCategory)
+    )
+  }, [selectedCategory])
 
   return (
     <>
@@ -351,29 +368,90 @@ export function HomePage() {
         </Container>
       </Section>
 
-      {/* 4. FEATURED PRODUCTS SECTION */}
+      {/* 4. FULL COLLECTION SECTION (All 10 products with category tabs) */}
       <Section reveal defer className="bg-cream-50">
         <Container>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10 sm:mb-14">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
             <div>
               <p className="text-xs font-semibold uppercase tracking-wider text-terracotta-700 mb-2">
-                From the Pantry
+                The Complete Shelf
               </p>
               <Heading level={2} className="font-serif text-3xl sm:text-4xl font-semibold text-espresso-950">
                 Crafted for health and longevity
               </Heading>
+              <p className="text-sm sm:text-base text-espresso-700 mt-2 max-w-xl">
+                Every recipe and quiet essential in our range. Formulated without fillers, guesswork, or synthetic binders.
+              </p>
             </div>
             <Link
               to="/shop"
-              className="text-sm font-medium text-terracotta-700 hover:text-terracotta-800 flex items-center gap-1 group"
+              className="text-sm font-medium text-terracotta-700 hover:text-terracotta-800 flex items-center gap-1 group shrink-0"
             >
-              <span>Explore all 10 products</span>
+              <span>Full catalog with filters</span>
               <span className="transition-transform group-hover:translate-x-1 motion-reduce:transform-none">&rarr;</span>
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredProducts.map((product) => (
+          {/* Category Filter Tabs */}
+          <div
+            className="flex items-center gap-2 overflow-x-auto pb-2 mb-8 scrollbar-none"
+            role="tablist"
+            aria-label="Filter products by category"
+          >
+            {CATEGORY_TABS.map((cat) => {
+              const isSelected = selectedCategory === cat.id
+              const count =
+                cat.id === 'all'
+                  ? products.length
+                  : products.filter(
+                      (p) =>
+                        p.category === cat.id ||
+                        p.secondaryCategories.includes(cat.id as ProductCategory)
+                    ).length
+
+              return (
+                <button
+                  key={cat.id}
+                  type="button"
+                  role="tab"
+                  id={`tab-${cat.id}`}
+                  aria-selected={isSelected}
+                  aria-controls="home-products-panel"
+                  onClick={() => setSelectedCategory(cat.id)}
+                  className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full px-4 py-2 text-xs font-medium transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-espresso-900 focus:ring-offset-2 ${
+                    isSelected
+                      ? 'bg-espresso-950 text-cream-50 shadow-xs'
+                      : 'bg-oat-100/70 border border-sand-300/80 text-espresso-800 hover:bg-oat-100 hover:text-espresso-950'
+                  }`}
+                >
+                  <span>{cat.label}</span>
+                  <span
+                    className={`inline-flex items-center justify-center rounded-full px-1.5 py-0.5 text-[10px] font-semibold leading-none ${
+                      isSelected
+                        ? 'bg-cream-50/20 text-cream-50'
+                        : 'bg-sand-300/70 text-espresso-800'
+                    }`}
+                  >
+                    {count}
+                  </span>
+                </button>
+              )
+            })}
+          </div>
+
+          {/* Accessible live region announcing count when tab changes */}
+          <div aria-live="polite" className="sr-only">
+            Showing {displayedProducts.length} of {products.length} products
+          </div>
+
+          {/* Product Grid (All 10 items) */}
+          <div
+            id="home-products-panel"
+            role="tabpanel"
+            aria-labelledby={`tab-${selectedCategory}`}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          >
+            {displayedProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>

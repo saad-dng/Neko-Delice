@@ -53,9 +53,20 @@ test.describe('Home Page (P14)', () => {
       page.locator('text=A month that lasts')
     ).toBeVisible()
 
-    // Featured Products (4 items)
-    const featuredCards = page.locator('[data-testid="product-card"]')
-    await expect(featuredCards).toHaveCount(4)
+    // Full Collection Products on Home (all 10 items)
+    const productCards = page.locator('[data-testid="product-card"]')
+    await expect(productCards).toHaveCount(10)
+
+    // Category Filter Tab interaction
+    const wetFoodTab = page.locator('button[role="tab"]:has-text("Wet Food")')
+    await expect(wetFoodTab).toBeVisible()
+    await wetFoodTab.click()
+    await expect(page.locator('[data-testid="product-card"]')).toHaveCount(2)
+
+    // Switch back to All Items
+    const allTab = page.locator('button[role="tab"]:has-text("All Items")')
+    await allTab.click()
+    await expect(page.locator('[data-testid="product-card"]')).toHaveCount(10)
 
     // Promise Strip (3 items)
     await expect(
@@ -130,10 +141,10 @@ test.describe('About Page (P14)', () => {
     await expect(page.locator('text=Accessible Native <dialog>')).toBeVisible()
     await expect(page.locator('text=Zero-Hidden-State URL Sync')).toBeVisible()
 
-    // Performance budgets table with TBD values
+    // Performance budgets table with verified values
     await expect(page.locator('text=Initial JS payload (gzip)')).toBeVisible()
     await expect(page.locator('text=Largest Contentful Paint (LCP)')).toBeVisible()
-    await expect(page.locator('text=Pending P15 audit').first()).toBeVisible()
+    await expect(page.locator('text=58.4 KB').first()).toBeVisible()
 
     // Disclosures
     await expect(
