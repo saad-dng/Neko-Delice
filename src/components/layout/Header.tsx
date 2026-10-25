@@ -42,20 +42,14 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 transition-colors">
-      {/* 7-layer progressive banded glass blur from C:\Projects\Resources\Fixed glasspannel */}
+      {/* Seamless 7-layer progressive banded glass blur from C:\Projects\Resources\Fixed glasspannel */}
       <ProgressiveBlur
-        height={mobileMenuOpen ? '100%' : 116}
+        height={mobileMenuOpen ? '100%' : 128}
         tint={
           mobileMenuOpen
             ? 'rgba(254, 252, 247, 0.98)'
-            : 'linear-gradient(to bottom, rgba(254, 252, 247, 0.88) 0%, rgba(254, 252, 247, 0.52) 65%, rgba(254, 252, 247, 0) 100%)'
+            : 'linear-gradient(to bottom, rgba(254, 252, 247, 0.85) 0%, rgba(254, 252, 247, 0.45) 55%, rgba(254, 252, 247, 0) 100%)'
         }
-      />
-      {/* Delicate hairline border at header baseline */}
-      <div
-        className="absolute inset-x-0 h-px bg-sand-300/50 pointer-events-none z-10"
-        style={{ top: 'clamp(4.5rem, 5vw, 5rem)' }}
-        aria-hidden="true"
       />
 
       <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between gap-4">
