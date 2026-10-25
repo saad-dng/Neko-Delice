@@ -2,10 +2,15 @@ import { useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { Logo } from '@/components/brand/Logo'
 import { Icon } from '@/components/ui/Icon'
+import { useBag } from '@/store/bag'
+import { useCurrency } from '@/store/currency'
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const location = useLocation()
+  const currency = useCurrency((s) => s.currency)
+  const toggleCurrency = useCurrency((s) => s.toggleCurrency)
+  const bagCount = useBag((s) => s.count())
 
   // Close mobile menu when navigating
   const handleNavClick = () => {
@@ -48,30 +53,31 @@ export function Header() {
           ))}
         </nav>
 
-        {/* Header Actions (Currency toggle placeholder + Bag button + Mobile Toggle) */}
+        {/* Header Actions (Currency toggle + Bag button + Mobile Toggle) */}
         <div className="flex items-center gap-2 sm:gap-3">
-          {/* Currency Toggle Placeholder */}
+          {/* Currency Toggle */}
           <button
             type="button"
-            aria-label="Currency: USD (fixed portfolio rate)"
-            title="Currency: USD"
-            className="hidden sm:inline-flex items-center justify-center min-w-[44px] min-h-[44px] px-3 py-2 text-xs font-semibold tracking-wider text-espresso-800 bg-oat-100/70 hover:bg-oat-200/80 rounded-full border border-oat-300/40 transition-colors"
+            onClick={toggleCurrency}
+            aria-label={`Currency: ${currency} (click to toggle)`}
+            title={`Currency: ${currency} (click to toggle)`}
+            className="hidden sm:inline-flex items-center justify-center min-w-[44px] min-h-[44px] px-3 py-2 text-xs font-semibold tracking-wider text-espresso-800 bg-oat-100/70 hover:bg-oat-200/80 rounded-full border border-oat-300/40 transition-colors cursor-pointer"
           >
-            USD
+            {currency}
           </button>
 
           {/* Bag Button */}
           <button
             type="button"
-            aria-label="Open bag, 0 items"
-            className="relative inline-flex items-center justify-center min-w-[44px] min-h-[44px] p-2 text-espresso-900 bg-oat-100/70 hover:bg-oat-200/80 rounded-full border border-oat-300/40 transition-colors"
+            aria-label={`Open bag, ${bagCount} items`}
+            className="relative inline-flex items-center justify-center min-w-[44px] min-h-[44px] p-2 text-espresso-900 bg-oat-100/70 hover:bg-oat-200/80 rounded-full border border-oat-300/40 transition-colors cursor-pointer"
           >
             <Icon name="bag" size={20} />
             <span
               className="absolute -top-1 -right-1 flex items-center justify-center w-5 h-5 text-[11px] font-bold text-cream-50 bg-terracotta-600 rounded-full border border-cream-50"
               aria-hidden="true"
             >
-              0
+              {bagCount}
             </span>
           </button>
 
@@ -136,10 +142,11 @@ export function Header() {
               <span className="text-xs text-espresso-700">Display Currency</span>
               <button
                 type="button"
-                aria-label="Currency: USD"
-                className="px-3 py-1.5 text-xs font-semibold tracking-wider text-espresso-800 bg-oat-200/70 rounded-full"
+                onClick={toggleCurrency}
+                aria-label={`Currency: ${currency} (click to toggle)`}
+                className="px-3 py-1.5 text-xs font-semibold tracking-wider text-espresso-800 bg-oat-200/70 rounded-full cursor-pointer"
               >
-                USD
+                {currency}
               </button>
             </div>
           </nav>
@@ -148,5 +155,6 @@ export function Header() {
     </header>
   )
 }
+
 
 export default Header

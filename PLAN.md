@@ -27,7 +27,7 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 - [x] P07 Layout shell, routing, prerender, SEO
 - [x] P08 Product data, content, currency formatting
 - [x] P09 Planner engine + tests (pure logic)
-- [ ] P10 Shop: filters, URL sync, cards, bag/currency stores
+- [x] P10 Shop: filters, URL sync, cards, bag/currency stores
 - [ ] P11 Product detail page
 - [ ] P12 Planner UI (wizard + results)
 - [ ] P13 Smart Bag modal + currency toggle UI
@@ -44,6 +44,8 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 - 2026-10-25: P07 completed. Configured routes with vite-react-ssg RouteRecord and getStaticPaths for all 10 product slugs; built Layout shell (SkipLink, Header with compact Logo, nav, currency toggle placeholder, bag button, mobile disclosure menu; Main landmark; Footer with disclosures and accessibility statement); RouteAnnouncer live region with focus management and scroll restoration; SeoHead with canonical, OG, Twitter, favicons, and Cormorant 600 WOFF2 font preload; 404 NotFound page with CatSitting; generate-sitemap.mjs post-build script; 18/18 Playwright e2e tests passing and 25/25 vitest tests passing.
 - 2026-10-25: P08 completed. Created typed Product model and single source of truth for all 10 products in src/data/products.ts; configured nutrition and portion constants in src/config/nutrition.ts; configured site exchange rate and disclaimers in src/config/site.ts; implemented formatPrice (USD and BDT with nearest ৳10 rounding), formatDays, formatKcal in src/lib/format.ts; derived slugs from products; vitest suite (34 tests) and Playwright smoke tests (18 tests) passing.
 - 2026-10-25: P09 completed. Implemented pure TypeScript planner engine in src/lib/planner.ts (calcRER, calcMER, splitRatio, buildBundle, supplyDays, feedingTable, sizeBand, normalizeProfile) and URL query serialization/deserialization in src/lib/plan-url.ts with clamping and fallback defaults; configured all factors and thresholds in src/config/planner.ts; verified all golden tests (4.5 kg adult lounger: 216.3 RER, 233.6 MER, sensitive stomach: 4 boxes of wet lasting 31 days, 1 bag of dry lasting 83 days; kitten neuter ignore; urinary 70/30 & water fountain suggested; coat-shine topper oil budget; 50 random URL round-trips; garbage inputs safe); 58/58 vitest tests passing.
+- 2026-10-25: P10 completed. Built Zustand persisted stores (useBag with 1-9 qty clamping and merge, useCurrency with USD/BDT, usePlannerProfile) backed by corruption-resilient safeLocalStorage; implemented pure filter and nearestMatches logic in src/lib/filters.ts; created ProductCard with stretched-link pattern, hover image swap, and quick-add; built /shop with desktop rail, mobile native <dialog> bottom sheet, active filter chips, sort select, and CatPeeking empty state; 74/74 unit tests and 23/23 Playwright E2E tests passing.
+
 
 
 

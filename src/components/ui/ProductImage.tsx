@@ -4,6 +4,7 @@ import { imageManifest } from '@/data/images.manifest'
 export interface ProductImageProps {
   slug: string
   role?: string
+  imageRole?: string
   sizes?: string
   priority?: boolean
   className?: string
@@ -12,12 +13,15 @@ export interface ProductImageProps {
 export function ProductImage({
   slug,
   role = 'hero',
+  imageRole,
   sizes = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw',
   priority = false,
   className = '',
 }: ProductImageProps) {
   const [hasError, setHasError] = useState(false)
   const product = imageManifest[slug]
+
+  const activeRole = imageRole ?? role
 
   if (!product) {
     return (
@@ -31,10 +35,11 @@ export function ProductImage({
   }
 
   const imageEntry =
-    product.images[role] ||
-    (role === 'hero' ? product.cardDefault : undefined) ||
-    product.gallery.find((g) => g.role === role) ||
+    product.images[activeRole] ||
+    (activeRole === 'hero' ? product.cardDefault : undefined) ||
+    product.gallery.find((g) => g.role === activeRole) ||
     product.cardDefault
+
 
   const srcSetString = Object.entries(imageEntry.srcset)
     .map(([w, src]) => `${src} ${w}w`)
