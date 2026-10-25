@@ -38,15 +38,34 @@ export function Header() {
     { to: '/about', label: 'About' },
   ]
 
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  // Track scroll to wrap content under the header without overlapping products at rest
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 6)
+    }
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <header className="sticky top-0 z-40 transition-colors">
-      {/* Seamless progressive banded glass blur with smooth cubic decay */}
+      {/* 7-layer progressive banded glass blur from C:\Projects\Resources\Fixed glasspannel */}
       <ProgressiveBlur
-        height="100%"
+        height={
+          mobileMenuOpen
+            ? '100%'
+            : isScrolled
+              ? 'clamp(104px, 12vw, 128px)'
+              : '100%'
+        }
+        className="transition-[height] duration-200 ease-out"
         tint={
           mobileMenuOpen
             ? 'rgba(251, 246, 238, 0.98)'
-            : 'linear-gradient(to bottom, rgba(251, 246, 238, 0.92) 0%, rgba(251, 246, 238, 0.88) 40%, rgba(251, 246, 238, 0.75) 65%, rgba(251, 246, 238, 0.50) 82%, rgba(251, 246, 238, 0.20) 93%, rgba(251, 246, 238, 0) 100%)'
+            : 'linear-gradient(to bottom, rgba(251, 246, 238, 0.65) 0%, rgba(251, 246, 238, 0.28) 55%, rgba(251, 246, 238, 0) 100%)'
         }
       />
 

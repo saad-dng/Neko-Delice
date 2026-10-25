@@ -32,18 +32,20 @@ export function buildProgressiveBlurLayers(
 }
 
 export const DEFAULT_BANDS: number[][] = [
-  [0, 45, 70],
-  [0, 55, 80],
-  [0, 65, 88],
-  [0, 75, 93],
-  [0, 82, 97],
-  [0, 88, 100],
+  [0, 12.5, 25],
+  [0, 12.5, 25, 37.5],
+  [12.5, 25, 37.5, 50],
+  [25, 37.5, 50, 62.5],
+  [37.5, 50, 62.5, 75],
+  [50, 62.5, 75, 87.5],
+  [62.5, 75, 87.5, 100],
 ]
 
-export const DEFAULT_BLURS = [32, 20, 12, 6, 3, 1]
+export const DEFAULT_BLURS = [48, 32, 16, 8, 4, 2, 1]
 
 export const PROGRESSIVE_BLUR_LAYERS: BlurLayer[] = buildProgressiveBlurLayers(
   DEFAULT_BANDS,
   DEFAULT_BLURS,
   'top'
 )
+
