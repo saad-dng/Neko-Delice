@@ -156,7 +156,7 @@ export function ProductPage() {
           {/* Breadcrumb Navigation */}
           <nav aria-label="Breadcrumbs" className="mb-6 sm:mb-8">
             <Link
-              to="/shop"
+              to="/#shop"
               className="inline-flex items-center gap-1.5 text-xs font-medium text-espresso-700 hover:text-terracotta-700 transition-colors py-1"
             >
               <span aria-hidden="true">←</span> Back to collection

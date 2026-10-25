@@ -33,7 +33,7 @@ export function Header() {
   }
 
   const navLinks = [
-    { to: '/shop', label: 'Shop' },
+    { to: '/#shop', label: 'Shop' },
     { to: '/meal-plan', label: 'Meal Planner' },
     { to: '/about', label: 'About' },
   ]
@@ -80,21 +80,36 @@ export function Header() {
           aria-label="Primary"
           className="hidden md:flex items-center gap-1 lg:gap-2"
         >
-          {navLinks.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              className={({ isActive }) =>
-                `px-3.5 py-2 text-sm font-medium rounded-full transition-all duration-150 min-h-[44px] inline-flex items-center active:scale-95 ${
+          {navLinks.map((link) => {
+            const isShop = link.label === 'Shop'
+            const isActive = isShop
+              ? location.pathname === '/' && (location.hash === '#shop' || location.hash === '#collection')
+              : location.pathname === link.to
+
+            return (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                onClick={(e) => {
+                  if (isShop && location.pathname === '/') {
+                    e.preventDefault()
+                    const el = document.getElementById('shop') || document.getElementById('collection')
+                    if (el) {
+                      el.scrollIntoView({ behavior: 'smooth' })
+                      window.history.pushState(null, '', '/#shop')
+                    }
+                  }
+                }}
+                className={`px-3.5 py-2 text-sm font-medium rounded-full transition-all duration-150 min-h-[44px] inline-flex items-center active:scale-95 ${
                   isActive
                     ? 'text-terracotta-600 font-semibold'
                     : 'text-espresso-800 hover:text-espresso-900 hover:bg-oat-100/60'
-                }`
-              }
-            >
-              {link.label}
-            </NavLink>
-          ))}
+                }`}
+              >
+                {link.label}
+              </NavLink>
+            )
+          })}
         </nav>
 
         {/* Header Actions (Bag button + Mobile Toggle) */}
@@ -158,23 +173,38 @@ export function Header() {
           className="relative z-10 md:hidden border-t border-sand-300/60 bg-cream-50/92 backdrop-blur-xl px-4 pt-3 pb-6 shadow-sm transition-all"
         >
           <nav aria-label="Mobile Primary" className="flex flex-col gap-1">
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.to}
-                to={link.to}
-                onClick={handleNavClick}
-                className={({ isActive }) =>
-                  `px-4 py-3 text-base rounded-xl min-h-[44px] flex items-center justify-between transition-colors ${
-                    isActive || location.pathname === link.to
+            {navLinks.map((link) => {
+              const isShop = link.label === 'Shop'
+              const isActive = isShop
+                ? location.pathname === '/' && (location.hash === '#shop' || location.hash === '#collection')
+                : location.pathname === link.to
+
+              return (
+                <NavLink
+                  key={link.to}
+                  to={link.to}
+                  onClick={(e) => {
+                    handleNavClick()
+                    if (isShop && location.pathname === '/') {
+                      e.preventDefault()
+                      const el = document.getElementById('shop') || document.getElementById('collection')
+                      if (el) {
+                        el.scrollIntoView({ behavior: 'smooth' })
+                        window.history.pushState(null, '', '/#shop')
+                      }
+                    }
+                  }}
+                  className={`px-4 py-3 text-base rounded-xl min-h-[44px] flex items-center justify-between transition-colors ${
+                    isActive
                       ? 'bg-oat-200/70 text-terracotta-600 font-semibold'
                       : 'text-espresso-800 hover:bg-oat-100 hover:text-espresso-900 font-medium'
-                  }`
-                }
-              >
-                <span>{link.label}</span>
-                <span className="text-espresso-400 text-sm">→</span>
-              </NavLink>
-            ))}
+                  }`}
+                >
+                  <span>{link.label}</span>
+                  <span className="text-espresso-400 text-sm">→</span>
+                </NavLink>
+              )
+            })}
 
             <div className="pt-3 mt-2 border-t border-oat-200/60 flex items-center justify-between px-2">
               <span className="text-xs text-espresso-700">Display Currency</span>

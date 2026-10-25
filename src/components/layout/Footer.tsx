@@ -7,7 +7,7 @@ export function Footer() {
 
   const footerLinks = [
     { to: '/', label: 'Home' },
-    { to: '/shop', label: 'Shop' },
+    { to: '/#shop', label: 'Shop' },
     { to: '/meal-plan', label: 'Meal Planner' },
     { to: '/about', label: 'About' },
   ]

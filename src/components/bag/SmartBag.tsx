@@ -264,7 +264,7 @@ export function SmartBag() {
 
           <div className="flex flex-col sm:flex-row items-center gap-3 w-full max-w-xs">
             <Link
-              to="/shop"
+              to="/#shop"
               onClick={closeBag}
               className="w-full inline-flex items-center justify-center rounded-full bg-terracotta-600 text-cream-50 px-5 py-2.5 text-xs font-semibold hover:bg-terracotta-700 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 min-h-[44px]"
             >

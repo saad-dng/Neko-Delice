@@ -377,7 +377,7 @@ export function PlanResult({ bundle, profile, onEditAnswers }: PlanResultProps) 
 
         <Button
           asChild
-          to="/shop"
+          to="/#shop"
           variant="secondary"
           className="w-full sm:w-auto"
         >

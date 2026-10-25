@@ -364,7 +364,7 @@ export function AboutPage() {
             <Button asChild to="/meal-plan" variant="primary">
               Plan your cat&apos;s meals
             </Button>
-            <Button asChild to="/shop" variant="secondary">
+            <Button asChild to="/#shop" variant="secondary">
               Explore the collection
             </Button>
           </div>

@@ -1,16 +1,18 @@
 import { useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { SeoHead } from '@/components/seo/SeoHead'
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
 import { Heading } from '@/components/ui/Heading'
 import { Button } from '@/components/ui/Button'
+import { CurrencyToggle } from '@/components/ui/CurrencyToggle'
 import { ProductCard } from '@/components/product/ProductCard'
 import { CatSitting } from '@/components/cat-art/CatSitting'
 import { CatStretching } from '@/components/cat-art/CatStretching'
 import { CatHead } from '@/components/cat-art/CatHead'
 import { products } from '@/data/products'
 import type { ProductCategory } from '@/data/types'
+import type { ShopSort } from '@/lib/filters'
 
 type HomeCategoryFilter = 'all' | ProductCategory
 
@@ -29,16 +31,42 @@ const CATEGORY_TABS: readonly CategoryTab[] = [
 ]
 
 export function HomePage() {
-  const [selectedCategory, setSelectedCategory] = useState<HomeCategoryFilter>('all')
+  const [searchParams, setSearchParams] = useSearchParams()
+  const categoryParam = searchParams.get('category') as ProductCategory | null
+  const selectedCategory: HomeCategoryFilter =
+    categoryParam && ['wet-food', 'dry-food', 'treat-topper', 'litter', 'hardware'].includes(categoryParam)
+      ? categoryParam
+      : 'all'
+
+  const [selectedSort, setSelectedSort] = useState<ShopSort>('featured')
+
+  const handleCategoryChange = (catId: HomeCategoryFilter) => {
+    const nextParams = new URLSearchParams(searchParams)
+    if (catId === 'all') {
+      nextParams.delete('category')
+    } else {
+      nextParams.set('category', catId)
+    }
+    setSearchParams(nextParams, { replace: true })
+  }
 
   const displayedProducts = useMemo(() => {
-    if (selectedCategory === 'all') return products
-    return products.filter(
-      (p) =>
-        p.category === selectedCategory ||
-        p.secondaryCategories.includes(selectedCategory)
-    )
-  }, [selectedCategory])
+    let list = products
+    if (selectedCategory !== 'all') {
+      list = products.filter(
+        (p) =>
+          p.category === selectedCategory ||
+          p.secondaryCategories.includes(selectedCategory)
+      )
+    }
+    if (selectedSort === 'price-asc') {
+      return [...list].sort((a, b) => a.priceUSD - b.priceUSD)
+    }
+    if (selectedSort === 'price-desc') {
+      return [...list].sort((a, b) => b.priceUSD - a.priceUSD)
+    }
+    return list
+  }, [selectedCategory, selectedSort])
 
   return (
     <>
@@ -69,7 +97,19 @@ export function HomePage() {
               <Button asChild to="/meal-plan" variant="primary">
                 Plan my cat's meals
               </Button>
-              <Button asChild to="/shop" variant="secondary">
+              <Button
+                asChild
+                to="/#shop"
+                variant="secondary"
+                onClick={(e) => {
+                  e.preventDefault()
+                  const el = document.getElementById('shop') || document.getElementById('collection')
+                  if (el) {
+                    el.scrollIntoView({ behavior: 'smooth' })
+                    window.history.pushState(null, '', '/#shop')
+                  }
+                }}
+              >
                 Shop the collection
               </Button>
             </div>
@@ -93,33 +133,28 @@ export function HomePage() {
         </Container>
       </Section>
 
-      {/* 2. THE COLLECTION (The single, definitive product showcase with category filter tabs) */}
-      <Section id="collection" className="bg-cream-50 border-t border-sand-300/60">
+      {/* 2. THE SHOP (Unified storefront on home with category pills and sort controls) */}
+      <Section id="shop" className="bg-cream-50 border-t border-sand-300/60 scroll-mt-20 sm:scroll-mt-24">
+        {/* Invisible anchor target for backwards compatibility */}
+        <div id="collection" className="sr-only" aria-hidden="true" />
         <Container>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
             <div>
               <p className="text-xs font-semibold uppercase tracking-wider text-terracotta-700 mb-2">
-                The Collection
+                The Shop
               </p>
               <Heading level={2} className="font-serif text-3xl sm:text-4xl font-semibold text-espresso-950">
-                Everything your cat needs, nothing they don't.
+                Shop the collection
               </Heading>
               <p className="text-sm sm:text-base text-espresso-700 mt-2 max-w-xl">
-                Formulated for clinical nutrition, optimal hydration, and quiet everyday living. Short ingredient lists, pure proteins, and quiet hardware.
+                Honest cat nutrition and quiet hardware for every stage of cat life. Ten intentional items, crafted without fillers or guesswork.
               </p>
             </div>
-            <Link
-              to="/shop"
-              className="text-sm font-medium text-terracotta-700 hover:text-terracotta-800 flex items-center gap-1 group shrink-0"
-            >
-              <span>Full catalog with detailed filters</span>
-              <span className="transition-transform group-hover:translate-x-1 motion-reduce:transform-none">&rarr;</span>
-            </Link>
           </div>
 
           {/* Category Filter Tabs */}
           <div
-            className="flex items-center gap-2 overflow-x-auto py-1 px-0.5 -my-1 mb-8 scrollbar-none"
+            className="flex items-center gap-2 overflow-x-auto py-1 px-0.5 -my-1 mb-6 scrollbar-none"
             role="tablist"
             aria-label="Filter products by category"
           >
@@ -142,7 +177,7 @@ export function HomePage() {
                   id={`tab-${cat.id}`}
                   aria-selected={isSelected}
                   aria-controls="home-products-panel"
-                  onClick={() => setSelectedCategory(cat.id)}
+                  onClick={() => handleCategoryChange(cat.id)}
                   className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full px-4 py-2 text-xs font-medium transition-all cursor-pointer focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-600 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50 ${
                     isSelected
                       ? 'bg-sage-700 text-cream-50 border border-sage-700 shadow-sm'
@@ -164,12 +199,42 @@ export function HomePage() {
             })}
           </div>
 
-          {/* Accessible live region announcing count when tab changes */}
+          {/* Shop Toolbar: Product Count & Controls (Currency Toggle + Sort) */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-8 pb-4 border-b border-sand-300/60">
+            <p className="text-xs sm:text-sm font-medium text-espresso-700">
+              Showing <span className="font-semibold text-espresso-900">{displayedProducts.length}</span> {displayedProducts.length === 1 ? 'product' : 'products'}
+            </p>
+
+            <div className="flex items-center gap-3">
+              <CurrencyToggle ariaLabel="Shop currency" size="sm" />
+
+              <div className="flex items-center gap-2">
+                <label
+                  htmlFor="shop-sort"
+                  className="text-xs font-semibold uppercase tracking-wider text-espresso-800 shrink-0"
+                >
+                  Sort by
+                </label>
+                <select
+                  id="shop-sort"
+                  value={selectedSort}
+                  onChange={(e) => setSelectedSort(e.target.value as ShopSort)}
+                  className="rounded-full border border-sand-300 bg-cream-50/90 py-1.5 pl-3.5 pr-8 text-xs font-medium text-espresso-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-600 focus-visible:ring-offset-2 cursor-pointer transition-colors hover:border-sand-400"
+                >
+                  <option value="featured">Featured</option>
+                  <option value="price-asc">Price: Low to High</option>
+                  <option value="price-desc">Price: High to Low</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          {/* Accessible live region announcing count when tab or sort changes */}
           <div aria-live="polite" className="sr-only">
             Showing {displayedProducts.length} of {products.length} products
           </div>
 
-          {/* Product Grid (All 10 items or filtered category) */}
+          {/* Product Grid */}
           <div
             id="home-products-panel"
             role="tabpanel"
@@ -184,7 +249,7 @@ export function HomePage() {
               />
             ))}
 
-            {selectedCategory === 'all' && (
+            {selectedCategory === 'all' && selectedSort === 'featured' && (
               <>
                 {/* Intentional Editorial Tile 1: Meal Planner */}
                 <article className="group relative flex flex-col justify-between rounded-2xl bg-sage-50/80 p-5 sm:p-6 border border-sage-200/80 hover:bg-sage-100/70 hover:border-sage-300 transition-all duration-200">
@@ -394,7 +459,19 @@ export function HomePage() {
             <Button asChild to="/meal-plan" variant="primary">
               Plan my cat's meals
             </Button>
-            <Button asChild to="/shop" variant="secondary">
+            <Button
+              asChild
+              to="/#shop"
+              variant="secondary"
+              onClick={(e) => {
+                e.preventDefault()
+                const el = document.getElementById('shop') || document.getElementById('collection')
+                if (el) {
+                  el.scrollIntoView({ behavior: 'smooth' })
+                  window.history.pushState(null, '', '/#shop')
+                }
+              }}
+            >
               Shop the collection
             </Button>
           </div>

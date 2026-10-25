@@ -32,7 +32,7 @@ export function NotFoundPage() {
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <Button asChild to="/shop" variant="primary">
+            <Button asChild to="/#shop" variant="primary">
               Shop the collection
             </Button>
             <Button asChild to="/meal-plan" variant="secondary">

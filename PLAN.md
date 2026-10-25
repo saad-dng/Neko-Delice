@@ -77,6 +77,7 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
   - Visual Hierarchy & Grid Polish: Balanced the final incomplete homepage collection grid row with 2 curated editorial discovery cards (Personalized Meal Plan & Our Standards) providing a balanced 12-tile layout across 1, 2, 3, and 4 columns; unified ProductCard title wrapping heights (`min-h-[3.25rem] flex items-start`) so price, specs, and Add buttons align across adjacent cards.
   - Verification: 0 typecheck errors, 0 lint warnings, 83/83 Vitest unit tests passing, 90/90 Playwright E2E tests passing. Prerendered static site build verified on localhost preview.
 - 2026-10-26: Restored 404 page to original quiet layout with CatSitting monoline artwork, concise error copy, and primary action buttons (Shop the collection & Try the meal planner). Removed canvas audio game component and associated test suite.
+- 2026-10-26: Unified Shop into Homepage: Made homepage collection the primary shop storefront (`#shop` with `#collection` alias); added product sorting dropdown (Featured, Price asc/desc), currency toggle, and category filter URL parameter synchronization (`/?category=...`); updated Header/Footer/PDP/About/Bag navigation links to point to `/#shop` with smooth scrolling and hash restoration in RouteAnnouncer; configured `/shop` to redirect to the unified homepage storefront; 83/83 Vitest and 90/90 Playwright tests passing.
 
 
 
