@@ -33,9 +33,26 @@ body {
   min-height: 100vh;
 }
 
-/* Accessible focus ring: 2 px espresso + 2 px cream offset */
+/* Prevent unsightly tap highlights and raw browser outlines */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+summary {
+  list-style: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary:focus {
+  outline: none;
+}
+
+/* Accessible focus ring: 2 px warm terracotta + 2 px cream offset */
 :focus-visible {
-  outline: 2px solid var(--color-espresso-900);
+  outline: 2px solid var(--color-terracotta-600);
   outline-offset: 2px;
 }
 

@@ -289,7 +289,7 @@ export function ShopPage() {
               <button
                 type="button"
                 onClick={openFilterModal}
-                className="inline-flex items-center gap-2 rounded-full border border-sand-300/80 bg-oat-100/75 backdrop-blur-md px-4 py-2 text-sm font-medium text-espresso-900 hover:bg-oat-100/95 focus:outline-none focus:ring-2 focus:ring-espresso-900 transition-colors shadow-2xs"
+                className="inline-flex items-center gap-2 rounded-full border border-sand-300/80 bg-oat-100/75 backdrop-blur-md px-4 py-2 text-sm font-medium text-espresso-900 hover:bg-oat-100/95 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 transition-colors shadow-2xs"
                 aria-haspopup="dialog"
               >
                 <svg
@@ -362,7 +362,7 @@ export function ShopPage() {
                   type="button"
                   onClick={() => toggleCategory(cat)}
                   aria-label={`Remove filter ${CATEGORY_LABELS[cat]}`}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-oat-100 border border-sand-300 px-3 py-1 text-xs font-medium text-espresso-900 hover:bg-sand-300/40 focus:outline-none focus:ring-2 focus:ring-espresso-900 transition-colors"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-oat-100 border border-sand-300 px-3 py-1 text-xs font-medium text-espresso-900 hover:bg-sand-300/40 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 transition-colors"
                 >
                   <span>{CATEGORY_LABELS[cat]}</span>
                   <span
@@ -380,7 +380,7 @@ export function ShopPage() {
                   type="button"
                   onClick={() => toggleStage(st)}
                   aria-label={`Remove filter ${STAGE_LABELS[st]}`}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-oat-100 border border-sand-300 px-3 py-1 text-xs font-medium text-espresso-900 hover:bg-sand-300/40 focus:outline-none focus:ring-2 focus:ring-espresso-900 transition-colors"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-oat-100 border border-sand-300 px-3 py-1 text-xs font-medium text-espresso-900 hover:bg-sand-300/40 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 transition-colors"
                 >
                   <span>{STAGE_LABELS[st]}</span>
                   <span
@@ -398,7 +398,7 @@ export function ShopPage() {
                   type="button"
                   onClick={() => toggleGoal(gl)}
                   aria-label={`Remove filter ${GOAL_LABELS[gl]}`}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-oat-100 border border-sand-300 px-3 py-1 text-xs font-medium text-espresso-900 hover:bg-sand-300/40 focus:outline-none focus:ring-2 focus:ring-espresso-900 transition-colors"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-oat-100 border border-sand-300 px-3 py-1 text-xs font-medium text-espresso-900 hover:bg-sand-300/40 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 transition-colors"
                 >
                   <span>{GOAL_LABELS[gl]}</span>
                   <span
@@ -413,7 +413,7 @@ export function ShopPage() {
               <button
                 type="button"
                 onClick={clearAllFilters}
-                className="ml-2 text-xs font-medium text-terracotta-700 underline underline-offset-4 hover:text-terracotta-800 focus:outline-none focus:ring-2 focus:ring-espresso-900 rounded"
+                className="ml-2 text-xs font-medium text-terracotta-700 underline underline-offset-4 hover:text-terracotta-800 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 rounded"
               >
                 Clear all
               </button>
@@ -527,7 +527,7 @@ export function ShopPage() {
             type="button"
             onClick={closeFilterModal}
             aria-label="Close filters dialog"
-            className="rounded-full p-2 text-espresso-600 hover:bg-oat-100 hover:text-espresso-900 focus:outline-none focus:ring-2 focus:ring-espresso-900 cursor-pointer"
+            className="rounded-full p-2 text-espresso-600 hover:bg-oat-100 hover:text-espresso-900 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 cursor-pointer"
           >
             <span aria-hidden="true" className="text-xl leading-none">
               ×
@@ -556,7 +556,7 @@ export function ShopPage() {
           <button
             type="button"
             onClick={closeFilterModal}
-            className="rounded-full bg-terracotta-600 px-6 py-2.5 text-sm font-medium text-cream-50 hover:bg-terracotta-700 focus:outline-none focus:ring-2 focus:ring-espresso-900 cursor-pointer"
+            className="rounded-full bg-terracotta-600 px-6 py-2.5 text-sm font-medium text-cream-50 hover:bg-terracotta-700 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 cursor-pointer"
           >
             Apply filters
           </button>

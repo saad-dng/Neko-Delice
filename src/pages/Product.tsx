@@ -200,7 +200,7 @@ export function ProductPage() {
                       type="button"
                       onClick={prevImage}
                       aria-label="Previous image"
-                      className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-cream-50/85 p-2 text-espresso-900 shadow-sm backdrop-blur-md border border-sand-300/50 hover:bg-cream-50 focus:outline-none focus:ring-2 focus:ring-espresso-900 transition-opacity opacity-85 hover:opacity-100 cursor-pointer"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-cream-50/90 p-2 text-espresso-900 shadow-sm backdrop-blur-md border border-sand-300/50 hover:bg-cream-50 hover:text-terracotta-700 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 transition-all opacity-85 hover:opacity-100 cursor-pointer"
                     >
                       <svg
                         className="h-5 w-5"
@@ -221,7 +221,7 @@ export function ProductPage() {
                       type="button"
                       onClick={nextImage}
                       aria-label="Next image"
-                      className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-cream-50/85 p-2 text-espresso-900 shadow-sm backdrop-blur-md border border-sand-300/50 hover:bg-cream-50 focus:outline-none focus:ring-2 focus:ring-espresso-900 transition-opacity opacity-85 hover:opacity-100 cursor-pointer"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-cream-50/90 p-2 text-espresso-900 shadow-sm backdrop-blur-md border border-sand-300/50 hover:bg-cream-50 hover:text-terracotta-700 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 transition-all opacity-85 hover:opacity-100 cursor-pointer"
                     >
                       <svg
                         className="h-5 w-5"
@@ -267,9 +267,9 @@ export function ProductPage() {
                           setImageError(false)
                         }}
                         aria-label={`View image ${idx + 1} of ${gallery.length}: ${img.roleName}`}
-                        className={`relative h-18 w-18 shrink-0 overflow-hidden rounded-xl bg-beige-200 border-2 transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-espresso-900 ${
+                        className={`relative h-18 w-18 shrink-0 overflow-hidden rounded-xl bg-beige-200 border-2 transition-all duration-150 cursor-pointer focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50 ${
                           isSelected
-                            ? 'border-terracotta-600 ring-2 ring-terracotta-600/30'
+                            ? 'border-terracotta-600 ring-2 ring-terracotta-600/25 shadow-xs opacity-100'
                             : 'border-transparent hover:border-sand-300 opacity-70 hover:opacity-100'
                         }`}
                       >
@@ -371,7 +371,7 @@ export function ProductPage() {
                       onClick={() => setQuantity((q) => Math.max(1, q - 1))}
                       disabled={quantity <= 1}
                       aria-label="Decrease quantity"
-                      className="inline-flex h-9 w-9 items-center justify-center rounded-full text-base font-semibold text-espresso-900 hover:bg-oat-100 disabled:opacity-40 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-espresso-900 cursor-pointer"
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-full text-base font-semibold text-espresso-900 hover:bg-oat-100 disabled:opacity-40 disabled:cursor-not-allowed focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 cursor-pointer transition-colors"
                     >
                       −
                     </button>
@@ -387,7 +387,7 @@ export function ProductPage() {
                       onClick={() => setQuantity((q) => Math.min(9, q + 1))}
                       disabled={quantity >= 9}
                       aria-label="Increase quantity"
-                      className="inline-flex h-9 w-9 items-center justify-center rounded-full text-base font-semibold text-espresso-900 hover:bg-oat-100 disabled:opacity-40 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-espresso-900 cursor-pointer"
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-full text-base font-semibold text-espresso-900 hover:bg-oat-100 disabled:opacity-40 disabled:cursor-not-allowed focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 cursor-pointer transition-colors"
                     >
                       +
                     </button>
@@ -397,7 +397,7 @@ export function ProductPage() {
                   <button
                     type="button"
                     onClick={handleAddToBag}
-                    className="flex-1 rounded-full bg-terracotta-600 px-6 py-3.5 text-sm font-semibold text-cream-50 shadow-xs hover:bg-terracotta-700 focus:outline-none focus:ring-2 focus:ring-espresso-900 focus:ring-offset-2 transition-all active:scale-98 cursor-pointer"
+                    className="flex-1 rounded-full bg-terracotta-600 px-6 py-3.5 text-sm font-semibold text-cream-50 shadow-xs hover:bg-terracotta-700 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50 transition-all active:scale-98 cursor-pointer"
                   >
                     Add to bag
                   </button>
@@ -418,17 +418,17 @@ export function ProductPage() {
               <div className="border-t border-sand-300/60 divide-y divide-sand-300/40">
                 {/* Ingredients Accordion */}
                 {product.ingredients.length > 0 && (
-                  <details className="group py-4" open>
-                    <summary className="flex items-center justify-between cursor-pointer list-none font-serif text-lg font-semibold text-espresso-950 focus:outline-none focus:ring-2 focus:ring-espresso-900 rounded select-none">
+                  <details className="group py-1" open>
+                    <summary className="flex items-center justify-between cursor-pointer list-none py-3.5 px-2 -mx-2 rounded-xl font-serif text-lg font-semibold text-espresso-950 hover:text-terracotta-700 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50 select-none transition-colors">
                       <span>Ingredients</span>
                       <span
-                        className="text-xl text-espresso-600 transition-transform duration-200 group-open:rotate-45"
+                        className="flex items-center justify-center w-7 h-7 rounded-full bg-oat-100/80 text-espresso-700 group-hover:bg-oat-200 group-hover:text-espresso-950 group-open:bg-terracotta-100/70 group-open:text-terracotta-700 transition-all duration-200 text-lg font-light leading-none shrink-0"
                         aria-hidden="true"
                       >
-                        +
+                        <span className="inline-block transition-transform duration-200 group-open:rotate-45 leading-none">+</span>
                       </span>
                     </summary>
-                    <div className="pt-3 text-sm text-espresso-800 leading-relaxed">
+                    <div className="pb-4 pt-1 px-1 text-sm text-espresso-800 leading-relaxed">
                       <p>{product.ingredients.join(', ')}.</p>
                     </div>
                   </details>
@@ -436,17 +436,17 @@ export function ProductPage() {
 
                 {/* Guaranteed Analysis Accordion */}
                 {Object.keys(product.analysis).length > 0 && (
-                  <details className="group py-4">
-                    <summary className="flex items-center justify-between cursor-pointer list-none font-serif text-lg font-semibold text-espresso-950 focus:outline-none focus:ring-2 focus:ring-espresso-900 rounded select-none">
+                  <details className="group py-1">
+                    <summary className="flex items-center justify-between cursor-pointer list-none py-3.5 px-2 -mx-2 rounded-xl font-serif text-lg font-semibold text-espresso-950 hover:text-terracotta-700 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50 select-none transition-colors">
                       <span>Guaranteed analysis</span>
                       <span
-                        className="text-xl text-espresso-600 transition-transform duration-200 group-open:rotate-45"
+                        className="flex items-center justify-center w-7 h-7 rounded-full bg-oat-100/80 text-espresso-700 group-hover:bg-oat-200 group-hover:text-espresso-950 group-open:bg-terracotta-100/70 group-open:text-terracotta-700 transition-all duration-200 text-lg font-light leading-none shrink-0"
                         aria-hidden="true"
                       >
-                        +
+                        <span className="inline-block transition-transform duration-200 group-open:rotate-45 leading-none">+</span>
                       </span>
                     </summary>
-                    <div className="pt-3">
+                    <div className="pb-4 pt-1 px-1">
                       <table className="w-full text-sm text-left text-espresso-800">
                         <tbody>
                           {Object.entries(product.analysis).map(
@@ -475,17 +475,17 @@ export function ProductPage() {
 
                 {/* Specs Accordion */}
                 {Object.keys(product.specs).length > 0 && (
-                  <details className="group py-4">
-                    <summary className="flex items-center justify-between cursor-pointer list-none font-serif text-lg font-semibold text-espresso-950 focus:outline-none focus:ring-2 focus:ring-espresso-900 rounded select-none">
+                  <details className="group py-1">
+                    <summary className="flex items-center justify-between cursor-pointer list-none py-3.5 px-2 -mx-2 rounded-xl font-serif text-lg font-semibold text-espresso-950 hover:text-terracotta-700 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50 select-none transition-colors">
                       <span>Specifications</span>
                       <span
-                        className="text-xl text-espresso-600 transition-transform duration-200 group-open:rotate-45"
+                        className="flex items-center justify-center w-7 h-7 rounded-full bg-oat-100/80 text-espresso-700 group-hover:bg-oat-200 group-hover:text-espresso-950 group-open:bg-terracotta-100/70 group-open:text-terracotta-700 transition-all duration-200 text-lg font-light leading-none shrink-0"
                         aria-hidden="true"
                       >
-                        +
+                        <span className="inline-block transition-transform duration-200 group-open:rotate-45 leading-none">+</span>
                       </span>
                     </summary>
-                    <div className="pt-3">
+                    <div className="pb-4 pt-1 px-1">
                       <table className="w-full text-sm text-left text-espresso-800">
                         <tbody>
                           {Object.entries(product.specs).map(([key, val]) => (
@@ -512,17 +512,17 @@ export function ProductPage() {
 
                 {/* Storage & Feeding Note Accordion */}
                 {product.feedingNote && (
-                  <details className="group py-4">
-                    <summary className="flex items-center justify-between cursor-pointer list-none font-serif text-lg font-semibold text-espresso-950 focus:outline-none focus:ring-2 focus:ring-espresso-900 rounded select-none">
+                  <details className="group py-1">
+                    <summary className="flex items-center justify-between cursor-pointer list-none py-3.5 px-2 -mx-2 rounded-xl font-serif text-lg font-semibold text-espresso-950 hover:text-terracotta-700 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50 select-none transition-colors">
                       <span>Storage & feeding advice</span>
                       <span
-                        className="text-xl text-espresso-600 transition-transform duration-200 group-open:rotate-45"
+                        className="flex items-center justify-center w-7 h-7 rounded-full bg-oat-100/80 text-espresso-700 group-hover:bg-oat-200 group-hover:text-espresso-950 group-open:bg-terracotta-100/70 group-open:text-terracotta-700 transition-all duration-200 text-lg font-light leading-none shrink-0"
                         aria-hidden="true"
                       >
-                        +
+                        <span className="inline-block transition-transform duration-200 group-open:rotate-45 leading-none">+</span>
                       </span>
                     </summary>
-                    <div className="pt-3 text-sm text-espresso-800 leading-relaxed">
+                    <div className="pb-4 pt-1 px-1 text-sm text-espresso-800 leading-relaxed">
                       <p>{product.feedingNote}</p>
                     </div>
                   </details>

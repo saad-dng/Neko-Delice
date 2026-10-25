@@ -111,7 +111,7 @@ export function SmartBag() {
           type="button"
           onClick={closeBag}
           aria-label="Close bag"
-          className="inline-flex items-center justify-center min-w-[44px] min-h-[44px] rounded-full text-espresso-700 hover:text-espresso-950 hover:bg-oat-200/60 focus:outline-none focus:ring-2 focus:ring-espresso-900 cursor-pointer transition-colors"
+          className="inline-flex items-center justify-center min-w-[44px] min-h-[44px] rounded-full text-espresso-700 hover:text-espresso-950 hover:bg-oat-200/60 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 cursor-pointer transition-colors"
         >
           <svg
             className="w-5 h-5"
@@ -204,7 +204,7 @@ export function SmartBag() {
                         onClick={() => setQty(product.id, line.qty - 1)}
                         disabled={line.qty <= 1}
                         aria-label={`Decrease quantity of ${product.name}`}
-                        className="inline-flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold text-espresso-900 hover:bg-oat-100 disabled:opacity-40 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-espresso-900 cursor-pointer"
+                        className="inline-flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold text-espresso-900 hover:bg-oat-100 disabled:opacity-40 disabled:cursor-not-allowed focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 cursor-pointer"
                       >
                         −
                       </button>
@@ -219,7 +219,7 @@ export function SmartBag() {
                         onClick={() => setQty(product.id, line.qty + 1)}
                         disabled={line.qty >= 9}
                         aria-label={`Increase quantity of ${product.name}`}
-                        className="inline-flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold text-espresso-900 hover:bg-oat-100 disabled:opacity-40 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-espresso-900 cursor-pointer"
+                        className="inline-flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold text-espresso-900 hover:bg-oat-100 disabled:opacity-40 disabled:cursor-not-allowed focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 cursor-pointer"
                       >
                         +
                       </button>
@@ -257,14 +257,14 @@ export function SmartBag() {
             <Link
               to="/shop"
               onClick={closeBag}
-              className="w-full inline-flex items-center justify-center rounded-full bg-terracotta-600 text-cream-50 px-5 py-2.5 text-xs font-semibold hover:bg-terracotta-700 focus:outline-none focus:ring-2 focus:ring-espresso-900 min-h-[44px]"
+              className="w-full inline-flex items-center justify-center rounded-full bg-terracotta-600 text-cream-50 px-5 py-2.5 text-xs font-semibold hover:bg-terracotta-700 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 min-h-[44px]"
             >
               Explore Shop
             </Link>
             <Link
               to="/meal-plan"
               onClick={closeBag}
-              className="w-full inline-flex items-center justify-center rounded-full border border-espresso-900 text-espresso-950 px-5 py-2.5 text-xs font-semibold hover:bg-espresso-900/5 focus:outline-none focus:ring-2 focus:ring-espresso-900 min-h-[44px]"
+              className="w-full inline-flex items-center justify-center rounded-full border border-sand-300 text-espresso-950 px-5 py-2.5 text-xs font-semibold hover:bg-oat-100/60 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 min-h-[44px]"
             >
               Build Meal Plan
             </Link>
