@@ -118,8 +118,16 @@ test.describe('Shop Catalog, Filters & URL Sync (P10)', () => {
       .first()
     await firstAddButton.click()
 
+    // Bag modal opens automatically on add
+    const bagDialog = page.locator('dialog.smart-bag-dialog')
+    await expect(bagDialog).toBeVisible()
+
     // Bag badge in header increments to 1
     await expect(bagButton).toContainText('1')
+
+    // Close dialog via escape key
+    await page.keyboard.press('Escape')
+    await expect(bagDialog).not.toBeVisible()
 
     // Add again
     await firstAddButton.click()
@@ -137,9 +145,9 @@ test.describe('Shop Catalog, Filters & URL Sync (P10)', () => {
       .first()
     await expect(priceElement).toContainText('$')
 
-    // Click currency toggle button in header
-    const currencyToggle = page.locator('button[aria-label*="Currency:"]').first()
-    await currencyToggle.click()
+    // Click BDT button in currency segmented control
+    const bdtButton = page.locator('button:has-text("BDT")').first()
+    await bdtButton.click()
 
     // Price should now display in BDT (৳)
     await expect(priceElement).toContainText('৳')

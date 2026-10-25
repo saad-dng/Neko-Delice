@@ -4,6 +4,7 @@ import { SkipLink } from '@/components/ui/SkipLink'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { RouteAnnouncer } from '@/components/layout/RouteAnnouncer'
+import { SmartBag } from '@/components/bag/SmartBag'
 
 export interface LayoutProps {
   children?: React.ReactNode
@@ -26,7 +27,10 @@ export function Layout({ children }: LayoutProps) {
         {children ?? <Outlet />}
       </main>
 
-      {/* 5. Footer landmark */}
+      {/* 5. SmartBag dialog modal */}
+      <SmartBag />
+
+      {/* 6. Footer landmark */}
       <Footer />
     </div>
   )

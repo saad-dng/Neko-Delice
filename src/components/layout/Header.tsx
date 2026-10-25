@@ -1,16 +1,32 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { Logo } from '@/components/brand/Logo'
 import { Icon } from '@/components/ui/Icon'
 import { useBag } from '@/store/bag'
+import { useBagUi } from '@/store/bag-ui'
 import { useCurrency } from '@/store/currency'
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const location = useLocation()
   const currency = useCurrency((s) => s.currency)
-  const toggleCurrency = useCurrency((s) => s.toggleCurrency)
   const bagCount = useBag((s) => s.lines.reduce((total, l) => total + l.qty, 0))
+
+  const [isBouncing, setIsBouncing] = useState(false)
+  const prevCountRef = useRef(bagCount)
+  const setCurrency = useCurrency((s) => s.setCurrency)
+  const openBag = useBagUi((s) => s.openBag)
+
+  // Trigger bounce animation when bagCount increments
+  useEffect(() => {
+    if (bagCount > prevCountRef.current) {
+      setIsBouncing(true)
+      const timer = setTimeout(() => setIsBouncing(false), 380)
+      prevCountRef.current = bagCount
+      return () => clearTimeout(timer)
+    }
+    prevCountRef.current = bagCount
+  }, [bagCount])
 
   // Close mobile menu when navigating
   const handleNavClick = () => {
@@ -55,26 +71,52 @@ export function Header() {
 
         {/* Header Actions (Currency toggle + Bag button + Mobile Toggle) */}
         <div className="flex items-center gap-2 sm:gap-3">
-          {/* Currency Toggle */}
-          <button
-            type="button"
-            onClick={toggleCurrency}
-            aria-label={`Currency: ${currency} (click to toggle)`}
-            title={`Currency: ${currency} (click to toggle)`}
-            className="hidden sm:inline-flex items-center justify-center min-w-[44px] min-h-[44px] px-3 py-2 text-xs font-semibold tracking-wider text-espresso-800 bg-oat-100/70 hover:bg-oat-200/80 rounded-full border border-oat-300/40 transition-colors cursor-pointer"
+          {/* Currency Segmented Control */}
+          <fieldset
+            aria-label="Currency selection"
+            className="hidden sm:inline-flex items-center rounded-full bg-oat-100 p-0.5 border border-sand-300/60 m-0"
           >
-            {currency}
-          </button>
+            <legend className="sr-only">Currency selection</legend>
+            <button
+              type="button"
+              onClick={() => setCurrency('USD')}
+              aria-pressed={currency === 'USD'}
+              className={`min-w-[40px] min-h-[38px] px-2.5 py-1 text-xs font-semibold rounded-full transition-colors cursor-pointer ${
+                currency === 'USD'
+                  ? 'bg-cream-50 text-espresso-950 shadow-xs'
+                  : 'text-espresso-600 hover:text-espresso-950'
+              }`}
+            >
+              USD
+            </button>
+            <button
+              type="button"
+              onClick={() => setCurrency('BDT')}
+              aria-pressed={currency === 'BDT'}
+              className={`min-w-[40px] min-h-[38px] px-2.5 py-1 text-xs font-semibold rounded-full transition-colors cursor-pointer ${
+                currency === 'BDT'
+                  ? 'bg-cream-50 text-espresso-950 shadow-xs'
+                  : 'text-espresso-600 hover:text-espresso-950'
+              }`}
+            >
+              BDT
+            </button>
+          </fieldset>
 
-          {/* Bag Button */}
+          {/* Bag Button with Bounce Animation */}
           <button
             type="button"
+            onClick={(e) => openBag(e.currentTarget)}
             aria-label={`Open bag, ${bagCount} items`}
-            className="relative inline-flex items-center justify-center min-w-[44px] min-h-[44px] p-2 text-espresso-900 bg-oat-100/70 hover:bg-oat-200/80 rounded-full border border-oat-300/40 transition-colors cursor-pointer"
+            className={`relative inline-flex items-center justify-center min-w-[44px] min-h-[44px] p-2 text-espresso-900 bg-oat-100/70 hover:bg-oat-200/80 rounded-full border border-oat-300/40 transition-transform cursor-pointer ${
+              isBouncing ? 'animate-bag-bounce' : ''
+            }`}
           >
             <Icon name="bag" size={20} />
             <span
-              className="absolute -top-1 -right-1 flex items-center justify-center w-5 h-5 text-[11px] font-bold text-cream-50 bg-terracotta-600 rounded-full border border-cream-50"
+              className={`absolute -top-1 -right-1 flex items-center justify-center w-5 h-5 text-[11px] font-bold text-cream-50 bg-terracotta-600 rounded-full border border-cream-50 tabular-nums ${
+                isBouncing ? 'scale-110' : ''
+              }`}
               aria-hidden="true"
             >
               {bagCount}
@@ -140,14 +182,36 @@ export function Header() {
 
             <div className="pt-3 mt-2 border-t border-oat-200/60 flex items-center justify-between px-2">
               <span className="text-xs text-espresso-700">Display Currency</span>
-              <button
-                type="button"
-                onClick={toggleCurrency}
-                aria-label={`Currency: ${currency} (click to toggle)`}
-                className="px-3 py-1.5 text-xs font-semibold tracking-wider text-espresso-800 bg-oat-200/70 rounded-full cursor-pointer"
+              <fieldset
+                aria-label="Mobile currency selection"
+                className="inline-flex rounded-full bg-oat-200/70 p-0.5 border border-sand-300/60 m-0"
               >
-                {currency}
-              </button>
+                <legend className="sr-only">Mobile currency selection</legend>
+                <button
+                  type="button"
+                  onClick={() => setCurrency('USD')}
+                  aria-pressed={currency === 'USD'}
+                  className={`min-w-[40px] min-h-[38px] px-2.5 py-1 text-xs font-semibold rounded-full transition-colors cursor-pointer ${
+                    currency === 'USD'
+                      ? 'bg-cream-50 text-espresso-950 shadow-xs'
+                      : 'text-espresso-600 hover:text-espresso-950'
+                  }`}
+                >
+                  USD
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setCurrency('BDT')}
+                  aria-pressed={currency === 'BDT'}
+                  className={`min-w-[40px] min-h-[38px] px-2.5 py-1 text-xs font-semibold rounded-full transition-colors cursor-pointer ${
+                    currency === 'BDT'
+                      ? 'bg-cream-50 text-espresso-950 shadow-xs'
+                      : 'text-espresso-600 hover:text-espresso-950'
+                  }`}
+                >
+                  BDT
+                </button>
+              </fieldset>
             </div>
           </nav>
         </div>

@@ -30,7 +30,7 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 - [x] P10 Shop: filters, URL sync, cards, bag/currency stores
 - [x] P11 Product detail page
 - [x] P12 Planner UI (wizard + results)
-- [ ] P13 Smart Bag modal + currency toggle UI
+- [x] P13 Smart Bag modal + currency toggle UI
 - [ ] P14 Home, About (+ Behind the build), micro-interactions
 - [ ] P15 Audit, optimisation, README, launch prep
 
@@ -47,6 +47,7 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 - 2026-10-25: P10 completed. Built Zustand persisted stores (useBag with 1-9 qty clamping and merge, useCurrency with USD/BDT, usePlannerProfile) backed by corruption-resilient safeLocalStorage; implemented pure filter and nearestMatches logic in src/lib/filters.ts; created ProductCard with stretched-link pattern, hover image swap, and quick-add; built /shop with desktop rail, mobile native <dialog> bottom sheet, active filter chips, sort select, and CatPeeking empty state; 74/74 unit tests and 23/23 Playwright E2E tests passing.
 - 2026-10-25: P11 completed. Built Product detail page (/product/:slug) with gallery thumbnails, keyboard arrow navigation, LCP image preload and fetchpriority, native <details>/<summary> accordions, pure feeding guide table from src/lib/planner.ts, quantity stepper (1-9), polite live region add-to-bag, JSON-LD Product schema, and 404 fallback; all 10 product pages prerendered; 29/29 Playwright E2E and 74/74 Vitest tests passing.
 - 2026-10-25: P12 completed. Implemented 4-step Meal Planner UI (/meal-plan) with full URL synchronization (name, stage, neutered, w, act, focus, step), mirrored into usePlannerProfile; Step 1 with kitten neuter lock; Step 2 with synced range slider, numeric input, kg/lb toggle, size indicator, and extreme-weight notice; Step 3 with monoline cat radio cards; Step 4 with supportive health focus options; progress bar with 250ms transition and polite screen reader announcements; mobile sticky next button; PlanResult with reduced-motion aware calorie count-up (<=900ms), RER/MER metrics, portion breakdown, monthly bundle cards, fountain add-on checkbox, copy shareable link, "How we calculate this" formula disclosure, and veterinary notice; 74/74 vitest tests and 37/37 Playwright E2E tests (including Axe accessibility audit) passing.
+- 2026-10-25: P13 completed. Implemented native <dialog> SmartBag modal with responsive bottom-sheet on mobile (<640px) and centered card on desktop, backdrop blur with solid scrim fallback, Escape/backdrop click dismiss, focus restoration to opener, and scroll lock; reactive supply duration estimates per line (reference cat fallback for foods, one-time for hardware, ~30 days for litter); quantity steppers (1-9), remove, line totals, active currency subtotal, and accessible disabled preview checkout; header bag button with bounce animation and live count; USD/BDT segmented toggle in header, footer disclaimer, and zero-layout-shift tabular numbers; 81/81 vitest unit tests and 43/43 Playwright E2E tests (including Axe accessibility audit) passing.
 
 
 

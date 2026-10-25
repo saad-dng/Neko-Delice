@@ -12,6 +12,7 @@ import { formatPrice } from '@/lib/format'
 import { feedingTable } from '@/lib/planner'
 import { NotFoundPage } from '@/pages/NotFound'
 import { useBag } from '@/store/bag'
+import { useBagUi } from '@/store/bag-ui'
 import { useCurrency } from '@/store/currency'
 
 const ACCENT_COLORS: Record<ProductAccent, string> = {
@@ -112,9 +113,10 @@ export function ProductPage() {
   }
 
   // Purchase Actions
-  const handleAddToBag = () => {
+  const handleAddToBag = (e: React.MouseEvent<HTMLButtonElement>) => {
     add(product.id, quantity)
     setLiveAnnouncement(`Added ${quantity} of ${product.name} to your bag`)
+    useBagUi.getState().openBag(e.currentTarget)
   }
 
   // Feeding guide calculation

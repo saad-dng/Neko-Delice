@@ -59,8 +59,9 @@ describe('Route Architecture & Layout Shell (P07)', () => {
       expect(headerQueries.getByRole('link', { name: 'About' })).not.toBeNull()
     }
 
-    // Currency placeholder and Bag button with accessible name
-    expect(screen.getByRole('button', { name: /Currency: USD/i })).not.toBeNull()
+    // Currency segmented control and Bag button with accessible name
+    expect(screen.getAllByRole('button', { name: /^USD$/i }).length).toBeGreaterThan(0)
+    expect(screen.getAllByRole('button', { name: /^BDT$/i }).length).toBeGreaterThan(0)
     expect(screen.getByRole('button', { name: /Open bag, 0 items/i })).not.toBeNull()
 
     // Main landmark with id="main" and tabIndex="-1"

@@ -5,6 +5,7 @@ import { PLANNER_CONFIG } from '@/config/planner'
 import { NUTRITION_CONFIG } from '@/config/nutrition'
 import { useCurrency } from '@/store/currency'
 import { useBag } from '@/store/bag'
+import { useBagUi } from '@/store/bag-ui'
 import { formatDays, formatPrice, TABULAR_NUMS } from '@/lib/format'
 import { splitRatio } from '@/lib/planner'
 import { useCountUp } from '@/hooks/useCountUp'
@@ -65,7 +66,7 @@ export function PlanResult({ bundle, profile, onEditAnswers }: PlanResultProps) 
     .filter((l) => l.checked)
     .reduce((sum, l) => sum + l.price, 0)
 
-  const handleAddToBag = () => {
+  const handleAddToBag = (e: React.MouseEvent<HTMLButtonElement>) => {
     const itemsToAdd = activeLines
       .filter((l) => l.checked)
       .map((l) => ({
@@ -78,6 +79,7 @@ export function PlanResult({ bundle, profile, onEditAnswers }: PlanResultProps) 
       const count = itemsToAdd.reduce((sum, i) => sum + i.qty, 0)
       setAddedNotice(`Added ${count} items to your bag.`)
       setTimeout(() => setAddedNotice(null), 3000)
+      useBagUi.getState().openBag(e.currentTarget)
     }
   }
 

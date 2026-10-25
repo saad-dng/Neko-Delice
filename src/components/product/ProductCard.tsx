@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import type { Product } from '@/data/types'
 import { formatPrice } from '@/lib/format'
 import { useBag } from '@/store/bag'
+import { useBagUi } from '@/store/bag-ui'
 import { useCurrency } from '@/store/currency'
 import { ProductImage } from '@/components/ui/ProductImage'
 
@@ -99,6 +100,7 @@ export function ProductCard({
               e.preventDefault()
               e.stopPropagation()
               add(product.id, 1)
+              useBagUi.getState().openBag(e.currentTarget)
             }}
             aria-label={`Add ${product.name} to bag`}
             className="relative z-10 inline-flex items-center justify-center rounded-full bg-terracotta-600 px-3 py-1.5 text-xs font-medium text-cream-50 transition-all hover:bg-terracotta-700 focus:outline-none focus:ring-2 focus:ring-espresso-900 focus:ring-offset-2 active:scale-95"

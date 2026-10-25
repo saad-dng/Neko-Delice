@@ -66,7 +66,7 @@ export function Footer() {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-espresso-600">
           <p>© {currentYear} NEKO DELICE. All rights reserved.</p>
           <p className="text-espresso-500">
-            Currency rates approximate (USD 1 = ৳123, Oct 2026)
+            BDT prices are approximate (USD 1 = ৳123, Oct 2026)
           </p>
         </div>
       </div>
