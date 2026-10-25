@@ -10,7 +10,7 @@ export function Header() {
   const location = useLocation()
   const currency = useCurrency((s) => s.currency)
   const toggleCurrency = useCurrency((s) => s.toggleCurrency)
-  const bagCount = useBag((s) => s.count())
+  const bagCount = useBag((s) => s.lines.reduce((total, l) => total + l.qty, 0))
 
   // Close mobile menu when navigating
   const handleNavClick = () => {

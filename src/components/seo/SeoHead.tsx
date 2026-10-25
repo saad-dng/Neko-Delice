@@ -6,6 +6,12 @@ export interface SeoHeadProps {
   description: string
   path: string
   type?: 'website' | 'article' | 'product'
+  imagePreload?: {
+    src: string
+    srcset?: string
+    sizes?: string
+  }
+  jsonLd?: Record<string, unknown>
 }
 
 const DEFAULT_SITE_URL = 'https://example.com'
@@ -22,6 +28,8 @@ export function SeoHead({
   description,
   path,
   type = 'website',
+  imagePreload,
+  jsonLd,
 }: SeoHeadProps) {
   const siteUrl = getSiteUrl()
   const cleanPath = path.startsWith('/') ? path : `/${path}`
@@ -58,8 +66,28 @@ export function SeoHead({
         type="font/woff2"
         crossOrigin="anonymous"
       />
+
+      {/* Hero Image Preload for PDP LCP */}
+      {imagePreload && (
+        <link
+          rel="preload"
+          as="image"
+          href={imagePreload.src}
+          imageSrcSet={imagePreload.srcset}
+          imageSizes={imagePreload.sizes}
+          fetchPriority="high"
+        />
+      )}
+
+      {/* JSON-LD Structured Data */}
+      {jsonLd && (
+        <script type="application/ld+json">
+          {JSON.stringify(jsonLd)}
+        </script>
+      )}
     </Head>
   )
 }
+
 
 export default SeoHead
