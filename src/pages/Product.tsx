@@ -200,7 +200,7 @@ export function ProductPage() {
                       type="button"
                       onClick={prevImage}
                       aria-label="Previous image"
-                      className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-cream-50/90 p-2 text-espresso-900 shadow-sm backdrop-blur-xs hover:bg-cream-50 focus:outline-none focus:ring-2 focus:ring-espresso-900 transition-opacity opacity-80 hover:opacity-100 cursor-pointer"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-cream-50/85 p-2 text-espresso-900 shadow-sm backdrop-blur-md border border-sand-300/50 hover:bg-cream-50 focus:outline-none focus:ring-2 focus:ring-espresso-900 transition-opacity opacity-85 hover:opacity-100 cursor-pointer"
                     >
                       <svg
                         className="h-5 w-5"
@@ -221,7 +221,7 @@ export function ProductPage() {
                       type="button"
                       onClick={nextImage}
                       aria-label="Next image"
-                      className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-cream-50/90 p-2 text-espresso-900 shadow-sm backdrop-blur-xs hover:bg-cream-50 focus:outline-none focus:ring-2 focus:ring-espresso-900 transition-opacity opacity-80 hover:opacity-100 cursor-pointer"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-cream-50/85 p-2 text-espresso-900 shadow-sm backdrop-blur-md border border-sand-300/50 hover:bg-cream-50 focus:outline-none focus:ring-2 focus:ring-espresso-900 transition-opacity opacity-85 hover:opacity-100 cursor-pointer"
                     >
                       <svg
                         className="h-5 w-5"

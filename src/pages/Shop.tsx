@@ -288,7 +288,7 @@ export function ShopPage() {
               <button
                 type="button"
                 onClick={openFilterModal}
-                className="inline-flex items-center gap-2 rounded-full border border-sand-300 bg-oat-100/60 px-4 py-2 text-sm font-medium text-espresso-900 hover:bg-oat-100 focus:outline-none focus:ring-2 focus:ring-espresso-900 transition-colors"
+                className="inline-flex items-center gap-2 rounded-full border border-sand-300/80 bg-oat-100/75 backdrop-blur-md px-4 py-2 text-sm font-medium text-espresso-900 hover:bg-oat-100/95 focus:outline-none focus:ring-2 focus:ring-espresso-900 transition-colors shadow-2xs"
                 aria-haspopup="dialog"
               >
                 <svg
@@ -509,7 +509,7 @@ export function ShopPage() {
       <dialog
         ref={filterDialogRef}
         aria-labelledby="mobile-filter-title"
-        className="fixed inset-0 m-auto max-h-[85vh] w-[92vw] max-w-lg rounded-2xl bg-cream-50 p-6 text-espresso-950 shadow-2xl backdrop:bg-espresso-900/40 backdrop:backdrop-blur-xs lg:hidden overflow-y-auto"
+        className="fixed inset-0 m-auto max-h-[85vh] w-[92vw] max-w-lg rounded-2xl bg-cream-50/95 backdrop-blur-xl border border-sand-300/80 p-6 text-espresso-950 shadow-2xl backdrop:bg-espresso-900/40 backdrop:backdrop-blur-md lg:hidden overflow-y-auto"
       >
         <div className="flex items-center justify-between pb-4 border-b border-sand-300/60 mb-6">
           <h2

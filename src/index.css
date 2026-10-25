@@ -84,26 +84,29 @@ h3, .font-display-h3 {
   }
 }
 
-/* Dialog backdrop: espresso 40% + 6px blur, with solid scrim fallback */
+/* Dialog backdrop: espresso 42% + 10px blur, with solid scrim fallback */
 dialog::backdrop {
   background-color: rgba(43, 33, 26, 0.6);
 }
 
 @supports (backdrop-filter: blur(6px)) {
   dialog::backdrop {
-    background-color: rgba(43, 33, 26, 0.4);
-    backdrop-filter: blur(6px);
+    background-color: rgba(43, 33, 26, 0.42);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 }
 
-/* Native dialog reset & modal / bottom-sheet responsiveness */
+/* Native dialog reset & modal / bottom-sheet responsiveness with frosted glass */
 dialog.smart-bag-dialog:not([open]) {
   display: none !important;
 }
 
 dialog.smart-bag-dialog {
-  border: 1px solid var(--color-sand-300);
-  background-color: var(--color-oat-100);
+  border: 1px solid rgba(223, 214, 201, 0.85);
+  background-color: rgba(254, 252, 247, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   color: var(--color-espresso-950);
   padding: 0;
   box-shadow: 0 25px 50px -12px rgba(43, 33, 26, 0.25);

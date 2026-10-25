@@ -205,7 +205,7 @@ export function MealPlanPage() {
 
       {/* Mobile Sticky Navigation Bar (< 640px) on Wizard Steps */}
       {urlStep !== 'result' && (
-        <div className="sm:hidden fixed bottom-0 left-0 right-0 z-30 p-4 bg-cream-50/95 backdrop-blur-sm border-t border-sand-300 shadow-lg flex items-center justify-between gap-3">
+        <div className="sm:hidden fixed bottom-0 left-0 right-0 z-30 p-4 bg-cream-50/90 backdrop-blur-md border-t border-sand-300/80 shadow-lg flex items-center justify-between gap-3">
           {stepNumber > 1 ? (
             <Button
               variant="secondary"

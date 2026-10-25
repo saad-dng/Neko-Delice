@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { Logo } from '@/components/brand/Logo'
 import { Icon } from '@/components/ui/Icon'
+import { ProgressiveBlur } from '@/components/ui/ProgressiveBlur'
 import { useBag } from '@/store/bag'
 import { useBagUi } from '@/store/bag-ui'
 import { useCurrency } from '@/store/currency'
@@ -40,8 +41,24 @@ export function Header() {
   ]
 
   return (
-    <header className="sticky top-0 z-40 bg-cream-50/95 backdrop-blur-sm border-b border-oat-200/80 transition-colors">
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between gap-4">
+    <header className="sticky top-0 z-40 transition-colors">
+      {/* 7-layer progressive banded glass blur from C:\Projects\Resources\Fixed glasspannel */}
+      <ProgressiveBlur
+        height={mobileMenuOpen ? '100%' : 116}
+        tint={
+          mobileMenuOpen
+            ? 'rgba(254, 252, 247, 0.98)'
+            : 'linear-gradient(to bottom, rgba(254, 252, 247, 0.88) 0%, rgba(254, 252, 247, 0.52) 65%, rgba(254, 252, 247, 0) 100%)'
+        }
+      />
+      {/* Delicate hairline border at header baseline */}
+      <div
+        className="absolute inset-x-0 h-px bg-sand-300/50 pointer-events-none z-10"
+        style={{ top: 'clamp(4.5rem, 5vw, 5rem)' }}
+        aria-hidden="true"
+      />
+
+      <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between gap-4">
         {/* Brand Logo */}
         <div className="flex items-center shrink-0">
           <Logo variant="compact" />
@@ -74,7 +91,7 @@ export function Header() {
           {/* Currency Segmented Control */}
           <fieldset
             aria-label="Currency selection"
-            className="hidden sm:inline-flex items-center rounded-full bg-oat-100 p-0.5 border border-sand-300/60 m-0"
+            className="hidden sm:inline-flex items-center rounded-full bg-oat-100/75 backdrop-blur-md p-0.5 border border-sand-300/60 m-0 shadow-2xs"
           >
             <legend className="sr-only">Currency selection</legend>
             <button
@@ -108,7 +125,7 @@ export function Header() {
             type="button"
             onClick={(e) => openBag(e.currentTarget)}
             aria-label={`Open bag, ${bagCount} items`}
-            className={`relative inline-flex items-center justify-center min-w-[44px] min-h-[44px] p-2 text-espresso-900 bg-oat-100/70 hover:bg-oat-200/80 rounded-full border border-oat-300/40 transition-transform cursor-pointer ${
+            className={`relative inline-flex items-center justify-center min-w-[44px] min-h-[44px] p-2 text-espresso-900 bg-oat-100/75 hover:bg-oat-200/90 backdrop-blur-md rounded-full border border-sand-300/60 shadow-2xs transition-transform cursor-pointer ${
               isBouncing ? 'animate-bag-bounce' : ''
             }`}
           >
@@ -159,7 +176,7 @@ export function Header() {
       {mobileMenuOpen && (
         <div
           id="mobile-navigation"
-          className="md:hidden border-t border-oat-200/70 bg-cream-50/98 px-4 pt-3 pb-6 shadow-sm transition-all"
+          className="relative z-10 md:hidden border-t border-sand-300/60 bg-cream-50/92 backdrop-blur-xl px-4 pt-3 pb-6 shadow-sm transition-all"
         >
           <nav aria-label="Mobile Primary" className="flex flex-col gap-1">
             {navLinks.map((link) => (
