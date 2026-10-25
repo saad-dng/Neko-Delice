@@ -57,14 +57,14 @@ export function Step3Activity({ profile, onChange }: Step3ActivityProps) {
                 key={opt.id}
                 className={`relative flex flex-col items-center text-center p-5 rounded-2xl border cursor-pointer select-none transition-all ${
                   checked
-                    ? 'border-terracotta-600 bg-oat-100 shadow-sm ring-1 ring-terracotta-600'
-                    : 'border-sand-300 bg-cream-50 hover:bg-oat-100/40 hover:border-sand-300/80'
+                    ? 'border-sage-600 bg-sage-50/85 ring-1.5 ring-sage-500/40 shadow-xs'
+                    : 'border-sand-300 bg-cream-50 hover:bg-sage-50/40 hover:border-sand-300/80'
                 }`}
               >
                 {/* SVG Monoline Cat Illustration */}
                 <div
                   className={`w-20 h-20 flex items-center justify-center mb-3 transition-colors ${
-                    checked ? 'text-terracotta-700' : 'text-espresso-700'
+                    checked ? 'text-sage-800' : 'text-espresso-700'
                   }`}
                 >
                   <IconComponent className="w-16 h-16" />
@@ -77,14 +77,14 @@ export function Step3Activity({ profile, onChange }: Step3ActivityProps) {
                     value={opt.id}
                     checked={checked}
                     onChange={() => onChange({ activity: opt.id })}
-                    className="h-4 w-4 text-terracotta-600 accent-terracotta-600 focus:ring-espresso-900"
+                    className="h-4 w-4 text-sage-700 accent-sage-600 focus:ring-sage-500"
                   />
                   <span className="font-serif text-lg font-semibold text-espresso-950">
                     {opt.label}
                   </span>
                 </div>
 
-                <p className="text-xs text-espresso-600 leading-relaxed">
+                <p className="text-xs text-espresso-700 leading-relaxed">
                   {opt.description}
                 </p>
               </label>

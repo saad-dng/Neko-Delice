@@ -113,7 +113,7 @@ export function PlanResult({ bundle, profile, onEditAnswers }: PlanResultProps) 
 
       {/* Main Result Headline */}
       <div>
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-oat-100 text-espresso-800 text-xs font-semibold uppercase tracking-wider mb-3">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sage-100/90 border border-sage-200/80 text-sage-800 text-xs font-semibold uppercase tracking-wider mb-3">
           <span>Personalized Nutrition Target</span>
         </div>
 
@@ -154,14 +154,14 @@ export function PlanResult({ bundle, profile, onEditAnswers }: PlanResultProps) 
           </p>
         </div>
 
-        <div className="p-6 rounded-2xl bg-oat-100 border border-sand-300/80">
-          <div className="text-xs font-semibold uppercase tracking-wider text-terracotta-700 mb-1">
+        <div className="p-6 rounded-2xl bg-sage-50/80 border border-sage-300/80 shadow-2xs">
+          <div className="text-xs font-semibold uppercase tracking-wider text-sage-800 mb-1">
             Maintenance Target (MER)
           </div>
           <div className={`font-serif text-3xl font-semibold text-espresso-950 mb-1 ${TABULAR_NUMS}`}>
             {bundle.mer} <span className="text-lg font-sans font-normal text-espresso-700">kcal/day</span>
           </div>
-          <p className="text-xs text-espresso-600 leading-relaxed">
+          <p className="text-xs text-espresso-700 leading-relaxed">
             Daily intake adjusted for life stage and activity multiplier.
           </p>
         </div>
@@ -248,7 +248,7 @@ export function PlanResult({ bundle, profile, onEditAnswers }: PlanResultProps) 
                   key={line.productId}
                   className={`p-4 sm:p-5 rounded-2xl border transition-all ${
                     fountainChecked
-                      ? 'border-terracotta-600 bg-oat-100 shadow-sm'
+                      ? 'border-sage-600 bg-sage-50/80 ring-1.5 ring-sage-500/40 shadow-xs'
                       : 'border-sand-300 bg-cream-50'
                   }`}
                 >
@@ -258,7 +258,7 @@ export function PlanResult({ bundle, profile, onEditAnswers }: PlanResultProps) 
                         type="checkbox"
                         checked={fountainChecked}
                         onChange={(e) => setFountainChecked(e.target.checked)}
-                        className="h-5 w-5 text-terracotta-600 rounded border-sand-300 accent-terracotta-600 focus:ring-espresso-900 cursor-pointer"
+                        className="h-5 w-5 text-sage-700 rounded border-sand-300 accent-sage-600 focus:ring-sage-500 cursor-pointer"
                         aria-label="Add Ceramic Water Fountain to bundle"
                       />
                     </label>
@@ -274,7 +274,7 @@ export function PlanResult({ bundle, profile, onEditAnswers }: PlanResultProps) 
 
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full bg-sand-300/50 text-espresso-800">
+                        <span className="text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-full bg-sage-100 text-sage-800 border border-sage-200/70">
                           Suggested hydration add-on
                         </span>
                       </div>

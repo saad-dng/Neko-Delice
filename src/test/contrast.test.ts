@@ -33,6 +33,8 @@ describe('Design Tokens Contrast Ratios (WCAG AA)', () => {
     espresso900: '#2B211A',
     terracotta600: '#A94F33',
     oak600: '#8B6A45',
+    sage700: '#617359',
+    sage800: '#4B5A44',
   }
 
   it('espresso on cream >= 4.5:1 (passes comfortably >= 10:1)', () => {
@@ -62,6 +64,16 @@ describe('Design Tokens Contrast Ratios (WCAG AA)', () => {
 
   it('oak-600 on cream >= 4.5:1 (wood-tone details & hardware accent)', () => {
     const ratio = getContrastRatio(colors.oak600, colors.cream50)
+    expect(ratio).toBeGreaterThanOrEqual(4.5)
+  })
+
+  it('sage-700 on cream >= 4.5:1 (deep sage text/accent)', () => {
+    const ratio = getContrastRatio(colors.sage700, colors.cream50)
+    expect(ratio).toBeGreaterThanOrEqual(4.5)
+  })
+
+  it('sage-800 on cream >= 4.5:1 (dark sage body/heading text)', () => {
+    const ratio = getContrastRatio(colors.sage800, colors.cream50)
     expect(ratio).toBeGreaterThanOrEqual(4.5)
   })
 })

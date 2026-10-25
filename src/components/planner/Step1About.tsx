@@ -41,7 +41,7 @@ export function Step1About({ profile, onChange }: Step1AboutProps) {
           value={profile.name}
           onChange={(e) => onChange({ name: e.target.value })}
           placeholder="e.g. Mochi"
-          className="w-full max-w-md h-12 px-4 rounded-xl bg-cream-50 border border-sand-300 text-espresso-950 placeholder:text-espresso-400 focus:outline-none focus:ring-2 focus:ring-espresso-900 focus:ring-offset-2 focus:ring-offset-cream-50 transition-colors"
+          className="w-full max-w-md h-12 px-4 rounded-xl bg-cream-50 border border-sand-300 text-espresso-950 placeholder:text-espresso-400 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50 transition-colors"
         />
       </div>
 
@@ -59,10 +59,10 @@ export function Step1About({ profile, onChange }: Step1AboutProps) {
             return (
               <label
                 key={stage.id}
-                className={`relative flex flex-col p-4 rounded-2xl border cursor-pointer transition-all ${
+                className={`relative flex flex-col p-4 rounded-2xl border cursor-pointer select-none transition-all ${
                   checked
-                    ? 'border-terracotta-600 bg-oat-100/70 shadow-sm'
-                    : 'border-sand-300 bg-cream-50 hover:bg-oat-100/40 hover:border-sand-300/80'
+                    ? 'border-sage-600 bg-sage-50/85 ring-1.5 ring-sage-500/40 shadow-xs'
+                    : 'border-sand-300 bg-cream-50 hover:bg-sage-50/40 hover:border-sand-300/80'
                 }`}
               >
                 <div className="flex items-center justify-between mb-1">
@@ -75,7 +75,7 @@ export function Step1About({ profile, onChange }: Step1AboutProps) {
                     value={stage.id}
                     checked={checked}
                     onChange={() => onChange({ stage: stage.id })}
-                    className="h-4 w-4 text-terracotta-600 accent-terracotta-600 focus:ring-espresso-900"
+                    className="h-4 w-4 text-sage-700 accent-sage-600 focus:ring-sage-500"
                   />
                 </div>
                 <span className="text-xs text-espresso-600">{stage.helper}</span>
@@ -95,7 +95,7 @@ export function Step1About({ profile, onChange }: Step1AboutProps) {
         </p>
 
         {isKitten ? (
-          <div className="p-4 rounded-xl bg-oat-100 border border-sand-300/60 text-xs sm:text-sm text-espresso-700 leading-relaxed mb-2">
+          <div className="p-4 rounded-xl bg-sage-50/80 border border-sage-200/80 text-xs sm:text-sm text-espresso-700 leading-relaxed mb-3">
             <span className="font-semibold text-espresso-900">
               Not applicable for kittens:
             </span>{' '}
@@ -109,8 +109,8 @@ export function Step1About({ profile, onChange }: Step1AboutProps) {
               isKitten
                 ? 'opacity-40 cursor-not-allowed border-sand-300/50 bg-cream-50'
                 : profile.neutered
-                  ? 'border-terracotta-600 bg-oat-100 font-medium text-espresso-950'
-                  : 'border-sand-300 bg-cream-50 hover:bg-oat-100/40 text-espresso-800'
+                  ? 'border-sage-600 bg-sage-50/85 ring-1.5 ring-sage-500/40 font-medium text-espresso-950'
+                  : 'border-sand-300 bg-cream-50 hover:bg-sage-50/40 text-espresso-800'
             }`}
           >
             <input
@@ -120,7 +120,7 @@ export function Step1About({ profile, onChange }: Step1AboutProps) {
               disabled={isKitten}
               checked={profile.neutered}
               onChange={() => onChange({ neutered: true })}
-              className="h-4 w-4 text-terracotta-600 accent-terracotta-600 focus:ring-espresso-900 disabled:cursor-not-allowed"
+              className="h-4 w-4 text-sage-700 accent-sage-600 focus:ring-sage-500 disabled:cursor-not-allowed"
             />
             <span className="text-sm">Yes, neutered</span>
           </label>
@@ -130,8 +130,8 @@ export function Step1About({ profile, onChange }: Step1AboutProps) {
               isKitten
                 ? 'opacity-40 cursor-not-allowed border-sand-300/50 bg-cream-50'
                 : !profile.neutered
-                  ? 'border-terracotta-600 bg-oat-100 font-medium text-espresso-950'
-                  : 'border-sand-300 bg-cream-50 hover:bg-oat-100/40 text-espresso-800'
+                  ? 'border-sage-600 bg-sage-50/85 ring-1.5 ring-sage-500/40 font-medium text-espresso-950'
+                  : 'border-sand-300 bg-cream-50 hover:bg-sage-50/40 text-espresso-800'
             }`}
           >
             <input
@@ -141,7 +141,7 @@ export function Step1About({ profile, onChange }: Step1AboutProps) {
               disabled={isKitten}
               checked={!profile.neutered}
               onChange={() => onChange({ neutered: false })}
-              className="h-4 w-4 text-terracotta-600 accent-terracotta-600 focus:ring-espresso-900 disabled:cursor-not-allowed"
+              className="h-4 w-4 text-sage-700 accent-sage-600 focus:ring-sage-500 disabled:cursor-not-allowed"
             />
             <span className="text-sm">No, intact</span>
           </label>

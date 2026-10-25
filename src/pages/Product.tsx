@@ -292,7 +292,7 @@ export function ProductPage() {
             <div className="lg:col-span-5 flex flex-col">
               {/* Category & Life Stage Badges */}
               <div className="flex flex-wrap items-center gap-2 mb-3">
-                <span className="inline-block rounded-full bg-oat-100 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-espresso-900">
+                <span className="inline-block rounded-full bg-sage-100/90 border border-sage-200/80 px-3 py-1 text-xs font-medium text-sage-800">
                   {CATEGORY_LABELS[product.category]}
                 </span>
                 <span className="text-xs font-medium text-espresso-600">
@@ -303,7 +303,7 @@ export function ProductPage() {
               {/* Product Title */}
               <Heading
                 level={1}
-                className="font-serif text-3xl sm:text-4xl font-semibold text-espresso-950 leading-tight mb-3"
+                className="font-serif text-3xl sm:text-4xl lg:text-[2.6rem] font-semibold text-espresso-950 leading-tight tracking-tight text-balance mb-3"
               >
                 {product.name}
               </Heading>
@@ -329,15 +329,15 @@ export function ProductPage() {
 
               {/* Supportive Health Goal Chips & Notes */}
               {product.healthGoals.length > 0 && (
-                <div className="mb-6 space-y-2 p-4 rounded-xl bg-oat-100/50 border border-sand-300/40">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-espresso-950 block mb-2">
+                <div className="mb-6 space-y-2.5 p-4.5 rounded-2xl bg-sage-50/70 border border-sage-200/70">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-sage-800 block mb-1.5">
                     Formulated For
                   </span>
-                  <div className="flex flex-wrap gap-2 mb-3">
+                  <div className="flex flex-wrap gap-2 mb-2">
                     {product.healthGoals.map((goal) => (
                       <span
                         key={goal}
-                        className="inline-flex items-center rounded-full bg-cream-50 border border-sand-300 px-3 py-1 text-xs font-medium text-espresso-900"
+                        className="inline-flex items-center rounded-full bg-cream-50 border border-sage-300/80 px-3 py-1 text-xs font-medium text-sage-900 shadow-2xs"
                       >
                         {GOAL_LABELS[goal]}
                       </span>
@@ -349,9 +349,9 @@ export function ProductPage() {
                     return (
                       <p
                         key={goal}
-                        className="text-xs text-espresso-700 leading-relaxed"
+                        className="text-xs text-espresso-800 leading-relaxed"
                       >
-                        <strong className="font-semibold text-espresso-900">
+                        <strong className="font-semibold text-sage-900">
                           {GOAL_LABELS[goal]}:
                         </strong>{' '}
                         {note}
@@ -422,7 +422,7 @@ export function ProductPage() {
                     <summary className="flex items-center justify-between cursor-pointer list-none py-3.5 px-2 -mx-2 rounded-xl font-serif text-lg font-semibold text-espresso-950 hover:text-terracotta-700 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50 select-none transition-colors">
                       <span>Ingredients</span>
                       <span
-                        className="flex items-center justify-center w-7 h-7 rounded-full bg-oat-100/80 text-espresso-700 group-hover:bg-oat-200 group-hover:text-espresso-950 group-open:bg-terracotta-100/70 group-open:text-terracotta-700 transition-all duration-200 text-lg font-light leading-none shrink-0"
+                        className="flex items-center justify-center w-7 h-7 rounded-full bg-oat-100/80 text-espresso-700 group-hover:bg-oat-200 group-hover:text-espresso-950 group-open:bg-sage-100 group-open:text-sage-800 transition-all duration-200 text-lg font-light leading-none shrink-0"
                         aria-hidden="true"
                       >
                         <span className="inline-block transition-transform duration-200 group-open:rotate-45 leading-none">+</span>
@@ -440,7 +440,7 @@ export function ProductPage() {
                     <summary className="flex items-center justify-between cursor-pointer list-none py-3.5 px-2 -mx-2 rounded-xl font-serif text-lg font-semibold text-espresso-950 hover:text-terracotta-700 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50 select-none transition-colors">
                       <span>Guaranteed analysis</span>
                       <span
-                        className="flex items-center justify-center w-7 h-7 rounded-full bg-oat-100/80 text-espresso-700 group-hover:bg-oat-200 group-hover:text-espresso-950 group-open:bg-terracotta-100/70 group-open:text-terracotta-700 transition-all duration-200 text-lg font-light leading-none shrink-0"
+                        className="flex items-center justify-center w-7 h-7 rounded-full bg-oat-100/80 text-espresso-700 group-hover:bg-oat-200 group-hover:text-espresso-950 group-open:bg-sage-100 group-open:text-sage-800 transition-all duration-200 text-lg font-light leading-none shrink-0"
                         aria-hidden="true"
                       >
                         <span className="inline-block transition-transform duration-200 group-open:rotate-45 leading-none">+</span>
@@ -479,7 +479,7 @@ export function ProductPage() {
                     <summary className="flex items-center justify-between cursor-pointer list-none py-3.5 px-2 -mx-2 rounded-xl font-serif text-lg font-semibold text-espresso-950 hover:text-terracotta-700 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50 select-none transition-colors">
                       <span>Specifications</span>
                       <span
-                        className="flex items-center justify-center w-7 h-7 rounded-full bg-oat-100/80 text-espresso-700 group-hover:bg-oat-200 group-hover:text-espresso-950 group-open:bg-terracotta-100/70 group-open:text-terracotta-700 transition-all duration-200 text-lg font-light leading-none shrink-0"
+                        className="flex items-center justify-center w-7 h-7 rounded-full bg-oat-100/80 text-espresso-700 group-hover:bg-oat-200 group-hover:text-espresso-950 group-open:bg-sage-100 group-open:text-sage-800 transition-all duration-200 text-lg font-light leading-none shrink-0"
                         aria-hidden="true"
                       >
                         <span className="inline-block transition-transform duration-200 group-open:rotate-45 leading-none">+</span>
@@ -516,7 +516,7 @@ export function ProductPage() {
                     <summary className="flex items-center justify-between cursor-pointer list-none py-3.5 px-2 -mx-2 rounded-xl font-serif text-lg font-semibold text-espresso-950 hover:text-terracotta-700 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50 select-none transition-colors">
                       <span>Storage & feeding advice</span>
                       <span
-                        className="flex items-center justify-center w-7 h-7 rounded-full bg-oat-100/80 text-espresso-700 group-hover:bg-oat-200 group-hover:text-espresso-950 group-open:bg-terracotta-100/70 group-open:text-terracotta-700 transition-all duration-200 text-lg font-light leading-none shrink-0"
+                        className="flex items-center justify-center w-7 h-7 rounded-full bg-oat-100/80 text-espresso-700 group-hover:bg-oat-200 group-hover:text-espresso-950 group-open:bg-sage-100 group-open:text-sage-800 transition-all duration-200 text-lg font-light leading-none shrink-0"
                         aria-hidden="true"
                       >
                         <span className="inline-block transition-transform duration-200 group-open:rotate-45 leading-none">+</span>
@@ -535,6 +535,9 @@ export function ProductPage() {
           {feedingRows.length > 0 && (
             <div className="mt-16 pt-12 border-t border-sand-300/60">
               <div className="max-w-2xl mb-6">
+                <div className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-sage-800 mb-1">
+                  <span>Portion Guidance</span>
+                </div>
                 <h2 className="font-serif text-2xl font-semibold text-espresso-950 mb-1">
                   Daily feeding guide
                 </h2>
@@ -546,31 +549,31 @@ export function ProductPage() {
                 </p>
               </div>
 
-              <div className="overflow-x-auto rounded-xl border border-sand-300/60 bg-oat-100/30">
+              <div className="overflow-x-auto rounded-2xl border border-sand-300/70 bg-cream-50/90 shadow-2xs">
                 <table className="w-full text-left text-sm text-espresso-900">
-                  <thead className="border-b border-sand-300/60 bg-oat-100/70 text-xs font-semibold uppercase tracking-wider text-espresso-950">
+                  <thead className="border-b border-sand-300/60 bg-sage-100/60 text-xs font-semibold uppercase tracking-wider text-espresso-950">
                     <tr>
-                      <th scope="col" className="px-4 py-3">
+                      <th scope="col" className="px-5 py-3.5">
                         Cat Weight
                       </th>
-                      <th scope="col" className="px-4 py-3">
+                      <th scope="col" className="px-5 py-3.5">
                         Daily Portion
                       </th>
-                      <th scope="col" className="px-4 py-3">
+                      <th scope="col" className="px-5 py-3.5">
                         Est. Pack Longevity
                       </th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-sand-300/30">
                     {feedingRows.map((row) => (
-                      <tr key={row.weightKg} className="hover:bg-oat-100/40">
-                        <td className="px-4 py-3 font-medium">
+                      <tr key={row.weightKg} className="hover:bg-sage-50/50 transition-colors">
+                        <td className="px-5 py-3.5 font-medium tabular-nums">
                           {row.weightKg} kg
                         </td>
-                        <td className="px-4 py-3">
+                        <td className="px-5 py-3.5 tabular-nums">
                           {row.dailyAmount} {row.unit}
                         </td>
-                        <td className="px-4 py-3 text-espresso-700">
+                        <td className="px-5 py-3.5 text-espresso-700">
                           About {row.supplyDays} days / pack
                         </td>
                       </tr>
@@ -578,10 +581,8 @@ export function ProductPage() {
                   </tbody>
                 </table>
               </div>
-              <p className="mt-2 text-xs text-espresso-600">
-                An estimate for healthy cats, not veterinary advice. Check with
-                your vet for medical conditions, pregnancy, or rapid weight
-                change.
+              <p className="mt-3 text-xs text-espresso-600 leading-relaxed">
+                <strong className="font-semibold text-espresso-800">Veterinary disclaimer:</strong> An estimate for healthy cats, not veterinary advice. Check with your vet for medical conditions, pregnancy, or rapid weight change.
               </p>
             </div>
           )}

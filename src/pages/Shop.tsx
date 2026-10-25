@@ -308,7 +308,7 @@ export function ShopPage() {
                 </svg>
                 <span>Filters</span>
                 {activeFilterCount > 0 && (
-                  <span className="inline-flex items-center justify-center rounded-full bg-terracotta-600 px-2 py-0.5 text-xs font-semibold text-cream-50">
+                  <span className="inline-flex items-center justify-center rounded-full bg-sage-700 px-2 py-0.5 text-xs font-semibold text-cream-50">
                     {activeFilterCount}
                   </span>
                 )}
@@ -339,7 +339,7 @@ export function ShopPage() {
                   id={sortSelectId}
                   value={filters.sort}
                   onChange={(e) => setSort(e.target.value as ShopSort)}
-                  className="rounded-lg border border-sand-300 bg-cream-50 px-3 py-1.5 text-sm text-espresso-900 focus:border-espresso-900 focus:outline-none focus:ring-1 focus:ring-espresso-900 cursor-pointer"
+                  className="rounded-lg border border-sand-300 bg-cream-50 px-3 py-1.5 text-sm text-espresso-900 focus:border-terracotta-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 cursor-pointer"
                 >
                   <option value="featured">Featured</option>
                   <option value="price-asc">Price: Low to High</option>
@@ -362,11 +362,11 @@ export function ShopPage() {
                   type="button"
                   onClick={() => toggleCategory(cat)}
                   aria-label={`Remove filter ${CATEGORY_LABELS[cat]}`}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-oat-100 border border-sand-300 px-3 py-1 text-xs font-medium text-espresso-900 hover:bg-sand-300/40 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 transition-colors"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-sage-100/90 border border-sage-300/80 px-3 py-1 text-xs font-medium text-sage-900 hover:bg-sage-200/80 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-600 transition-colors"
                 >
                   <span>{CATEGORY_LABELS[cat]}</span>
                   <span
-                    className="text-espresso-500 hover:text-espresso-900"
+                    className="text-sage-700 hover:text-sage-950"
                     aria-hidden="true"
                   >
                     ×

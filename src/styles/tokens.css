@@ -28,9 +28,20 @@
   --color-band-matcha-text: #56744B;
   --color-line-cream: #F1E9D6;
 
-  --color-sage-100: #EDF1EC;
-  --color-sage-600: #8FA388;
-  --color-sage-800: #556650;
+  --color-sand-100: #F2E8D7;
+  --color-sand-200: #E9DCC1;
+  --color-border-subtle: #E5D7C1;
+
+  --color-sage-50: #F4F6F2;
+  --color-sage-100: #E7ECE3;
+  --color-sage-200: #D2DDCB;
+  --color-sage-300: #B8C8AF;
+  --color-sage-400: #9DAA8B;
+  --color-sage-500: #8FA388;
+  --color-sage-600: #778A6F;
+  --color-sage-700: #617359;
+  --color-sage-800: #4B5A44;
+  --color-sage-900: #354030;
 
   --color-ochre-100: #F6EFE5;
   --color-ochre-600: #9B6E3A;

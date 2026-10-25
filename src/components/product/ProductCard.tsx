@@ -32,12 +32,12 @@ export function ProductCard({
 
   return (
     <article
-      className={`group relative flex flex-col rounded-xl bg-oat-100/40 p-4 transition-all duration-200 hover:bg-oat-100/80 ${className}`}
+      className={`group relative flex flex-col rounded-2xl bg-oat-100/40 p-4 border border-sand-300/40 transition-all duration-200 hover:bg-oat-100/70 hover:border-sand-300/70 hover:shadow-2xs ${className}`}
       data-testid="product-card"
       data-product-id={product.id}
     >
       {/* Photo Tile (beige-200 background matching pack photos) */}
-      <div className="relative aspect-square w-full overflow-hidden rounded-lg bg-beige-200">
+      <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
         {/* Default Hero Image */}
         <ProductImage
           slug={product.slug}
@@ -63,7 +63,7 @@ export function ProductCard({
         <div>
           {/* Category & Price Row */}
           <div className="flex items-center justify-between gap-2 text-xs">
-            <span className="font-medium uppercase tracking-wider text-espresso-700/80">
+            <span className="font-medium uppercase tracking-wider text-espresso-700">
               {categoryLabel}
             </span>
             <span className="font-sans font-medium text-espresso-950 tabular-nums">
@@ -83,7 +83,7 @@ export function ProductCard({
           </h2>
 
           {/* Packaging / Spec Line */}
-          <p className="mt-1 text-xs text-espresso-700/90 line-clamp-1">
+          <p className="mt-1 text-xs text-espresso-600 line-clamp-1">
             {product.unit.packSizeLabel}
           </p>
         </div>
@@ -103,7 +103,7 @@ export function ProductCard({
               useBagUi.getState().openBag(e.currentTarget)
             }}
             aria-label={`Add ${product.name} to bag`}
-            className="relative z-10 inline-flex items-center justify-center rounded-full bg-terracotta-600 px-3 py-1.5 text-xs font-medium text-cream-50 transition-all hover:bg-terracotta-700 focus:outline-none focus:ring-2 focus:ring-espresso-900 focus:ring-offset-2 active:scale-95"
+            className="relative z-10 inline-flex items-center justify-center rounded-full bg-terracotta-600 px-3 py-1.5 text-xs font-medium text-cream-50 transition-all hover:bg-terracotta-700 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 active:scale-95 cursor-pointer"
           >
             <span className="mr-1" aria-hidden="true">
               +

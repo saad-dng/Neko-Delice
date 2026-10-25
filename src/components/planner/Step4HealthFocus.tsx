@@ -62,8 +62,8 @@ export function Step4HealthFocus({ profile, onChange }: Step4HealthFocusProps) {
                 aria-label={opt.label}
                 className={`relative flex items-start gap-4 p-4 rounded-2xl border cursor-pointer select-none transition-all ${
                   checked
-                    ? 'border-terracotta-600 bg-oat-100 shadow-sm ring-1 ring-terracotta-600'
-                    : 'border-sand-300 bg-cream-50 hover:bg-oat-100/40 hover:border-sand-300/80'
+                    ? 'border-sage-600 bg-sage-50/85 ring-1.5 ring-sage-500/40 shadow-xs'
+                    : 'border-sand-300 bg-cream-50 hover:bg-sage-50/40 hover:border-sand-300/80'
                 }`}
               >
                 <input
@@ -73,7 +73,7 @@ export function Step4HealthFocus({ profile, onChange }: Step4HealthFocusProps) {
                   value={opt.id}
                   checked={checked}
                   onChange={() => onChange({ healthFocus: opt.id })}
-                  className="mt-1 h-4 w-4 text-terracotta-600 accent-terracotta-600 focus:ring-espresso-900"
+                  className="mt-1 h-4 w-4 text-sage-700 accent-sage-600 focus:ring-sage-500"
                 />
 
                 <div className="flex-1">

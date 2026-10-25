@@ -83,7 +83,7 @@ export function Step2Weight({ profile, onChange }: Step2WeightProps) {
               value={displayVal}
               onChange={handleNumberChange}
               aria-label={`Cat weight in ${unit}`}
-              className="w-28 h-12 px-3 text-right font-serif text-2xl font-semibold text-espresso-950 bg-cream-50 border border-sand-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-espresso-900"
+              className="w-28 h-12 px-3 text-right font-serif text-2xl font-semibold text-espresso-950 bg-cream-50 border border-sand-300 rounded-xl focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500"
             />
           </div>
 
@@ -137,7 +137,7 @@ export function Step2Weight({ profile, onChange }: Step2WeightProps) {
           aria-valuemax={PLANNER_CONFIG.weight.max}
           aria-valuenow={weightKg}
           aria-valuetext={`${weightKg.toFixed(1)} kilograms (${(weightKg * KG_TO_LB).toFixed(1)} pounds)`}
-          className="w-full h-2.5 bg-oat-200 rounded-lg appearance-none cursor-pointer accent-terracotta-600 focus:outline-none focus:ring-2 focus:ring-espresso-900 focus:ring-offset-2 focus:ring-offset-cream-50"
+          className="w-full h-2.5 bg-oat-200 rounded-lg appearance-none cursor-pointer accent-terracotta-600 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50"
         />
 
         <div className="flex justify-between text-xs text-espresso-500 mt-2">
@@ -148,9 +148,9 @@ export function Step2Weight({ profile, onChange }: Step2WeightProps) {
       </div>
 
       {/* Size Band Indicator Card */}
-      <div className="p-4 rounded-2xl bg-oat-100 border border-sand-300/80">
+      <div className="p-4 rounded-2xl bg-sage-50/80 border border-sage-200/80">
         <div className="flex items-center gap-2 mb-1">
-          <span className="text-xs font-bold uppercase tracking-wider text-terracotta-700">
+          <span className="text-xs font-bold uppercase tracking-wider text-sage-800">
             Size Indicator:
           </span>
           <span
@@ -170,7 +170,7 @@ export function Step2Weight({ profile, onChange }: Step2WeightProps) {
                 : '(> 6.0 kg)'}
           </span>
         </div>
-        <p className="text-xs text-espresso-600 leading-relaxed">
+        <p className="text-xs text-espresso-700 leading-relaxed">
           This is an anatomical size indicator based on skeletal frame and body mass, not a veterinary body-condition score.
         </p>
       </div>

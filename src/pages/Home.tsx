@@ -51,8 +51,8 @@ export function HomePage() {
       <Section className="pt-12 sm:pt-20 pb-16 sm:pb-24 overflow-hidden">
         <Container>
           <div className="max-w-3xl mx-auto text-center flex flex-col items-center">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-oat-100 border border-sand-300 text-espresso-800 text-xs font-medium mb-6">
-              <span className="w-2 h-2 rounded-full bg-terracotta-600" aria-hidden="true" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sage-50/90 border border-sage-200/80 text-sage-900 text-xs font-medium mb-6">
+              <span className="w-2 h-2 rounded-full bg-sage-600" aria-hidden="true" />
               Vet-informed feline nutrition &amp; quiet hardware
             </div>
 
@@ -142,17 +142,17 @@ export function HomePage() {
                   aria-selected={isSelected}
                   aria-controls="home-products-panel"
                   onClick={() => setSelectedCategory(cat.id)}
-                  className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full px-4 py-2 text-xs font-medium transition-all cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-600 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50 ${
+                  className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full px-4 py-2 text-xs font-medium transition-all cursor-pointer focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-600 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50 ${
                     isSelected
-                      ? 'bg-terracotta-600 text-cream-50 border border-terracotta-600 shadow-sm'
-                      : 'bg-oat-100/75 border border-sand-300/80 text-espresso-800 hover:bg-oat-100 hover:border-sand-300 hover:text-espresso-950'
+                      ? 'bg-sage-700 text-cream-50 border border-sage-700 shadow-sm'
+                      : 'bg-oat-100/75 border border-sand-300/80 text-espresso-800 hover:bg-sage-50 hover:border-sage-300 hover:text-espresso-950'
                   }`}
                 >
                   <span>{cat.label}</span>
                   <span
                     className={`inline-flex items-center justify-center rounded-full px-1.5 py-0.5 text-[10px] font-bold leading-none ${
                       isSelected
-                        ? 'bg-cream-50 text-terracotta-800'
+                        ? 'bg-cream-50 text-sage-900'
                         : 'bg-sand-300/80 text-espresso-900'
                     }`}
                   >
@@ -193,14 +193,14 @@ export function HomePage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-10 lg:gap-14">
               {/* Illustration in warm circular aperture */}
               <div className="lg:col-span-4 flex justify-center text-espresso-900">
-                <div className="w-48 h-48 sm:w-56 sm:h-56 rounded-full bg-cream-50/90 border border-sand-300/70 shadow-xs flex items-center justify-center p-8">
-                  <CatSitting width={140} height={140} aria-hidden="true" className="w-full h-full text-espresso-900" />
+                <div className="w-48 h-48 sm:w-56 sm:h-56 rounded-full bg-sage-50/90 border border-sage-200/80 shadow-xs flex items-center justify-center p-8 text-sage-800">
+                  <CatSitting width={140} height={140} aria-hidden="true" className="w-full h-full text-sage-800" />
                 </div>
               </div>
 
               {/* Copy & Steps */}
               <div className="lg:col-span-8 flex flex-col items-start">
-                <p className="text-xs font-semibold uppercase tracking-wider text-terracotta-700 mb-2">
+                <p className="text-xs font-semibold uppercase tracking-wider text-sage-800 mb-2">
                   Calorie &amp; Meal Planner
                 </p>
 
@@ -238,7 +238,7 @@ export function HomePage() {
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-xl bg-cream-50/80 border border-sand-300/60 shadow-2xs">
+                  <div className="p-4 rounded-xl bg-cream-50/80 border border-sage-200/80 shadow-2xs">
                     <span className="w-6 h-6 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center font-serif text-xs font-bold mb-2">
                       3
                     </span>
@@ -268,7 +268,7 @@ export function HomePage() {
       </Section>
 
       {/* 4. INGREDIENT PROMISE STRIP SECTION */}
-      <Section className="bg-oat-100/60 border-y border-sand-300">
+      <Section className="bg-sage-50/40 border-y border-sand-300/70">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-4">
             <div className="flex items-start gap-4">

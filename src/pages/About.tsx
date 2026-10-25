@@ -19,9 +19,10 @@ export function AboutPage() {
       {/* 1. HERO SECTION */}
       <Section className="pt-12 sm:pt-20 pb-12 sm:pb-16">
         <Container className="max-w-4xl">
-          <p className="text-xs font-semibold uppercase tracking-wider text-terracotta-700 mb-2">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sage-50/90 border border-sage-200/80 text-sage-900 text-xs font-medium mb-4">
+            <span className="w-2 h-2 rounded-full bg-sage-600" aria-hidden="true" />
             Our Philosophy
-          </p>
+          </div>
 
           <Heading level={1} className="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold text-espresso-950 mb-6 text-balance leading-[1.12]">
             Honest food, quiet design
@@ -34,7 +35,7 @@ export function AboutPage() {
       </Section>
 
       {/* 2. PILLARS & INGREDIENT SOURCING SECTION */}
-      <Section reveal defer className="bg-oat-100/40 border-y border-sand-300/70">
+      <Section reveal defer className="bg-sand-100/35 border-y border-sand-300/70">
         <Container className="max-w-4xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14">
             {/* Our Approach */}
@@ -52,7 +53,7 @@ export function AboutPage() {
 
             {/* Transparent Sourcing */}
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-ochre-800 block mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-sage-800 block mb-1">
                 Pure Provenance
               </span>
               <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-espresso-950 mb-4">
@@ -70,26 +71,34 @@ export function AboutPage() {
               Quality commitments
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="flex items-start gap-3 p-4 rounded-xl bg-cream-50/70 border border-sand-300/60">
-                <span className="text-terracotta-700 font-bold shrink-0">&check;</span>
+              <div className="flex items-start gap-3.5 p-4 rounded-xl bg-cream-50/90 border border-sand-300/60 shadow-2xs">
+                <span className="w-5 h-5 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center shrink-0 text-xs font-bold mt-0.5" aria-hidden="true">
+                  ✓
+                </span>
                 <span className="text-sm text-espresso-800 leading-relaxed">
                   Never any wheat, corn, soy, or byproduct meals.
                 </span>
               </div>
-              <div className="flex items-start gap-3 p-4 rounded-xl bg-cream-50/70 border border-sand-300/60">
-                <span className="text-terracotta-700 font-bold shrink-0">&check;</span>
+              <div className="flex items-start gap-3.5 p-4 rounded-xl bg-cream-50/90 border border-sand-300/60 shadow-2xs">
+                <span className="w-5 h-5 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center shrink-0 text-xs font-bold mt-0.5" aria-hidden="true">
+                  ✓
+                </span>
                 <span className="text-sm text-espresso-800 leading-relaxed">
                   Single-source proteins for clear allergy elimination.
                 </span>
               </div>
-              <div className="flex items-start gap-3 p-4 rounded-xl bg-cream-50/70 border border-sand-300/60">
-                <span className="text-terracotta-700 font-bold shrink-0">&check;</span>
+              <div className="flex items-start gap-3.5 p-4 rounded-xl bg-cream-50/90 border border-sand-300/60 shadow-2xs">
+                <span className="w-5 h-5 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center shrink-0 text-xs font-bold mt-0.5" aria-hidden="true">
+                  ✓
+                </span>
                 <span className="text-sm text-espresso-800 leading-relaxed">
                   Accurate caloric densities for exact portion calculation.
                 </span>
               </div>
-              <div className="flex items-start gap-3 p-4 rounded-xl bg-cream-50/70 border border-sand-300/60">
-                <span className="text-terracotta-700 font-bold shrink-0">&check;</span>
+              <div className="flex items-start gap-3.5 p-4 rounded-xl bg-cream-50/90 border border-sand-300/60 shadow-2xs">
+                <span className="w-5 h-5 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center shrink-0 text-xs font-bold mt-0.5" aria-hidden="true">
+                  ✓
+                </span>
                 <span className="text-sm text-espresso-800 leading-relaxed">
                   Sustainable materials: paper-based pouches, brushed steel, and solid ash wood.
                 </span>
@@ -103,7 +112,7 @@ export function AboutPage() {
       <Section reveal defer>
         <Container className="max-w-5xl">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <p className="text-xs font-semibold uppercase tracking-wider text-terracotta-700 mb-2">
+            <p className="text-xs font-semibold uppercase tracking-wider text-sage-800 mb-2">
               Visual Integrity
             </p>
             <Heading level={2} className="font-serif text-3xl sm:text-4xl font-semibold text-espresso-950 mb-3">
@@ -116,7 +125,7 @@ export function AboutPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Close-up 1: Chicken Mousse Swirl */}
-            <div className="flex flex-col rounded-2xl bg-beige-200 p-4 border border-sand-300/60">
+            <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
               <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
                 <ProductImage
                   slug="kitten-growth-mousse-broth"
@@ -128,14 +137,14 @@ export function AboutPage() {
                 <span className="text-xs font-bold text-espresso-950 block">
                   Chicken Mousse &amp; Broth
                 </span>
-                <span className="text-xs text-espresso-800 leading-relaxed">
+                <span className="text-xs text-espresso-700 leading-relaxed mt-0.5 block">
                   62% deboned chicken in natural broth for gentle hydration.
                 </span>
               </div>
             </div>
 
             {/* Close-up 2: Wild Salmon & Quail Paté */}
-            <div className="flex flex-col rounded-2xl bg-beige-200 p-4 border border-sand-300/60">
+            <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
               <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
                 <ProductImage
                   slug="wild-salmon-quail-pate"
@@ -147,14 +156,14 @@ export function AboutPage() {
                 <span className="text-xs font-bold text-espresso-950 block">
                   Wild Salmon &amp; Quail
                 </span>
-                <span className="text-xs text-espresso-800 leading-relaxed">
+                <span className="text-xs text-espresso-700 leading-relaxed mt-0.5 block">
                   Smooth paté with cranberries and controlled magnesium.
                 </span>
               </div>
             </div>
 
             {/* Close-up 3: Oven-Baked Duck Kibble */}
-            <div className="flex flex-col rounded-2xl bg-beige-200 p-4 border border-sand-300/60">
+            <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
               <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
                 <ProductImage
                   slug="duck-sweet-potato-kibble"
@@ -166,14 +175,14 @@ export function AboutPage() {
                 <span className="text-xs font-bold text-espresso-950 block">
                   Oven-Baked Duck Kibble
                 </span>
-                <span className="text-xs text-espresso-800 leading-relaxed">
+                <span className="text-xs text-espresso-700 leading-relaxed mt-0.5 block">
                   Small, crunchy morsels with sweet potato and psyllium husk.
                 </span>
               </div>
             </div>
 
             {/* Close-up 4: Norwegian Salmon Oil */}
-            <div className="flex flex-col rounded-2xl bg-beige-200 p-4 border border-sand-300/60">
+            <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
               <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
                 <ProductImage
                   slug="norwegian-salmon-oil"
@@ -185,7 +194,7 @@ export function AboutPage() {
                 <span className="text-xs font-bold text-espresso-950 block">
                   Cold-Filtered Salmon Oil
                 </span>
-                <span className="text-xs text-espresso-800 leading-relaxed">
+                <span className="text-xs text-espresso-700 leading-relaxed mt-0.5 block">
                   Golden stream of pure EPA and DHA fatty acids.
                 </span>
               </div>
@@ -195,14 +204,14 @@ export function AboutPage() {
       </Section>
 
       {/* 4. BEHIND THE BUILD (CASE STUDY) */}
-      <Section reveal defer className="bg-oat-100/60 border-t border-sand-300">
+      <Section reveal defer className="bg-sand-100/50 border-t border-sand-300/80">
         <Container className="max-w-4xl">
           <div className="flex items-center gap-3 mb-4">
-            <div className="p-2 rounded-xl bg-cream-50 border border-sand-300 text-espresso-900">
+            <div className="p-2.5 rounded-xl bg-cream-50 border border-sage-200/80 text-sage-700 shadow-2xs">
               <CatHead width={28} height={28} aria-hidden="true" />
             </div>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-terracotta-700">
+              <p className="text-xs font-semibold uppercase tracking-wider text-sage-800">
                 Architecture &amp; Design Case Study
               </p>
               <Heading level={2} className="font-serif text-3xl sm:text-4xl font-semibold text-espresso-950">

@@ -114,8 +114,8 @@ export function MealPlanPage() {
       <Section className="pb-28 sm:pb-20">
         <Container className="max-w-3xl">
           {/* Header Badge */}
-          <div className="flex items-center gap-3 mb-4 text-terracotta-700">
-            <CatHead width={32} height={32} aria-hidden="true" />
+          <div className="flex items-center gap-3 mb-4 text-sage-800">
+            <CatHead width={32} height={32} aria-hidden="true" className="text-sage-700" />
             <span className="text-xs font-semibold uppercase tracking-wider">
               Clinical Feline Nutrition
             </span>
@@ -153,7 +153,7 @@ export function MealPlanPage() {
                 <h2
                   ref={headingRef}
                   tabIndex={-1}
-                  className="font-serif text-2xl sm:text-3xl font-semibold text-espresso-950 mb-6 outline-none focus:ring-2 focus:ring-espresso-900 focus:ring-offset-4 focus:ring-offset-cream-50 rounded-lg inline-block"
+                  className="font-serif text-2xl sm:text-3xl font-semibold text-espresso-950 mb-6 outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-600 focus-visible:ring-offset-4 focus-visible:ring-offset-cream-50 rounded-lg inline-block"
                 >
                   {STEP_TITLES[urlStep] || 'About your cat'}
                 </h2>
@@ -198,8 +198,8 @@ export function MealPlanPage() {
               </div>
 
               {/* Mandatory Veterinary Disclaimer on Wizard */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-oat-100 border border-sand-300 text-xs sm:text-sm text-espresso-700 leading-relaxed">
-                <span className="font-semibold text-espresso-900">
+              <div className="p-4 sm:p-5 rounded-2xl bg-sage-50/70 border border-sage-200/80 text-xs sm:text-sm text-espresso-800 leading-relaxed">
+                <span className="font-semibold text-espresso-950">
                   Veterinary notice:{' '}
                 </span>
                 An estimate for healthy cats, not veterinary advice. Check with your vet for medical conditions, pregnancy, or rapid weight change.
