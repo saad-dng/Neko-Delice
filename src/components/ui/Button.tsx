@@ -19,7 +19,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseClasses =
-    'inline-flex items-center justify-center font-sans font-medium text-center transition-colors min-h-[48px] px-6 rounded-full cursor-pointer select-none text-base disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none'
+    'inline-flex items-center justify-center font-sans font-medium text-center transition-all duration-150 active:scale-[0.98] min-h-[48px] px-6 rounded-full cursor-pointer select-none text-base disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none'
 
   const variantClasses = {
     primary:

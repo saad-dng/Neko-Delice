@@ -362,11 +362,11 @@ export function ShopPage() {
                   type="button"
                   onClick={() => toggleCategory(cat)}
                   aria-label={`Remove filter ${CATEGORY_LABELS[cat]}`}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-sage-100/90 border border-sage-300/80 px-3 py-1 text-xs font-medium text-sage-900 hover:bg-sage-200/80 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-600 transition-colors"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-sage-100/90 border border-sage-300/80 px-3 py-1 text-xs font-medium text-sage-900 hover:bg-sage-200/80 active:scale-95 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-600 transition-all cursor-pointer"
                 >
                   <span>{CATEGORY_LABELS[cat]}</span>
                   <span
-                    className="text-sage-700 hover:text-sage-950"
+                    className="text-sage-700 hover:text-sage-950 font-bold"
                     aria-hidden="true"
                   >
                     ×
@@ -380,7 +380,7 @@ export function ShopPage() {
                   type="button"
                   onClick={() => toggleStage(st)}
                   aria-label={`Remove filter ${STAGE_LABELS[st]}`}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-sage-100/90 border border-sage-300/80 px-3 py-1 text-xs font-medium text-sage-900 hover:bg-sage-200/80 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-600 transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-sage-100/90 border border-sage-300/80 px-3 py-1 text-xs font-medium text-sage-900 hover:bg-sage-200/80 active:scale-95 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-600 transition-all cursor-pointer"
                 >
                   <span>{STAGE_LABELS[st]}</span>
                   <span
@@ -398,7 +398,7 @@ export function ShopPage() {
                   type="button"
                   onClick={() => toggleGoal(gl)}
                   aria-label={`Remove filter ${GOAL_LABELS[gl]}`}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-sage-100/90 border border-sage-300/80 px-3 py-1 text-xs font-medium text-sage-900 hover:bg-sage-200/80 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-600 transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-sage-100/90 border border-sage-300/80 px-3 py-1 text-xs font-medium text-sage-900 hover:bg-sage-200/80 active:scale-95 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-600 transition-all cursor-pointer"
                 >
                   <span>{GOAL_LABELS[gl]}</span>
                   <span

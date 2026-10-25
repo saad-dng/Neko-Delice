@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { products } from '@/data/products'
 import type { BundleResult, CatProfile } from '@/data/types'
 import { PLANNER_CONFIG } from '@/config/planner'
@@ -263,14 +264,18 @@ export function PlanResult({ bundle, profile, onEditAnswers }: PlanResultProps) 
                       />
                     </label>
 
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-xl overflow-hidden bg-beige-200">
+                    <Link
+                      to={`/product/${product.slug}`}
+                      aria-label={`View ${product.name} details`}
+                      className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-xl overflow-hidden bg-beige-200 transition-opacity hover:opacity-85 focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500"
+                    >
                       <ProductImage
                         slug={product.slug}
                         imageRole="hero"
                         sizes="80px"
                         className="w-full h-full object-cover"
                       />
-                    </div>
+                    </Link>
 
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1">
@@ -278,9 +283,12 @@ export function PlanResult({ bundle, profile, onEditAnswers }: PlanResultProps) 
                           Suggested hydration add-on
                         </span>
                       </div>
-                      <div className="font-serif text-base sm:text-lg font-semibold text-espresso-950 truncate">
+                      <Link
+                        to={`/product/${product.slug}`}
+                        className="font-serif text-base sm:text-lg font-semibold text-espresso-950 truncate block hover:text-terracotta-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 rounded"
+                      >
                         {product.name}
-                      </div>
+                      </Link>
                       <p className="text-xs text-espresso-600 mt-0.5">
                         Fresh moving water encourages vital hydration for urinary tract wellness.
                       </p>
@@ -296,21 +304,28 @@ export function PlanResult({ bundle, profile, onEditAnswers }: PlanResultProps) 
             return (
               <div
                 key={line.productId}
-                className="p-4 sm:p-5 rounded-2xl border border-sand-300 bg-cream-50 flex items-center gap-4"
+                className="p-4 sm:p-5 rounded-2xl border border-sand-300 bg-cream-50 flex items-center gap-4 transition-colors hover:border-sand-300/90"
               >
-                <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-xl overflow-hidden bg-beige-200">
+                <Link
+                  to={`/product/${product.slug}`}
+                  aria-label={`View ${product.name} details`}
+                  className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-xl overflow-hidden bg-beige-200 transition-opacity hover:opacity-85 focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500"
+                >
                   <ProductImage
                     slug={product.slug}
                     imageRole="hero"
                     sizes="80px"
                     className="w-full h-full object-cover"
                   />
-                </div>
+                </Link>
 
                 <div className="flex-1 min-w-0">
-                  <div className="font-serif text-base sm:text-lg font-semibold text-espresso-950 truncate">
+                  <Link
+                    to={`/product/${product.slug}`}
+                    className="font-serif text-base sm:text-lg font-semibold text-espresso-950 truncate block hover:text-terracotta-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 rounded"
+                  >
                     {product.name}
-                  </div>
+                  </Link>
                   <div className="text-xs text-espresso-600 mt-0.5">
                     Quantity: {line.qty}{' '}
                     {line.qty === 1
@@ -343,7 +358,7 @@ export function PlanResult({ bundle, profile, onEditAnswers }: PlanResultProps) 
       </div>
 
       {/* Action CTA Row */}
-      <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
+      <div className="flex flex-col sm:flex-row flex-wrap items-center gap-3.5 pt-2">
         <Button
           variant="primary"
           onClick={handleAddToBag}
@@ -360,10 +375,19 @@ export function PlanResult({ bundle, profile, onEditAnswers }: PlanResultProps) 
           Edit answers
         </Button>
 
+        <Button
+          asChild
+          to="/shop"
+          variant="secondary"
+          className="w-full sm:w-auto"
+        >
+          Explore the collection
+        </Button>
+
         <button
           type="button"
           onClick={handleCopyLink}
-          className="inline-flex items-center justify-center gap-2 text-sm font-medium text-espresso-800 hover:text-espresso-950 underline underline-offset-4 cursor-pointer py-2 px-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-espresso-900"
+          className="inline-flex items-center justify-center gap-2 text-sm font-medium text-espresso-800 hover:text-espresso-950 underline underline-offset-4 cursor-pointer py-2 px-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-espresso-900 transition-colors"
         >
           {copiedNotice ? 'Link copied! ✓' : 'Copy shareable link'}
         </button>

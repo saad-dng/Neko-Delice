@@ -45,20 +45,19 @@ export function Footer() {
             </nav>
           </div>
 
-          {/* Disclosures & Accessibility Statement */}
-          <div className="md:col-span-4 flex flex-col gap-3.5 text-xs text-espresso-800 leading-relaxed">
+          {/* Care & Digital Accessibility Statement */}
+          <div className="md:col-span-4 flex flex-col gap-3 text-xs text-espresso-800 leading-relaxed">
             <h2 className="text-xs font-bold uppercase tracking-wider text-espresso-800 mb-1">
-              Disclosures
+              Care &amp; Standards
             </h2>
-            <p className="p-3 bg-cream-50/90 rounded-xl border border-oat-300/60 shadow-2xs">
-              <strong className="font-semibold text-espresso-950 block mb-0.5">Storefront Preview:</strong>
-              This is a storefront preview. Checkout is not connected yet.
+            <p className="text-espresso-700">
+              Formulated with human-grade, single-source animal proteins and zero fillers. Our feeding recommendations are supportive estimates for healthy cats.
             </p>
             <p className="text-espresso-700">
-              Concept imagery generated with AI. Products are fictional.
-            </p>
-            <p className="text-espresso-700 pt-1">
               NEKO DELICE is committed to digital accessibility. We aim to conform to WCAG 2.1 AA standards so every cat companion can navigate with ease.
+            </p>
+            <p className="text-[11px] text-espresso-600 pt-1 border-t border-oat-300/60">
+              Always consult your veterinarian for specialized medical conditions, pregnancy, or rapid weight changes.
             </p>
           </div>
         </div>

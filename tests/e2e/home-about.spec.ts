@@ -95,7 +95,7 @@ test.describe('Home Page (P14)', () => {
 })
 
 test.describe('About Page (P14)', () => {
-  test('renders about page with single h1, philosophy, sourcing, ingredient close-ups, and Behind the Build case study', async ({
+  test('renders about page with single h1, philosophy, nutrition with purpose, ingredient close-ups, and standards', async ({
     page,
   }) => {
     await page.goto('/about')
@@ -105,42 +105,26 @@ test.describe('About Page (P14)', () => {
     await expect(h1).toHaveCount(1)
     await expect(h1).toHaveText('Honest food, quiet design')
 
-    // Narrative sections
-    await expect(page.locator('h2:has-text("Our approach")')).toBeVisible()
-    await expect(page.locator('h2:has-text("Transparent sourcing")')).toBeVisible()
-    await expect(page.locator('h2:has-text("Quality commitments")')).toBeVisible()
+    // Narrative brand sections
+    await expect(page.locator('h2:has-text("Nutrition with purpose")')).toBeVisible()
+    await expect(page.locator('h2:has-text("Ingredients you can understand")')).toBeVisible()
+    await expect(page.locator('h2:has-text("Designed for everyday care")')).toBeVisible()
+    await expect(page.locator('h2:has-text("Our standards")')).toBeVisible()
 
     // 4 Ingredient close-up cards
-    await expect(page.locator('h2:has-text("Ingredient close-ups")')).toBeVisible()
-    await expect(page.locator('text=Chicken Mousse & Broth')).toBeVisible()
-    await expect(page.locator('text=Wild Salmon & Quail')).toBeVisible()
-    await expect(page.locator('text=Oven-Baked Duck Kibble')).toBeVisible()
+    await expect(page.locator('text=Deboned Chicken & Broth')).toBeVisible()
+    await expect(page.locator('text=Wild Salmon & Lean Quail')).toBeVisible()
+    await expect(page.locator('text=Slow-Baked Duck Kibble')).toBeVisible()
     await expect(page.locator('text=Cold-Filtered Salmon Oil')).toBeVisible()
 
-    // Behind the Build section
-    await expect(page.locator('h2:has-text("Behind the build")')).toBeVisible()
-    await expect(page.locator('text=Resting Energy Requirement (RER)')).toBeVisible()
-    await expect(page.locator('text=Maintenance Energy Requirement (MER)')).toBeVisible()
+    // Closing CTA buttons
+    await expect(page.locator('a:has-text("Plan your cat\'s meals")')).toBeVisible()
+    await expect(page.locator('a:has-text("Explore the collection")')).toBeVisible()
 
-    // Live constants table from config
-    await expect(page.locator('text=Kitten (under 12 mo)')).toBeVisible()
-    await expect(page.locator('text=Indoor Lounger')).toBeVisible()
-
-    // Workflow diagram & Design decisions
-    await expect(page.locator('text=Packaging-Sampled Palette')).toBeVisible()
-    await expect(page.locator('text=Monoline Cat Vector System')).toBeVisible()
-    await expect(page.locator('text=Accessible Native <dialog>')).toBeVisible()
-    await expect(page.locator('text=Zero-Hidden-State URL Sync')).toBeVisible()
-
-    // Performance budgets table with verified values
-    await expect(page.locator('text=Initial JS payload (gzip)')).toBeVisible()
-    await expect(page.locator('text=Largest Contentful Paint (LCP)')).toBeVisible()
-    await expect(page.locator('text=58.4 KB').first()).toBeVisible()
-
-    // Disclosures
-    await expect(
-      page.locator('p:has-text("Concept imagery generated with AI. Products are fictional.")').first()
-    ).toBeVisible()
+    // Developer case study and prototype disclosures must NOT be present
+    await expect(page.locator('text=Behind the build')).not.toBeVisible()
+    await expect(page.locator('text=Resting Energy Requirement (RER)')).not.toBeVisible()
+    await expect(page.locator('text=Concept imagery generated with AI')).not.toBeVisible()
   })
 
   test('accessibility scan (axe) on About page has zero serious or critical issues', async ({

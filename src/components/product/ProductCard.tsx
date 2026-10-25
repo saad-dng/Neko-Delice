@@ -72,7 +72,7 @@ export function ProductCard({
           </div>
 
           {/* Product Name (Stretched Link to PDP) */}
-          <h2 className="mt-1.5 font-serif text-lg font-semibold text-espresso-950 transition-colors group-hover:text-terracotta-700">
+          <h2 className="mt-1.5 font-serif text-lg font-semibold text-espresso-950 transition-colors group-hover:text-terracotta-700 min-h-[3.25rem] flex items-start">
             <Link
               to={`/product/${product.slug}`}
               className="focus:outline-none"
@@ -103,7 +103,7 @@ export function ProductCard({
               useBagUi.getState().openBag(e.currentTarget)
             }}
             aria-label={`Add ${product.name} to bag`}
-            className="relative z-10 inline-flex items-center justify-center rounded-full bg-terracotta-600 px-3.5 py-1.5 text-xs font-semibold text-cream-50 transition-all hover:bg-terracotta-700 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 active:scale-95 cursor-pointer shadow-2xs"
+            className="relative z-10 inline-flex items-center justify-center rounded-full bg-terracotta-600 px-4 py-1.5 min-h-[36px] text-xs font-semibold text-cream-50 transition-all hover:bg-terracotta-700 active:scale-95 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 cursor-pointer shadow-2xs"
           >
             <span className="mr-1" aria-hidden="true">
               +

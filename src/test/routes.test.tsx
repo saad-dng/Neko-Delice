@@ -69,12 +69,12 @@ describe('Route Architecture & Layout Shell (P07)', () => {
     expect(main).not.toBeNull()
     expect(main?.getAttribute('tabindex')).toBe('-1')
 
-    // Footer landmark with disclosures
+    // Footer landmark with care and accessibility statements
     const footer = container.querySelector('footer')
     expect(footer).not.toBeNull()
     expect(footer?.textContent).toContain('Honest food, quiet design.')
-    expect(footer?.textContent).toContain('This is a storefront preview. Checkout is not connected yet.')
-    expect(footer?.textContent).toContain('Concept imagery generated with AI. Products are fictional.')
+    expect(footer?.textContent).toContain('Care & Standards')
+    expect(footer?.textContent).toContain('NEKO DELICE is committed to digital accessibility.')
   })
 
   it('renders NotFoundPage with CatSitting illustration and single h1', () => {

@@ -161,23 +161,32 @@ export function SmartBag() {
                 key={line.productId}
                 className="flex items-start gap-4 p-3.5 rounded-2xl bg-cream-50/90 border border-sand-300/80 transition-colors"
               >
-                {/* Thumbnail on beige tile */}
-                <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-xl overflow-hidden bg-beige-200">
+                {/* Thumbnail on beige tile with Link */}
+                <Link
+                  to={`/product/${product.slug}`}
+                  onClick={closeBag}
+                  aria-label={`View ${product.name} details`}
+                  className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-xl overflow-hidden bg-beige-200 transition-opacity hover:opacity-85 focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500"
+                >
                   <ProductImage
                     slug={product.slug}
                     imageRole="hero"
                     sizes="80px"
                     className="w-full h-full object-cover"
                   />
-                </div>
+                </Link>
 
                 {/* Product Info & Controls */}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-start justify-between gap-2">
                     <div>
-                      <div className="font-serif text-base sm:text-lg font-semibold text-espresso-950 truncate">
+                      <Link
+                        to={`/product/${product.slug}`}
+                        onClick={closeBag}
+                        className="font-serif text-base sm:text-lg font-semibold text-espresso-950 truncate block hover:text-terracotta-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 rounded"
+                      >
                         {product.name}
-                      </div>
+                      </Link>
                       <div className="text-xs text-espresso-700 mt-0.5">
                         {product.unit.packSizeLabel}
                       </div>
@@ -204,7 +213,7 @@ export function SmartBag() {
                         onClick={() => setQty(product.id, line.qty - 1)}
                         disabled={line.qty <= 1}
                         aria-label={`Decrease quantity of ${product.name}`}
-                        className="inline-flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold text-espresso-900 hover:bg-oat-100 disabled:opacity-40 disabled:cursor-not-allowed focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 cursor-pointer"
+                        className="inline-flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold text-espresso-900 hover:bg-oat-100 active:scale-90 disabled:opacity-40 disabled:cursor-not-allowed focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 cursor-pointer transition-all"
                       >
                         −
                       </button>
@@ -219,7 +228,7 @@ export function SmartBag() {
                         onClick={() => setQty(product.id, line.qty + 1)}
                         disabled={line.qty >= 9}
                         aria-label={`Increase quantity of ${product.name}`}
-                        className="inline-flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold text-espresso-900 hover:bg-oat-100 disabled:opacity-40 disabled:cursor-not-allowed focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 cursor-pointer"
+                        className="inline-flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold text-espresso-900 hover:bg-oat-100 active:scale-90 disabled:opacity-40 disabled:cursor-not-allowed focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 cursor-pointer transition-all"
                       >
                         +
                       </button>
@@ -229,7 +238,7 @@ export function SmartBag() {
                       type="button"
                       onClick={() => remove(product.id)}
                       aria-label={`Remove ${product.name} from bag`}
-                      className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] text-xs font-medium text-espresso-700 hover:text-terracotta-700 underline underline-offset-2 transition-colors cursor-pointer"
+                      className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] text-xs font-medium text-espresso-700 hover:text-terracotta-700 active:scale-95 underline underline-offset-2 transition-all cursor-pointer"
                     >
                       Remove
                     </button>

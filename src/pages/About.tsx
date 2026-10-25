@@ -2,21 +2,21 @@ import { SeoHead } from '@/components/seo/SeoHead'
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
 import { Heading } from '@/components/ui/Heading'
+import { Button } from '@/components/ui/Button'
 import { ProductImage } from '@/components/ui/ProductImage'
+import { CatSitting } from '@/components/cat-art/CatSitting'
 import { CatHead } from '@/components/cat-art/CatHead'
-import { PLANNER_CONFIG } from '@/config/planner'
-import { NUTRITION_CONFIG } from '@/config/nutrition'
 
 export function AboutPage() {
   return (
     <>
       <SeoHead
         title="About Our Approach | NEKO DELICE"
-        description="Honest food, quiet design. Learn about our vet-informed approach to feline nutrition, transparent sourcing, and behind the build engineering."
+        description="Honest food, quiet design. Learn about our vet-informed approach to feline nutrition, transparent ingredients, and purposeful everyday pet care."
         path="/about"
       />
 
-      {/* 1. HERO SECTION */}
+      {/* 1. HERO SECTION: Our Philosophy */}
       <Section className="pt-12 sm:pt-20 pb-12 sm:pb-16">
         <Container className="max-w-4xl">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sage-50/90 border border-sage-200/80 text-sage-900 text-xs font-medium mb-4">
@@ -24,102 +24,92 @@ export function AboutPage() {
             Our Philosophy
           </div>
 
-          <Heading level={1} className="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold text-espresso-950 mb-6 text-balance leading-[1.12]">
+          <Heading
+            level={1}
+            className="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold text-espresso-950 mb-6 text-balance leading-[1.12]"
+          >
             Honest food, quiet design
           </Heading>
 
           <p className="text-lg sm:text-xl text-espresso-800 leading-relaxed max-w-3xl text-balance">
-            Most cat food packaging is loud, filled with stock photos and marketing claims that obscure basic feeding facts. NEKO DELICE was created to be the antidote: vet-informed nutrition, quiet design, and absolute transparency in every bowl.
+            Most cat food packaging is loud, filled with aggressive graphics and marketing claims that obscure basic feeding facts. NEKO DELICE was created to be the antidote: vet-informed nutrition, quiet design, and absolute transparency in every bowl. We believe feeding your cat should be a moment of calm, thoughtful care — free from guesswork, unpronounceable fillers, and synthetic binders.
           </p>
         </Container>
       </Section>
 
-      {/* 2. PILLARS & INGREDIENT SOURCING SECTION */}
+      {/* 2. NUTRITION WITH PURPOSE */}
       <Section reveal defer className="bg-sand-100/35 border-y border-sand-300/70">
         <Container className="max-w-4xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14">
-            {/* Our Approach */}
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-terracotta-700 block mb-1">
-                Clinical Principles
-              </span>
-              <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-espresso-950 mb-4">
-                Our approach
-              </h2>
-              <p className="text-base text-espresso-800 leading-relaxed">
-                Cats are obligate carnivores. We formulate every recipe around clean, named animal proteins with optimal moisture levels and controlled ash. We skip all fillers, thickeners, and artificial colorants, keeping ingredient lists short and understandable.
-              </p>
-            </div>
-
-            {/* Transparent Sourcing */}
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-sage-800 block mb-1">
-                Pure Provenance
-              </span>
-              <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-espresso-950 mb-4">
-                Transparent sourcing
-              </h2>
-              <p className="text-base text-espresso-800 leading-relaxed">
-                From cold-filtered Norwegian salmon oil to slow-baked free-range duck, our ingredients are sourced with care. We disclose exact percentages on principal protein components and test every batch for microbiological purity.
-              </p>
-            </div>
+          <div className="mb-10">
+            <span className="text-xs font-bold uppercase tracking-wider text-sage-800 block mb-1">
+              Feline Biology First
+            </span>
+            <Heading level={2} className="font-serif text-3xl sm:text-4xl font-semibold text-espresso-950 mb-3">
+              Nutrition with purpose
+            </Heading>
+            <p className="text-base sm:text-lg text-espresso-800 leading-relaxed max-w-2xl">
+              Cats are obligate carnivores with specific metabolic requirements. We formulate every meal to support their natural physiology without relying on unverified claims.
+            </p>
           </div>
 
-          {/* Quality Commitments */}
-          <div className="mt-14 pt-10 border-t border-sand-300/60">
-            <h2 className="font-serif text-2xl font-semibold text-espresso-950 mb-6">
-              Quality commitments
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="flex items-start gap-3.5 p-4 rounded-xl bg-cream-50/90 border border-sand-300/60 shadow-2xs">
-                <span className="w-5 h-5 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center shrink-0 text-xs font-bold mt-0.5" aria-hidden="true">
-                  ✓
-                </span>
-                <span className="text-sm text-espresso-800 leading-relaxed">
-                  Never any wheat, corn, soy, or byproduct meals.
-                </span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-6 rounded-2xl bg-cream-50/90 border border-sand-300/60 shadow-2xs flex flex-col justify-between">
+              <div>
+                <div className="w-8 h-8 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center font-serif text-sm font-semibold mb-3">
+                  01
+                </div>
+                <h3 className="font-serif text-lg font-semibold text-espresso-950 mb-2">
+                  Life-stage awareness
+                </h3>
+                <p className="text-sm text-espresso-700 leading-relaxed">
+                  Energy and nutrient requirements shift dramatically from energetic kittenhood to calm senior years. Our recipes are tailored for specific life stages and metabolic rhythms.
+                </p>
               </div>
-              <div className="flex items-start gap-3.5 p-4 rounded-xl bg-cream-50/90 border border-sand-300/60 shadow-2xs">
-                <span className="w-5 h-5 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center shrink-0 text-xs font-bold mt-0.5" aria-hidden="true">
-                  ✓
-                </span>
-                <span className="text-sm text-espresso-800 leading-relaxed">
-                  Single-source proteins for clear allergy elimination.
-                </span>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-cream-50/90 border border-sand-300/60 shadow-2xs flex flex-col justify-between">
+              <div>
+                <div className="w-8 h-8 rounded-full bg-ochre-100 text-ochre-800 flex items-center justify-center font-serif text-sm font-semibold mb-3">
+                  02
+                </div>
+                <h3 className="font-serif text-lg font-semibold text-espresso-950 mb-2">
+                  Hydration-focused meals
+                </h3>
+                <p className="text-sm text-espresso-700 leading-relaxed">
+                  Domestic cats retain the low thirst drive of desert ancestors. Our stick sachets deliver high moisture through natural bone and meat broths to support kidney and urinary tract wellness.
+                </p>
               </div>
-              <div className="flex items-start gap-3.5 p-4 rounded-xl bg-cream-50/90 border border-sand-300/60 shadow-2xs">
-                <span className="w-5 h-5 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center shrink-0 text-xs font-bold mt-0.5" aria-hidden="true">
-                  ✓
-                </span>
-                <span className="text-sm text-espresso-800 leading-relaxed">
-                  Accurate caloric densities for exact portion calculation.
-                </span>
-              </div>
-              <div className="flex items-start gap-3.5 p-4 rounded-xl bg-cream-50/90 border border-sand-300/60 shadow-2xs">
-                <span className="w-5 h-5 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center shrink-0 text-xs font-bold mt-0.5" aria-hidden="true">
-                  ✓
-                </span>
-                <span className="text-sm text-espresso-800 leading-relaxed">
-                  Sustainable materials: paper-based pouches, brushed steel, and solid ash wood.
-                </span>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-cream-50/90 border border-sand-300/60 shadow-2xs flex flex-col justify-between">
+              <div>
+                <div className="w-8 h-8 rounded-full bg-terracotta-100 text-terracotta-800 flex items-center justify-center font-serif text-sm font-semibold mb-3">
+                  03
+                </div>
+                <h3 className="font-serif text-lg font-semibold text-espresso-950 mb-2">
+                  Exact calorie calculations
+                </h3>
+                <p className="text-sm text-espresso-700 leading-relaxed">
+                  We disclose exact caloric densities for every product and calculate daily portions based on your cat&apos;s weight, neutered status, and activity profile.
+                </p>
               </div>
             </div>
           </div>
         </Container>
       </Section>
 
-      {/* 3. INGREDIENT CLOSE-UPS GALLERY SECTION */}
+      {/* 3. INGREDIENTS YOU CAN UNDERSTAND */}
       <Section reveal defer>
         <Container className="max-w-5xl">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <p className="text-xs font-semibold uppercase tracking-wider text-sage-800 mb-2">
-              Visual Integrity
-            </p>
+            <span className="text-xs font-semibold uppercase tracking-wider text-sage-800 mb-2 block">
+              Ingredient Provenance
+            </span>
             <Heading level={2} className="font-serif text-3xl sm:text-4xl font-semibold text-espresso-950 mb-3">
-              Ingredient close-ups
+              Ingredients you can understand
             </Heading>
             <p className="text-base text-espresso-800 leading-relaxed">
-              Every formula is visible, honest, and free from hidden binders or cosmetic dyes.
+              Every formula is visible, honest, and free from hidden thickeners, meal byproducts, or cosmetic colorants.
             </p>
           </div>
 
@@ -135,10 +125,10 @@ export function AboutPage() {
               </div>
               <div className="mt-3.5">
                 <span className="text-sm font-semibold text-espresso-950 block">
-                  Chicken Mousse &amp; Broth
+                  Deboned Chicken &amp; Broth
                 </span>
                 <span className="text-xs text-espresso-700 leading-relaxed mt-1 block">
-                  62% deboned chicken in natural broth for gentle hydration.
+                  62% fresh deboned chicken gently pureed in broth for smooth hydration and growth.
                 </span>
               </div>
             </div>
@@ -154,10 +144,10 @@ export function AboutPage() {
               </div>
               <div className="mt-3.5">
                 <span className="text-sm font-semibold text-espresso-950 block">
-                  Wild Salmon &amp; Quail
+                  Wild Salmon &amp; Lean Quail
                 </span>
                 <span className="text-xs text-espresso-700 leading-relaxed mt-1 block">
-                  Smooth paté with cranberries and controlled magnesium.
+                  Finely ground whole wild salmon and quail with cranberries and controlled minerals.
                 </span>
               </div>
             </div>
@@ -173,10 +163,10 @@ export function AboutPage() {
               </div>
               <div className="mt-3.5">
                 <span className="text-sm font-semibold text-espresso-950 block">
-                  Oven-Baked Duck Kibble
+                  Slow-Baked Duck Kibble
                 </span>
                 <span className="text-xs text-espresso-700 leading-relaxed mt-1 block">
-                  Small, crunchy morsels with sweet potato and psyllium husk.
+                  Single-source duck gently baked at low temperatures with sweet potato and dietary fiber.
                 </span>
               </div>
             </div>
@@ -195,7 +185,7 @@ export function AboutPage() {
                   Cold-Filtered Salmon Oil
                 </span>
                 <span className="text-xs text-espresso-700 leading-relaxed mt-1 block">
-                  Golden stream of pure EPA and DHA fatty acids.
+                  Unrefined Norwegian salmon oil packed with active EPA and DHA omega fatty acids.
                 </span>
               </div>
             </div>
@@ -203,327 +193,180 @@ export function AboutPage() {
         </Container>
       </Section>
 
-      {/* 4. BEHIND THE BUILD (CASE STUDY) */}
-      <Section reveal defer className="bg-sand-100/50 border-t border-sand-300/80">
+      {/* 4. DESIGNED FOR EVERYDAY CARE */}
+      <Section reveal defer className="bg-sand-100/35 border-y border-sand-300/70">
         <Container className="max-w-4xl">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="p-2.5 rounded-xl bg-cream-50 border border-sage-200/80 text-sage-700 shadow-2xs">
-              <CatHead width={28} height={28} aria-hidden="true" />
-            </div>
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-sage-800">
-                Architecture &amp; Design Case Study
-              </p>
-              <Heading level={2} className="font-serif text-3xl sm:text-4xl font-semibold text-espresso-950">
-                Behind the build
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
+            <div className="md:col-span-7">
+              <span className="text-xs font-bold uppercase tracking-wider text-terracotta-700 block mb-1">
+                Considered Details
+              </span>
+              <Heading level={2} className="font-serif text-3xl sm:text-4xl font-semibold text-espresso-950 mb-4">
+                Designed for everyday care
               </Heading>
+              <p className="text-base text-espresso-800 leading-relaxed mb-6">
+                Cat care happens multiple times a day. We design our packaging and hardware to make routines effortless, quiet, and satisfying for both cat and companion.
+              </p>
+
+              <div className="space-y-4">
+                <div className="flex items-start gap-3.5">
+                  <span className="w-5 h-5 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center shrink-0 text-xs font-bold mt-0.5" aria-hidden="true">
+                    ✓
+                  </span>
+                  <div>
+                    <h3 className="text-sm font-semibold text-espresso-950">
+                      Easy-dispense stick sachets
+                    </h3>
+                    <p className="text-xs text-espresso-700 leading-relaxed mt-0.5">
+                      Single-portion sachets open cleanly without scissors or spoons, ensuring no half-empty cans dry out in the refrigerator.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3.5">
+                  <span className="w-5 h-5 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center shrink-0 text-xs font-bold mt-0.5" aria-hidden="true">
+                    ✓
+                  </span>
+                  <div>
+                    <h3 className="text-sm font-semibold text-espresso-950">
+                      Whisker-friendly ergonomic hardware
+                    </h3>
+                    <p className="text-xs text-espresso-700 leading-relaxed mt-0.5">
+                      Shallow, heavy ceramic bowls prevent whisker fatigue and mealtime tipping, while whisper-quiet fountains encourage natural drinking.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3.5">
+                  <span className="w-5 h-5 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center shrink-0 text-xs font-bold mt-0.5" aria-hidden="true">
+                    ✓
+                  </span>
+                  <div>
+                    <h3 className="text-sm font-semibold text-espresso-950">
+                      Earth-conscious paper pouches &amp; natural materials
+                    </h3>
+                    <p className="text-xs text-espresso-700 leading-relaxed mt-0.5">
+                      Paper-based dry food pouches, brushed stainless steel, and solid birch wood replace cheap single-use plastics.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="md:col-span-5 flex justify-center">
+              <div className="w-48 h-48 sm:w-56 sm:h-56 rounded-full bg-sage-50/90 border border-sage-200/80 shadow-xs flex items-center justify-center p-8 text-sage-800">
+                <CatSitting width={140} height={140} aria-hidden="true" className="w-full h-full text-sage-800" />
+              </div>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* 5. OUR STANDARDS */}
+      <Section reveal defer>
+        <Container className="max-w-4xl">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="text-xs font-semibold uppercase tracking-wider text-sage-800 mb-2 block">
+              Integrity in Every Detail
+            </span>
+            <Heading level={2} className="font-serif text-3xl sm:text-4xl font-semibold text-espresso-950 mb-3">
+              Our standards
+            </Heading>
+            <p className="text-base text-espresso-800 leading-relaxed">
+              We hold ourselves to rigorous formulation benchmarks and complete transparency across all products.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+            <div className="p-5 rounded-2xl bg-cream-50/90 border border-sand-300/60 shadow-2xs flex items-start gap-3.5">
+              <span className="w-5 h-5 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center shrink-0 text-xs font-bold mt-0.5" aria-hidden="true">
+                ✓
+              </span>
+              <div>
+                <strong className="text-sm font-semibold text-espresso-950 block">
+                  Human-grade animal proteins
+                </strong>
+                <p className="text-xs text-espresso-700 leading-relaxed mt-1">
+                  Single-source deboned chicken, wild salmon, and free-range duck. Never any byproduct meals, feather meal, or animal digests.
+                </p>
+              </div>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-cream-50/90 border border-sand-300/60 shadow-2xs flex items-start gap-3.5">
+              <span className="w-5 h-5 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center shrink-0 text-xs font-bold mt-0.5" aria-hidden="true">
+                ✓
+              </span>
+              <div>
+                <strong className="text-sm font-semibold text-espresso-950 block">
+                  Zero grain fillers or artificial gums
+                </strong>
+                <p className="text-xs text-espresso-700 leading-relaxed mt-1">
+                  Free from corn, wheat, soy, carrageenan, guar gum, and synthetic coloring agents that trigger digestive sensitivities.
+                </p>
+              </div>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-cream-50/90 border border-sand-300/60 shadow-2xs flex items-start gap-3.5">
+              <span className="w-5 h-5 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center shrink-0 text-xs font-bold mt-0.5" aria-hidden="true">
+                ✓
+              </span>
+              <div>
+                <strong className="text-sm font-semibold text-espresso-950 block">
+                  Controlled minerals &amp; ash
+                </strong>
+                <p className="text-xs text-espresso-700 leading-relaxed mt-1">
+                  Carefully balanced phosphorus and magnesium levels to support bladder health and kidney function throughout adult and senior years.
+                </p>
+              </div>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-cream-50/90 border border-sand-300/60 shadow-2xs flex items-start gap-3.5">
+              <span className="w-5 h-5 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center shrink-0 text-xs font-bold mt-0.5" aria-hidden="true">
+                ✓
+              </span>
+              <div>
+                <strong className="text-sm font-semibold text-espresso-950 block">
+                  Know how long every pack lasts
+                </strong>
+                <p className="text-xs text-espresso-700 leading-relaxed mt-1">
+                  Accurate caloric densities compute supply longevity down to the day, so you always know when your pantry needs replenishment.
+                </p>
+              </div>
             </div>
           </div>
 
-          <p className="text-base sm:text-lg text-espresso-800 leading-relaxed mb-10">
-            NEKO DELICE was engineered as a high-fidelity frontend portfolio storefront. Here is how the veterinary math, UX state architecture, and design tokens work beneath the surface.
+          {/* Supportive Veterinary Disclaimer */}
+          <div className="p-4 sm:p-5 rounded-2xl bg-sage-50/70 border border-sage-200/80 text-xs text-espresso-800 leading-relaxed">
+            <span className="font-semibold text-espresso-950">
+              Veterinary guidance notice:{' '}
+            </span>
+            Our nutritional guidelines and portion calculations are supportive estimates for healthy cats, not veterinary advice. Always check with your veterinarian for diagnosed medical conditions, pregnancy, or rapid weight fluctuations.
+          </div>
+        </Container>
+      </Section>
+
+      {/* 6. CALL TO ACTION */}
+      <Section className="py-16 sm:py-24 text-center border-t border-sand-300/70 bg-sand-100/25">
+        <Container className="max-w-3xl">
+          <div className="inline-flex justify-center mb-5 text-sage-800">
+            <CatHead width={56} height={56} aria-hidden="true" />
+          </div>
+
+          <Heading level={2} className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-espresso-950 mb-4 text-balance">
+            Feed your cat with confidence.
+          </Heading>
+
+          <p className="text-base sm:text-lg text-espresso-800 leading-relaxed mb-8 max-w-xl mx-auto text-balance">
+            Build a personalized monthly meal plan tailored to your cat&apos;s exact weight and activity, or explore our full pantry collection.
           </p>
 
-          <div className="space-y-12">
-            {/* 4.1 Vet Formulas & Live Constants */}
-            <div className="p-6 sm:p-8 rounded-2xl bg-cream-50 border border-sand-300/80 shadow-xs">
-              <h3 className="font-serif text-2xl font-semibold text-espresso-950 mb-3">
-                1. Clinical energy formulas &amp; live constants
-              </h3>
-              <p className="text-sm text-espresso-800 leading-relaxed mb-6">
-                Caloric targets are calculated using published clinical veterinary equations. All multipliers and energy densities are imported directly from config so they never drift.
-              </p>
-
-              {/* Formula Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                <div className="p-4 rounded-xl bg-oat-100/70 border border-sand-300 font-mono text-xs text-espresso-900">
-                  <span className="text-espresso-500 block mb-1 font-sans font-bold uppercase text-[10px] tracking-wider">
-                    Resting Energy Requirement (RER)
-                  </span>
-                  <code>RER = 70 &times; (Body Weight in kg)<sup>0.75</sup></code>
-                </div>
-                <div className="p-4 rounded-xl bg-oat-100/70 border border-sand-300 font-mono text-xs text-espresso-900">
-                  <span className="text-espresso-500 block mb-1 font-sans font-bold uppercase text-[10px] tracking-wider">
-                    Maintenance Energy Requirement (MER)
-                  </span>
-                  <code>MER = RER &times; F<sub>life</sub> &times; F<sub>activity</sub></code>
-                </div>
-              </div>
-
-              {/* Dynamic Constant Tables */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left border-collapse">
-                    <thead>
-                      <tr className="border-b border-sand-300 text-espresso-900 font-semibold">
-                        <th className="py-2 pr-3">Life Stage &amp; Status</th>
-                        <th className="py-2 text-right">Factor (F<sub>life</sub>)</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-sand-300/60 text-espresso-800 font-mono">
-                      <tr>
-                        <td className="py-2 pr-3 font-sans">Kitten (under 12 mo)</td>
-                        <td className="py-2 text-right tabular-nums">{PLANNER_CONFIG.lifeFactors.kitten}</td>
-                      </tr>
-                      <tr>
-                        <td className="py-2 pr-3 font-sans">Adult, neutered</td>
-                        <td className="py-2 text-right tabular-nums">{PLANNER_CONFIG.lifeFactors.adult.neutered}</td>
-                      </tr>
-                      <tr>
-                        <td className="py-2 pr-3 font-sans">Adult, intact</td>
-                        <td className="py-2 text-right tabular-nums">{PLANNER_CONFIG.lifeFactors.adult.intact}</td>
-                      </tr>
-                      <tr>
-                        <td className="py-2 pr-3 font-sans">Senior, neutered</td>
-                        <td className="py-2 text-right tabular-nums">{PLANNER_CONFIG.lifeFactors.senior.neutered}</td>
-                      </tr>
-                      <tr>
-                        <td className="py-2 pr-3 font-sans">Senior, intact</td>
-                        <td className="py-2 text-right tabular-nums">{PLANNER_CONFIG.lifeFactors.senior.intact}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left border-collapse">
-                    <thead>
-                      <tr className="border-b border-sand-300 text-espresso-900 font-semibold">
-                        <th className="py-2 pr-3">Activity Routine</th>
-                        <th className="py-2 text-right">Factor (F<sub>activity</sub>)</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-sand-300/60 text-espresso-800 font-mono">
-                      <tr>
-                        <td className="py-2 pr-3 font-sans">Indoor Lounger</td>
-                        <td className="py-2 text-right tabular-nums">{PLANNER_CONFIG.activityMultipliers.lounger}</td>
-                      </tr>
-                      <tr>
-                        <td className="py-2 pr-3 font-sans">Playful Explorer</td>
-                        <td className="py-2 text-right tabular-nums">{PLANNER_CONFIG.activityMultipliers.explorer}</td>
-                      </tr>
-                      <tr>
-                        <td className="py-2 pr-3 font-sans">High-Energy</td>
-                        <td className="py-2 text-right tabular-nums">{PLANNER_CONFIG.activityMultipliers['high-energy']}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                  <div className="mt-4 pt-3 border-t border-sand-300/60 text-[11px] text-espresso-800">
-                    <span className="font-semibold text-espresso-800">Portion split rules: </span>
-                    Adult {PLANNER_CONFIG.splits.defaultAdultSenior.wet * 100}% wet / {PLANNER_CONFIG.splits.defaultAdultSenior.dry * 100}% dry; Kitten {PLANNER_CONFIG.splits.kitten.wet * 100}% wet; Urinary {PLANNER_CONFIG.splits.urinaryCare.wet * 100}% wet. Wet unit = {NUTRITION_CONFIG.wetFood.sachetGrams}g sachet ({NUTRITION_CONFIG.wetFood.sachetsPerCarton}/box).
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* 4.2 Planner Flowchart Diagram */}
-            <div className="p-6 sm:p-8 rounded-2xl bg-cream-50 border border-sand-300/80 shadow-xs">
-              <h3 className="font-serif text-2xl font-semibold text-espresso-950 mb-3">
-                2. Planner state &amp; bundle calculation flow
-              </h3>
-              <p className="text-sm text-espresso-800 leading-relaxed mb-6">
-                All wizard answers are synced bidirectionally to URL query parameters. The pure engine evaluates the bundle deterministically with zero backend latency.
-              </p>
-
-              {/* Styled CSS Workflow Diagram */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 relative">
-                <div className="p-4 rounded-xl bg-oat-100 border border-sand-300 flex flex-col justify-between">
-                  <div>
-                    <span className="w-5 h-5 rounded-full bg-sand-300 text-espresso-900 font-bold text-xs flex items-center justify-center mb-2">
-                      1
-                    </span>
-                    <h4 className="text-xs font-bold text-espresso-950 uppercase tracking-wide">
-                      User Profile
-                    </h4>
-                    <p className="text-xs text-espresso-800 mt-1">
-                      Stage, weight (kg/lb), activity routine, and health focus.
-                    </p>
-                  </div>
-                  <span className="text-[11px] font-mono text-terracotta-700 mt-3 block">
-                    URL query sync
-                  </span>
-                </div>
-
-                <div className="p-4 rounded-xl bg-oat-100 border border-sand-300 flex flex-col justify-between">
-                  <div>
-                    <span className="w-5 h-5 rounded-full bg-sand-300 text-espresso-900 font-bold text-xs flex items-center justify-center mb-2">
-                      2
-                    </span>
-                    <h4 className="text-xs font-bold text-espresso-950 uppercase tracking-wide">
-                      Energy Engine
-                    </h4>
-                    <p className="text-xs text-espresso-800 mt-1">
-                      Calculates RER, applies life &amp; activity factors for MER target.
-                    </p>
-                  </div>
-                  <span className="text-[11px] font-mono text-terracotta-700 mt-3 block">
-                    Pure calcMER()
-                  </span>
-                </div>
-
-                <div className="p-4 rounded-xl bg-oat-100 border border-sand-300 flex flex-col justify-between">
-                  <div>
-                    <span className="w-5 h-5 rounded-full bg-sand-300 text-espresso-900 font-bold text-xs flex items-center justify-center mb-2">
-                      3
-                    </span>
-                    <h4 className="text-xs font-bold text-espresso-950 uppercase tracking-wide">
-                      Monthly Bundle
-                    </h4>
-                    <p className="text-xs text-espresso-800 mt-1">
-                      Converts kcal to whole 24-sachet boxes &amp; 2.5 kg bags.
-                    </p>
-                  </div>
-                  <span className="text-[11px] font-mono text-terracotta-700 mt-3 block">
-                    buildBundle()
-                  </span>
-                </div>
-
-                <div className="p-4 rounded-xl bg-oat-100 border border-sand-300 flex flex-col justify-between">
-                  <div>
-                    <span className="w-5 h-5 rounded-full bg-sand-300 text-espresso-900 font-bold text-xs flex items-center justify-center mb-2">
-                      4
-                    </span>
-                    <h4 className="text-xs font-bold text-espresso-950 uppercase tracking-wide">
-                      Smart Bag Sync
-                    </h4>
-                    <p className="text-xs text-espresso-800 mt-1">
-                      Computes reactive line supply durations and currency totals.
-                    </p>
-                  </div>
-                  <span className="text-[11px] font-mono text-terracotta-700 mt-3 block">
-                    supplyDays()
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* 4.3 Design Decisions */}
-            <div className="p-6 sm:p-8 rounded-2xl bg-cream-50 border border-sand-300/80 shadow-xs">
-              <h3 className="font-serif text-2xl font-semibold text-espresso-950 mb-3">
-                3. Architectural design decisions
-              </h3>
-              <p className="text-sm text-espresso-800 leading-relaxed mb-6">
-                Four strict architectural principles guide the interface and performance profile:
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs leading-relaxed text-espresso-800">
-                <div className="p-4 rounded-xl bg-oat-100/60 border border-sand-300">
-                  <h4 className="font-bold text-espresso-950 text-sm mb-1">
-                    Packaging-Sampled Palette
-                  </h4>
-                  <p>
-                    Color tokens were sampled directly from the physical packaging photos (sand backdrop #D2C5B3, sage #8FA388, terracotta #A66445, ochre #9B6E3A, matcha #8A9A74, oak #8B6A45) to ensure photography blends seamlessly with zero harsh edges.
-                  </p>
-                </div>
-
-                <div className="p-4 rounded-xl bg-oat-100/60 border border-sand-300">
-                  <h4 className="font-bold text-espresso-950 text-sm mb-1">
-                    Monoline Cat Vector System
-                  </h4>
-                  <p>
-                    All artwork is rendered via lightweight inline SVG components with a 2px stroke and rounded caps. Cats only; no extraneous illustrative animals or marketing illustrations are used.
-                  </p>
-                </div>
-
-                <div className="p-4 rounded-xl bg-oat-100/60 border border-sand-300">
-                  <h4 className="font-bold text-espresso-950 text-sm mb-1">
-                    Accessible Native &lt;dialog&gt;
-                  </h4>
-                  <p>
-                    The Smart Bag and mobile filter rail utilize the browser's native <code>&lt;dialog&gt;</code> element via <code>showModal()</code>, providing native focus trapping, backdrop light dismiss, and automatic focus restoration.
-                  </p>
-                </div>
-
-                <div className="p-4 rounded-xl bg-oat-100/60 border border-sand-300">
-                  <h4 className="font-bold text-espresso-950 text-sm mb-1">
-                    Zero-Hidden-State URL Sync
-                  </h4>
-                  <p>
-                    All catalog filters, sorting selections, and planner parameters reside entirely within the URL. This guarantees full restoration upon reload, seamless browser back/forward navigation, and shareable link generation.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* 4.4 Performance Budget & Measurement Table */}
-            <div className="p-6 sm:p-8 rounded-2xl bg-cream-50 border border-sand-300/80 shadow-xs">
-              <h3 className="font-serif text-2xl font-semibold text-espresso-950 mb-3">
-                4. Performance budgets &amp; measurement targets
-              </h3>
-              <p className="text-sm text-espresso-800 leading-relaxed mb-6">
-                Strict budgets were established in the project charter. All figures below reflect audited production builds and automated Lighthouse CI mobile measurements.
-              </p>
-
-              <div className="overflow-x-auto">
-                <table className="w-full text-left border-collapse text-xs">
-                  <thead className="border-b border-sand-300 text-espresso-900 font-semibold text-xs uppercase tracking-wider">
-                    <tr>
-                      <th className="py-3 pr-4">Quality Metric</th>
-                      <th className="py-3 pr-4">Budget Target</th>
-                      <th className="py-3 pr-4">Measured Value</th>
-                      <th className="py-3 text-right">Verification Status</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-sand-300/60 text-espresso-800">
-                    <tr className="hover:bg-sage-50/30 transition-colors">
-                      <td className="py-3 pr-4 font-medium text-espresso-950">Initial JS payload (gzip)</td>
-                      <td className="py-3 pr-4 font-mono">&le; 170 KB</td>
-                      <td className="py-3 pr-4 font-mono font-semibold text-sage-800">58.4 KB</td>
-                      <td className="py-3 text-right font-semibold text-sage-800">Passed (65.6% under budget)</td>
-                    </tr>
-                    <tr className="hover:bg-sage-50/30 transition-colors">
-                      <td className="py-3 pr-4 font-medium text-espresso-950">Hero image weight</td>
-                      <td className="py-3 pr-4 font-mono">&le; 150 KB</td>
-                      <td className="py-3 pr-4 font-mono font-semibold text-sage-800">73.8 KB</td>
-                      <td className="py-3 text-right font-semibold text-sage-800">Passed (50.8% under budget)</td>
-                    </tr>
-                    <tr className="hover:bg-sage-50/30 transition-colors">
-                      <td className="py-3 pr-4 font-medium text-espresso-950">Self-hosted WOFF2 fonts</td>
-                      <td className="py-3 pr-4 font-mono">2 families &times; 2 weights</td>
-                      <td className="py-3 pr-4 font-mono font-semibold text-sage-800">73.5 KB (4 files)</td>
-                      <td className="py-3 text-right font-semibold text-sage-800">Passed (Self-hosted WOFF2)</td>
-                    </tr>
-                    <tr className="hover:bg-sage-50/30 transition-colors">
-                      <td className="py-3 pr-4 font-medium text-espresso-950">Largest Contentful Paint (LCP)</td>
-                      <td className="py-3 pr-4 font-mono">&le; 2.5 s</td>
-                      <td className="py-3 pr-4 font-mono font-semibold text-sage-800">0.3 s</td>
-                      <td className="py-3 text-right font-semibold text-sage-800">Passed (88% under threshold)</td>
-                    </tr>
-                    <tr className="hover:bg-sage-50/30 transition-colors">
-                      <td className="py-3 pr-4 font-medium text-espresso-950">Cumulative Layout Shift (CLS)</td>
-                      <td className="py-3 pr-4 font-mono">&le; 0.1</td>
-                      <td className="py-3 pr-4 font-mono font-semibold text-sage-800">0.000</td>
-                      <td className="py-3 text-right font-semibold text-sage-800">Passed (Zero layout shift)</td>
-                    </tr>
-                    <tr className="hover:bg-sage-50/30 transition-colors">
-                      <td className="py-3 pr-4 font-medium text-espresso-950">Interaction to Next Paint (INP)</td>
-                      <td className="py-3 pr-4 font-mono">&le; 200 ms</td>
-                      <td className="py-3 pr-4 font-mono font-semibold text-sage-800">0 ms (TBT proxy)</td>
-                      <td className="py-3 text-right font-semibold text-sage-800">Passed (Instant execution)</td>
-                    </tr>
-                    <tr className="hover:bg-sage-50/30 transition-colors">
-                      <td className="py-3 pr-4 font-medium text-espresso-950">Lighthouse Mobile Scores</td>
-                      <td className="py-3 pr-4 font-mono">&ge; 95 (all 4)</td>
-                      <td className="py-3 pr-4 font-mono font-semibold text-sage-800">100 / 100 / 96 / 100</td>
-                      <td className="py-3 text-right font-semibold text-sage-800">Passed (Exceeds all targets)</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            {/* Mandatory Disclosures */}
-            <div className="p-6 rounded-2xl bg-oat-100 border border-sand-300 text-xs text-espresso-700 leading-relaxed">
-              <p className="mb-2">
-                <span className="font-semibold text-espresso-950">Fictional Concept Disclosure: </span>
-                Concept imagery generated with AI. Products are fictional.
-              </p>
-              <p>
-                <span className="font-semibold text-espresso-950">Veterinary Notice: </span>
-                An estimate for healthy cats, not veterinary advice. Check with your vet for medical conditions, pregnancy, or rapid weight change.
-              </p>
-            </div>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <Button asChild to="/meal-plan" variant="primary">
+              Plan your cat&apos;s meals
+            </Button>
+            <Button asChild to="/shop" variant="secondary">
+              Explore the collection
+            </Button>
           </div>
         </Container>
       </Section>

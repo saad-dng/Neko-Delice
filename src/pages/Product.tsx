@@ -46,6 +46,7 @@ export function ProductPage() {
   const [quantity, setQuantity] = useState(1)
   const [imageError, setImageError] = useState(false)
   const [liveAnnouncement, setLiveAnnouncement] = useState('')
+  const [isAdded, setIsAdded] = useState(false)
 
   const currency = useCurrency((s) => s.currency)
   const add = useBag((s) => s.add)
@@ -115,6 +116,8 @@ export function ProductPage() {
   // Purchase Actions
   const handleAddToBag = (e: React.MouseEvent<HTMLButtonElement>) => {
     add(product.id, quantity)
+    setIsAdded(true)
+    setTimeout(() => setIsAdded(false), 1800)
     setLiveAnnouncement(`Added ${quantity} of ${product.name} to your bag`)
     useBagUi.getState().openBag(e.currentTarget)
   }
@@ -200,7 +203,7 @@ export function ProductPage() {
                       type="button"
                       onClick={prevImage}
                       aria-label="Previous image"
-                      className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-cream-50/90 p-2 text-espresso-900 shadow-sm backdrop-blur-md border border-sand-300/50 hover:bg-cream-50 hover:text-terracotta-700 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 transition-all opacity-85 hover:opacity-100 cursor-pointer"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-cream-50/90 p-2 text-espresso-900 shadow-sm backdrop-blur-md border border-sand-300/50 hover:bg-cream-50 hover:text-terracotta-700 active:scale-95 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 transition-all opacity-85 hover:opacity-100 min-w-[44px] min-h-[44px] inline-flex items-center justify-center cursor-pointer"
                     >
                       <svg
                         className="h-5 w-5"
@@ -221,7 +224,7 @@ export function ProductPage() {
                       type="button"
                       onClick={nextImage}
                       aria-label="Next image"
-                      className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-cream-50/90 p-2 text-espresso-900 shadow-sm backdrop-blur-md border border-sand-300/50 hover:bg-cream-50 hover:text-terracotta-700 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 transition-all opacity-85 hover:opacity-100 cursor-pointer"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-cream-50/90 p-2 text-espresso-900 shadow-sm backdrop-blur-md border border-sand-300/50 hover:bg-cream-50 hover:text-terracotta-700 active:scale-95 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 transition-all opacity-85 hover:opacity-100 min-w-[44px] min-h-[44px] inline-flex items-center justify-center cursor-pointer"
                     >
                       <svg
                         className="h-5 w-5"
@@ -371,7 +374,7 @@ export function ProductPage() {
                       onClick={() => setQuantity((q) => Math.max(1, q - 1))}
                       disabled={quantity <= 1}
                       aria-label="Decrease quantity"
-                      className="inline-flex h-9 w-9 items-center justify-center rounded-full text-base font-semibold text-espresso-900 hover:bg-oat-100 disabled:opacity-40 disabled:cursor-not-allowed focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 cursor-pointer transition-colors"
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-full text-base font-semibold text-espresso-900 hover:bg-oat-100 active:scale-90 disabled:opacity-40 disabled:cursor-not-allowed focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 cursor-pointer transition-all"
                     >
                       −
                     </button>
@@ -387,7 +390,7 @@ export function ProductPage() {
                       onClick={() => setQuantity((q) => Math.min(9, q + 1))}
                       disabled={quantity >= 9}
                       aria-label="Increase quantity"
-                      className="inline-flex h-9 w-9 items-center justify-center rounded-full text-base font-semibold text-espresso-900 hover:bg-oat-100 disabled:opacity-40 disabled:cursor-not-allowed focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 cursor-pointer transition-colors"
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-full text-base font-semibold text-espresso-900 hover:bg-oat-100 active:scale-90 disabled:opacity-40 disabled:cursor-not-allowed focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 cursor-pointer transition-all"
                     >
                       +
                     </button>
@@ -399,7 +402,7 @@ export function ProductPage() {
                     onClick={handleAddToBag}
                     className="flex-1 rounded-full bg-terracotta-600 px-6 py-3.5 text-sm font-semibold text-cream-50 shadow-xs hover:bg-terracotta-700 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50 transition-all active:scale-98 cursor-pointer"
                   >
-                    Add to bag
+                    {isAdded ? 'Added to bag ✓' : 'Add to bag'}
                   </button>
                 </div>
 

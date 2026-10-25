@@ -85,7 +85,7 @@ export function Header() {
               key={link.to}
               to={link.to}
               className={({ isActive }) =>
-                `px-3 py-2 text-sm font-medium rounded-full transition-colors min-h-[44px] inline-flex items-center ${
+                `px-3.5 py-2 text-sm font-medium rounded-full transition-all duration-150 min-h-[44px] inline-flex items-center active:scale-95 ${
                   isActive
                     ? 'text-terracotta-600 font-semibold'
                     : 'text-espresso-800 hover:text-espresso-900 hover:bg-oat-100/60'
@@ -104,7 +104,7 @@ export function Header() {
             type="button"
             onClick={(e) => openBag(e.currentTarget)}
             aria-label={`Open bag, ${bagCount} items`}
-            className={`relative inline-flex items-center justify-center min-w-[44px] min-h-[44px] p-2 text-espresso-900 bg-oat-100/75 hover:bg-oat-200/90 backdrop-blur-md rounded-full border border-sand-300/60 shadow-2xs transition-transform cursor-pointer ${
+            className={`relative inline-flex items-center justify-center min-w-[44px] min-h-[44px] p-2 text-espresso-900 bg-oat-100/75 hover:bg-oat-200/90 active:scale-95 backdrop-blur-md rounded-full border border-sand-300/60 shadow-2xs transition-all cursor-pointer ${
               isBouncing ? 'animate-bag-bounce' : ''
             }`}
           >
@@ -126,7 +126,7 @@ export function Header() {
             aria-controls="mobile-navigation"
             aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
             onClick={() => setMobileMenuOpen((open) => !open)}
-            className="md:hidden inline-flex items-center justify-center min-w-[44px] min-h-[44px] p-2 text-espresso-900 rounded-full hover:bg-oat-100 transition-colors"
+            className="md:hidden inline-flex items-center justify-center min-w-[44px] min-h-[44px] p-2 text-espresso-900 rounded-full hover:bg-oat-100 active:scale-95 transition-all"
           >
             {mobileMenuOpen ? (
               <Icon name="close" size={22} />

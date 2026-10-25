@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/Button'
 import { ProductCard } from '@/components/product/ProductCard'
 import { CatSitting } from '@/components/cat-art/CatSitting'
 import { CatStretching } from '@/components/cat-art/CatStretching'
+import { CatHead } from '@/components/cat-art/CatHead'
 import { products } from '@/data/products'
 import type { ProductCategory } from '@/data/types'
 
@@ -182,6 +183,64 @@ export function HomePage() {
                 priority={idx === 0}
               />
             ))}
+
+            {selectedCategory === 'all' && (
+              <>
+                {/* Intentional Editorial Tile 1: Meal Planner */}
+                <article className="group relative flex flex-col justify-between rounded-2xl bg-sage-50/80 p-5 sm:p-6 border border-sage-200/80 hover:bg-sage-100/70 hover:border-sage-300 transition-all duration-200">
+                  <div>
+                    <div className="w-10 h-10 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center mb-3">
+                      <CatSitting className="w-6 h-6" />
+                    </div>
+                    <span className="text-[11px] font-semibold uppercase tracking-wider text-sage-800 block mb-1">
+                      Custom Nutrition
+                    </span>
+                    <h3 className="font-serif text-lg sm:text-xl font-semibold text-espresso-950 mb-1.5 leading-snug">
+                      Personalized Monthly Meal Plan
+                    </h3>
+                    <p className="text-xs text-espresso-700 leading-relaxed">
+                      Calculate your cat&apos;s daily calorie target and build an exact monthly pantry bundle.
+                    </p>
+                  </div>
+                  <div className="mt-5 pt-3.5 border-t border-sage-200/60">
+                    <Link
+                      to="/meal-plan"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-terracotta-700 hover:text-terracotta-800 group-hover:underline"
+                    >
+                      <span className="absolute inset-0 z-0" aria-hidden="true" />
+                      Plan your cat&apos;s meals →
+                    </Link>
+                  </div>
+                </article>
+
+                {/* Intentional Editorial Tile 2: Our Standards */}
+                <article className="group relative flex flex-col justify-between rounded-2xl bg-sand-100/50 p-5 sm:p-6 border border-sand-300/60 hover:bg-sand-100/80 hover:border-sand-300 transition-all duration-200">
+                  <div>
+                    <div className="w-10 h-10 rounded-full bg-sand-200/70 text-espresso-800 flex items-center justify-center mb-3">
+                      <CatHead className="w-6 h-6" />
+                    </div>
+                    <span className="text-[11px] font-semibold uppercase tracking-wider text-espresso-700 block mb-1">
+                      Our Philosophy
+                    </span>
+                    <h3 className="font-serif text-lg sm:text-xl font-semibold text-espresso-950 mb-1.5 leading-snug">
+                      Honest Food, Quiet Design
+                    </h3>
+                    <p className="text-xs text-espresso-700 leading-relaxed">
+                      Human-grade single-source proteins, unrefined oils, and zero wheat, soy, or corn fillers.
+                    </p>
+                  </div>
+                  <div className="mt-5 pt-3.5 border-t border-sand-300/60">
+                    <Link
+                      to="/about"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-espresso-800 hover:text-espresso-950 group-hover:underline"
+                    >
+                      <span className="absolute inset-0 z-0" aria-hidden="true" />
+                      Read our standards →
+                    </Link>
+                  </div>
+                </article>
+              </>
+            )}
           </div>
         </Container>
       </Section>
