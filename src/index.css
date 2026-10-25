@@ -148,3 +148,56 @@ dialog.smart-bag-dialog {
   animation: bag-bounce 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+/* Slider thumb spring micro-interaction */
+input[type="range"]::-webkit-slider-thumb {
+  transition: transform 180ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+input[type="range"]:hover::-webkit-slider-thumb,
+input[type="range"]:active::-webkit-slider-thumb {
+  transform: scale(1.18);
+}
+input[type="range"]::-moz-range-thumb {
+  transition: transform 180ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+input[type="range"]:hover::-moz-range-thumb,
+input[type="range"]:active::-moz-range-thumb {
+  transform: scale(1.18);
+}
+
+/* Size-band label cross-fade */
+@keyframes fadeIn {
+  from { opacity: 0.3; }
+  to { opacity: 1; }
+}
+.animate-fadeIn {
+  animation: fadeIn 200ms ease-out;
+}
+
+/* Below-fold deferred section rendering */
+.section-deferred {
+  content-visibility: auto;
+  contain-intrinsic-size: auto none auto 500px;
+}
+
+/* Scroll reveal opacity transition */
+@media (prefers-reduced-motion: no-preference) {
+  .section-reveal {
+    opacity: 0;
+    transition: opacity 500ms ease-out;
+  }
+  .section-reveal.is-visible {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  input[type="range"]::-webkit-slider-thumb,
+  input[type="range"]::-moz-range-thumb {
+    transition: none !important;
+    transform: none !important;
+  }
+  .animate-fadeIn {
+    animation: none !important;
+  }
+}
+

@@ -153,10 +153,16 @@ export function Step2Weight({ profile, onChange }: Step2WeightProps) {
           <span className="text-xs font-bold uppercase tracking-wider text-terracotta-700">
             Size Indicator:
           </span>
-          <span className="font-serif text-lg font-semibold text-espresso-950">
+          <span
+            key={band}
+            className="font-serif text-lg font-semibold text-espresso-950 animate-fadeIn"
+          >
             {band}
           </span>
-          <span className="text-xs text-espresso-600">
+          <span
+            key={`sub-${band}`}
+            className="text-xs text-espresso-600 animate-fadeIn"
+          >
             {band === 'Petite'
               ? '(< 3.5 kg)'
               : band === 'Typical'
