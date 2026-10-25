@@ -4,7 +4,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 
 test.describe('Home Page (P14)', () => {
-  test('renders hero with single h1, LCP image, bento grid, planner teaser, and featured products', async ({
+  test('renders hero with single h1, unified collection with filter tabs, planner teaser, and promise strip', async ({
     page,
   }) => {
     await page.goto('/')
@@ -14,11 +14,6 @@ test.describe('Home Page (P14)', () => {
     await expect(h1).toHaveCount(1)
     await expect(h1).toHaveText('Feed your cat exactly what they need.')
 
-    // Hero LCP image
-    const heroImg = page.locator('section img[fetchpriority="high"]')
-    await expect(heroImg).toBeVisible()
-    await expect(heroImg).toHaveAttribute('alt', /Wild Salmon & Quail Paté/)
-
     // Primary & Secondary Hero CTAs
     const planCta = page.locator('a:has-text("Plan my cat\'s meals")').first()
     await expect(planCta).toHaveAttribute('href', '/meal-plan')
@@ -26,18 +21,14 @@ test.describe('Home Page (P14)', () => {
     const shopCta = page.locator('a:has-text("Shop the collection")').first()
     await expect(shopCta).toHaveAttribute('href', '/shop')
 
-    // Bento Category Grid
+    // Unified Collection Section
     await expect(page.locator('h2:has-text("Everything your cat needs")')).toBeVisible()
-    const bentoWet = page.locator('a[href="/shop?category=wet-food"]')
-    await expect(bentoWet).toBeVisible()
-    const bentoDry = page.locator('a[href="/shop?category=dry-food"]')
-    await expect(bentoDry).toBeVisible()
-    const bentoTreats = page.locator('a[href="/shop?category=treat-topper"]')
-    await expect(bentoTreats).toBeVisible()
-    const bentoLitter = page.locator('a[href="/shop?category=litter"]')
-    await expect(bentoLitter).toBeVisible()
-    const bentoHardware = page.locator('a[href="/shop?category=hardware"]')
-    await expect(bentoHardware).toBeVisible()
+    const shopLink = page.locator('a[href="/shop"]:has-text("Full catalog")')
+    await expect(shopLink).toBeVisible()
+
+    // Eager/Priority LCP image on the first collection item
+    const lcpImg = page.locator('section img[fetchpriority="high"]').first()
+    await expect(lcpImg).toBeVisible()
 
     // Planner Teaser Section
     await expect(

@@ -5,7 +5,6 @@ import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
 import { Heading } from '@/components/ui/Heading'
 import { Button } from '@/components/ui/Button'
-import { ProductImage } from '@/components/ui/ProductImage'
 import { ProductCard } from '@/components/product/ProductCard'
 import { CatSitting } from '@/components/cat-art/CatSitting'
 import { CatStretching } from '@/components/cat-art/CatStretching'
@@ -48,241 +47,141 @@ export function HomePage() {
         path="/"
       />
 
-      {/* 1. HERO SECTION (LCP Section - eager, priority, no reveal delay) */}
-      <Section className="pt-10 sm:pt-16 pb-16 sm:pb-24 overflow-hidden">
+      {/* 1. HERO SECTION (Editorial, Centered, Calm — No isolated product card) */}
+      <Section className="pt-12 sm:pt-20 pb-16 sm:pb-24 overflow-hidden">
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-10 lg:gap-16">
-            {/* Left Content */}
-            <div className="lg:col-span-7 flex flex-col items-start">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-oat-100 border border-sand-300 text-espresso-800 text-xs font-medium mb-6">
-                <span className="w-2 h-2 rounded-full bg-terracotta-600" aria-hidden="true" />
-                Vet-informed feline nutrition & quiet hardware
-              </div>
-
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-espresso-950 text-balance leading-[1.12] mb-6">
-                Feed your cat exactly what they need.
-              </h1>
-
-              <p className="text-lg sm:text-xl text-espresso-800 leading-relaxed max-w-xl text-balance mb-8 sm:mb-10">
-                Tell us about your cat. We work out the calories and build a month of meals. Honest food, quiet design, no guesswork.
-              </p>
-
-              <div className="flex flex-wrap items-center gap-4">
-                <Button asChild to="/meal-plan" variant="primary">
-                  Plan my cat's meals
-                </Button>
-                <Button asChild to="/shop" variant="secondary">
-                  Shop the collection
-                </Button>
-              </div>
+          <div className="max-w-3xl mx-auto text-center flex flex-col items-center">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-oat-100 border border-sand-300 text-espresso-800 text-xs font-medium mb-6">
+              <span className="w-2 h-2 rounded-full bg-terracotta-600" aria-hidden="true" />
+              Vet-informed feline nutrition &amp; quiet hardware
             </div>
 
-            {/* Right Composed Product Still (LCP Hero Image, <= 150 KB) */}
-            <div className="lg:col-span-5">
-              <div className="relative rounded-2xl bg-beige-200 p-4 sm:p-6 border border-sand-300/60 shadow-xs">
-                <div className="relative aspect-square w-full overflow-hidden rounded-xl">
-                  <ProductImage
-                    slug="wild-salmon-quail-pate"
-                    imageRole="hero"
-                    priority={true}
-                    sizes="(min-width: 1024px) 460px, (min-width: 640px) 500px, 100vw"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
+            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-espresso-950 text-balance leading-[1.14] mb-6">
+              Feed your cat exactly what they need.
+            </h1>
 
-                <div className="mt-4 flex items-center justify-between gap-3 pt-2 border-t border-sand-300/40 text-xs">
-                  <div>
-                    <span className="font-semibold text-espresso-900 block">
-                      Wild Salmon &amp; Quail Paté
-                    </span>
-                    <span className="text-espresso-800">
-                      24 stick sachets &middot; 38 kcal each
-                    </span>
-                  </div>
-                  <Link
-                    to="/product/wild-salmon-quail-pate"
-                    className="font-medium text-terracotta-700 hover:text-terracotta-800 transition-colors"
-                  >
-                    View recipe &rarr;
-                  </Link>
-                </div>
+            <p className="text-lg sm:text-xl text-espresso-800 leading-relaxed max-w-2xl text-balance mb-8 sm:mb-10">
+              Tell us about your cat. We work out the calories and build a month of meals. Honest food, quiet design, no guesswork.
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-4 mb-10">
+              <Button asChild to="/meal-plan" variant="primary">
+                Plan my cat's meals
+              </Button>
+              <Button asChild to="/shop" variant="secondary">
+                Shop the collection
+              </Button>
+            </div>
+
+            {/* Quiet trust credentials */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 pt-8 border-t border-sand-300/60 w-full max-w-2xl text-xs text-espresso-700">
+              <div className="flex items-center justify-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-sage-600" aria-hidden="true" />
+                <span>100% human-grade proteins</span>
+              </div>
+              <div className="flex items-center justify-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-ochre-600" aria-hidden="true" />
+                <span>Calorie engine by life stage</span>
+              </div>
+              <div className="flex items-center justify-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-terracotta-600" aria-hidden="true" />
+                <span>Zero fillers or synthetic binders</span>
               </div>
             </div>
           </div>
         </Container>
       </Section>
 
-      {/* 2. CATEGORY SPOTLIGHT SECTION */}
-      <Section className="bg-oat-100/40 border-y border-sand-300/70">
+      {/* 2. THE COLLECTION (The single, definitive product showcase with category filter tabs) */}
+      <Section id="collection" className="bg-cream-50 border-t border-sand-300/60">
         <Container>
-          <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-            <p className="text-xs font-semibold uppercase tracking-wider text-terracotta-700 mb-2">
-              The Collection
-            </p>
-            <Heading level={2} className="font-serif text-3xl sm:text-4xl font-semibold text-espresso-950 mb-3">
-              Everything your cat needs, nothing they don't.
-            </Heading>
-            <p className="text-base sm:text-lg text-espresso-800 leading-relaxed">
-              Formulated for clinical nutrition, optimal hydration, and quiet everyday living.
-            </p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-terracotta-700 mb-2">
+                The Collection
+              </p>
+              <Heading level={2} className="font-serif text-3xl sm:text-4xl font-semibold text-espresso-950">
+                Everything your cat needs, nothing they don't.
+              </Heading>
+              <p className="text-sm sm:text-base text-espresso-700 mt-2 max-w-xl">
+                Formulated for clinical nutrition, optimal hydration, and quiet everyday living. Short ingredient lists, pure proteins, and quiet hardware.
+              </p>
+            </div>
+            <Link
+              to="/shop"
+              className="text-sm font-medium text-terracotta-700 hover:text-terracotta-800 flex items-center gap-1 group shrink-0"
+            >
+              <span>Full catalog with detailed filters</span>
+              <span className="transition-transform group-hover:translate-x-1 motion-reduce:transform-none">&rarr;</span>
+            </Link>
           </div>
 
-          {/* Balanced Category Cards (2 Staple Foods on top, 3 Daily Essentials below) */}
-          <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6">
-            {/* Tile 1: Wet Food (6 cols) */}
-            <div className="md:col-span-3 lg:col-span-6 group relative flex flex-col justify-between rounded-2xl bg-cream-50/80 border border-sand-300/70 p-6 sm:p-8 transition-all duration-200 hover:bg-cream-50 hover:shadow-xs">
-              <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-terracotta-700">
-                  Daily Hydration &amp; Protein
-                </span>
-                <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-espresso-950 mt-1 mb-2">
-                  <Link to="/shop?category=wet-food" className="focus:outline-none">
-                    <span className="absolute inset-0" aria-hidden="true" />
-                    Wet Food
-                  </Link>
-                </h3>
-                <p className="text-sm text-espresso-800 max-w-md leading-relaxed">
-                  High-moisture stick sachets formulated for obligate carnivores. Silky mousse and smooth paté.
-                </p>
-              </div>
+          {/* Category Filter Tabs */}
+          <div
+            className="flex items-center gap-2 overflow-x-auto pb-2 mb-8 scrollbar-none"
+            role="tablist"
+            aria-label="Filter products by category"
+          >
+            {CATEGORY_TABS.map((cat) => {
+              const isSelected = selectedCategory === cat.id
+              const count =
+                cat.id === 'all'
+                  ? products.length
+                  : products.filter(
+                      (p) =>
+                        p.category === cat.id ||
+                        p.secondaryCategories.includes(cat.id as ProductCategory)
+                    ).length
 
-              <div className="relative mt-6 aspect-[4/3] sm:aspect-[16/10] w-full overflow-hidden rounded-xl bg-beige-200 flex items-center justify-center p-4">
-                <ProductImage
-                  slug="wild-salmon-quail-pate"
-                  imageRole="hero"
-                  className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-103 motion-reduce:transform-none"
-                />
-              </div>
+              return (
+                <button
+                  key={cat.id}
+                  type="button"
+                  role="tab"
+                  id={`tab-${cat.id}`}
+                  aria-selected={isSelected}
+                  aria-controls="home-products-panel"
+                  onClick={() => setSelectedCategory(cat.id)}
+                  className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full px-4 py-2 text-xs font-medium transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-espresso-900 focus:ring-offset-2 ${
+                    isSelected
+                      ? 'bg-espresso-950 text-cream-50 shadow-xs'
+                      : 'bg-oat-100/70 border border-sand-300/80 text-espresso-800 hover:bg-oat-100 hover:text-espresso-950'
+                  }`}
+                >
+                  <span>{cat.label}</span>
+                  <span
+                    className={`inline-flex items-center justify-center rounded-full px-1.5 py-0.5 text-[10px] font-semibold leading-none ${
+                      isSelected
+                        ? 'bg-cream-50/20 text-cream-50'
+                        : 'bg-sand-300/70 text-espresso-800'
+                    }`}
+                  >
+                    {count}
+                  </span>
+                </button>
+              )
+            })}
+          </div>
 
-              <div className="mt-5 flex items-center gap-1.5 text-xs font-semibold text-espresso-900 group-hover:text-terracotta-700 transition-colors">
-                <span>Browse Wet Food</span>
-                <span className="transition-transform group-hover:translate-x-1 motion-reduce:transform-none">&rarr;</span>
-              </div>
-            </div>
+          {/* Accessible live region announcing count when tab changes */}
+          <div aria-live="polite" className="sr-only">
+            Showing {displayedProducts.length} of {products.length} products
+          </div>
 
-            {/* Tile 2: Dry Food (6 cols) */}
-            <div className="md:col-span-3 lg:col-span-6 group relative flex flex-col justify-between rounded-2xl bg-cream-50/80 border border-sand-300/70 p-6 sm:p-8 transition-all duration-200 hover:bg-cream-50 hover:shadow-xs">
-              <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-ochre-800">
-                  Slow Oven-Baked
-                </span>
-                <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-espresso-950 mt-1 mb-2">
-                  <Link to="/shop?category=dry-food" className="focus:outline-none">
-                    <span className="absolute inset-0" aria-hidden="true" />
-                    Dry Food
-                  </Link>
-                </h3>
-                <p className="text-sm text-espresso-800 max-w-md leading-relaxed">
-                  Slow oven-baked whole duck and sweet potato with gentle prebiotic fibre.
-                </p>
-              </div>
-
-              <div className="relative mt-6 aspect-[4/3] sm:aspect-[16/10] w-full overflow-hidden rounded-xl bg-beige-200 flex items-center justify-center p-4">
-                <ProductImage
-                  slug="duck-sweet-potato-kibble"
-                  imageRole="hero"
-                  className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-103 motion-reduce:transform-none"
-                />
-              </div>
-
-              <div className="mt-5 flex items-center gap-1.5 text-xs font-semibold text-espresso-900 group-hover:text-ochre-800 transition-colors">
-                <span>Browse Dry Food</span>
-                <span className="transition-transform group-hover:translate-x-1 motion-reduce:transform-none">&rarr;</span>
-              </div>
-            </div>
-
-            {/* Tile 3: Treats & Toppers (4 cols) */}
-            <div className="md:col-span-2 lg:col-span-4 group relative flex flex-col justify-between rounded-2xl bg-cream-50/80 border border-sand-300/70 p-5 sm:p-6 transition-all duration-200 hover:bg-cream-50 hover:shadow-xs">
-              <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-sage-800">
-                  Pure Boosts
-                </span>
-                <h3 className="font-serif text-xl sm:text-2xl font-semibold text-espresso-950 mt-1 mb-2">
-                  <Link to="/shop?category=treat-topper" className="focus:outline-none">
-                    <span className="absolute inset-0" aria-hidden="true" />
-                    Treats &amp; Toppers
-                  </Link>
-                </h3>
-                <p className="text-xs sm:text-sm text-espresso-800 leading-relaxed">
-                  Cold-filtered Norwegian salmon oil and pure freeze-dried chicken heart bites.
-                </p>
-              </div>
-
-              <div className="relative mt-5 aspect-square w-full overflow-hidden rounded-xl bg-beige-200 p-3 flex items-center justify-center">
-                <ProductImage
-                  slug="norwegian-salmon-oil"
-                  imageRole="hero"
-                  className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-103 motion-reduce:transform-none"
-                />
-              </div>
-
-              <div className="mt-4 flex items-center gap-1.5 text-xs font-semibold text-espresso-900 group-hover:text-sage-800 transition-colors">
-                <span>Browse Treats</span>
-                <span className="transition-transform group-hover:translate-x-1 motion-reduce:transform-none">&rarr;</span>
-              </div>
-            </div>
-
-            {/* Tile 4: Litter (4 cols) */}
-            <div className="md:col-span-2 lg:col-span-4 group relative flex flex-col justify-between rounded-2xl bg-cream-50/80 border border-sand-300/70 p-5 sm:p-6 transition-all duration-200 hover:bg-cream-50 hover:shadow-xs">
-              <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-matcha-text">
-                  Plant-Based Care
-                </span>
-                <h3 className="font-serif text-xl sm:text-2xl font-semibold text-espresso-950 mt-1 mb-2">
-                  <Link to="/shop?category=litter" className="focus:outline-none">
-                    <span className="absolute inset-0" aria-hidden="true" />
-                    Litter
-                  </Link>
-                </h3>
-                <p className="text-xs sm:text-sm text-espresso-800 leading-relaxed">
-                  Plant-based tofu pellets scented softly with organic matcha powder. Low dust.
-                </p>
-              </div>
-
-              <div className="relative mt-5 aspect-square w-full overflow-hidden rounded-xl bg-beige-200 p-3 flex items-center justify-center">
-                <ProductImage
-                  slug="matcha-tofu-litter"
-                  imageRole="hero"
-                  className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-103 motion-reduce:transform-none"
-                />
-              </div>
-
-              <div className="mt-4 flex items-center gap-1.5 text-xs font-semibold text-espresso-900 group-hover:text-matcha-text transition-colors">
-                <span>Browse Litter</span>
-                <span className="transition-transform group-hover:translate-x-1 motion-reduce:transform-none">&rarr;</span>
-              </div>
-            </div>
-
-            {/* Tile 5: Hardware (4 cols) */}
-            <div className="md:col-span-2 lg:col-span-4 group relative flex flex-col justify-between rounded-2xl bg-cream-50/80 border border-sand-300/70 p-5 sm:p-6 transition-all duration-200 hover:bg-cream-50 hover:shadow-xs">
-              <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-oak-700">
-                  Quiet Hardware
-                </span>
-                <h3 className="font-serif text-xl sm:text-2xl font-semibold text-espresso-950 mt-1 mb-2">
-                  <Link to="/shop?category=hardware" className="focus:outline-none">
-                    <span className="absolute inset-0" aria-hidden="true" />
-                    Hardware
-                  </Link>
-                </h3>
-                <p className="text-xs sm:text-sm text-espresso-800 leading-relaxed">
-                  Whisper-quiet ceramic fountains, whisker bowls, and solid oak litter basins.
-                </p>
-              </div>
-
-              <div className="relative mt-5 aspect-square w-full overflow-hidden rounded-xl bg-beige-200 p-3 flex items-center justify-center">
-                <ProductImage
-                  slug="ceramic-water-fountain"
-                  imageRole="hero"
-                  className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-103 motion-reduce:transform-none"
-                />
-              </div>
-
-              <div className="mt-4 flex items-center gap-1.5 text-xs font-semibold text-espresso-900 group-hover:text-oak-700 transition-colors">
-                <span>Browse Hardware</span>
-                <span className="transition-transform group-hover:translate-x-1 motion-reduce:transform-none">&rarr;</span>
-              </div>
-            </div>
+          {/* Product Grid (All 10 items or filtered category) */}
+          <div
+            id="home-products-panel"
+            role="tabpanel"
+            aria-labelledby={`tab-${selectedCategory}`}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          >
+            {displayedProducts.map((product, idx) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                priority={idx === 0}
+              />
+            ))}
           </div>
         </Container>
       </Section>
@@ -368,97 +267,7 @@ export function HomePage() {
         </Container>
       </Section>
 
-      {/* 4. FULL COLLECTION SECTION (All 10 products with category tabs) */}
-      <Section className="bg-cream-50">
-        <Container>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-terracotta-700 mb-2">
-                The Complete Shelf
-              </p>
-              <Heading level={2} className="font-serif text-3xl sm:text-4xl font-semibold text-espresso-950">
-                Crafted for health and longevity
-              </Heading>
-              <p className="text-sm sm:text-base text-espresso-700 mt-2 max-w-xl">
-                Every recipe and quiet essential in our range. Formulated without fillers, guesswork, or synthetic binders.
-              </p>
-            </div>
-            <Link
-              to="/shop"
-              className="text-sm font-medium text-terracotta-700 hover:text-terracotta-800 flex items-center gap-1 group shrink-0"
-            >
-              <span>Full catalog with filters</span>
-              <span className="transition-transform group-hover:translate-x-1 motion-reduce:transform-none">&rarr;</span>
-            </Link>
-          </div>
-
-          {/* Category Filter Tabs */}
-          <div
-            className="flex items-center gap-2 overflow-x-auto pb-2 mb-8 scrollbar-none"
-            role="tablist"
-            aria-label="Filter products by category"
-          >
-            {CATEGORY_TABS.map((cat) => {
-              const isSelected = selectedCategory === cat.id
-              const count =
-                cat.id === 'all'
-                  ? products.length
-                  : products.filter(
-                      (p) =>
-                        p.category === cat.id ||
-                        p.secondaryCategories.includes(cat.id as ProductCategory)
-                    ).length
-
-              return (
-                <button
-                  key={cat.id}
-                  type="button"
-                  role="tab"
-                  id={`tab-${cat.id}`}
-                  aria-selected={isSelected}
-                  aria-controls="home-products-panel"
-                  onClick={() => setSelectedCategory(cat.id)}
-                  className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full px-4 py-2 text-xs font-medium transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-espresso-900 focus:ring-offset-2 ${
-                    isSelected
-                      ? 'bg-espresso-950 text-cream-50 shadow-xs'
-                      : 'bg-oat-100/70 border border-sand-300/80 text-espresso-800 hover:bg-oat-100 hover:text-espresso-950'
-                  }`}
-                >
-                  <span>{cat.label}</span>
-                  <span
-                    className={`inline-flex items-center justify-center rounded-full px-1.5 py-0.5 text-[10px] font-semibold leading-none ${
-                      isSelected
-                        ? 'bg-cream-50/20 text-cream-50'
-                        : 'bg-sand-300/70 text-espresso-800'
-                    }`}
-                  >
-                    {count}
-                  </span>
-                </button>
-              )
-            })}
-          </div>
-
-          {/* Accessible live region announcing count when tab changes */}
-          <div aria-live="polite" className="sr-only">
-            Showing {displayedProducts.length} of {products.length} products
-          </div>
-
-          {/* Product Grid (All 10 items) */}
-          <div
-            id="home-products-panel"
-            role="tabpanel"
-            aria-labelledby={`tab-${selectedCategory}`}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-          >
-            {displayedProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        </Container>
-      </Section>
-
-      {/* 5. INGREDIENT PROMISE STRIP SECTION */}
+      {/* 4. INGREDIENT PROMISE STRIP SECTION */}
       <Section className="bg-oat-100/60 border-y border-sand-300">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-4">
