@@ -6,6 +6,7 @@ export interface SeoHeadProps {
   description: string
   path: string
   type?: 'website' | 'article' | 'product'
+  image?: string
   imagePreload?: {
     src: string
     srcset?: string
@@ -28,12 +29,16 @@ export function SeoHead({
   description,
   path,
   type = 'website',
+  image,
   imagePreload,
   jsonLd,
 }: SeoHeadProps) {
   const siteUrl = getSiteUrl()
   const cleanPath = path.startsWith('/') ? path : `/${path}`
   const canonicalUrl = `${siteUrl}${cleanPath === '/' ? '' : cleanPath}`
+  const ogImageUrl = image
+    ? (image.startsWith('http') ? image : `${siteUrl}${image.startsWith('/') ? image : `/${image}`}`)
+    : `${siteUrl}/og-image.png`
 
   return (
     <Head>
@@ -48,11 +53,15 @@ export function SeoHead({
       <meta property="og:type" content={type} />
       <meta property="og:site_name" content="NEKO DELICE" />
       <meta property="og:locale" content="en_US" />
+      <meta property="og:image" content={ogImageUrl} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
 
       {/* Twitter Cards */}
-      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={ogImageUrl} />
 
       {/* Favicon & Touch Icon from P05 */}
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

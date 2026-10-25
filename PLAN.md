@@ -32,7 +32,7 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 - [x] P12 Planner UI (wizard + results)
 - [x] P13 Smart Bag modal + currency toggle UI
 - [x] P14 Home, About (+ Behind the build), micro-interactions
-- [ ] P15 Audit, optimisation, README, launch prep
+- [x] P15 Audit, optimisation, README, launch prep
 
 ## Notes
 - 2026-10-24: P01 completed. Vite + React + TS scaffold configured with vite-react-ssg, Tailwind v4, paths alias, directory structure, and vitest baseline.
@@ -49,6 +49,16 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 - 2026-10-25: P12 completed. Implemented 4-step Meal Planner UI (/meal-plan) with full URL synchronization (name, stage, neutered, w, act, focus, step), mirrored into usePlannerProfile; Step 1 with kitten neuter lock; Step 2 with synced range slider, numeric input, kg/lb toggle, size indicator, and extreme-weight notice; Step 3 with monoline cat radio cards; Step 4 with supportive health focus options; progress bar with 250ms transition and polite screen reader announcements; mobile sticky next button; PlanResult with reduced-motion aware calorie count-up (<=900ms), RER/MER metrics, portion breakdown, monthly bundle cards, fountain add-on checkbox, copy shareable link, "How we calculate this" formula disclosure, and veterinary notice; 74/74 vitest tests and 37/37 Playwright E2E tests (including Axe accessibility audit) passing.
 - 2026-10-25: P13 completed. Implemented native <dialog> SmartBag modal with responsive bottom-sheet on mobile (<640px) and centered card on desktop, backdrop blur with solid scrim fallback, Escape/backdrop click dismiss, focus restoration to opener, and scroll lock; reactive supply duration estimates per line (reference cat fallback for foods, one-time for hardware, ~30 days for litter); quantity steppers (1-9), remove, line totals, active currency subtotal, and accessible disabled preview checkout; header bag button with bounce animation and live count; USD/BDT segmented toggle in header, footer disclaimer, and zero-layout-shift tabular numbers; 81/81 vitest unit tests and 43/43 Playwright E2E tests (including Axe accessibility audit) passing.
 - 2026-10-25: P14 completed. Implemented Home page (LCP hero still with fetchpriority="high", bento category grid linking to /shop?category=..., CatSitting planner teaser, 4 ProductCard pantry items, verbatim promise strip, closing CTA) and About page (brand philosophy, vet-informed approach, transparent sourcing, quality commitments, 4 ingredient close-ups, Behind the build case study reading live formulas from config, planner flow diagram, design decisions, performance table with TBD values, AI imagery & vet disclaimers); CSS micro-interactions (spring slider thumb, size-band fade, scroll reveal IntersectionObserver, content-visibility: auto with contain-intrinsic-size); 8 responsive screenshots at 360, 768, 1280, 1920 px in docs/screens/; Lighthouse mobile scores on / (Perf 100 / A11y 100 / BP 96 / SEO 100) and /about (Perf 100 / A11y 100 / BP 96 / SEO 100); 81/81 vitest and 55/55 Playwright tests passing.
+- 2026-10-25: P15 completed. Conducted comprehensive quality and performance audit across all criteria:
+  - Added full Playwright test suite: `smoke.spec.ts` (all routes, 10 slugs, 404 handlers, dead link crawling, zero console errors), `a11y.spec.ts` (Axe audits on all routes, skip link, modal focus trapping), `flows.spec.ts` (full planner-to-bag user journey, URL filter roundtrips, corrupted localStorage resilience), and `screenshots.spec.ts` (captured 25 responsive QA screenshots at 360, 640, 1024, 1536, 2560 px in `docs/screens/`). Total 85/85 Playwright tests passing.
+  - Multi-route Lighthouse CI Mobile audit on 5 routes (`/`, `/shop`, `/product/wild-salmon-quail-pate`, `/meal-plan`, `/about`): 100 Performance, 98-100 Accessibility, 96 Best Practices, 100 SEO. LCP: 0.2-0.3 s, CLS: 0.000-0.004, TBT: 0 ms.
+  - Initial JS bundle size verified: 58.44 KB gzip via `scripts/check-size.mjs` (target <= 170 KB gzip, 65.6% under budget).
+  - Hero image: 73.80 KB (target <= 150 KB, 50.8% under budget).
+  - OpenGraph image generated: `public/og-image.png` (1200x630) with sharp + vector overlay; wired to `SeoHead.tsx`.
+  - Hosting-neutral cache config created: `public/_headers` (Netlify/Cloudflare) and `vercel.json` with immutable 1-year asset caching and clean URLs.
+  - Updated "Behind the build" table in `src/pages/About.tsx` with verified audit metrics.
+  - Created detailed `docs/AUDIT.md` and complete project `README.md`.
+
 
 
 

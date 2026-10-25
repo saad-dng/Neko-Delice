@@ -13,7 +13,7 @@
     "e2e": "playwright test",
     "images": "node scripts/optimize-images.mjs",
     "lhci": "lhci autorun",
-    "size": "node -e \"console.log('size check stub')\""
+    "size": "node scripts/check-size.mjs"
   },
   "dependencies": {
     "@fontsource/cormorant-garamond": "^5.3.0",
