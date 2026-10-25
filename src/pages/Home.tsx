@@ -144,8 +144,8 @@ export function HomePage() {
                   onClick={() => setSelectedCategory(cat.id)}
                   className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full px-4 py-2 text-xs font-medium transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-espresso-900 focus:ring-offset-2 ${
                     isSelected
-                      ? 'bg-espresso-950/95 text-cream-50 backdrop-blur-md shadow-xs'
-                      : 'bg-oat-100/75 backdrop-blur-md border border-sand-300/80 text-espresso-800 hover:bg-oat-100/95 hover:text-espresso-950'
+                      ? 'bg-espresso-950 text-cream-50 shadow-xs'
+                      : 'bg-oat-100/75 border border-sand-300/80 text-espresso-800 hover:bg-oat-100 hover:text-espresso-950'
                   }`}
                 >
                   <span>{cat.label}</span>

@@ -1,10 +1,24 @@
 @theme {
   --color-cream-50: #FBF6EE;
   --color-oat-100: #E5D8BC;
+  --color-oat-200: #DDD0BA;
+  --color-oat-300: #D0C0A4;
   --color-beige-200: #DDD0BA;
   --color-sand-300: #D9C3A5;
+
+  --color-espresso-950: #1B1410;
   --color-espresso-900: #2B211A;
+  --color-espresso-800: #3E3027;
+  --color-espresso-700: #4F3D32;
+  --color-espresso-600: #5C473A;
+  --color-espresso-500: #685244;
+  --color-espresso-400: #755E4E;
+
+  --color-terracotta-100: #F6E8E2;
+  --color-terracotta-300: #D99A85;
   --color-terracotta-600: #A94F33;
+  --color-terracotta-700: #8F3E26;
+  --color-terracotta-800: #74311D;
   --color-oak-600: #8B6A45;
 
   --color-band-sage: #8FA388;
@@ -13,6 +27,14 @@
   --color-band-matcha: #8A9A74;
   --color-band-matcha-text: #56744B;
   --color-line-cream: #F1E9D6;
+
+  --color-sage-100: #EDF1EC;
+  --color-sage-600: #8FA388;
+  --color-sage-800: #556650;
+
+  --color-ochre-100: #F6EFE5;
+  --color-ochre-600: #9B6E3A;
+  --color-ochre-800: #6B4920;
 
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;

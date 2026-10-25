@@ -59,6 +59,7 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
   - Updated "Behind the build" table in `src/pages/About.tsx` with verified audit metrics.
   - Created detailed `docs/AUDIT.md` and complete project `README.md`.
 - 2026-10-25: Refinement completed. Replaced header bottom border with seamless multi-stop progressive glass blur. Removed currency switcher from sticky header; integrated contextual CurrencyToggle in Smart Bag modal, Shop catalog toolbar, and global footer beside BDT exchange rate disclosure.
+- 2026-10-25: Fix completed. Resolved issue where active category tabs turned blank/white on tap. Root cause was missing @theme color scale tokens (espresso-950/800/700/600/500/400, terracotta-700/800, oat-200/300) in Tailwind v4, resulting in missing background-color rules and invisible cream text on cream background. Defined full tonal scales with WCAG AA compliance across all components.
 
 
 
