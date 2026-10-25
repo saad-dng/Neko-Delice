@@ -112,28 +112,28 @@ export function HomePage() {
         </Container>
       </Section>
 
-      {/* 2. BENTO CATEGORY GRID SECTION */}
-      <Section reveal defer className="bg-oat-100/40 border-y border-sand-300/70">
+      {/* 2. CATEGORY SPOTLIGHT SECTION */}
+      <Section className="bg-oat-100/40 border-y border-sand-300/70">
         <Container>
           <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
             <p className="text-xs font-semibold uppercase tracking-wider text-terracotta-700 mb-2">
               The Collection
             </p>
-            <Heading level={2} className="font-serif text-3xl sm:text-4xl font-semibold text-espresso-950 mb-4">
+            <Heading level={2} className="font-serif text-3xl sm:text-4xl font-semibold text-espresso-950 mb-3">
               Everything your cat needs, nothing they don't.
             </Heading>
             <p className="text-base sm:text-lg text-espresso-800 leading-relaxed">
-              Formulated for nutrition, optimal hydration, and quiet living.
+              Formulated for clinical nutrition, optimal hydration, and quiet everyday living.
             </p>
           </div>
 
-          {/* Bento Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-            {/* Tile 1: Wet Food (Large, 7 cols) */}
-            <div className="md:col-span-12 lg:col-span-7 group relative flex flex-col justify-between rounded-2xl bg-beige-200 p-6 sm:p-8 transition-all duration-200 hover:shadow-sm">
+          {/* Balanced Category Cards (2 Staple Foods on top, 3 Daily Essentials below) */}
+          <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6">
+            {/* Tile 1: Wet Food (6 cols) */}
+            <div className="md:col-span-3 lg:col-span-6 group relative flex flex-col justify-between rounded-2xl bg-cream-50/80 border border-sand-300/70 p-6 sm:p-8 transition-all duration-200 hover:bg-cream-50 hover:shadow-xs">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-terracotta-700">
-                  Daily Nutrition
+                  Daily Hydration &amp; Protein
                 </span>
                 <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-espresso-950 mt-1 mb-2">
                   <Link to="/shop?category=wet-food" className="focus:outline-none">
@@ -146,25 +146,25 @@ export function HomePage() {
                 </p>
               </div>
 
-              <div className="relative mt-6 aspect-[16/10] sm:aspect-[2/1] w-full overflow-hidden rounded-xl bg-beige-200">
+              <div className="relative mt-6 aspect-[4/3] sm:aspect-[16/10] w-full overflow-hidden rounded-xl bg-beige-200 flex items-center justify-center p-4">
                 <ProductImage
                   slug="wild-salmon-quail-pate"
                   imageRole="hero"
-                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105 motion-reduce:transform-none"
+                  className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-103 motion-reduce:transform-none"
                 />
               </div>
 
-              <div className="mt-4 flex items-center gap-1.5 text-xs font-semibold text-espresso-900">
+              <div className="mt-5 flex items-center gap-1.5 text-xs font-semibold text-espresso-900 group-hover:text-terracotta-700 transition-colors">
                 <span>Browse Wet Food</span>
                 <span className="transition-transform group-hover:translate-x-1 motion-reduce:transform-none">&rarr;</span>
               </div>
             </div>
 
-            {/* Tile 2: Dry Food (Medium, 5 cols) */}
-            <div className="md:col-span-6 lg:col-span-5 group relative flex flex-col justify-between rounded-2xl bg-beige-200 p-6 sm:p-8 transition-all duration-200 hover:shadow-sm">
+            {/* Tile 2: Dry Food (6 cols) */}
+            <div className="md:col-span-3 lg:col-span-6 group relative flex flex-col justify-between rounded-2xl bg-cream-50/80 border border-sand-300/70 p-6 sm:p-8 transition-all duration-200 hover:bg-cream-50 hover:shadow-xs">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-ochre-800">
-                  Oven-Baked
+                  Slow Oven-Baked
                 </span>
                 <h3 className="font-serif text-2xl sm:text-3xl font-semibold text-espresso-950 mt-1 mb-2">
                   <Link to="/shop?category=dry-food" className="focus:outline-none">
@@ -172,27 +172,27 @@ export function HomePage() {
                     Dry Food
                   </Link>
                 </h3>
-                <p className="text-sm text-espresso-800 leading-relaxed">
+                <p className="text-sm text-espresso-800 max-w-md leading-relaxed">
                   Slow oven-baked whole duck and sweet potato with gentle prebiotic fibre.
                 </p>
               </div>
 
-              <div className="relative mt-6 aspect-square sm:aspect-[4/3] w-full overflow-hidden rounded-xl bg-beige-200">
+              <div className="relative mt-6 aspect-[4/3] sm:aspect-[16/10] w-full overflow-hidden rounded-xl bg-beige-200 flex items-center justify-center p-4">
                 <ProductImage
                   slug="duck-sweet-potato-kibble"
                   imageRole="hero"
-                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105 motion-reduce:transform-none"
+                  className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-103 motion-reduce:transform-none"
                 />
               </div>
 
-              <div className="mt-4 flex items-center gap-1.5 text-xs font-semibold text-espresso-900">
+              <div className="mt-5 flex items-center gap-1.5 text-xs font-semibold text-espresso-900 group-hover:text-ochre-800 transition-colors">
                 <span>Browse Dry Food</span>
                 <span className="transition-transform group-hover:translate-x-1 motion-reduce:transform-none">&rarr;</span>
               </div>
             </div>
 
             {/* Tile 3: Treats & Toppers (4 cols) */}
-            <div className="md:col-span-6 lg:col-span-4 group relative flex flex-col justify-between rounded-2xl bg-beige-200 p-6 sm:p-7 transition-all duration-200 hover:shadow-sm">
+            <div className="md:col-span-2 lg:col-span-4 group relative flex flex-col justify-between rounded-2xl bg-cream-50/80 border border-sand-300/70 p-5 sm:p-6 transition-all duration-200 hover:bg-cream-50 hover:shadow-xs">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-sage-800">
                   Pure Boosts
@@ -203,30 +203,30 @@ export function HomePage() {
                     Treats &amp; Toppers
                   </Link>
                 </h3>
-                <p className="text-sm text-espresso-800 leading-relaxed">
+                <p className="text-xs sm:text-sm text-espresso-800 leading-relaxed">
                   Cold-filtered Norwegian salmon oil and pure freeze-dried chicken heart bites.
                 </p>
               </div>
 
-              <div className="relative mt-6 aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
+              <div className="relative mt-5 aspect-square w-full overflow-hidden rounded-xl bg-beige-200 p-3 flex items-center justify-center">
                 <ProductImage
                   slug="norwegian-salmon-oil"
                   imageRole="hero"
-                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105 motion-reduce:transform-none"
+                  className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-103 motion-reduce:transform-none"
                 />
               </div>
 
-              <div className="mt-4 flex items-center gap-1.5 text-xs font-semibold text-espresso-900">
+              <div className="mt-4 flex items-center gap-1.5 text-xs font-semibold text-espresso-900 group-hover:text-sage-800 transition-colors">
                 <span>Browse Treats</span>
                 <span className="transition-transform group-hover:translate-x-1 motion-reduce:transform-none">&rarr;</span>
               </div>
             </div>
 
             {/* Tile 4: Litter (4 cols) */}
-            <div className="md:col-span-6 lg:col-span-4 group relative flex flex-col justify-between rounded-2xl bg-beige-200 p-6 sm:p-7 transition-all duration-200 hover:shadow-sm">
+            <div className="md:col-span-2 lg:col-span-4 group relative flex flex-col justify-between rounded-2xl bg-cream-50/80 border border-sand-300/70 p-5 sm:p-6 transition-all duration-200 hover:bg-cream-50 hover:shadow-xs">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-matcha-text">
-                  Plant-Based
+                  Plant-Based Care
                 </span>
                 <h3 className="font-serif text-xl sm:text-2xl font-semibold text-espresso-950 mt-1 mb-2">
                   <Link to="/shop?category=litter" className="focus:outline-none">
@@ -234,30 +234,30 @@ export function HomePage() {
                     Litter
                   </Link>
                 </h3>
-                <p className="text-sm text-espresso-800 leading-relaxed">
+                <p className="text-xs sm:text-sm text-espresso-800 leading-relaxed">
                   Plant-based tofu pellets scented softly with organic matcha powder. Low dust.
                 </p>
               </div>
 
-              <div className="relative mt-6 aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
+              <div className="relative mt-5 aspect-square w-full overflow-hidden rounded-xl bg-beige-200 p-3 flex items-center justify-center">
                 <ProductImage
                   slug="matcha-tofu-litter"
                   imageRole="hero"
-                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105 motion-reduce:transform-none"
+                  className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-103 motion-reduce:transform-none"
                 />
               </div>
 
-              <div className="mt-4 flex items-center gap-1.5 text-xs font-semibold text-espresso-900">
+              <div className="mt-4 flex items-center gap-1.5 text-xs font-semibold text-espresso-900 group-hover:text-matcha-text transition-colors">
                 <span>Browse Litter</span>
                 <span className="transition-transform group-hover:translate-x-1 motion-reduce:transform-none">&rarr;</span>
               </div>
             </div>
 
             {/* Tile 5: Hardware (4 cols) */}
-            <div className="md:col-span-6 lg:col-span-4 group relative flex flex-col justify-between rounded-2xl bg-beige-200 p-6 sm:p-7 transition-all duration-200 hover:shadow-sm">
+            <div className="md:col-span-2 lg:col-span-4 group relative flex flex-col justify-between rounded-2xl bg-cream-50/80 border border-sand-300/70 p-5 sm:p-6 transition-all duration-200 hover:bg-cream-50 hover:shadow-xs">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-oak-700">
-                  Solid Living
+                  Quiet Hardware
                 </span>
                 <h3 className="font-serif text-xl sm:text-2xl font-semibold text-espresso-950 mt-1 mb-2">
                   <Link to="/shop?category=hardware" className="focus:outline-none">
@@ -265,20 +265,20 @@ export function HomePage() {
                     Hardware
                   </Link>
                 </h3>
-                <p className="text-sm text-espresso-800 leading-relaxed">
+                <p className="text-xs sm:text-sm text-espresso-800 leading-relaxed">
                   Whisper-quiet ceramic fountains, whisker bowls, and solid oak litter basins.
                 </p>
               </div>
 
-              <div className="relative mt-6 aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
+              <div className="relative mt-5 aspect-square w-full overflow-hidden rounded-xl bg-beige-200 p-3 flex items-center justify-center">
                 <ProductImage
                   slug="ceramic-water-fountain"
                   imageRole="hero"
-                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105 motion-reduce:transform-none"
+                  className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-103 motion-reduce:transform-none"
                 />
               </div>
 
-              <div className="mt-4 flex items-center gap-1.5 text-xs font-semibold text-espresso-900">
+              <div className="mt-4 flex items-center gap-1.5 text-xs font-semibold text-espresso-900 group-hover:text-oak-700 transition-colors">
                 <span>Browse Hardware</span>
                 <span className="transition-transform group-hover:translate-x-1 motion-reduce:transform-none">&rarr;</span>
               </div>
@@ -288,14 +288,14 @@ export function HomePage() {
       </Section>
 
       {/* 3. PLANNER TEASER SECTION */}
-      <Section reveal defer className="overflow-hidden">
+      <Section className="overflow-hidden">
         <Container>
-          <div className="rounded-3xl bg-oat-100/70 border border-sand-300 p-8 sm:p-12 lg:p-16">
+          <div className="rounded-3xl bg-oat-100/60 border border-sand-300/80 p-8 sm:p-12 lg:p-16">
             <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-10 lg:gap-14">
-              {/* Illustration */}
+              {/* Illustration in warm circular aperture */}
               <div className="lg:col-span-4 flex justify-center text-espresso-900">
-                <div className="relative p-6 rounded-2xl bg-cream-50/80 border border-sand-300/80 shadow-xs flex items-center justify-center">
-                  <CatSitting width={160} height={160} aria-hidden="true" />
+                <div className="w-48 h-48 sm:w-56 sm:h-56 rounded-full bg-cream-50/90 border border-sand-300/70 shadow-xs flex items-center justify-center p-8">
+                  <CatSitting width={140} height={140} aria-hidden="true" className="w-full h-full text-espresso-900" />
                 </div>
               </div>
 
@@ -305,7 +305,7 @@ export function HomePage() {
                   Calorie &amp; Meal Planner
                 </p>
 
-                <Heading level={2} className="font-serif text-3xl sm:text-4xl font-semibold text-espresso-950 mb-4">
+                <Heading level={2} className="font-serif text-3xl sm:text-4xl font-semibold text-espresso-950 mb-3">
                   No guesswork. A meal plan tailored to your cat.
                 </Heading>
 
@@ -314,9 +314,9 @@ export function HomePage() {
                 </p>
 
                 {/* 3-Step Overview */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full mb-8">
-                  <div className="p-4 rounded-xl bg-cream-50/60 border border-sand-300/60">
-                    <span className="w-6 h-6 rounded-full bg-sand-300/80 text-espresso-900 flex items-center justify-center font-serif text-xs font-bold mb-2">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 w-full mb-8">
+                  <div className="p-4 rounded-xl bg-cream-50/80 border border-sand-300/60 shadow-2xs">
+                    <span className="w-6 h-6 rounded-full bg-terracotta-100 text-terracotta-800 flex items-center justify-center font-serif text-xs font-bold mb-2">
                       1
                     </span>
                     <h4 className="text-sm font-semibold text-espresso-950 mb-1">
@@ -327,8 +327,8 @@ export function HomePage() {
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-xl bg-cream-50/60 border border-sand-300/60">
-                    <span className="w-6 h-6 rounded-full bg-sand-300/80 text-espresso-900 flex items-center justify-center font-serif text-xs font-bold mb-2">
+                  <div className="p-4 rounded-xl bg-cream-50/80 border border-sand-300/60 shadow-2xs">
+                    <span className="w-6 h-6 rounded-full bg-ochre-100 text-ochre-800 flex items-center justify-center font-serif text-xs font-bold mb-2">
                       2
                     </span>
                     <h4 className="text-sm font-semibold text-espresso-950 mb-1">
@@ -339,8 +339,8 @@ export function HomePage() {
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-xl bg-cream-50/60 border border-sand-300/60">
-                    <span className="w-6 h-6 rounded-full bg-sand-300/80 text-espresso-900 flex items-center justify-center font-serif text-xs font-bold mb-2">
+                  <div className="p-4 rounded-xl bg-cream-50/80 border border-sand-300/60 shadow-2xs">
+                    <span className="w-6 h-6 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center font-serif text-xs font-bold mb-2">
                       3
                     </span>
                     <h4 className="text-sm font-semibold text-espresso-950 mb-1">
@@ -358,7 +358,7 @@ export function HomePage() {
                   </Button>
                 </div>
 
-                <p className="text-xs text-espresso-800 leading-relaxed">
+                <p className="text-xs text-espresso-700 leading-relaxed">
                   <span className="font-semibold text-espresso-800">Veterinary disclaimer: </span>
                   An estimate for healthy cats, not veterinary advice. Check with your vet for medical conditions, pregnancy, or rapid weight change.
                 </p>
@@ -369,7 +369,7 @@ export function HomePage() {
       </Section>
 
       {/* 4. FULL COLLECTION SECTION (All 10 products with category tabs) */}
-      <Section reveal defer className="bg-cream-50">
+      <Section className="bg-cream-50">
         <Container>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
             <div>
@@ -459,7 +459,7 @@ export function HomePage() {
       </Section>
 
       {/* 5. INGREDIENT PROMISE STRIP SECTION */}
-      <Section reveal defer className="bg-oat-100/60 border-y border-sand-300">
+      <Section className="bg-oat-100/60 border-y border-sand-300">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-4">
             <div className="flex items-start gap-4">
@@ -508,7 +508,7 @@ export function HomePage() {
       </Section>
 
       {/* 6. CLOSING CTA SECTION */}
-      <Section reveal defer className="py-20 sm:py-28 text-center overflow-hidden">
+      <Section className="py-20 sm:py-28 text-center overflow-hidden">
         <Container className="max-w-3xl">
           <div className="inline-flex justify-center mb-6 text-terracotta-700/80">
             <CatStretching width={100} height={100} aria-hidden="true" />

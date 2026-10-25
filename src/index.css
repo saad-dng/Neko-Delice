@@ -173,20 +173,14 @@ input[type="range"]:active::-moz-range-thumb {
   animation: fadeIn 200ms ease-out;
 }
 
-/* Below-fold deferred section rendering */
-.section-deferred {
-  content-visibility: auto;
-  contain-intrinsic-size: auto none auto 500px;
+/* Smooth section transitions */
+.section-reveal {
+  opacity: 1;
 }
 
-/* Scroll reveal opacity transition */
 @media (prefers-reduced-motion: no-preference) {
   .section-reveal {
-    opacity: 0;
-    transition: opacity 500ms ease-out;
-  }
-  .section-reveal.is-visible {
-    opacity: 1;
+    transition: opacity 300ms ease-out;
   }
 }
 

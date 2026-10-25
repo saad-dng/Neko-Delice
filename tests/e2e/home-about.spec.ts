@@ -190,6 +190,17 @@ test.describe('Responsive Screenshots at 360, 768, 1280, 1920 px (P14)', () => {
       await page.setViewportSize({ width: vp.width, height: vp.height })
       await page.goto('/')
       await page.waitForLoadState('networkidle')
+      // Incremental scroll to trigger all lazy-loaded images
+      await page.evaluate(async () => {
+        const totalHeight = document.body.scrollHeight
+        for (let y = 0; y <= totalHeight; y += 400) {
+          window.scrollTo(0, y)
+          await new Promise((r) => setTimeout(r, 60))
+        }
+        await new Promise((r) => setTimeout(r, 400))
+        window.scrollTo(0, 0)
+        await new Promise((r) => setTimeout(r, 200))
+      })
       await page.screenshot({
         path: `docs/screens/home-${vp.name}.png`,
         fullPage: true,
@@ -200,6 +211,10 @@ test.describe('Responsive Screenshots at 360, 768, 1280, 1920 px (P14)', () => {
       await page.setViewportSize({ width: vp.width, height: vp.height })
       await page.goto('/about')
       await page.waitForLoadState('networkidle')
+      await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
+      await page.waitForTimeout(400)
+      await page.evaluate(() => window.scrollTo(0, 0))
+      await page.waitForTimeout(200)
       await page.screenshot({
         path: `docs/screens/about-${vp.name}.png`,
         fullPage: true,
