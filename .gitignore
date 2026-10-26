@@ -26,6 +26,8 @@ dist-ssr
 # Project specific ignores
 Photo collection/
 neko-delice-agent-kit.zip
+neko-delice-netlify-deploy/
+neko-delice-netlify-deploy.zip
 .lighthouseci/
 playwright-report/
 test-results/
