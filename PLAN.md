@@ -83,7 +83,14 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
   - Compacted product bar across desktop and mobile to ~142px with uniform DM Sans typography, fixed 2-line title height (34px), and aligned baselines for category, price, specs, and add button.
   - Re-architected editorial discovery tiles (Meal Plan & Honest Standards) to mirror ProductCard's 2-part anatomy (aspect-square visual header with monoline cat art + compact info bar), creating 100% geometric uniformity across all 12 grid cards.
 - 2026-10-26: Footer refinement completed. Replaced bottom-bar BDT rate disclaimer with creator attribution "Made with 🖤 by Saad Bin Kabir" linking to https://www.instagram.com/saaad.dng/ with accessible love description and hover micro-interaction; 83/83 Vitest tests, Playwright smoke tests, and static SSG build passing.
-- 2026-10-26: Feline Button & Cart Design Refinement: Redesigned the generic boutique handbag icon into a bespoke cat-eared shopping tote with arched handle and debossed cat paw insignia in Icon.tsx; created monoline PawPrint vector component in src/components/cat-art/PawPrint.tsx; upgraded Button.tsx with warm feline tactile styling (oat-100 secondary buttons instead of stark black fashion borders) and catIcon support; added playful paw micro-interactions to ProductCard Add buttons, PDP Add to bag CTA, Meal Planner wizard, and SmartBag checkout; 0 typecheck errors, 0 lint warnings, 83/83 Vitest tests, 89/89 Playwright tests, and SSG build passing.
+- 2026-10-26: Footer Hover Animation, Placement & Currency Toggle Refinement:
+  - Added smooth animated expanding underline hover effect (`.footer-hover-link` with `::after` expanding from 0 to 100% width on hover and focus-visible) on all footer navigation links (`Home`, `Shop`, `Meal Planner`, `About`) and the creator attribution link (`Saad Bin Kabir`).
+  - Perfected footer alignment and layout across desktop and mobile:
+    - Balanced desktop columns with harmonized typography baselines (`mb-4` on section headings, `md:col-span-5 lg:col-span-5` for Brand, `md:col-span-3 lg:col-span-3` for Navigation, `md:col-span-4 lg:col-span-4` for Care & Standards).
+    - Converted bottom bar to a true 3-column desktop grid (`md:grid md:grid-cols-3 md:items-center`): copyright text left-aligned, currency toggle dead center, and creator attribution right-aligned.
+    - Compacted mobile footer spacing from `pt-16 pb-12 gap-10` to `pt-12 sm:pt-16 pb-10 sm:pb-12 gap-8` with centered, cleanly spaced bottom utilities.
+  - Sized down footer currency toggle to a refined micro-switch (`size="xs"`, 21px height with 10px text and 2px container padding) for an unobtrusive aesthetic.
+  - 0 typecheck errors, 0 lint warnings, 83/83 Vitest tests, 89/89 Playwright E2E tests, and static SSG build passing.
 
 
 
