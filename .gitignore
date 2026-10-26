@@ -25,6 +25,7 @@ dist-ssr
 
 # Project specific ignores
 Photo collection/
+prompts/neko-delice-homepage-v2-kit/
 neko-delice-agent-kit.zip
 neko-delice-netlify-deploy/
 neko-delice-netlify-deploy.zip

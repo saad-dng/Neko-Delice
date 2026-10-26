@@ -36,8 +36,8 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 
 ## v2 — Playful Homepage Stages (branch: playful-home)
 - [x] V2-01 Branch, rules and docs
-- [ ] V2-02 Audit the current site (**stop for owner approval**)
-- [ ] V2-03 Cat photo intake (**stop for owner approval**)
+- [x] V2-02 Audit the current site (docs/V2-AUDIT.md compiled, 0 dead buttons, 90/90 tests)
+- [x] V2-03 Cat photo intake (**stop for owner approval of photo role picks**)
 - [ ] V2-04 Reusable playful components
 - [ ] V2-05 Rebuild the homepage sections (**stop for owner browser review**)
 - [ ] V2-06 Functional interactions and animation across all pages
@@ -113,6 +113,14 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
   - Updated `Shop.tsx` and `Header.tsx` to restore to the last product anchor when navigating to the shop.
   - 0 typecheck errors, 0 lint warnings, 89/89 Vitest unit tests, 90/90 Playwright E2E tests, and static SSG build passing.
 - 2026-10-26: V2-01 completed. Created safe branch `playful-home`; added `docs/DESIGN-V2.md` and `docs/FLOW-CAT-PROMPTS.md`; updated `AGENTS.md` rules (removed AI/fictional disclosure requirement, added v2 non-negotiables, updated font budget to include Cormorant italic 500); updated `docs/CONTENT.md` notices; updated `PLAN.md` with v2 checklist.
+- 2026-10-26: V2-02 completed. Comprehensive site audit compiled in `docs/V2-AUDIT.md`. Mapped 5 homepage sections, verified 0 dead buttons across routes, confirmed JS bundle baseline (60.89 KB gzip), verified 0 AI/portfolio disclosures in UI, mapped claims for V2-05/V2-07; 89/89 Vitest unit tests and 90/90 Playwright E2E tests passing.
+- 2026-10-26: V2-03 completed. Cat photo intake pipeline established:
+  - Audited all 6 cat photos in `Photo collection/cats/`: zero anatomy defects, zero text/logos, backdrop harmonizes with `#FBF6EE`, ample negative space for typography.
+  - Documented role mapping in `docs/SITE-IMAGE-MAP.md` and `src/data/site-image-map.source.json`.
+  - Extended `scripts/optimize-images.mjs` with `optimizeSiteImages()` to produce high-resolution WebPs ({640, 1024, 1600, 2000}w for hero, {640, 1024, 1600}w for others) without downscaling or aggressive compression per user rule. Generated typed `src/data/site-images.manifest.ts`.
+  - Created `src/components/ui/SiteImage.tsx` with responsive srcset, dimensions, lazy loading, and error fallback.
+  - Executed carton-over-cat blend test (`docs/screens/blend-test.png`) analyzing `mix-blend-mode: multiply` on tinted backdrops and documented card surface architecture.
+  - Added unit test suite in `src/test/images.test.ts` (93/93 Vitest tests passing); static SSG build rendering all 15 routes cleanly.
 
 
 
