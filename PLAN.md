@@ -42,7 +42,7 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 - [x] V2-05 Rebuild the homepage sections (Owner approved)
 - [x] V2-06 Functional interactions and animation across all pages
 - [x] V2-07 Content, claims and notices cleanup
-- [ ] V2-08 Testing, QA and merge
+- [x] V2-08 Testing, QA and merge (107 unit tests, 97 E2E tests, 100/100/96/100 LHCI, 0 dead UI, clean merge)
 
 ## Notes
 - 2026-10-24: P01 completed. Vite + React + TS scaffold configured with vite-react-ssg, Tailwind v4, paths alias, directory structure, and vitest baseline.
@@ -151,6 +151,15 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
   - Verified exactly one `<title>` per page across all 15 prerendered HTML routes by removing duplicate template tag in `index.html`.
   - Keyword audit scan: Confirmed 0 hits across all codebase for over-claims, portfolio notes, concept art, AI notices, or unauthorized disclaimers.
   - Verification: 0 typecheck errors, 0 lint warnings, 107/107 Vitest tests passing, 96/96 Playwright tests passing, static build passing.
+- 2026-10-27: V2-08 completed. Testing, QA and merge:
+  - Automated tests: 107/107 Vitest unit tests passing across 13 suites; 97/97 Playwright E2E tests passing. Added Home flows test verifying category carry, CatCard activity preselection, and hero CTAs.
+  - Performance & Core Web Vitals: Multi-route Lighthouse CI mobile audit on 5 routes (/, /shop, /product/wild-salmon-quail-pate, /meal-plan, /about) scored 100 Perf, 100 A11y, 96 Best Practices, 100 SEO; LCP 422–777 ms; CLS 0.000 (0.012 on about).
+  - Layout stability: Added explicit aspectRatio CSS style to SiteImage and preloaded Cormorant Garamond 500 italic in SeoHead to eliminate layout shift.
+  - Prerendered Shop route: Configured ShopPage to render complete collection directly with smooth replaceState URL hash sync, achieving 100/100/96/100 LHCI scores and clean E2E redirection.
+  - Bundles & Assets: Initial JS bundle 68.74 KB gzip (≤ 170 KB budget); hero image 45.51 KB WebP (≤ 150 KB budget).
+  - Responsive visual QA: Captured 25 high-resolution screenshots at 360, 640, 1024, 1536, 2560 px in `docs/screens/v2/`. Zero overflow, overlap, or clipping.
+  - Notice audit: Verified strictly 1 storefront preview notice in bag drawer.
+  - Compiled detailed before/after comparison in `docs/V2-REPORT.md`.
 
 
 

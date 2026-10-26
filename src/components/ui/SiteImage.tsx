@@ -63,8 +63,15 @@ export function SiteImage({
     )
   }
 
+  const aspectRatio = imageEntry.aspectRatio
+    ? imageEntry.aspectRatio.replace(':', '/')
+    : '4/3'
+
   return (
-    <div className={`relative overflow-hidden bg-[#DDD0BA] ${className}`}>
+    <div
+      className={`relative overflow-hidden bg-[#DDD0BA] ${className}`}
+      style={{ aspectRatio }}
+    >
       <img
         src={imageEntry.src}
         srcSet={srcSetString}
@@ -77,6 +84,7 @@ export function SiteImage({
         fetchPriority={priority ? 'high' : 'auto'}
         onError={() => setHasError(true)}
         className="w-full h-full object-cover transition-opacity duration-200"
+        style={{ aspectRatio }}
       />
     </div>
   )

@@ -257,7 +257,7 @@ export function HomePage() {
                 <span className="text-[#56744B] italic">curious cats.</span>
               </h1>
 
-              <p className="text-base sm:text-lg text-espresso-800 leading-relaxed max-w-xl text-balance mb-8">
+              <p className="text-base sm:text-lg text-espresso-800 leading-relaxed max-w-xl mb-8">
                 Short ingredient lists, honest portions, and a plan built around your cat.
               </p>
 

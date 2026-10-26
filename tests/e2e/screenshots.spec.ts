@@ -10,7 +10,7 @@ const VIEWPORTS = [
   { name: '2560', width: 2560, height: 1440 },
 ]
 
-const TARGET_DIR = path.resolve(process.cwd(), 'docs/screens')
+const TARGET_DIR = path.resolve(process.cwd(), 'docs/screens/v2')
 if (!fs.existsSync(TARGET_DIR)) {
   fs.mkdirSync(TARGET_DIR, { recursive: true })
 }

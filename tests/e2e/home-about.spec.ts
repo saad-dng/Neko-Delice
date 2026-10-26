@@ -72,6 +72,49 @@ test.describe('Home Page (P14)', () => {
     ).toBeVisible()
   })
 
+  test('Home flows: category filter carries to View full collection, CatCards preselect activity, and hero CTAs navigate', async ({
+    page,
+  }) => {
+    await page.goto('/')
+
+    // 1. Hero CTAs navigate correctly
+    await page.click('a:has-text("Plan my cat\'s meals")')
+    await expect(page).toHaveURL(/\/meal-plan/)
+
+    await page.goto('/')
+    await page.click('a:has-text("Shop the collection")')
+    await expect(page).toHaveURL(/\/#shop/)
+
+    // 2. Category tab filters and View full collection carries category
+    const dryTab = page.locator('button[role="tab"]:has-text("Dry Food")')
+    await dryTab.click()
+    const viewFullBtn = page.locator('a:has-text("View full collection")')
+    await expect(viewFullBtn).toHaveAttribute('href', '/shop?category=dry-food')
+
+    await viewFullBtn.click()
+    await expect(page).toHaveURL(/\/\?category=dry-food#shop/)
+    await expect(page.locator('[data-testid="product-card"]')).toHaveCount(1)
+
+    // 3. Planner CatCards link to /meal-plan with correct activity
+    await page.goto('/')
+    const loungerCard = page.locator('a[href*="act=lounger"]')
+    await expect(loungerCard).toBeVisible()
+    await loungerCard.click()
+    await expect(page).toHaveURL(/\/meal-plan\?act=lounger&step=1/)
+
+    await page.goto('/')
+    const explorerCard = page.locator('a[href*="act=explorer"]')
+    await expect(explorerCard).toBeVisible()
+    await explorerCard.click()
+    await expect(page).toHaveURL(/\/meal-plan\?act=explorer&step=1/)
+
+    await page.goto('/')
+    const highEnergyCard = page.locator('a[href*="act=high-energy"]')
+    await expect(highEnergyCard).toBeVisible()
+    await highEnergyCard.click()
+    await expect(page).toHaveURL(/\/meal-plan\?act=high-energy&step=1/)
+  })
+
   test('accessibility scan (axe) on Home page has zero serious or critical issues', async ({
     page,
   }) => {
