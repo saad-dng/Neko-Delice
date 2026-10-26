@@ -126,12 +126,6 @@ export function ProductPage() {
       '@type': 'Brand',
       name: 'NEKO DELICE',
     },
-    offers: {
-      '@type': 'Offer',
-      price: product.priceUSD,
-      priceCurrency: 'USD',
-      availability: 'https://schema.org/InStock',
-    },
   }
 
   // Gallery Navigation Handlers
@@ -620,7 +614,7 @@ export function ProductPage() {
                   {isKitten
                     ? 'Based on a kitten lounger.'
                     : 'Based on a neutered adult lounger.'}{' '}
-                  Computed using our pure veterinary calorie formulas.
+                  Computed using our vet-informed calorie formulas.
                 </p>
               </div>
 

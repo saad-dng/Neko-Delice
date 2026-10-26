@@ -15,7 +15,7 @@ export interface SeoHeadProps {
   jsonLd?: Record<string, unknown>
 }
 
-const DEFAULT_SITE_URL = 'https://example.com'
+const DEFAULT_SITE_URL = 'https://neko-delice.netlify.app'
 
 function getSiteUrl(): string {
   if (typeof import.meta !== 'undefined' && import.meta.env?.VITE_SITE_URL) {

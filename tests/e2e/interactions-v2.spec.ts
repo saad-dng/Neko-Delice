@@ -24,7 +24,7 @@ test.describe('V2-06 Interactions and Animations Suite', () => {
     await expect(bagBadge).toHaveText('1')
 
     // Polite toast should appear
-    const toast = page.locator('[role="status"][aria-live="polite"]')
+    const toast = page.locator('aside[aria-label="Notification"]')
     await expect(toast).toBeVisible()
     await expect(toast).toContainText('Added')
     const undoButton = toast.locator('button', { hasText: 'Undo' })
@@ -51,7 +51,7 @@ test.describe('V2-06 Interactions and Animations Suite', () => {
     const bagBadge = page.locator('header button[aria-label^="Open bag"]').locator('span[aria-hidden="true"]')
     await expect(bagBadge).toHaveText('1')
 
-    const toast = page.locator('[role="status"][aria-live="polite"]')
+    const toast = page.locator('aside[aria-label="Notification"]')
     await expect(toast).toBeVisible()
     const undoButton = toast.locator('button', { hasText: 'Undo' })
     await undoButton.focus()
@@ -118,7 +118,7 @@ test.describe('V2-06 Interactions and Animations Suite', () => {
     await stickyAdd.click()
 
     // Toast should show
-    const toast = page.locator('[role="status"][aria-live="polite"]')
+    const toast = page.locator('aside[aria-label="Notification"]')
     await expect(toast).toBeVisible()
   })
 

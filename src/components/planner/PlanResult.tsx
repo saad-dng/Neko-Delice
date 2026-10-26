@@ -427,7 +427,7 @@ export function PlanResult({ bundle, profile, onEditAnswers }: PlanResultProps) 
 
           <div className="mt-4 text-xs sm:text-sm text-espresso-800 space-y-3 leading-relaxed border-t border-sand-300/60 pt-4">
             <p>
-              We calculate daily energy intake using peer-reviewed feline clinical formulas:
+              We calculate daily energy intake using peer-reviewed feline formulas:
             </p>
             <div className="p-3 rounded-xl bg-cream-50 font-mono text-xs text-espresso-900 space-y-1">
               <div>RER = 70 × W^0.75</div>

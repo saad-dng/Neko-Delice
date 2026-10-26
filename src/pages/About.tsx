@@ -33,7 +33,7 @@ export function AboutPage() {
           </Heading>
 
           <p className="text-lg sm:text-xl text-espresso-800 leading-relaxed max-w-3xl text-balance">
-            Most cat food packaging is loud, filled with aggressive graphics and marketing claims that obscure basic feeding facts. NEKO DELICE was created to be the antidote: vet-informed nutrition, quiet design, and absolute transparency in every bowl. We believe feeding your cat should be a moment of calm, thoughtful care — free from guesswork, unpronounceable fillers, and synthetic binders.
+            Most cat food packaging is loud, filled with aggressive graphics and marketing claims that obscure basic feeding facts. NEKO DELICE was created to be the antidote: vet-informed nutrition, quiet design, and absolute transparency in every bowl. We believe feeding your cat should be a moment of calm, thoughtful care — free from guesswork and unpronounceable fillers.
           </p>
         </Container>
       </Section>
@@ -77,7 +77,7 @@ export function AboutPage() {
                   Hydration-focused meals
                 </h3>
                 <p className="text-sm text-espresso-700 leading-relaxed">
-                  Domestic cats retain the low thirst drive of desert ancestors. Our stick sachets deliver high moisture through natural bone and meat broths to support kidney and urinary tract wellness.
+                  Domestic cats retain the low thirst drive of desert ancestors. Our stick sachets deliver high moisture through natural meat broths to support urinary tract wellness.
                 </p>
               </div>
             </div>
@@ -110,7 +110,7 @@ export function AboutPage() {
               Ingredients you can understand
             </Heading>
             <p className="text-base text-espresso-800 leading-relaxed">
-              Every formula is visible, honest, and free from hidden thickeners, meal byproducts, or cosmetic colorants.
+              Every formula is visible, honest, and formulated without hidden thickeners, meal byproducts, or cosmetic colorants.
             </p>
           </div>
 
@@ -287,10 +287,10 @@ export function AboutPage() {
               </span>
               <div>
                 <strong className="text-sm font-semibold text-espresso-950 block">
-                  Human-grade animal proteins
+                  Single-source animal proteins
                 </strong>
                 <p className="text-xs text-espresso-700 leading-relaxed mt-1">
-                  Single-source deboned chicken, wild salmon, and free-range duck. Never any byproduct meals, feather meal, or animal digests.
+                  Single-source deboned chicken, wild salmon, and lean duck. Never any byproduct meals, feather meal, or animal digests.
                 </p>
               </div>
             </div>
@@ -301,10 +301,10 @@ export function AboutPage() {
               </span>
               <div>
                 <strong className="text-sm font-semibold text-espresso-950 block">
-                  Zero grain fillers or artificial gums
+                  No grain fillers or artificial gums
                 </strong>
                 <p className="text-xs text-espresso-700 leading-relaxed mt-1">
-                  Free from corn, wheat, soy, carrageenan, guar gum, and synthetic coloring agents that trigger digestive sensitivities.
+                  Formulated without corn, wheat, soy, carrageenan, guar gum, or artificial colours that trigger digestive sensitivities.
                 </p>
               </div>
             </div>
@@ -318,7 +318,7 @@ export function AboutPage() {
                   Controlled minerals &amp; ash
                 </strong>
                 <p className="text-xs text-espresso-700 leading-relaxed mt-1">
-                  Carefully balanced phosphorus and magnesium levels to support bladder health and kidney function throughout adult and senior years.
+                  Carefully balanced phosphorus and magnesium levels to support bladder and urinary tract wellness throughout adult and senior years.
                 </p>
               </div>
             </div>

@@ -3,7 +3,7 @@ export const SITE_CONFIG = {
   tagline: 'Honest food, quiet design, no guesswork.',
   footerLine: 'Honest food, quiet design.',
   previewDisclaimer: 'This is a storefront preview. Checkout is not connected yet.',
-  brandPromise: 'Formulated with human-grade proteins and quiet, purposeful design.',
+  brandPromise: 'Formulated with single-source proteins and quiet, purposeful design.',
   plannerDisclaimer:
     'An estimate for healthy cats, not veterinary advice. Check with your vet for medical conditions, pregnancy, or rapid weight change.',
   extremeWeightNote: 'Very small or large cats should get feeding advice from a vet.',
@@ -21,6 +21,6 @@ export const SITE_CONFIG = {
     title: 'NEKO DELICE — Honest Food, Quiet Design, No Guesswork',
     description:
       'Tell us about your cat. We work out the calories and build a month of meals with vet-informed cat nutrition.',
-    url: 'https://example.com',
+    url: (typeof import.meta !== 'undefined' && import.meta.env?.VITE_SITE_URL) || 'https://neko-delice.netlify.app',
   },
 } as const

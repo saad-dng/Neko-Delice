@@ -415,7 +415,7 @@ export function HomePage() {
         </Container>
       </Band>
 
-      {/* 3. THE SHOP (Interactive Storefront Preview) */}
+      {/* 3. THE SHOP (Interactive Storefront) */}
       <section id="shop" className="bg-cream-50 py-14 sm:py-20 border-t border-sand-300/60 scroll-mt-20 sm:scroll-mt-24">
         <div id="collection" className="sr-only" aria-hidden="true" />
         <Container>
@@ -611,7 +611,7 @@ export function HomePage() {
                       Short, recognisable ingredients
                     </h3>
                     <p className="text-xs text-espresso-700 leading-relaxed">
-                      The full list is on every product page. Single-source proteins, unrefined oils, zero fillers.
+                      The full list is on every product page. Single-source proteins, unrefined oils, no fillers.
                     </p>
                   </div>
 

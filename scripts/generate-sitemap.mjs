@@ -6,7 +6,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const rootDir = path.resolve(__dirname, '..')
 const distDir = path.join(rootDir, 'dist')
 
-const siteUrl = (process.env.VITE_SITE_URL || 'https://example.com').replace(/\/$/, '')
+const siteUrl = (process.env.VITE_SITE_URL || 'https://neko-delice.netlify.app').replace(/\/$/, '')
 
 const PRODUCT_SLUGS = [
   'kitten-growth-mousse-broth',

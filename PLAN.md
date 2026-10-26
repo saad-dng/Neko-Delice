@@ -41,7 +41,7 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 - [x] V2-04 Reusable playful components (Cormorant italic 500, 5 cat poses, 6 doodles, Annotation, Reveal, Band, CatCard, IdleCat, PawStamp)
 - [x] V2-05 Rebuild the homepage sections (Owner approved)
 - [x] V2-06 Functional interactions and animation across all pages
-- [ ] V2-07 Content, claims and notices cleanup
+- [x] V2-07 Content, claims and notices cleanup
 - [ ] V2-08 Testing, QA and merge
 
 ## Notes
@@ -143,6 +143,14 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
   - About: `Reveal` wrappers on ingredient close-up cards without motion delays on reading blocks.
   - Motion & Accessibility: 150ms route opacity transition; `IdleCat` pauses when tab is hidden (`visibilitychange`); all transforms disabled under `prefers-reduced-motion: reduce`.
   - Verification: `npm run typecheck` passed (0 errors); `npm run lint` passed (0 warnings, 0 errors); `npm test` passed (107/107 Vitest tests across 13 suites); Playwright passed (96/96 tests across all routes and devices).
+- 2026-10-26: V2-07 completed. Content, claims, and notices cleanup:
+  - Removed over-claims across `About.tsx`, `site.ts`, `Footer.tsx`, `MealPlan.tsx`, `PlanResult.tsx`, and `Product.tsx`: removed "human-grade", "free-range", "clinical", "pure veterinary formulas", "zero synthetic binders", "kidney" disease claims, and "bone broth" per `docs/CONTENT.md`.
+  - Kept exactly one storefront preview notice: bag drawer "This is a storefront preview. Checkout is not connected yet." in `site.ts` and `SmartBag.tsx`.
+  - Product JSON-LD: Removed `offers` and `availability` since checkout is not connected; retained `name`, `image`, `description`, `brand`.
+  - Canonical, Open Graph, and sitemap URLs: Replaced `example.com` with `VITE_SITE_URL` fallback `https://neko-delice.netlify.app` in `SeoHead.tsx`, `site.ts`, `generate-sitemap.mjs`, and `robots.txt`.
+  - Verified exactly one `<title>` per page across all 15 prerendered HTML routes by removing duplicate template tag in `index.html`.
+  - Keyword audit scan: Confirmed 0 hits across all codebase for over-claims, portfolio notes, concept art, AI notices, or unauthorized disclaimers.
+  - Verification: 0 typecheck errors, 0 lint warnings, 107/107 Vitest tests passing, 96/96 Playwright tests passing, static build passing.
 
 
 

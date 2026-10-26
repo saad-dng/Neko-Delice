@@ -117,7 +117,7 @@ export function MealPlanPage() {
           <div className="flex items-center gap-3 mb-4 text-sage-800">
             <CatHead width={32} height={32} aria-hidden="true" className="text-sage-700" />
             <span className="text-xs font-semibold uppercase tracking-wider">
-              Clinical Feline Nutrition
+              Vet-Informed Nutrition
             </span>
           </div>
 
