@@ -69,12 +69,19 @@ describe('Route Architecture & Layout Shell (P07)', () => {
     expect(main).not.toBeNull()
     expect(main?.getAttribute('tabindex')).toBe('-1')
 
-    // Footer landmark with care and accessibility statements
+    // Footer landmark with care, accessibility statements, and creator credit
     const footer = container.querySelector('footer')
     expect(footer).not.toBeNull()
     expect(footer?.textContent).toContain('Honest food, quiet design.')
     expect(footer?.textContent).toContain('Care & Standards')
     expect(footer?.textContent).toContain('NEKO DELICE is committed to digital accessibility.')
+    expect(footer?.textContent).toContain('Made with')
+    expect(footer?.textContent).toContain('Saad Bin Kabir')
+
+    const creatorLink = within(footer!).getByRole('link', { name: 'Saad Bin Kabir' })
+    expect(creatorLink.getAttribute('href')).toBe('https://www.instagram.com/saaad.dng/')
+    expect(creatorLink.getAttribute('target')).toBe('_blank')
+    expect(creatorLink.getAttribute('rel')).toContain('noopener')
   })
 
   it('renders NotFoundPage with CatSitting illustration and single h1', () => {

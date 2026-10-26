@@ -62,7 +62,7 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar: Copyright, Currency Selector, and FX Disclosure */}
+        {/* Bottom Bar: Copyright, Currency Selector, and Creator Credit */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-espresso-700">
           <p>© {currentYear} NEKO DELICE. All rights reserved.</p>
 
@@ -72,8 +72,24 @@ export function Footer() {
             <CurrencyToggle ariaLabel="Currency selection" size="sm" />
           </div>
 
-          <p className="text-espresso-700">
-            BDT prices are approximate (USD 1 = ৳123, Oct 2026)
+          <p className="text-espresso-700 flex items-center gap-1.5">
+            <span>Made with</span>
+            <span
+              aria-hidden="true"
+              className="inline-block transition-transform hover:scale-125 select-none text-[13px]"
+            >
+              🖤
+            </span>
+            <span className="sr-only">love</span>
+            <span>by</span>
+            <a
+              href="https://www.instagram.com/saaad.dng/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-espresso-950 underline underline-offset-3 decoration-sand-400 hover:text-terracotta-600 hover:decoration-terracotta-600 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 rounded-xs"
+            >
+              Saad Bin Kabir
+            </a>
           </p>
         </div>
       </div>

@@ -82,7 +82,7 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
   - Fixed root cause of oversized desktop typography: wrapped global `h1, h2, h3` display heading rules in `@layer base` in `src/index.css` so Tailwind utility classes (`font-sans text-[13px]`) override unlayered defaults correctly.
   - Compacted product bar across desktop and mobile to ~142px with uniform DM Sans typography, fixed 2-line title height (34px), and aligned baselines for category, price, specs, and add button.
   - Re-architected editorial discovery tiles (Meal Plan & Honest Standards) to mirror ProductCard's 2-part anatomy (aspect-square visual header with monoline cat art + compact info bar), creating 100% geometric uniformity across all 12 grid cards.
-  - Verification: 0 typecheck errors, 0 lint warnings, 83/83 Vitest tests passing, static build passing, live visual inspection verified.
+- 2026-10-26: Footer refinement completed. Replaced bottom-bar BDT rate disclaimer with creator attribution "Made with 🖤 by Saad Bin Kabir" linking to https://www.instagram.com/saaad.dng/ with accessible love description and hover micro-interaction; 83/83 Vitest tests, Playwright smoke tests, and static SSG build passing.
 
 
 
