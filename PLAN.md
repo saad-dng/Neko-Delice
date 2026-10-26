@@ -14,10 +14,10 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 | Images | 48 JPGs in `Photo collection/` (4–5 per product, **not** six). Gallery uses what exists, ordered by role (see `docs/IMAGE-MAP.md`). No new generation. No site-wide images exist: hero, bento tiles and About imagery reuse product photos. |
 | Currency | Fixed `USD_TO_BDT = 123`, shown as "approximate", BDT rounded to nearest ৳10. As-of label: "Oct 2026". Never fetch live rates. |
 | Case study | A "Behind the build" section on `/about`. **No extra route.** |
-| Framework | Vite + React + TS + `vite-react-ssg` (react-router-dom v6). |
+| Homepage v2 direction | **Real cat photo hero + supporting illustrations**; disclosures removed except checkout notice; work on branch `playful-home`. |
 | Dark mode, accounts, search, reviews, checkout, multi-cat | Out of scope. |
 
-## Phases (one prompt each, in order)
+## Phases v1 (Completed)
 - [x] P01 Bootstrap & project structure
 - [x] P02 Photo audit → `docs/IMAGE-MAP.md` (**stop for owner approval**)
 - [x] P03 Image optimisation pipeline
@@ -33,6 +33,16 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 - [x] P13 Smart Bag modal + currency toggle UI
 - [x] P14 Home, About (+ Behind the build), micro-interactions
 - [x] P15 Audit, optimisation, README, launch prep
+
+## v2 — Playful Homepage Stages (branch: playful-home)
+- [x] V2-01 Branch, rules and docs
+- [ ] V2-02 Audit the current site (**stop for owner approval**)
+- [ ] V2-03 Cat photo intake (**stop for owner approval**)
+- [ ] V2-04 Reusable playful components
+- [ ] V2-05 Rebuild the homepage sections (**stop for owner browser review**)
+- [ ] V2-06 Functional interactions and animation across all pages
+- [ ] V2-07 Content, claims and notices cleanup
+- [ ] V2-08 Testing, QA and merge
 
 ## Notes
 - 2026-10-24: P01 completed. Vite + React + TS scaffold configured with vite-react-ssg, Tailwind v4, paths alias, directory structure, and vitest baseline.
@@ -102,6 +112,8 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
   - Updated `Home.tsx` to preserve the `#shop` hash on category changes, track shop vs hero presence via IntersectionObserver, restore active category filters, smoothly scroll back to the last viewed product card, and apply a 2.2s subtle highlight ring on return.
   - Updated `Shop.tsx` and `Header.tsx` to restore to the last product anchor when navigating to the shop.
   - 0 typecheck errors, 0 lint warnings, 89/89 Vitest unit tests, 90/90 Playwright E2E tests, and static SSG build passing.
+- 2026-10-26: V2-01 completed. Created safe branch `playful-home`; added `docs/DESIGN-V2.md` and `docs/FLOW-CAT-PROMPTS.md`; updated `AGENTS.md` rules (removed AI/fictional disclosure requirement, added v2 non-negotiables, updated font budget to include Cormorant italic 500); updated `docs/CONTENT.md` notices; updated `PLAN.md` with v2 checklist.
+
 
 
 
