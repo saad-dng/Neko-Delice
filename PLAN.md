@@ -13,8 +13,8 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 | Illustration | Monoline cat SVGs only. |
 | Images | 48 JPGs in `Photo collection/` (4–5 per product, **not** six). Gallery uses what exists, ordered by role (see `docs/IMAGE-MAP.md`). No new generation. No site-wide images exist: hero, bento tiles and About imagery reuse product photos. |
 | Currency | Fixed `USD_TO_BDT = 123`, shown as "approximate", BDT rounded to nearest ৳10. As-of label: "Oct 2026". Never fetch live rates. |
-| Case study | A "Behind the build" section on `/about`. **No extra route.** |
 | Homepage v2 direction | **Real cat photo hero + supporting illustrations**; disclosures removed except checkout notice; work on branch `playful-home`. |
+| Image Quality | **Maximum image file size limits removed.** Preserve high-fidelity, high-resolution photography without lowering resolutions or aggressive compression so the storefront looks stunning. |
 | Dark mode, accounts, search, reviews, checkout, multi-cat | Out of scope. |
 
 ## Phases v1 (Completed)

@@ -16,4 +16,4 @@ The cat photography collection for Homepage v2 is provided in `prompts/neko-deli
 ## Intake Protocol (Stage V2-03)
 - Verify anatomy (whiskers, paws, pupils, ears).
 - Color calibration to ensure background tones blend smoothly into NEKO DELICE's `#FBF6EE` (cream-50) using CSS radial/linear masks.
-- Output via Sharp pipeline to `public/images/site/` with 640, 1024, 1600 WebP formats under strict size budgets (Hero ≤ 150 KB, supporting ≤ 120 KB at 1024px).
+- Output via Sharp pipeline to `public/images/site/` with 640, 1024, 1600, and 2000+ WebP/high-res formats. File size caps are removed to preserve maximum photographic fidelity, sharp textures, and stunning high-DPI display without lowering resolutions or aggressive compression.

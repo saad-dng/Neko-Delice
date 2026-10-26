@@ -20,8 +20,8 @@ No runtime CSS-in-JS. No UI kit. No icon library (inline SVG). No animation libr
 - Health-goal wording is supportive only ("supports", "formulated for"). Never "treats", "cures", "prevents".
 - Every image: real alt text, explicit width/height, `srcset`, lazy below the fold. Only the LCP image is eager + `fetchpriority="high"`.
 - Accessibility: semantic landmarks, one `h1` per route, visible focus ring, 44px touch targets, `prefers-reduced-motion` respected, colour never the only signal. Modals use native `<dialog>` + `showModal()`.
-- Light theme only. No dark mode.
-- Budgets: initial JS ≤ 170 KB gzip · hero image ≤ 150 KB · fonts: Cormorant Garamond 500/600 + one italic 500 file, DM Sans 400/500, WOFF2, self-hosted · LCP ≤ 2.5 s · CLS ≤ 0.1 · INP ≤ 200 ms · Lighthouse mobile ≥ 95 in all four categories.
+- Budgets: initial JS ≤ 170 KB gzip · fonts: Cormorant Garamond 500/600 + one italic 500 file, DM Sans 400/500, WOFF2, self-hosted · LCP ≤ 2.5 s · CLS ≤ 0.1 · INP ≤ 200 ms · Lighthouse mobile ≥ 95 in all four categories.
+- Image quality: Maximum file size limits on photos are killed. Always use high-quality, high-resolution photography without lowering resolutions or aggressive compression so the storefront looks stunning.
 - Zero dead routes, dead buttons, or console errors.
 - Always show the planner disclaimer: "An estimate for healthy cats, not veterinary advice. Check with your vet for medical conditions, pregnancy, or rapid weight change."
 - Do not add any notice about AI, fictional products or testing/portfolio status anywhere in the UI or metadata. The only notice allowed is the bag's 'This is a storefront preview. Checkout is not connected yet.' (verbatim).
