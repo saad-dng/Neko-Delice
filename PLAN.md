@@ -127,6 +127,14 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
   - 6 Doodles in `src/components/doodles/`: `PawTrail`, `Heart`, `SparkleLine`, `Yarn`, `ScribbleArrow` (curve-left/right), `Wave` (soft sinusoidal divider); total new SVG size: 14.09 KB across all 11 SVGs.
   - Interactive Primitives: `Annotation` (italic note + arrow, aria-hidden), `Reveal` + `useReveal` (prerender-safe, reduced-motion aware, 12px rise), `Band` (cream/oat/sage with 12% color-mix and optional top wave), `CatCard` (real `<a>` or button, 4px lift on hover/focus, 44px min target), `IdleCat` (aria-hidden, ~6s twitch keyframes, pauses offscreen), `PawStamp` & `stampPaw` (brief tactile feedback on button add).
   - 103/103 Vitest tests passing; 0 typecheck errors, 0 lint warnings/errors; static SSG build passing.
+- 2026-10-26: V2-05 completed. Rebuilt homepage sections per DESIGN-V2.md:
+  - Hero: Real cat photo (`cat-hero-01`) LCP image with fetchpriority="high", preloaded in SeoHead with imagesrcset, soft radial mask fade; floating Duck & Sweet Potato Kibble pouch; Cormorant headline with matcha-italic emphasis; handwritten Annotation "Mealtime is the best time."; 3 truthful chips; soft Wave divider.
+  - Planner Band: `Band variant="sage"` with `CatCurious` icon, headline, 3 clickable `CatCard`s linking to `/meal-plan?act=lounger|explorer|high-energy&step=1`, 3 steps, and planner disclaimer.
+  - Shop Preview: Category tabs with client-side filtering, sort controls, and ProductCard grid with add-to-bag and session tracking.
+  - Why Band: `Band variant="oat"` with real eating cat photo, `IdleCat` curled cat badge + "Planned portions" annotation, and 4 truthful value points.
+  - Calm Strip & Closing CTA: Truthful standards strip + `CatPeekEdge` card divider.
+  - Responsive verified across 360, 640, 1024, 1536 px; 103/103 Vitest tests passing; ready for owner browser review.
+
 
 
 
