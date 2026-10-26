@@ -60,7 +60,7 @@ test.describe('E2E Accessibility Suite: WCAG AA & Axe Audits (P15)', () => {
 
     const bagButton = page.locator('header button[aria-label^="Open bag"]')
     await bagButton.focus()
-    await page.keyboard.press('Enter')
+    await bagButton.press('Enter')
 
     const dialog = page.locator('dialog.smart-bag-dialog')
     await expect(dialog).toBeVisible()

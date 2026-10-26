@@ -1,6 +1,13 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/shop",
+      "destination": "/#shop",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
