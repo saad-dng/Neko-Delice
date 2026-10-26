@@ -123,4 +123,38 @@ test.describe('E2E Key User Journeys & State Resilience (P15)', () => {
     // No unhandled exceptions or crashes
     expect(consoleErrors).toEqual([])
   })
+
+  test('Shopping session restoration: navigating from shop segment to PDP and returning restores category and product location', async ({
+    page,
+  }) => {
+    // 1. User starts on homepage and scrolls to shop or selects a category
+    await page.goto('/')
+    const wetFoodTab = page.locator('button[role="tab"]:has-text("Wet Food")')
+    await wetFoodTab.click()
+
+    // URL should preserve #shop
+    await expect(page).toHaveURL(/\/?category=wet-food#shop/)
+
+    // 2. Click on a product card to view details
+    const productLink = page.locator('article[id="product-kitten-growth-mousse-broth"] a').first()
+    await productLink.click()
+
+    // 3. Confirm we are on the PDP
+    await expect(page).toHaveURL(/\/product\/kitten-growth-mousse-broth/)
+    const backLink = page.locator('main nav[aria-label="Breadcrumbs"] a')
+    await expect(backLink).toBeVisible()
+
+    // 4. Click breadcrumb back link
+    await backLink.click()
+
+    // 5. User should be returned directly to the product in the shop with the category intact!
+    await expect(page).toHaveURL(/\/?category=wet-food#product-kitten-growth-mousse-broth/)
+    const targetProductCard = page.locator('article[id="product-kitten-growth-mousse-broth"]')
+    await expect(targetProductCard).toBeVisible()
+
+    // Category tab remains active
+    const activeTab = page.locator('button[role="tab"][aria-selected="true"]')
+    await expect(activeTab).toContainText('Wet Food')
+  })
 })
+

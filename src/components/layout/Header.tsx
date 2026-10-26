@@ -6,6 +6,7 @@ import { ProgressiveBlur } from '@/components/ui/ProgressiveBlur'
 import { CurrencyToggle } from '@/components/ui/CurrencyToggle'
 import { useBag } from '@/store/bag'
 import { useBagUi } from '@/store/bag-ui'
+import { getShopSession } from '@/lib/shop-session'
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -93,10 +94,15 @@ export function Header() {
                 onClick={(e) => {
                   if (isShop && location.pathname === '/') {
                     e.preventDefault()
-                    const el = document.getElementById('shop') || document.getElementById('collection')
+                    const lastProduct = getShopSession().lastProductSlug
+                    const targetId = lastProduct ? `product-${lastProduct}` : 'shop'
+                    const el =
+                      document.getElementById(targetId) ||
+                      document.getElementById('shop') ||
+                      document.getElementById('collection')
                     if (el) {
                       el.scrollIntoView({ behavior: 'smooth' })
-                      window.history.pushState(null, '', '/#shop')
+                      window.history.pushState(null, '', `/#${targetId}`)
                     }
                   }
                 }}
@@ -191,10 +197,15 @@ export function Header() {
                     handleNavClick()
                     if (isShop && location.pathname === '/') {
                       e.preventDefault()
-                      const el = document.getElementById('shop') || document.getElementById('collection')
+                      const lastProduct = getShopSession().lastProductSlug
+                      const targetId = lastProduct ? `product-${lastProduct}` : 'shop'
+                      const el =
+                        document.getElementById(targetId) ||
+                        document.getElementById('shop') ||
+                        document.getElementById('collection')
                       if (el) {
                         el.scrollIntoView({ behavior: 'smooth' })
-                        window.history.pushState(null, '', '/#shop')
+                        window.history.pushState(null, '', `/#${targetId}`)
                       }
                     }
                   }}

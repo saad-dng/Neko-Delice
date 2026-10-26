@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import { getShopSession } from '@/lib/shop-session'
 
 /**
  * RouteAnnouncer handles:
@@ -17,14 +18,36 @@ export function RouteAnnouncer() {
     if (typeof window !== 'undefined') {
       if (location.hash) {
         const id = location.hash.replace('#', '')
-        const el = document.getElementById(id)
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' })
-        } else {
+        let attempts = 0
+        const tryScroll = () => {
+          const el = document.getElementById(id)
+          if (el) {
+            const prefersReducedMotion = window.matchMedia(
+              '(prefers-reduced-motion: reduce)'
+            ).matches
+            el.scrollIntoView({
+              behavior: prefersReducedMotion ? 'auto' : 'smooth',
+              block: 'start',
+            })
+          } else if (attempts < 12) {
+            attempts++
+            requestAnimationFrame(tryScroll)
+          } else {
+            window.scrollTo(0, 0)
+          }
+        }
+        requestAnimationFrame(tryScroll)
+      } else {
+        // If returning to homepage while actively shopping or returning from PDP,
+        // do not force window.scrollTo(0,0) - let HomePage restore the user's position
+        const session = getShopSession()
+        const isReturningToShop =
+          location.pathname === '/' &&
+          (session.returningFromPdp || (session.inShop && session.lastProductSlug))
+
+        if (!isReturningToShop) {
           window.scrollTo(0, 0)
         }
-      } else {
-        window.scrollTo(0, 0)
       }
     }
 

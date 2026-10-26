@@ -94,7 +94,14 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 - 2026-10-26: Footer Underline Thickness Normalization & Currency Switch Interaction:
   - Fixed subpixel underline thickness variance (where "Shop" rendered thick and "Meal Planner" thin) by replacing fractional `height: 1.5px` with crisp integer `height: 2px` in `.footer-hover-link::after` and setting `leading-6` integer line-height on navigation links. Every link and creator attribution now renders with identical, razor-sharp 2px underline thickness across all monitors and DPI scalings.
   - Upgraded CurrencyToggle component with whole-surface toggle interaction: tapping either button (even the currently active one) toggles between USD and BDT, eliminating the need to pinpoint the exact opposite button.
-  - 0 typecheck errors, 0 lint warnings, 83/83 Vitest tests, and SSG build passing.
+- 2026-10-26: Shopping Session Memory & Location Restoration:
+  - Created `src/lib/shop-session.ts` to persist customer shopping state (selected category, sort order, last viewed product, and in-shop status) in `sessionStorage` with fallback.
+  - Updated `ProductCard.tsx` with unique `id={`product-${product.slug}`}`, `scroll-mt-24 sm:scroll-mt-28`, and click tracking so viewing a product records where the customer was.
+  - Updated `Product.tsx` breadcrumb ("← Back to collection") to dynamically restore to the exact active category and anchor to the product card (`/?category=...#product-...`).
+  - Updated `RouteAnnouncer.tsx` with requestAnimationFrame retry for hash anchors and shop-aware scroll restoration, preventing `window.scrollTo(0, 0)` from resetting the viewport to the hero when returning from shopping.
+  - Updated `Home.tsx` to preserve the `#shop` hash on category changes, track shop vs hero presence via IntersectionObserver, restore active category filters, smoothly scroll back to the last viewed product card, and apply a 2.2s subtle highlight ring on return.
+  - Updated `Shop.tsx` and `Header.tsx` to restore to the last product anchor when navigating to the shop.
+  - 0 typecheck errors, 0 lint warnings, 89/89 Vitest unit tests, 90/90 Playwright E2E tests, and static SSG build passing.
 
 
 

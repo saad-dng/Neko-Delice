@@ -10,6 +10,7 @@ import { getProductBySlug } from '@/data/products'
 import type { HealthGoal, Product, ProductAccent, ProductCategory } from '@/data/types'
 import { formatPrice } from '@/lib/format'
 import { feedingTable } from '@/lib/planner'
+import { getShopSession, markReturningFromPdp } from '@/lib/shop-session'
 import { NotFoundPage } from '@/pages/NotFound'
 import { useBag } from '@/store/bag'
 import { useBagUi } from '@/store/bag-ui'
@@ -154,10 +155,15 @@ export function ProductPage() {
         className="py-6 sm:py-10"
       >
         <Container>
-          {/* Breadcrumb Navigation */}
+          {/* Breadcrumb Navigation (Restores to active category and specific product card in shop) */}
           <nav aria-label="Breadcrumbs" className="mb-6 sm:mb-8">
             <Link
-              to="/#shop"
+              to={
+                getShopSession().category
+                  ? `/?category=${encodeURIComponent(getShopSession().category!)}#product-${product.slug}`
+                  : `/#product-${product.slug}`
+              }
+              onClick={() => markReturningFromPdp(true)}
               className="inline-flex items-center gap-1.5 text-xs font-medium text-espresso-700 hover:text-terracotta-700 transition-colors py-1"
             >
               <span aria-hidden="true">←</span> Back to collection

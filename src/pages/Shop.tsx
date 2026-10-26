@@ -1,14 +1,21 @@
 import { useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { SeoHead } from '@/components/seo/SeoHead'
+import { getShopSession } from '@/lib/shop-session'
 
 export function ShopPage() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
 
   useEffect(() => {
-    const category = searchParams.get('category')
-    const dest = category ? `/?category=${encodeURIComponent(category)}#shop` : '/#shop'
+    const session = getShopSession()
+    const category = searchParams.get('category') || session.category
+    const targetAnchor = session.lastProductSlug
+      ? `product-${session.lastProductSlug}`
+      : 'shop'
+    const dest = category
+      ? `/?category=${encodeURIComponent(category)}#${targetAnchor}`
+      : `/#${targetAnchor}`
     navigate(dest, { replace: true })
   }, [navigate, searchParams])
 

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import type { Product } from '@/data/types'
 import { formatPrice } from '@/lib/format'
+import { saveLastViewedProduct } from '@/lib/shop-session'
 import { useBag } from '@/store/bag'
 import { useBagUi } from '@/store/bag-ui'
 import { useCurrency } from '@/store/currency'
@@ -33,7 +34,8 @@ export function ProductCard({
 
   return (
     <article
-      className={`group relative flex flex-col rounded-2xl bg-oat-100/40 overflow-hidden border border-sand-300/40 transition-all duration-200 hover:bg-oat-100/70 hover:border-sand-300/70 hover:shadow-xs ${className}`}
+      id={`product-${product.slug}`}
+      className={`group relative flex flex-col rounded-2xl bg-oat-100/40 overflow-hidden border border-sand-300/40 transition-all duration-200 hover:bg-oat-100/70 hover:border-sand-300/70 hover:shadow-xs scroll-mt-24 sm:scroll-mt-28 ${className}`}
       data-testid="product-card"
       data-product-id={product.id}
     >
@@ -76,6 +78,7 @@ export function ProductCard({
             <Link
               to={`/product/${product.slug}`}
               className="focus:outline-none"
+              onClick={() => saveLastViewedProduct(product.slug)}
             >
               <span className="absolute inset-0 z-0" aria-hidden="true" />
               {product.name}

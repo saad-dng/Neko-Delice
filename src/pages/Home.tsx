@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { useEffect, useMemo, useState } from 'react'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { SeoHead } from '@/components/seo/SeoHead'
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
@@ -14,6 +14,7 @@ import { PawPrint } from '@/components/cat-art/PawPrint'
 import { products } from '@/data/products'
 import type { ProductCategory } from '@/data/types'
 import type { ShopSort } from '@/lib/filters'
+import { getShopSession, markInShop, saveShopSession } from '@/lib/shop-session'
 
 type HomeCategoryFilter = 'all' | ProductCategory
 
@@ -32,14 +33,21 @@ const CATEGORY_TABS: readonly CategoryTab[] = [
 ]
 
 export function HomePage() {
-  const [searchParams, setSearchParams] = useSearchParams()
+  const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
   const categoryParam = searchParams.get('category') as ProductCategory | null
   const selectedCategory: HomeCategoryFilter =
     categoryParam && ['wet-food', 'dry-food', 'treat-topper', 'litter', 'hardware'].includes(categoryParam)
       ? categoryParam
       : 'all'
 
-  const [selectedSort, setSelectedSort] = useState<ShopSort>('featured')
+  const [selectedSort, setSelectedSort] = useState<ShopSort>(() => {
+    const session = getShopSession()
+    if (session.sort && ['featured', 'price-asc', 'price-desc'].includes(session.sort)) {
+      return session.sort
+    }
+    return 'featured'
+  })
 
   const handleCategoryChange = (catId: HomeCategoryFilter) => {
     const nextParams = new URLSearchParams(searchParams)
@@ -48,8 +56,119 @@ export function HomePage() {
     } else {
       nextParams.set('category', catId)
     }
-    setSearchParams(nextParams, { replace: true })
+    saveShopSession({
+      category: catId === 'all' ? undefined : catId,
+      inShop: true,
+    })
+    const searchStr = nextParams.toString()
+    const dest = searchStr ? `/?${searchStr}#shop` : '/#shop'
+    navigate(dest, { replace: true })
   }
+
+  const handleSortChange = (newSort: ShopSort) => {
+    setSelectedSort(newSort)
+    saveShopSession({ sort: newSort, inShop: true })
+  }
+
+  // Restore user to where they left off in the shop segment if returning
+  useEffect(() => {
+    const session = getShopSession()
+    const returningFromPdp = session.returningFromPdp
+    const inShop = session.inShop
+    const lastProduct = session.lastProductSlug
+
+    if (returningFromPdp || (inShop && lastProduct)) {
+      saveShopSession({ returningFromPdp: false })
+
+      // Restore category if missing from query params
+      if (
+        !categoryParam &&
+        session.category &&
+        ['wet-food', 'dry-food', 'treat-topper', 'litter', 'hardware'].includes(session.category)
+      ) {
+        const nextParams = new URLSearchParams(searchParams)
+        nextParams.set('category', session.category)
+        const targetAnchor = lastProduct ? `product-${lastProduct}` : 'shop'
+        navigate(`/?${nextParams.toString()}#${targetAnchor}`, { replace: true })
+      }
+
+      // Smooth scroll to the last viewed product or shop section
+      const targetId = lastProduct ? `product-${lastProduct}` : 'shop'
+      let attempts = 0
+      const scrollToTarget = () => {
+        const el = document.getElementById(targetId) || document.getElementById('shop')
+        if (el) {
+          const prefersReducedMotion = window.matchMedia(
+            '(prefers-reduced-motion: reduce)'
+          ).matches
+          el.scrollIntoView({
+            behavior: prefersReducedMotion ? 'auto' : 'smooth',
+            block: 'center',
+          })
+          if (lastProduct && el.id === `product-${lastProduct}`) {
+            el.classList.add(
+              'ring-2',
+              'ring-terracotta-500/80',
+              'ring-offset-2',
+              'ring-offset-cream-50'
+            )
+            setTimeout(() => {
+              el.classList.remove(
+                'ring-2',
+                'ring-terracotta-500/80',
+                'ring-offset-2',
+                'ring-offset-cream-50'
+              )
+            }, 2200)
+          }
+        } else if (attempts < 12) {
+          attempts++
+          requestAnimationFrame(scrollToTarget)
+        }
+      }
+      requestAnimationFrame(scrollToTarget)
+    }
+  }, [categoryParam, navigate, searchParams])
+
+  // Track when customer is actively in the shop section
+  useEffect(() => {
+    const shopEl = document.getElementById('shop')
+    if (!shopEl) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            markInShop(true)
+          }
+        }
+      },
+      { threshold: 0.15 }
+    )
+
+    observer.observe(shopEl)
+    return () => observer.disconnect()
+  }, [])
+
+  // Detect when customer scrolls all the way back up to hero at top of page
+  useEffect(() => {
+    const heroEl = document.querySelector('section')
+    if (!heroEl) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting && window.scrollY < 200) {
+            saveShopSession({ inShop: false, lastProductSlug: undefined })
+          }
+        }
+      },
+      { threshold: 0.6 }
+    )
+
+    observer.observe(heroEl)
+    return () => observer.disconnect()
+  }, [])
 
   const displayedProducts = useMemo(() => {
     let list = products
@@ -223,7 +342,7 @@ export function HomePage() {
                 <select
                   id="shop-sort"
                   value={selectedSort}
-                  onChange={(e) => setSelectedSort(e.target.value as ShopSort)}
+                  onChange={(e) => handleSortChange(e.target.value as ShopSort)}
                   className="rounded-full border border-sand-300 bg-cream-50/90 py-1.5 pl-3.5 pr-8 text-xs font-medium text-espresso-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-600 focus-visible:ring-offset-2 cursor-pointer transition-colors hover:border-sand-400"
                 >
                   <option value="featured">Featured</option>
