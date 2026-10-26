@@ -55,12 +55,13 @@ test.describe('Shop Catalog, Category Filters & URL Sync (P10 Unified)', () => {
       .first()
     await firstAddButton.click()
 
-    // Bag modal opens automatically on add
-    const bagDialog = page.locator('dialog.smart-bag-dialog')
-    await expect(bagDialog).toBeVisible()
-
     // Bag badge in header increments to 1
     await expect(bagButton).toContainText('1')
+
+    // Open bag dialog
+    await bagButton.click()
+    const bagDialog = page.locator('dialog.smart-bag-dialog')
+    await expect(bagDialog).toBeVisible()
 
     // Close dialog via escape key
     await page.keyboard.press('Escape')

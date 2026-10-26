@@ -51,7 +51,7 @@ export function Footer() {
               Care &amp; Standards
             </h2>
             <p className="text-espresso-700">
-              Formulated with human-grade, single-source animal proteins and zero fillers. Our feeding recommendations are supportive estimates for healthy cats.
+              Formulated with single-source animal proteins and no fillers. Our feeding recommendations are supportive estimates for healthy cats.
             </p>
             <p className="text-espresso-700">
               NEKO DELICE is committed to digital accessibility. We aim to conform to WCAG 2.1 AA standards so every cat companion can navigate with ease.

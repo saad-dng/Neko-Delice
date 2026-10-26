@@ -40,7 +40,7 @@ test.describe('Smart Bag Modal & Currency Toggle (P13)', () => {
     await expect(bagButton).toBeFocused()
   })
 
-  test('add item from PDP opens dialog automatically and shows supply duration and quantity controls', async ({
+  test('add item from PDP shows in bag with supply duration and quantity controls', async ({
     page,
   }) => {
     await page.goto('/product/wild-salmon-quail-pate')
@@ -49,7 +49,9 @@ test.describe('Smart Bag Modal & Currency Toggle (P13)', () => {
     const addBtn = page.locator('button:has-text("Add to bag")')
     await addBtn.click()
 
-    // Dialog should open automatically
+    // Open bag dialog
+    const bagButton = page.locator('header button[aria-label^="Open bag"]')
+    await bagButton.click()
     const dialog = page.locator('dialog#smart-bag-dialog')
     await expect(dialog).toBeVisible()
 
@@ -159,10 +161,12 @@ test.describe('Smart Bag Modal & Currency Toggle (P13)', () => {
   test('accessibility scan (axe) with open dialog has zero serious or critical issues', async ({
     page,
   }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' })
     await page.goto('/product/wild-salmon-quail-pate')
 
-    // Add product to open dialog with items
+    // Add product to bag and open dialog
     await page.locator('button:has-text("Add to bag")').click()
+    await page.locator('header button[aria-label^="Open bag"]').click()
     const dialog = page.locator('dialog#smart-bag-dialog')
     await expect(dialog).toBeVisible()
 

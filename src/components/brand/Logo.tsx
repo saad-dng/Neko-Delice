@@ -65,7 +65,12 @@ export function Logo({
 
   const renderContent = () => {
     if (variant === 'glyph') {
-      return <CatGlyph size={defaultGlyphSize} className="text-espresso-900" />
+      return (
+        <CatGlyph
+          size={defaultGlyphSize}
+          className="text-espresso-900 transition-transform origin-bottom group-hover/logo:animate-ear-twitch group-focus-visible/logo:animate-ear-twitch"
+        />
+      )
     }
 
     if (variant === 'stacked') {
@@ -73,9 +78,9 @@ export function Logo({
         <div className="flex flex-col items-center text-center">
           <CatGlyph
             size={defaultGlyphSize}
-            className="text-espresso-900 mb-3"
+            className="text-espresso-900 mb-3 transition-transform origin-bottom group-hover/logo:animate-ear-twitch group-focus-visible/logo:animate-ear-twitch"
           />
-          <div className="flex flex-col items-center font-serif font-semibold uppercase text-espresso-900 leading-tight select-none">
+          <div className="flex flex-col items-center font-serif font-semibold uppercase text-espresso-950 leading-tight select-none">
             <span className="text-2xl sm:text-3xl tracking-[0.24em] pl-[0.24em]">
               NEKO
             </span>{' '}
@@ -92,9 +97,9 @@ export function Logo({
       <div className="inline-flex items-center gap-3">
         <CatGlyph
           size={defaultGlyphSize}
-          className="text-espresso-900"
+          className="text-espresso-900 transition-transform origin-bottom group-hover/logo:animate-ear-twitch group-focus-visible/logo:animate-ear-twitch"
         />
-        <div className="flex flex-col font-serif font-semibold uppercase text-espresso-900 leading-none select-none">
+        <div className="flex flex-col font-serif font-semibold uppercase text-espresso-950 leading-none select-none">
           {/* Mobile: two compact lines */}
           <span className="sm:hidden flex flex-col tracking-[0.2em] pl-[0.2em]">
             <span className="text-base leading-tight">NEKO</span>
@@ -116,7 +121,7 @@ export function Logo({
       <Link
         to={to}
         aria-label="NEKO DELICE home"
-        className={`inline-flex items-center text-espresso-900 transition-opacity hover:opacity-85 focus-visible:outline-2 focus-visible:outline-espresso-900 focus-visible:outline-offset-4 rounded-sm ${className}`}
+        className={`group/logo inline-flex items-center text-espresso-900 transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-espresso-900 focus-visible:outline-offset-4 rounded-sm ${className}`}
       >
         {renderContent()}
       </Link>
@@ -124,7 +129,7 @@ export function Logo({
   }
 
   return (
-    <div className={`inline-flex items-center text-espresso-900 ${className}`}>
+    <div className={`group/logo inline-flex items-center text-espresso-900 ${className}`}>
       {renderContent()}
     </div>
   )

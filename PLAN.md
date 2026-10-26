@@ -13,11 +13,11 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 | Illustration | Monoline cat SVGs only. |
 | Images | 48 JPGs in `Photo collection/` (4–5 per product, **not** six). Gallery uses what exists, ordered by role (see `docs/IMAGE-MAP.md`). No new generation. No site-wide images exist: hero, bento tiles and About imagery reuse product photos. |
 | Currency | Fixed `USD_TO_BDT = 123`, shown as "approximate", BDT rounded to nearest ৳10. As-of label: "Oct 2026". Never fetch live rates. |
-| Case study | A "Behind the build" section on `/about`. **No extra route.** |
-| Framework | Vite + React + TS + `vite-react-ssg` (react-router-dom v6). |
+| Homepage v2 direction | **Real cat photo hero + supporting illustrations**; disclosures removed except checkout notice; work on branch `playful-home`. |
+| Image Quality | **Maximum image file size limits removed.** Preserve high-fidelity, high-resolution photography without lowering resolutions or aggressive compression so the storefront looks stunning. |
 | Dark mode, accounts, search, reviews, checkout, multi-cat | Out of scope. |
 
-## Phases (one prompt each, in order)
+## Phases v1 (Completed)
 - [x] P01 Bootstrap & project structure
 - [x] P02 Photo audit → `docs/IMAGE-MAP.md` (**stop for owner approval**)
 - [x] P03 Image optimisation pipeline
@@ -33,6 +33,16 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 - [x] P13 Smart Bag modal + currency toggle UI
 - [x] P14 Home, About (+ Behind the build), micro-interactions
 - [x] P15 Audit, optimisation, README, launch prep
+
+## v2 — Playful Homepage Stages (branch: playful-home)
+- [x] V2-01 Branch, rules and docs
+- [x] V2-02 Audit the current site (docs/V2-AUDIT.md compiled, 0 dead buttons, 90/90 tests)
+- [x] V2-03 Cat photo intake (docs/SITE-IMAGE-MAP.md, 6 roles, high-resolution WebPs, approved)
+- [x] V2-04 Reusable playful components (Cormorant italic 500, 5 cat poses, 6 doodles, Annotation, Reveal, Band, CatCard, IdleCat, PawStamp)
+- [x] V2-05 Rebuild the homepage sections (Owner approved)
+- [x] V2-06 Functional interactions and animation across all pages
+- [x] V2-07 Content, claims and notices cleanup
+- [x] V2-08 Testing, QA and merge (107 unit tests, 97 E2E tests, 100/100/96/100 LHCI, 0 dead UI, clean merge)
 
 ## Notes
 - 2026-10-24: P01 completed. Vite + React + TS scaffold configured with vite-react-ssg, Tailwind v4, paths alias, directory structure, and vitest baseline.
@@ -102,6 +112,57 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
   - Updated `Home.tsx` to preserve the `#shop` hash on category changes, track shop vs hero presence via IntersectionObserver, restore active category filters, smoothly scroll back to the last viewed product card, and apply a 2.2s subtle highlight ring on return.
   - Updated `Shop.tsx` and `Header.tsx` to restore to the last product anchor when navigating to the shop.
   - 0 typecheck errors, 0 lint warnings, 89/89 Vitest unit tests, 90/90 Playwright E2E tests, and static SSG build passing.
+- 2026-10-26: V2-01 completed. Created safe branch `playful-home`; added `docs/DESIGN-V2.md` and `docs/FLOW-CAT-PROMPTS.md`; updated `AGENTS.md` rules (removed AI/fictional disclosure requirement, added v2 non-negotiables, updated font budget to include Cormorant italic 500); updated `docs/CONTENT.md` notices; updated `PLAN.md` with v2 checklist.
+- 2026-10-26: V2-02 completed. Comprehensive site audit compiled in `docs/V2-AUDIT.md`. Mapped 5 homepage sections, verified 0 dead buttons across routes, confirmed JS bundle baseline (60.89 KB gzip), verified 0 AI/portfolio disclosures in UI, mapped claims for V2-05/V2-07; 89/89 Vitest unit tests and 90/90 Playwright E2E tests passing.
+- 2026-10-26: V2-03 completed. Cat photo intake pipeline established:
+  - Audited all 6 cat photos in `Photo collection/cats/`: zero anatomy defects, zero text/logos, backdrop harmonizes with `#FBF6EE`, ample negative space for typography.
+  - Documented role mapping in `docs/SITE-IMAGE-MAP.md` and `src/data/site-image-map.source.json`.
+  - Extended `scripts/optimize-images.mjs` with `optimizeSiteImages()` to produce high-resolution WebPs ({640, 1024, 1600, 2000}w for hero, {640, 1024, 1600}w for others) without downscaling or aggressive compression per user rule. Generated typed `src/data/site-images.manifest.ts`.
+  - Created `src/components/ui/SiteImage.tsx` with responsive srcset, dimensions, lazy loading, and error fallback.
+  - Executed carton-over-cat blend test (`docs/screens/blend-test.png`) analyzing `mix-blend-mode: multiply` on tinted backdrops and documented card surface architecture.
+  - Added unit test suite in `src/test/images.test.ts` (93/93 Vitest tests passing); static SSG build rendering all 15 routes cleanly.
+- 2026-10-26: V2-04 completed. Reusable playful components created:
+  - Font: Added Cormorant Garamond Latin 500 italic WOFF2 (`23.92 KB`, within ≤25 KB budget); added `--font-note` token and `.font-note` utility.
+  - 5 New Cat Poses in `src/components/cat-art/`: `CatCurious` (1.70 KB), `CatWalking` (1.76 KB), `CatStretch` (1.68 KB), `CatCurled` (1.36 KB), `CatPeekEdge` (1.72 KB); all monoline 2px, currentColor, aria-hidden, strictly ≤1.8 KB each.
+  - 6 Doodles in `src/components/doodles/`: `PawTrail`, `Heart`, `SparkleLine`, `Yarn`, `ScribbleArrow` (curve-left/right), `Wave` (soft sinusoidal divider); total new SVG size: 14.09 KB across all 11 SVGs.
+  - Interactive Primitives: `Annotation` (italic note + arrow, aria-hidden), `Reveal` + `useReveal` (prerender-safe, reduced-motion aware, 12px rise), `Band` (cream/oat/sage with 12% color-mix and optional top wave), `CatCard` (real `<a>` or button, 4px lift on hover/focus, 44px min target), `IdleCat` (aria-hidden, ~6s twitch keyframes, pauses offscreen), `PawStamp` & `stampPaw` (brief tactile feedback on button add).
+- 2026-10-26: V2-05 completed. Rebuilt homepage sections per DESIGN-V2.md:
+  - Hero: Real cat photo (`cat-hero-01`) LCP image with fetchpriority="high", preloaded in SeoHead with imagesrcset, soft radial mask fade; floating Duck & Sweet Potato Kibble pouch; Cormorant headline with matcha-italic emphasis; handwritten Annotation "Mealtime is the best time."; 3 truthful chips; soft Wave divider.
+  - Planner Band: `Band variant="sage"` with `CatCurious` icon, headline, 3 clickable `CatCard`s linking to `/meal-plan?act=lounger|explorer|high-energy&step=1`, 3 steps, and planner disclaimer.
+  - Shop Preview: Category tabs with client-side filtering, sort controls, and ProductCard grid with add-to-bag and session tracking.
+  - Why Band: `Band variant="oat"` with real eating cat photo, `IdleCat` curled cat badge + "Planned portions" annotation, and 4 truthful value points.
+  - Calm Strip & Closing CTA: Truthful standards strip + `CatPeekEdge` card divider.
+  - Responsive verified across 360, 640, 1024, 1536 px; owner approved.
+- 2026-10-26: V2-06 completed. Functional interactions and animations implemented across all pages:
+  - Add to bag feedback: Tactile paw stamp (`stampPaw`) on buttons, bag badge bounce, polite live region announcement, and non-blocking floating `<Toast />` (`src/components/ui/Toast.tsx` and `src/store/toast.ts`) with functional Undo action restoring previous quantity, 5s auto-hide with hover/focus pause, and dismiss button.
+  - Meal Planner: Walking cat marker (`CatWalking`) traversing `<PlannerProgress />` alongside native `<progress>` element; 200ms slide/fade transition (`animate-step-transition`) between wizard steps; browser Back button moves back one step (`{ replace: false }`).
+  - Shop preview: Screen reader live region (`aria-live="polite"`) announcing filtered count changes; empty state featuring peeking cat (`CatPeekEdge`).
+  - PDP: Smooth gallery crossfade between images with `z-20` navigation arrows; live recalculation of "Lasts about N days" on quantity changes; mobile sticky add-to-bag bar with scroll threshold detection.
+  - Smart Bag: Extracted `BagLineItem` with `animate-total-flash` on line price change, `animate-step-transition`, and empty state with `CatPeekEdge`.
+  - Header & Brand: Logo ear twitch on hover/focus (`logo-ear-twitch`); visible active route pill indicator (`aria-current="page"`); `CurrencyToggle` with sliding active pill and zero layout shift.
+  - About: `Reveal` wrappers on ingredient close-up cards without motion delays on reading blocks.
+  - Motion & Accessibility: 150ms route opacity transition; `IdleCat` pauses when tab is hidden (`visibilitychange`); all transforms disabled under `prefers-reduced-motion: reduce`.
+  - Verification: `npm run typecheck` passed (0 errors); `npm run lint` passed (0 warnings, 0 errors); `npm test` passed (107/107 Vitest tests across 13 suites); Playwright passed (96/96 tests across all routes and devices).
+- 2026-10-26: V2-07 completed. Content, claims, and notices cleanup:
+  - Removed over-claims across `About.tsx`, `site.ts`, `Footer.tsx`, `MealPlan.tsx`, `PlanResult.tsx`, and `Product.tsx`: removed "human-grade", "free-range", "clinical", "pure veterinary formulas", "zero synthetic binders", "kidney" disease claims, and "bone broth" per `docs/CONTENT.md`.
+  - Kept exactly one storefront preview notice: bag drawer "This is a storefront preview. Checkout is not connected yet." in `site.ts` and `SmartBag.tsx`.
+  - Product JSON-LD: Removed `offers` and `availability` since checkout is not connected; retained `name`, `image`, `description`, `brand`.
+  - Canonical, Open Graph, and sitemap URLs: Replaced `example.com` with `VITE_SITE_URL` fallback `https://neko-delice.netlify.app` in `SeoHead.tsx`, `site.ts`, `generate-sitemap.mjs`, and `robots.txt`.
+  - Verified exactly one `<title>` per page across all 15 prerendered HTML routes by removing duplicate template tag in `index.html`.
+  - Keyword audit scan: Confirmed 0 hits across all codebase for over-claims, portfolio notes, concept art, AI notices, or unauthorized disclaimers.
+  - Verification: 0 typecheck errors, 0 lint warnings, 107/107 Vitest tests passing, 96/96 Playwright tests passing, static build passing.
+- 2026-10-27: V2-08 completed. Testing, QA and merge:
+  - Automated tests: 107/107 Vitest unit tests passing across 13 suites; 97/97 Playwright E2E tests passing. Added Home flows test verifying category carry, CatCard activity preselection, and hero CTAs.
+  - Performance & Core Web Vitals: Multi-route Lighthouse CI mobile audit on 5 routes (/, /shop, /product/wild-salmon-quail-pate, /meal-plan, /about) scored 100 Perf, 100 A11y, 96 Best Practices, 100 SEO; LCP 422–777 ms; CLS 0.000 (0.012 on about).
+  - Layout stability: Added explicit aspectRatio CSS style to SiteImage and preloaded Cormorant Garamond 500 italic in SeoHead to eliminate layout shift.
+  - Prerendered Shop route: Configured ShopPage to render complete collection directly with smooth replaceState URL hash sync, achieving 100/100/96/100 LHCI scores and clean E2E redirection.
+  - Bundles & Assets: Initial JS bundle 68.74 KB gzip (≤ 170 KB budget); hero image 45.51 KB WebP (≤ 150 KB budget).
+  - Responsive visual QA: Captured 25 high-resolution screenshots at 360, 640, 1024, 1536, 2560 px in `docs/screens/v2/`. Zero overflow, overlap, or clipping.
+  - Notice audit: Verified strictly 1 storefront preview notice in bag drawer.
+  - Compiled detailed before/after comparison in `docs/V2-REPORT.md`.
+
+
+
 
 
 

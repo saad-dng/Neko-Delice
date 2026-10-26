@@ -93,6 +93,12 @@ summary:focus {
   border-width: 0;
 }
 
+/* Editorial italic note utility */
+.font-note {
+  font-family: var(--font-note);
+  font-style: italic;
+}
+
 /* Motion preference override: switch to opacity-only transitions */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
@@ -241,4 +247,138 @@ input[type="range"]:active::-moz-range-thumb {
     animation: none !important;
   }
 }
+
+/* Idle cat twitch micro-interaction (~6s cycle, aria-hidden playful motion) */
+@keyframes idle-cat-twitch {
+  0%, 90%, 100% {
+    transform: rotate(0deg) translateY(0);
+  }
+  92% {
+    transform: rotate(-1.5deg) translateY(-0.5px);
+  }
+  94% {
+    transform: rotate(1.2deg) translateY(0);
+  }
+  96% {
+    transform: rotate(-0.8deg) translateY(-0.5px);
+  }
+}
+
+.animate-idle-cat {
+  transform-origin: bottom center;
+  animation: idle-cat-twitch 6s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-idle-cat {
+    animation: none !important;
+  }
+}
+
+/* Paw stamp add-to-bag micro-animation (300ms) */
+@keyframes paw-stamp {
+  0% {
+    transform: scale(0.4) rotate(-10deg);
+    opacity: 0;
+  }
+  30% {
+    transform: scale(1.15) rotate(0deg);
+    opacity: 0.9;
+  }
+  60% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1.05) translateY(-2px);
+    opacity: 0;
+  }
+}
+
+.animate-paw-stamp {
+  animation: paw-stamp 320ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Toast entrance animation */
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-toast-in {
+  animation: toast-in 240ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Logo ear twitch on hover/focus */
+@keyframes logo-ear-twitch {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  50% { transform: rotate(4deg); }
+  75% { transform: rotate(-2deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.group-hover\/logo\:animate-ear-twitch:hover,
+.group-focus-visible\/logo\:animate-ear-twitch:focus-visible {
+  animation: logo-ear-twitch 360ms cubic-bezier(0.34, 1.56, 0.64, 1) 1;
+}
+
+/* Line total price change flash */
+@keyframes total-flash {
+  0% {
+    color: var(--color-terracotta-600);
+    transform: scale(1.06);
+  }
+  100% {
+    color: inherit;
+    transform: scale(1);
+  }
+}
+
+.animate-total-flash {
+  animation: total-flash 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Route content 150ms opacity transition */
+.route-transition {
+  transition: opacity 150ms ease-out;
+}
+
+/* Planner step 200ms slide/fade transition */
+@keyframes step-slide-fade {
+  from {
+    opacity: 0.4;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-step-transition {
+  animation: step-slide-fade 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-paw-stamp,
+  .animate-toast-in,
+  .group-hover\/logo\:animate-ear-twitch:hover,
+  .group-focus-visible\/logo\:animate-ear-twitch:focus-visible,
+  .animate-total-flash,
+  .animate-step-transition {
+    animation: none !important;
+    transform: none !important;
+  }
+  .route-transition {
+    transition: none !important;
+  }
+}
+
 

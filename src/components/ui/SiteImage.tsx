@@ -1,0 +1,93 @@
+import { useState } from 'react'
+import { siteImages, type SiteImageEntry } from '@/data/site-images.manifest'
+
+export interface SiteImageProps {
+  name: string
+  role?: string
+  sizes?: string
+  priority?: boolean
+  className?: string
+  alt?: string
+}
+
+export function SiteImage({
+  name,
+  role,
+  sizes = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw',
+  priority = false,
+  className = '',
+  alt,
+}: SiteImageProps) {
+  const [hasError, setHasError] = useState(false)
+  const imageKey = name || role || ''
+  const imageEntry: SiteImageEntry | undefined = siteImages[imageKey]
+
+  if (!imageEntry) {
+    return (
+      <div
+        className={`relative overflow-hidden bg-[#DDD0BA] flex items-center justify-center text-[#2B211A]/40 text-xs ${className}`}
+        aria-hidden="true"
+      >
+        <span>Image unavailable</span>
+      </div>
+    )
+  }
+
+  const srcSetString = Object.entries(imageEntry.srcset)
+    .map(([w, src]) => `${src} ${w}w`)
+    .join(', ')
+
+  const altText = alt || imageEntry.alt
+
+  if (hasError) {
+    return (
+      <div
+        className={`relative overflow-hidden bg-[#DDD0BA] flex items-center justify-center text-[#2B211A]/40 text-xs ${className}`}
+      >
+        <span className="sr-only">{altText}</span>
+        <svg
+          className="w-8 h-8 opacity-40"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
+          />
+        </svg>
+      </div>
+    )
+  }
+
+  const aspectRatio = imageEntry.aspectRatio
+    ? imageEntry.aspectRatio.replace(':', '/')
+    : '4/3'
+
+  return (
+    <div
+      className={`relative overflow-hidden bg-[#DDD0BA] ${className}`}
+      style={{ aspectRatio }}
+    >
+      <img
+        src={imageEntry.src}
+        srcSet={srcSetString}
+        sizes={sizes}
+        alt={altText}
+        width={imageEntry.width}
+        height={imageEntry.height}
+        decoding="async"
+        loading={priority ? 'eager' : 'lazy'}
+        fetchPriority={priority ? 'high' : 'auto'}
+        onError={() => setHasError(true)}
+        className="w-full h-full object-cover transition-opacity duration-200"
+        style={{ aspectRatio }}
+      />
+    </div>
+  )
+}
+
+export default SiteImage

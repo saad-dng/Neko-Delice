@@ -40,7 +40,9 @@ test.describe('E2E Key User Journeys & State Resilience (P15)', () => {
     const addBundleBtn = page.locator('button:has-text("Add bundle to bag")')
     await addBundleBtn.click()
 
-    // 3. Smart Bag opens automatically
+    // 3. Open Smart Bag via header
+    const bagCounter = page.locator('header button[aria-label*="Open bag"]')
+    await bagCounter.click()
     const bagDialog = page.locator('dialog.smart-bag-dialog')
     await expect(bagDialog).toBeVisible()
 
@@ -56,7 +58,6 @@ test.describe('E2E Key User Journeys & State Resilience (P15)', () => {
     await bdtButton.click()
 
     // Re-open bag
-    const bagCounter = page.locator('header button[aria-label*="Open bag"]')
     await bagCounter.click()
     await expect(bagDialog).toBeVisible()
 

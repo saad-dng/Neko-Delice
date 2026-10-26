@@ -8,11 +8,13 @@ Wording rule: "supports", "formulated for". Never "treats", "cures", "prevents".
 - Hero H1: "Feed your cat exactly what they need." Sub: "Tell us about your cat. We work out the calories and build a month of meals."
 - Primary CTA: "Plan my cat's meals" · Secondary: "Shop the collection"
 - Promise strip (3): "Formulated with a vet-informed approach" · "Short ingredient lists, no fillers" · "Know how long every bag lasts"
-- Footer line: "Honest food, quiet design." · Preview note: "This is a storefront preview. Checkout is not connected yet."
-- Imagery disclosure: "Concept imagery generated with AI. Products are fictional."
+- Footer line: "Honest food, quiet design."
 - Planner disclaimer (verbatim): "An estimate for healthy cats, not veterinary advice. Check with your vet for medical conditions, pregnancy, or rapid weight change."
 - Extreme-weight note (≤1.5 kg or ≥10 kg): "Very small or large cats should get feeding advice from a vet."
 - Kitten + neutered: control disabled, helper "Neuter status doesn't change a kitten's needs, so we skip it."
+
+## Notices
+- Checkout notice (verbatim): "This is a storefront preview. Checkout is not connected yet."
 
 ## Currency
 `USD_TO_BDT = 123` (approximate), BDT rounded to nearest ৳10, label "BDT prices are approximate". Format with `Intl.NumberFormat`.
@@ -105,4 +107,4 @@ Bag: "Your bag is empty." + links to Meal Planner and Shop.
 "{Product name}, {role description}" e.g. "Wild Salmon & Quail Paté carton with a stick sachet on a warm beige backdrop." Describe what is visible; no keyword stuffing; never claim text the image does not show.
 
 ## About page outline
-Hero line · Our approach (vet-informed, short ingredient lists) · Sourcing (Norwegian salmon, duck, quail — fictional) · Quality commitments (batch-tested, no fillers) · Ingredient close-ups (reuse `contents`/`detail` photos) · Behind the build (algorithm + design decisions + performance numbers, written last in P15) · Disclosure.
+Hero line · Our approach (vet-informed, short ingredient lists) · Sourcing (Norwegian salmon, duck, quail) · Quality commitments (batch-tested, no fillers) · Ingredient close-ups (reuse `contents`/`detail` photos) · Behind the build (algorithm + design decisions + performance numbers, written last in P15).

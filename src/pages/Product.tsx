@@ -1,4 +1,4 @@
-import { useState, useId } from 'react'
+import { useState, useId, useRef, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ProductCard } from '@/components/product/ProductCard'
 import { SeoHead } from '@/components/seo/SeoHead'
@@ -8,14 +8,17 @@ import { Section } from '@/components/ui/Section'
 import { imageManifest } from '@/data/images.manifest'
 import { getProductBySlug } from '@/data/products'
 import type { HealthGoal, Product, ProductAccent, ProductCategory } from '@/data/types'
-import { formatPrice } from '@/lib/format'
-import { feedingTable } from '@/lib/planner'
+import { formatDays, formatPrice } from '@/lib/format'
+import { feedingTable, supplyDays } from '@/lib/planner'
 import { getShopSession, markReturningFromPdp } from '@/lib/shop-session'
 import { NotFoundPage } from '@/pages/NotFound'
 import { useBag } from '@/store/bag'
-import { useBagUi } from '@/store/bag-ui'
 import { useCurrency } from '@/store/currency'
+import { usePlannerProfile } from '@/store/planner'
+import { useToast } from '@/store/toast'
+import { PLANNER_CONFIG } from '@/config/planner'
 import { PawPrint } from '@/components/cat-art/PawPrint'
+import { stampPaw } from '@/components/ui/stampPaw'
 
 const ACCENT_COLORS: Record<ProductAccent, string> = {
   sage: '#8FA388',
@@ -49,19 +52,56 @@ export function ProductPage() {
   const [imageError, setImageError] = useState(false)
   const [liveAnnouncement, setLiveAnnouncement] = useState('')
   const [isAdded, setIsAdded] = useState(false)
+  const [showStickyBar, setShowStickyBar] = useState(false)
 
+  const mainButtonRef = useRef<HTMLDivElement>(null)
   const currency = useCurrency((s) => s.currency)
   const add = useBag((s) => s.add)
+  const profile = usePlannerProfile((s) => s.profile)
   const quantityInputId = useId()
+
+  // Track scroll position of main add-to-bag button for sticky mobile bar
+  useEffect(() => {
+    const el = mainButtonRef.current
+    if (!el) return
+
+    const checkPosition = () => {
+      const rect = el.getBoundingClientRect()
+      setShowStickyBar(rect.bottom < 0)
+    }
+
+    checkPosition()
+    window.addEventListener('scroll', checkPosition, { passive: true })
+    window.addEventListener('resize', checkPosition, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', checkPosition)
+      window.removeEventListener('resize', checkPosition)
+    }
+  }, [])
 
   if (!product) {
     return <NotFoundPage />
   }
 
+  // Calculate live supply duration
+  const days = supplyDays(
+    product.id,
+    quantity,
+    profile ?? PLANNER_CONFIG.referenceCat,
+  )
+
+  const durationNote =
+    product.category === 'hardware'
+      ? 'One-time purchase'
+      : product.category === 'litter'
+        ? `About ${30 * quantity} days for one cat`
+        : days
+          ? `Lasts about ${formatDays(days, { approximate: false })}`
+          : 'Tax included'
+
   // Gallery images from manifest
   const manifest = imageManifest[product.slug]
   const gallery = manifest?.gallery || []
-  const currentImage = gallery[activeIndex] || gallery[0]
   const heroImage = gallery[0]
 
   // Image Preload data for LCP
@@ -86,12 +126,6 @@ export function ProductPage() {
       '@type': 'Brand',
       name: 'NEKO DELICE',
     },
-    offers: {
-      '@type': 'Offer',
-      price: product.priceUSD,
-      priceCurrency: 'USD',
-      availability: 'https://schema.org/InStock',
-    },
   }
 
   // Gallery Navigation Handlers
@@ -115,13 +149,24 @@ export function ProductPage() {
     }
   }
 
-  // Purchase Actions
+  // Purchase Actions with Tactile Paw Stamp and Undo Toast
   const handleAddToBag = (e: React.MouseEvent<HTMLButtonElement>) => {
+    stampPaw(e.currentTarget)
+    const prevQty = useBag.getState().lines.find((l) => l.productId === product.id)?.qty ?? 0
     add(product.id, quantity)
     setIsAdded(true)
     setTimeout(() => setIsAdded(false), 1800)
     setLiveAnnouncement(`Added ${quantity} of ${product.name} to your bag`)
-    useBagUi.getState().openBag(e.currentTarget)
+    useToast.getState().showToast({
+      message: `Added ${quantity} ${product.name} to your bag.`,
+      undoAction: () => {
+        if (prevQty === 0) {
+          useBag.getState().remove(product.id)
+        } else {
+          useBag.getState().setQty(product.id, prevQty)
+        }
+      },
+    })
   }
 
   // Feeding guide calculation
@@ -174,25 +219,38 @@ export function ProductPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
             {/* Gallery Section (Left on Desktop, Top on Mobile) */}
             <div className="lg:col-span-7 flex flex-col gap-4">
-              {/* Large Image Frame with Arrow Navigation */}
+              {/* Large Image Frame with Arrow Navigation & Smooth Crossfade */}
               <div className="group relative aspect-square w-full overflow-hidden rounded-2xl bg-beige-200 border border-sand-300/40">
-
-                {currentImage && !imageError ? (
-                  <img
-                    src={currentImage.src}
-                    srcSet={Object.entries(currentImage.srcset)
-                      .map(([w, s]) => `${s} ${w}w`)
-                      .join(', ')}
-                    sizes="(max-width: 1024px) 100vw, 55vw"
-                    alt={currentImage.alt}
-                    width={currentImage.width}
-                    height={currentImage.height}
-                    decoding="async"
-                    loading={activeIndex === 0 ? 'eager' : 'lazy'}
-                    fetchPriority={activeIndex === 0 ? 'high' : 'auto'}
-                    onError={() => setImageError(true)}
-                    className="h-full w-full object-cover transition-opacity duration-200"
-                  />
+                {gallery.length > 0 && !imageError ? (
+                  gallery.map((img, idx) => {
+                    const isSelected = idx === activeIndex
+                    return (
+                      <div
+                        key={img.src}
+                        className={`absolute inset-0 transition-opacity duration-300 ease-out ${
+                          isSelected
+                            ? 'opacity-100 z-10 pointer-events-auto'
+                            : 'opacity-0 z-0 pointer-events-none'
+                        }`}
+                      >
+                        <img
+                          src={img.src}
+                          srcSet={Object.entries(img.srcset)
+                            .map(([w, s]) => `${s} ${w}w`)
+                            .join(', ')}
+                          sizes="(max-width: 1024px) 100vw, 55vw"
+                          alt={img.alt}
+                          width={img.width}
+                          height={img.height}
+                          decoding="async"
+                          loading={idx === 0 ? 'eager' : 'lazy'}
+                          fetchPriority={idx === 0 ? 'high' : 'auto'}
+                          onError={() => setImageError(true)}
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
+                    )
+                  })
                 ) : (
                   /* Fallback Placeholder with Identical Aspect Ratio */
                   <div
@@ -210,7 +268,7 @@ export function ProductPage() {
                       type="button"
                       onClick={prevImage}
                       aria-label="Previous image"
-                      className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-cream-50/90 p-2 text-espresso-900 shadow-sm backdrop-blur-md border border-sand-300/50 hover:bg-cream-50 hover:text-terracotta-700 active:scale-95 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 transition-all opacity-85 hover:opacity-100 min-w-[44px] min-h-[44px] inline-flex items-center justify-center cursor-pointer"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 z-20 rounded-full bg-cream-50/90 p-2 text-espresso-900 shadow-sm backdrop-blur-md border border-sand-300/50 hover:bg-cream-50 hover:text-terracotta-700 active:scale-95 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 transition-all opacity-85 hover:opacity-100 min-w-[44px] min-h-[44px] inline-flex items-center justify-center cursor-pointer"
                     >
                       <svg
                         className="h-5 w-5"
@@ -231,7 +289,7 @@ export function ProductPage() {
                       type="button"
                       onClick={nextImage}
                       aria-label="Next image"
-                      className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-cream-50/90 p-2 text-espresso-900 shadow-sm backdrop-blur-md border border-sand-300/50 hover:bg-cream-50 hover:text-terracotta-700 active:scale-95 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 transition-all opacity-85 hover:opacity-100 min-w-[44px] min-h-[44px] inline-flex items-center justify-center cursor-pointer"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 z-20 rounded-full bg-cream-50/90 p-2 text-espresso-900 shadow-sm backdrop-blur-md border border-sand-300/50 hover:bg-cream-50 hover:text-terracotta-700 active:scale-95 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 transition-all opacity-85 hover:opacity-100 min-w-[44px] min-h-[44px] inline-flex items-center justify-center cursor-pointer"
                     >
                       <svg
                         className="h-5 w-5"
@@ -318,17 +376,13 @@ export function ProductPage() {
                 {product.name}
               </Heading>
 
-              {/* Price Row */}
+              {/* Price Row with Live Recalculating Supply Duration */}
               <div className="flex items-baseline gap-3 mb-4">
                 <span className="font-serif text-2xl sm:text-3xl font-semibold text-espresso-950 tabular-nums">
-                  {formatPrice(product.priceUSD, currency)}
+                  {formatPrice(product.priceUSD * quantity, currency)}
                 </span>
-                <span className="text-sm text-espresso-700">
-                  {product.category === 'hardware'
-                    ? 'One-time purchase'
-                    : product.category === 'litter'
-                      ? 'About 30 days for one cat'
-                      : 'Tax included'}
+                <span className="text-sm font-medium text-terracotta-700 transition-colors">
+                  {durationNote}
                 </span>
               </div>
 
@@ -372,7 +426,7 @@ export function ProductPage() {
               )}
 
               {/* Purchase Controls: Quantity Stepper & Add to Bag */}
-              <div className="space-y-4 pt-6 border-t border-sand-300/60 mb-8">
+              <div ref={mainButtonRef} className="space-y-4 pt-6 border-t border-sand-300/60 mb-8">
                 <div className="flex items-center gap-4">
                   {/* Accessible Quantity Stepper */}
                   <div className="flex items-center rounded-full border border-sand-300 bg-cream-50 p-1">
@@ -560,7 +614,7 @@ export function ProductPage() {
                   {isKitten
                     ? 'Based on a kitten lounger.'
                     : 'Based on a neutered adult lounger.'}{' '}
-                  Computed using our pure veterinary calorie formulas.
+                  Computed using our vet-informed calorie formulas.
                 </p>
               </div>
 
@@ -622,6 +676,41 @@ export function ProductPage() {
           )}
         </Container>
       </div>
+
+      {/* Sticky Mobile Add to Bag Bar (scrolled past main CTA) */}
+      {showStickyBar && (
+        <aside
+          aria-label="Quick add to bag"
+          className="sm:hidden fixed bottom-0 inset-x-0 z-40 bg-cream-50/96 backdrop-blur-xl border-t border-sand-300/80 px-4 py-2.5 shadow-lg flex items-center justify-between gap-3 animate-toast-in motion-reduce:animate-none"
+        >
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className="w-10 h-10 rounded-lg overflow-hidden bg-beige-200 shrink-0">
+              <img
+                src={heroImage?.srcset?.['640'] || heroImage?.src}
+                alt=""
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="min-w-0">
+              <p className="text-xs font-semibold text-espresso-950 truncate">
+                {product.name}
+              </p>
+              <p className="text-[11px] text-espresso-700 font-medium">
+                {formatPrice(product.priceUSD * quantity, currency)} · {durationNote}
+              </p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={handleAddToBag}
+            aria-label={`Add ${quantity} of ${product.name} to bag`}
+            className="inline-flex items-center justify-center gap-1.5 rounded-full bg-terracotta-600 px-4 py-2 text-xs font-semibold text-cream-50 hover:bg-terracotta-700 active:scale-95 transition-all shadow-xs shrink-0 cursor-pointer"
+          >
+            <PawPrint size={14} filled className="text-cream-100" />
+            <span>Add {quantity > 1 ? `(${quantity})` : ''}</span>
+          </button>
+        </aside>
+      )}
     </>
   )
 }

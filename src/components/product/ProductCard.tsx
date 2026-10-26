@@ -3,10 +3,11 @@ import type { Product } from '@/data/types'
 import { formatPrice } from '@/lib/format'
 import { saveLastViewedProduct } from '@/lib/shop-session'
 import { useBag } from '@/store/bag'
-import { useBagUi } from '@/store/bag-ui'
 import { useCurrency } from '@/store/currency'
+import { useToast } from '@/store/toast'
 import { ProductImage } from '@/components/ui/ProductImage'
 import { PawPrint } from '@/components/cat-art/PawPrint'
+import { stampPaw } from '@/components/ui/stampPaw'
 
 export interface ProductCardProps {
   product: Product
@@ -29,6 +30,24 @@ export function ProductCard({
 }: ProductCardProps) {
   const currency = useCurrency((s) => s.currency)
   const add = useBag((s) => s.add)
+
+  const handleAdd = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    e.stopPropagation()
+    stampPaw(e.currentTarget)
+    const prevQty = useBag.getState().lines.find((l) => l.productId === product.id)?.qty ?? 0
+    add(product.id, 1)
+    useToast.getState().showToast({
+      message: `Added ${product.name} to your bag.`,
+      undoAction: () => {
+        if (prevQty === 0) {
+          useBag.getState().remove(product.id)
+        } else {
+          useBag.getState().setQty(product.id, prevQty)
+        }
+      },
+    })
+  }
 
   const categoryLabel = CATEGORY_NAMES[product.category] ?? product.category
 
@@ -99,12 +118,7 @@ export function ProductCard({
 
           <button
             type="button"
-            onClick={(e) => {
-              e.preventDefault()
-              e.stopPropagation()
-              add(product.id, 1)
-              useBagUi.getState().openBag(e.currentTarget)
-            }}
+            onClick={handleAdd}
             aria-label={`Add ${product.name} to bag`}
             className="group/btn relative z-10 inline-flex items-center justify-center gap-1.5 rounded-full bg-terracotta-600 px-3 py-1 min-h-[28px] text-[11px] font-semibold text-cream-50 transition-all hover:bg-terracotta-700 hover:shadow-xs active:scale-95 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 cursor-pointer shadow-2xs leading-none"
           >

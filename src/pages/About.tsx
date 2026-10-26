@@ -4,6 +4,7 @@ import { Section } from '@/components/ui/Section'
 import { Heading } from '@/components/ui/Heading'
 import { Button } from '@/components/ui/Button'
 import { ProductImage } from '@/components/ui/ProductImage'
+import { Reveal } from '@/components/ui/Reveal'
 import { CatSitting } from '@/components/cat-art/CatSitting'
 import { CatHead } from '@/components/cat-art/CatHead'
 
@@ -32,7 +33,7 @@ export function AboutPage() {
           </Heading>
 
           <p className="text-lg sm:text-xl text-espresso-800 leading-relaxed max-w-3xl text-balance">
-            Most cat food packaging is loud, filled with aggressive graphics and marketing claims that obscure basic feeding facts. NEKO DELICE was created to be the antidote: vet-informed nutrition, quiet design, and absolute transparency in every bowl. We believe feeding your cat should be a moment of calm, thoughtful care — free from guesswork, unpronounceable fillers, and synthetic binders.
+            Most cat food packaging is loud, filled with aggressive graphics and marketing claims that obscure basic feeding facts. NEKO DELICE was created to be the antidote: vet-informed nutrition, quiet design, and absolute transparency in every bowl. We believe feeding your cat should be a moment of calm, thoughtful care — free from guesswork and unpronounceable fillers.
           </p>
         </Container>
       </Section>
@@ -76,7 +77,7 @@ export function AboutPage() {
                   Hydration-focused meals
                 </h3>
                 <p className="text-sm text-espresso-700 leading-relaxed">
-                  Domestic cats retain the low thirst drive of desert ancestors. Our stick sachets deliver high moisture through natural bone and meat broths to support kidney and urinary tract wellness.
+                  Domestic cats retain the low thirst drive of desert ancestors. Our stick sachets deliver high moisture through natural meat broths to support urinary tract wellness.
                 </p>
               </div>
             </div>
@@ -109,87 +110,89 @@ export function AboutPage() {
               Ingredients you can understand
             </Heading>
             <p className="text-base text-espresso-800 leading-relaxed">
-              Every formula is visible, honest, and free from hidden thickeners, meal byproducts, or cosmetic colorants.
+              Every formula is visible, honest, and formulated without hidden thickeners, meal byproducts, or cosmetic colorants.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Close-up 1: Chicken Mousse Swirl */}
-            <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4.5 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
-              <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
-                <ProductImage
-                  slug="kitten-growth-mousse-broth"
-                  imageRole="contents"
-                  className="h-full w-full object-cover"
-                />
+          <Reveal>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {/* Close-up 1: Chicken Mousse Swirl */}
+              <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4.5 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
+                <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
+                  <ProductImage
+                    slug="kitten-growth-mousse-broth"
+                    imageRole="contents"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="mt-3.5">
+                  <span className="text-sm font-semibold text-espresso-950 block">
+                    Deboned Chicken &amp; Broth
+                  </span>
+                  <span className="text-xs text-espresso-700 leading-relaxed mt-1 block">
+                    62% fresh deboned chicken gently pureed in broth for smooth hydration and growth.
+                  </span>
+                </div>
               </div>
-              <div className="mt-3.5">
-                <span className="text-sm font-semibold text-espresso-950 block">
-                  Deboned Chicken &amp; Broth
-                </span>
-                <span className="text-xs text-espresso-700 leading-relaxed mt-1 block">
-                  62% fresh deboned chicken gently pureed in broth for smooth hydration and growth.
-                </span>
-              </div>
-            </div>
 
-            {/* Close-up 2: Wild Salmon & Quail Paté */}
-            <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4.5 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
-              <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
-                <ProductImage
-                  slug="wild-salmon-quail-pate"
-                  imageRole="contents"
-                  className="h-full w-full object-cover"
-                />
+              {/* Close-up 2: Wild Salmon & Quail Paté */}
+              <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4.5 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
+                <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
+                  <ProductImage
+                    slug="wild-salmon-quail-pate"
+                    imageRole="contents"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="mt-3.5">
+                  <span className="text-sm font-semibold text-espresso-950 block">
+                    Wild Salmon &amp; Lean Quail
+                  </span>
+                  <span className="text-xs text-espresso-700 leading-relaxed mt-1 block">
+                    Finely ground whole wild salmon and quail with cranberries and controlled minerals.
+                  </span>
+                </div>
               </div>
-              <div className="mt-3.5">
-                <span className="text-sm font-semibold text-espresso-950 block">
-                  Wild Salmon &amp; Lean Quail
-                </span>
-                <span className="text-xs text-espresso-700 leading-relaxed mt-1 block">
-                  Finely ground whole wild salmon and quail with cranberries and controlled minerals.
-                </span>
-              </div>
-            </div>
 
-            {/* Close-up 3: Oven-Baked Duck Kibble */}
-            <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4.5 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
-              <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
-                <ProductImage
-                  slug="duck-sweet-potato-kibble"
-                  imageRole="contents"
-                  className="h-full w-full object-cover"
-                />
+              {/* Close-up 3: Oven-Baked Duck Kibble */}
+              <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4.5 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
+                <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
+                  <ProductImage
+                    slug="duck-sweet-potato-kibble"
+                    imageRole="contents"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="mt-3.5">
+                  <span className="text-sm font-semibold text-espresso-950 block">
+                    Slow-Baked Duck Kibble
+                  </span>
+                  <span className="text-xs text-espresso-700 leading-relaxed mt-1 block">
+                    Single-source duck gently baked at low temperatures with sweet potato and dietary fiber.
+                  </span>
+                </div>
               </div>
-              <div className="mt-3.5">
-                <span className="text-sm font-semibold text-espresso-950 block">
-                  Slow-Baked Duck Kibble
-                </span>
-                <span className="text-xs text-espresso-700 leading-relaxed mt-1 block">
-                  Single-source duck gently baked at low temperatures with sweet potato and dietary fiber.
-                </span>
-              </div>
-            </div>
 
-            {/* Close-up 4: Norwegian Salmon Oil */}
-            <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4.5 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
-              <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
-                <ProductImage
-                  slug="norwegian-salmon-oil"
-                  imageRole="contents"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div className="mt-3.5">
-                <span className="text-sm font-semibold text-espresso-950 block">
-                  Cold-Filtered Salmon Oil
-                </span>
-                <span className="text-xs text-espresso-700 leading-relaxed mt-1 block">
-                  Unrefined Norwegian salmon oil packed with active EPA and DHA omega fatty acids.
-                </span>
+              {/* Close-up 4: Norwegian Salmon Oil */}
+              <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4.5 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
+                <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
+                  <ProductImage
+                    slug="norwegian-salmon-oil"
+                    imageRole="contents"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="mt-3.5">
+                  <span className="text-sm font-semibold text-espresso-950 block">
+                    Cold-Filtered Salmon Oil
+                  </span>
+                  <span className="text-xs text-espresso-700 leading-relaxed mt-1 block">
+                    Unrefined Norwegian salmon oil packed with active EPA and DHA omega fatty acids.
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
+          </Reveal>
         </Container>
       </Section>
 
@@ -284,10 +287,10 @@ export function AboutPage() {
               </span>
               <div>
                 <strong className="text-sm font-semibold text-espresso-950 block">
-                  Human-grade animal proteins
+                  Single-source animal proteins
                 </strong>
                 <p className="text-xs text-espresso-700 leading-relaxed mt-1">
-                  Single-source deboned chicken, wild salmon, and free-range duck. Never any byproduct meals, feather meal, or animal digests.
+                  Single-source deboned chicken, wild salmon, and lean duck. Never any byproduct meals, feather meal, or animal digests.
                 </p>
               </div>
             </div>
@@ -298,10 +301,10 @@ export function AboutPage() {
               </span>
               <div>
                 <strong className="text-sm font-semibold text-espresso-950 block">
-                  Zero grain fillers or artificial gums
+                  No grain fillers or artificial gums
                 </strong>
                 <p className="text-xs text-espresso-700 leading-relaxed mt-1">
-                  Free from corn, wheat, soy, carrageenan, guar gum, and synthetic coloring agents that trigger digestive sensitivities.
+                  Formulated without corn, wheat, soy, carrageenan, guar gum, or artificial colours that trigger digestive sensitivities.
                 </p>
               </div>
             </div>
@@ -315,7 +318,7 @@ export function AboutPage() {
                   Controlled minerals &amp; ash
                 </strong>
                 <p className="text-xs text-espresso-700 leading-relaxed mt-1">
-                  Carefully balanced phosphorus and magnesium levels to support bladder health and kidney function throughout adult and senior years.
+                  Carefully balanced phosphorus and magnesium levels to support bladder and urinary tract wellness throughout adult and senior years.
                 </p>
               </div>
             </div>

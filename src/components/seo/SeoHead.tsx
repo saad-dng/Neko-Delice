@@ -1,5 +1,6 @@
 import { Head } from 'vite-react-ssg'
 import cormorant600Url from '@fontsource/cormorant-garamond/files/cormorant-garamond-latin-600-normal.woff2'
+import cormorantItalic500Url from '@fontsource/cormorant-garamond/files/cormorant-garamond-latin-500-italic.woff2'
 
 export interface SeoHeadProps {
   title: string
@@ -15,7 +16,7 @@ export interface SeoHeadProps {
   jsonLd?: Record<string, unknown>
 }
 
-const DEFAULT_SITE_URL = 'https://example.com'
+const DEFAULT_SITE_URL = 'https://neko-delice.netlify.app'
 
 function getSiteUrl(): string {
   if (typeof import.meta !== 'undefined' && import.meta.env?.VITE_SITE_URL) {
@@ -67,10 +68,17 @@ export function SeoHead({
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-      {/* Font Preload for LCP typography (Cormorant Garamond 600 WOFF2) */}
+      {/* Font Preload for LCP typography (Cormorant Garamond 600 normal + 500 italic) */}
       <link
         rel="preload"
         href={cormorant600Url}
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        href={cormorantItalic500Url}
         as="font"
         type="font/woff2"
         crossOrigin="anonymous"

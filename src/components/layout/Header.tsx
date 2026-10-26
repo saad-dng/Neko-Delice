@@ -91,6 +91,7 @@ export function Header() {
               <NavLink
                 key={link.to}
                 to={link.to}
+                aria-current={isActive ? 'page' : undefined}
                 onClick={(e) => {
                   if (isShop && location.pathname === '/') {
                     e.preventDefault()
@@ -108,8 +109,8 @@ export function Header() {
                 }}
                 className={`px-3.5 py-2 text-sm font-medium rounded-full transition-all duration-150 min-h-[44px] inline-flex items-center active:scale-95 ${
                   isActive
-                    ? 'text-terracotta-600 font-semibold'
-                    : 'text-espresso-800 hover:text-espresso-900 hover:bg-oat-100/60'
+                    ? 'text-terracotta-700 font-semibold bg-terracotta-50/90 border border-terracotta-200/60 shadow-2xs'
+                    : 'text-espresso-800 hover:text-espresso-950 hover:bg-oat-100/70 border border-transparent'
                 }`}
               >
                 {link.label}
@@ -118,8 +119,15 @@ export function Header() {
           })}
         </nav>
 
-        {/* Header Actions (Bag button + Mobile Toggle) */}
+        {/* Header Actions (Currency Toggle + Bag button + Mobile Toggle) */}
         <div className="flex items-center gap-2 sm:gap-3">
+          {/* Desktop Currency Switcher */}
+          <CurrencyToggle
+            ariaLabel="Header currency selection"
+            size="sm"
+            className="hidden sm:inline-flex"
+          />
+
           {/* Bag Button with Feline Bounce Animation */}
           <button
             type="button"
