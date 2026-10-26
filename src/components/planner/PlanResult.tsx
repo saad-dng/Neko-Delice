@@ -361,6 +361,7 @@ export function PlanResult({ bundle, profile, onEditAnswers }: PlanResultProps) 
       <div className="flex flex-col sm:flex-row flex-wrap items-center gap-3.5 pt-2">
         <Button
           variant="primary"
+          catIcon="paw"
           onClick={handleAddToBag}
           className="w-full sm:w-auto min-w-[200px]"
         >
@@ -379,6 +380,7 @@ export function PlanResult({ bundle, profile, onEditAnswers }: PlanResultProps) 
           asChild
           to="/#shop"
           variant="secondary"
+          catIcon="head"
           className="w-full sm:w-auto"
         >
           Explore the collection

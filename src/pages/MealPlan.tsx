@@ -190,6 +190,8 @@ export function MealPlanPage() {
                     variant="primary"
                     type="button"
                     onClick={handleNext}
+                    catIcon={urlStep === '4' ? 'paw' : 'none'}
+                    catIconPosition="right"
                     className="min-w-[140px]"
                   >
                     {urlStep === '4' ? 'View meal plan' : 'Next'}
@@ -227,6 +229,8 @@ export function MealPlanPage() {
             variant="primary"
             type="button"
             onClick={handleNext}
+            catIcon={urlStep === '4' ? 'paw' : 'none'}
+            catIconPosition="right"
             className="flex-1 min-h-[44px]"
           >
             {urlStep === '4' ? 'View meal plan' : 'Next'}

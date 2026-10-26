@@ -114,18 +114,22 @@ export function Header() {
 
         {/* Header Actions (Bag button + Mobile Toggle) */}
         <div className="flex items-center gap-2 sm:gap-3">
-          {/* Bag Button with Bounce Animation */}
+          {/* Bag Button with Feline Bounce Animation */}
           <button
             type="button"
             onClick={(e) => openBag(e.currentTarget)}
             aria-label={`Open bag, ${bagCount} items`}
-            className={`relative inline-flex items-center justify-center min-w-[44px] min-h-[44px] p-2 text-espresso-900 bg-oat-100/75 hover:bg-oat-200/90 active:scale-95 backdrop-blur-md rounded-full border border-sand-300/60 shadow-2xs transition-all cursor-pointer ${
+            className={`group/bag relative inline-flex items-center justify-center min-w-[44px] min-h-[44px] p-2 text-espresso-900 bg-oat-100/75 hover:bg-oat-200/90 active:scale-95 backdrop-blur-md rounded-full border border-sand-300/60 shadow-2xs transition-all cursor-pointer ${
               isBouncing ? 'animate-bag-bounce' : ''
             }`}
           >
-            <Icon name="bag" size={20} />
+            <Icon
+              name="bag"
+              size={22}
+              className="transition-transform duration-200 group-hover/bag:scale-110 group-hover/bag:-rotate-3"
+            />
             <span
-              className={`absolute -top-1 -right-1 flex items-center justify-center w-5 h-5 text-[11px] font-bold text-cream-50 bg-terracotta-600 rounded-full border border-cream-50 tabular-nums ${
+              className={`absolute -top-1 -right-1 flex items-center justify-center min-w-[20px] h-5 px-1 text-[11px] font-bold text-cream-50 bg-terracotta-600 rounded-full border-2 border-cream-50 shadow-2xs tabular-nums transition-transform ${
                 isBouncing ? 'scale-110' : ''
               }`}
               aria-hidden="true"

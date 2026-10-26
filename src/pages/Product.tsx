@@ -14,6 +14,7 @@ import { NotFoundPage } from '@/pages/NotFound'
 import { useBag } from '@/store/bag'
 import { useBagUi } from '@/store/bag-ui'
 import { useCurrency } from '@/store/currency'
+import { PawPrint } from '@/components/cat-art/PawPrint'
 
 const ACCENT_COLORS: Record<ProductAccent, string> = {
   sage: '#8FA388',
@@ -400,9 +401,14 @@ export function ProductPage() {
                   <button
                     type="button"
                     onClick={handleAddToBag}
-                    className="flex-1 rounded-full bg-terracotta-600 px-6 py-3.5 text-sm font-semibold text-cream-50 shadow-xs hover:bg-terracotta-700 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50 transition-all active:scale-98 cursor-pointer"
+                    className="group/add flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-terracotta-600 px-6 py-3.5 text-sm font-semibold text-cream-50 shadow-xs hover:bg-terracotta-700 hover:shadow-sm focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50 transition-all active:scale-98 cursor-pointer"
                   >
-                    {isAdded ? 'Added to bag ✓' : 'Add to bag'}
+                    <PawPrint
+                      size={18}
+                      filled
+                      className="text-cream-100 transition-transform duration-200 group-hover/add:-rotate-12 group-hover/add:scale-110"
+                    />
+                    <span>{isAdded ? 'Added to bag ✓' : 'Add to bag'}</span>
                   </button>
                 </div>
 

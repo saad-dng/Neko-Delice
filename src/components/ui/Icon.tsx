@@ -33,8 +33,20 @@ export function Icon({ name, size = 24, className = '', ...props }: IconProps) {
     case 'bag':
       return (
         <svg {...commonProps}>
-          <path d="M6 8h12l1.5 12H4.5L6 8z" />
-          <path d="M9 9V6a3 3 0 0 1 6 0v3" />
+          {/* Arched tote handle */}
+          <path d="M9 7.5V5.5a3 3 0 0 1 6 0v2" />
+          {/* Feline tote with perky cat ears at the top rim */}
+          <path d="M5 8.5 L6.8 5 L8.8 8.5 L15.2 8.5 L17.2 5 L19 8.5 L17.8 20.2 a1.8 1.8 0 0 1 -1.8 1.8 H8 a1.8 1.8 0 0 1 -1.8 -1.8 Z" />
+          {/* Miniature debossed cat paw insignia on the bag face */}
+          <path
+            d="M10.8 16.2 c-.6-.8 0-1.6.8-1.4.8-.2 1.4.6.8 1.4-.4.5-1.2.5-1.6 0z"
+            fill="currentColor"
+            stroke="none"
+          />
+          <circle cx="9.6" cy="13.6" r="0.75" fill="currentColor" stroke="none" />
+          <circle cx="11.2" cy="12.4" r="0.75" fill="currentColor" stroke="none" />
+          <circle cx="12.8" cy="12.4" r="0.75" fill="currentColor" stroke="none" />
+          <circle cx="14.4" cy="13.6" r="0.75" fill="currentColor" stroke="none" />
         </svg>
       )
     case 'close':

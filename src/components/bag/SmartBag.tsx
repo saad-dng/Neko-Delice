@@ -10,6 +10,8 @@ import { formatDays, formatPrice, TABULAR_NUMS } from '@/lib/format'
 import { supplyDays } from '@/lib/planner'
 import { ProductImage } from '@/components/ui/ProductImage'
 import { CatPeeking } from '@/components/cat-art/CatPeeking'
+import { CatHead } from '@/components/cat-art/CatHead'
+import { PawPrint } from '@/components/cat-art/PawPrint'
 import { CurrencyToggle } from '@/components/ui/CurrencyToggle'
 
 export function SmartBag() {
@@ -266,16 +268,18 @@ export function SmartBag() {
             <Link
               to="/#shop"
               onClick={closeBag}
-              className="w-full inline-flex items-center justify-center rounded-full bg-terracotta-600 text-cream-50 px-5 py-2.5 text-xs font-semibold hover:bg-terracotta-700 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 min-h-[44px]"
+              className="w-full inline-flex items-center justify-center gap-1.5 rounded-full bg-terracotta-600 text-cream-50 px-5 py-2.5 text-xs font-semibold hover:bg-terracotta-700 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 min-h-[44px] shadow-2xs transition-all active:scale-95"
             >
-              Explore Shop
+              <CatHead className="w-3.5 h-3.5" />
+              <span>Explore Shop</span>
             </Link>
             <Link
               to="/meal-plan"
               onClick={closeBag}
-              className="w-full inline-flex items-center justify-center rounded-full border border-sand-300 text-espresso-950 px-5 py-2.5 text-xs font-semibold hover:bg-oat-100/60 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 min-h-[44px]"
+              className="w-full inline-flex items-center justify-center gap-1.5 rounded-full border border-sand-300 bg-oat-100/60 text-espresso-950 px-5 py-2.5 text-xs font-semibold hover:bg-sage-50 hover:border-sage-300 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 min-h-[44px] shadow-2xs transition-all active:scale-95"
             >
-              Build Meal Plan
+              <PawPrint size={13} filled className="text-espresso-800" />
+              <span>Build Meal Plan</span>
             </Link>
           </div>
         </div>
@@ -317,9 +321,10 @@ export function SmartBag() {
               aria-disabled="true"
               aria-describedby="checkout-disabled-reason"
               onClick={(e) => e.preventDefault()}
-              className="w-full rounded-full bg-terracotta-600/60 text-cream-50/90 min-h-[48px] px-6 py-3 text-sm font-semibold cursor-not-allowed text-center transition-colors focus:outline-none focus:ring-2 focus:ring-espresso-900 focus:ring-offset-2"
+              className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-terracotta-600/60 text-cream-50/90 min-h-[48px] px-6 py-3 text-sm font-semibold cursor-not-allowed text-center transition-colors focus:outline-none focus:ring-2 focus:ring-espresso-900 focus:ring-offset-2"
             >
-              Checkout
+              <PawPrint size={16} filled className="text-cream-100/80" />
+              <span>Checkout</span>
             </button>
             <div
               id="checkout-disabled-reason"

@@ -5,6 +5,7 @@ import { useBag } from '@/store/bag'
 import { useBagUi } from '@/store/bag-ui'
 import { useCurrency } from '@/store/currency'
 import { ProductImage } from '@/components/ui/ProductImage'
+import { PawPrint } from '@/components/cat-art/PawPrint'
 
 export interface ProductCardProps {
   product: Product
@@ -102,12 +103,14 @@ export function ProductCard({
               useBagUi.getState().openBag(e.currentTarget)
             }}
             aria-label={`Add ${product.name} to bag`}
-            className="relative z-10 inline-flex items-center justify-center rounded-full bg-terracotta-600 px-2.5 py-1 min-h-[28px] text-[11px] font-semibold text-cream-50 transition-all hover:bg-terracotta-700 active:scale-95 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 cursor-pointer shadow-2xs leading-none"
+            className="group/btn relative z-10 inline-flex items-center justify-center gap-1.5 rounded-full bg-terracotta-600 px-3 py-1 min-h-[28px] text-[11px] font-semibold text-cream-50 transition-all hover:bg-terracotta-700 hover:shadow-xs active:scale-95 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 cursor-pointer shadow-2xs leading-none"
           >
-            <span className="mr-0.5" aria-hidden="true">
-              +
-            </span>{' '}
-            Add
+            <PawPrint
+              size={12}
+              filled
+              className="text-cream-100 transition-transform duration-200 group-hover/btn:-rotate-12 group-hover/btn:scale-110"
+            />
+            <span>Add</span>
           </button>
         </div>
       </div>

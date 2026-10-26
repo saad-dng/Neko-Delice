@@ -10,6 +10,7 @@ import { ProductCard } from '@/components/product/ProductCard'
 import { CatSitting } from '@/components/cat-art/CatSitting'
 import { CatStretching } from '@/components/cat-art/CatStretching'
 import { CatHead } from '@/components/cat-art/CatHead'
+import { PawPrint } from '@/components/cat-art/PawPrint'
 import { products } from '@/data/products'
 import type { ProductCategory } from '@/data/types'
 import type { ShopSort } from '@/lib/filters'
@@ -94,13 +95,14 @@ export function HomePage() {
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-4 mb-10">
-              <Button asChild to="/meal-plan" variant="primary">
+              <Button asChild to="/meal-plan" variant="primary" catIcon="paw">
                 Plan my cat's meals
               </Button>
               <Button
                 asChild
                 to="/#shop"
                 variant="secondary"
+                catIcon="head"
                 onClick={(e) => {
                   e.preventDefault()
                   const el = document.getElementById('shop') || document.getElementById('collection')
@@ -184,6 +186,9 @@ export function HomePage() {
                       : 'bg-oat-100/75 border border-sand-300/80 text-espresso-800 hover:bg-sage-50 hover:border-sage-300 hover:text-espresso-950'
                   }`}
                 >
+                  {isSelected && (
+                    <PawPrint size={12} filled className="text-cream-100" />
+                  )}
                   <span>{cat.label}</span>
                   <span
                     className={`inline-flex items-center justify-center rounded-full px-1.5 py-0.5 text-[10px] font-bold leading-none ${
@@ -292,8 +297,9 @@ export function HomePage() {
                       <span className="inline-flex items-center gap-1 text-[11px] font-medium text-espresso-700 transition-colors group-hover:text-terracotta-700 leading-none">
                         Plan meals <span aria-hidden="true">→</span>
                       </span>
-                      <span className="relative z-10 inline-flex items-center justify-center rounded-full bg-sage-700 px-2.5 py-1 min-h-[28px] text-[11px] font-semibold text-cream-50 shadow-2xs leading-none">
-                        Start
+                      <span className="relative z-10 inline-flex items-center justify-center gap-1 rounded-full bg-sage-700 px-2.5 py-1 min-h-[28px] text-[11px] font-semibold text-cream-50 shadow-2xs leading-none">
+                        <PawPrint size={11} filled className="text-cream-100" />
+                        <span>Start</span>
                       </span>
                     </div>
                   </div>
@@ -340,8 +346,9 @@ export function HomePage() {
                       <span className="inline-flex items-center gap-1 text-[11px] font-medium text-espresso-700 transition-colors group-hover:text-terracotta-700 leading-none">
                         Read story <span aria-hidden="true">→</span>
                       </span>
-                      <span className="relative z-10 inline-flex items-center justify-center rounded-full bg-sand-300 px-2.5 py-1 min-h-[28px] text-[11px] font-semibold text-espresso-900 shadow-2xs leading-none">
-                        About
+                      <span className="relative z-10 inline-flex items-center justify-center gap-1 rounded-full bg-sand-300 px-2.5 py-1 min-h-[28px] text-[11px] font-semibold text-espresso-900 shadow-2xs leading-none">
+                        <CatHead className="w-3 h-3 text-espresso-800" />
+                        <span>About</span>
                       </span>
                     </div>
                   </div>
@@ -418,7 +425,7 @@ export function HomePage() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
-                  <Button asChild to="/meal-plan" variant="primary">
+                  <Button asChild to="/meal-plan" variant="primary" catIcon="paw">
                     Plan my cat's meals
                   </Button>
                 </div>
@@ -498,13 +505,14 @@ export function HomePage() {
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <Button asChild to="/meal-plan" variant="primary">
+            <Button asChild to="/meal-plan" variant="primary" catIcon="paw">
               Plan my cat's meals
             </Button>
             <Button
               asChild
               to="/#shop"
               variant="secondary"
+              catIcon="head"
               onClick={(e) => {
                 e.preventDefault()
                 const el = document.getElementById('shop') || document.getElementById('collection')

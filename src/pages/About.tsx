@@ -361,10 +361,10 @@ export function AboutPage() {
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <Button asChild to="/meal-plan" variant="primary">
+            <Button asChild to="/meal-plan" variant="primary" catIcon="paw">
               Plan your cat&apos;s meals
             </Button>
-            <Button asChild to="/#shop" variant="secondary">
+            <Button asChild to="/#shop" variant="secondary" catIcon="head">
               Explore the collection
             </Button>
           </div>
