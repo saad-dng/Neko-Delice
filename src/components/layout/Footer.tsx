@@ -37,7 +37,7 @@ export function Footer() {
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="footer-hover-link py-1 text-sm font-medium text-espresso-800 hover:text-terracotta-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 rounded-xs"
+                  className="footer-hover-link py-1 text-sm leading-6 font-medium text-espresso-800 hover:text-terracotta-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 rounded-xs"
                 >
                   {link.label}
                 </Link>

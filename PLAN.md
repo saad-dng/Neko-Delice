@@ -91,6 +91,10 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
     - Compacted mobile footer spacing from `pt-16 pb-12 gap-10` to `pt-12 sm:pt-16 pb-10 sm:pb-12 gap-8` with centered, cleanly spaced bottom utilities.
   - Sized down footer currency toggle to a refined micro-switch (`size="xs"`, 21px height with 10px text and 2px container padding) for an unobtrusive aesthetic.
   - 0 typecheck errors, 0 lint warnings, 83/83 Vitest tests, 89/89 Playwright E2E tests, and static SSG build passing.
+- 2026-10-26: Footer Underline Thickness Normalization & Currency Switch Interaction:
+  - Fixed subpixel underline thickness variance (where "Shop" rendered thick and "Meal Planner" thin) by replacing fractional `height: 1.5px` with crisp integer `height: 2px` in `.footer-hover-link::after` and setting `leading-6` integer line-height on navigation links. Every link and creator attribution now renders with identical, razor-sharp 2px underline thickness across all monitors and DPI scalings.
+  - Upgraded CurrencyToggle component with whole-surface toggle interaction: tapping either button (even the currently active one) toggles between USD and BDT, eliminating the need to pinpoint the exact opposite button.
+  - 0 typecheck errors, 0 lint warnings, 83/83 Vitest tests, and SSG build passing.
 
 
 
