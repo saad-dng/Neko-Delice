@@ -93,6 +93,12 @@ summary:focus {
   border-width: 0;
 }
 
+/* Editorial italic note utility */
+.font-note {
+  font-family: var(--font-note);
+  font-style: italic;
+}
+
 /* Motion preference override: switch to opacity-only transitions */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
@@ -238,6 +244,63 @@ input[type="range"]:active::-moz-range-thumb {
     transform: none !important;
   }
   .animate-fadeIn {
+    animation: none !important;
+  }
+}
+
+/* Idle cat twitch micro-interaction (~6s cycle, aria-hidden playful motion) */
+@keyframes idle-cat-twitch {
+  0%, 90%, 100% {
+    transform: rotate(0deg) translateY(0);
+  }
+  92% {
+    transform: rotate(-1.5deg) translateY(-0.5px);
+  }
+  94% {
+    transform: rotate(1.2deg) translateY(0);
+  }
+  96% {
+    transform: rotate(-0.8deg) translateY(-0.5px);
+  }
+}
+
+.animate-idle-cat {
+  transform-origin: bottom center;
+  animation: idle-cat-twitch 6s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-idle-cat {
+    animation: none !important;
+  }
+}
+
+/* Paw stamp add-to-bag micro-animation (300ms) */
+@keyframes paw-stamp {
+  0% {
+    transform: scale(0.4) rotate(-10deg);
+    opacity: 0;
+  }
+  30% {
+    transform: scale(1.15) rotate(0deg);
+    opacity: 0.9;
+  }
+  60% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1.05) translateY(-2px);
+    opacity: 0;
+  }
+}
+
+.animate-paw-stamp {
+  animation: paw-stamp 320ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-paw-stamp {
     animation: none !important;
   }
 }

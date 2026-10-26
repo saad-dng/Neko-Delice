@@ -37,8 +37,8 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 ## v2 — Playful Homepage Stages (branch: playful-home)
 - [x] V2-01 Branch, rules and docs
 - [x] V2-02 Audit the current site (docs/V2-AUDIT.md compiled, 0 dead buttons, 90/90 tests)
-- [x] V2-03 Cat photo intake (**stop for owner approval of photo role picks**)
-- [ ] V2-04 Reusable playful components
+- [x] V2-03 Cat photo intake (docs/SITE-IMAGE-MAP.md, 6 roles, high-resolution WebPs, approved)
+- [x] V2-04 Reusable playful components (Cormorant italic 500, 5 cat poses, 6 doodles, Annotation, Reveal, Band, CatCard, IdleCat, PawStamp)
 - [ ] V2-05 Rebuild the homepage sections (**stop for owner browser review**)
 - [ ] V2-06 Functional interactions and animation across all pages
 - [ ] V2-07 Content, claims and notices cleanup
@@ -121,6 +121,13 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
   - Created `src/components/ui/SiteImage.tsx` with responsive srcset, dimensions, lazy loading, and error fallback.
   - Executed carton-over-cat blend test (`docs/screens/blend-test.png`) analyzing `mix-blend-mode: multiply` on tinted backdrops and documented card surface architecture.
   - Added unit test suite in `src/test/images.test.ts` (93/93 Vitest tests passing); static SSG build rendering all 15 routes cleanly.
+- 2026-10-26: V2-04 completed. Reusable playful components created:
+  - Font: Added Cormorant Garamond Latin 500 italic WOFF2 (`23.92 KB`, within ≤25 KB budget); added `--font-note` token and `.font-note` utility.
+  - 5 New Cat Poses in `src/components/cat-art/`: `CatCurious` (1.70 KB), `CatWalking` (1.76 KB), `CatStretch` (1.68 KB), `CatCurled` (1.36 KB), `CatPeekEdge` (1.72 KB); all monoline 2px, currentColor, aria-hidden, strictly ≤1.8 KB each.
+  - 6 Doodles in `src/components/doodles/`: `PawTrail`, `Heart`, `SparkleLine`, `Yarn`, `ScribbleArrow` (curve-left/right), `Wave` (soft sinusoidal divider); total new SVG size: 14.09 KB across all 11 SVGs.
+  - Interactive Primitives: `Annotation` (italic note + arrow, aria-hidden), `Reveal` + `useReveal` (prerender-safe, reduced-motion aware, 12px rise), `Band` (cream/oat/sage with 12% color-mix and optional top wave), `CatCard` (real `<a>` or button, 4px lift on hover/focus, 44px min target), `IdleCat` (aria-hidden, ~6s twitch keyframes, pauses offscreen), `PawStamp` & `stampPaw` (brief tactile feedback on button add).
+  - 103/103 Vitest tests passing; 0 typecheck errors, 0 lint warnings/errors; static SSG build passing.
+
 
 
 
