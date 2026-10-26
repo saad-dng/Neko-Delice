@@ -64,9 +64,9 @@ export function MealPlanPage() {
     navigate(`/meal-plan?${encodeProfile(next, urlStep)}`, { replace: true })
   }
 
-  // Navigate to step
+  // Navigate to step (push onto history so browser Back navigates to previous step)
   const goToStep = (nextStep: PlannerStep) => {
-    navigate(`/meal-plan?${encodeProfile(profileRef.current, nextStep)}`, { replace: true })
+    navigate(`/meal-plan?${encodeProfile(profileRef.current, nextStep)}`, { replace: false })
   }
 
   const handleNext = () => {
@@ -158,19 +158,21 @@ export function MealPlanPage() {
                   {STEP_TITLES[urlStep] || 'About your cat'}
                 </h2>
 
-                {/* Step Content */}
-                {urlStep === '1' && (
-                  <Step1About profile={profile} onChange={updateProfile} />
-                )}
-                {urlStep === '2' && (
-                  <Step2Weight profile={profile} onChange={updateProfile} />
-                )}
-                {urlStep === '3' && (
-                  <Step3Activity profile={profile} onChange={updateProfile} />
-                )}
-                {urlStep === '4' && (
-                  <Step4HealthFocus profile={profile} onChange={updateProfile} />
-                )}
+                {/* Step Content with 200ms slide/fade transition */}
+                <div key={urlStep} className="animate-step-transition motion-reduce:animate-none">
+                  {urlStep === '1' && (
+                    <Step1About profile={profile} onChange={updateProfile} />
+                  )}
+                  {urlStep === '2' && (
+                    <Step2Weight profile={profile} onChange={updateProfile} />
+                  )}
+                  {urlStep === '3' && (
+                    <Step3Activity profile={profile} onChange={updateProfile} />
+                  )}
+                  {urlStep === '4' && (
+                    <Step4HealthFocus profile={profile} onChange={updateProfile} />
+                  )}
+                </div>
 
                 {/* Desktop/Tablet Navigation Controls */}
                 <div className="hidden sm:flex items-center justify-between pt-8 mt-8 border-t border-sand-300/80">

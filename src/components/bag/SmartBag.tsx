@@ -1,18 +1,166 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { products } from '@/data/products'
+import type { Product, CatProfile } from '@/data/types'
 import { PLANNER_CONFIG } from '@/config/planner'
-import { useBag } from '@/store/bag'
+import { useBag, type BagLine } from '@/store/bag'
 import { useBagUi } from '@/store/bag-ui'
 import { useCurrency } from '@/store/currency'
 import { usePlannerProfile } from '@/store/planner'
 import { formatDays, formatPrice, TABULAR_NUMS } from '@/lib/format'
 import { supplyDays } from '@/lib/planner'
 import { ProductImage } from '@/components/ui/ProductImage'
-import { CatPeeking } from '@/components/cat-art/CatPeeking'
+import { CatPeekEdge } from '@/components/cat-art/CatPeekEdge'
 import { CatHead } from '@/components/cat-art/CatHead'
 import { PawPrint } from '@/components/cat-art/PawPrint'
 import { CurrencyToggle } from '@/components/ui/CurrencyToggle'
+
+interface BagLineItemProps {
+  line: BagLine
+  product: Product
+  currency: 'USD' | 'BDT'
+  profile: CatProfile | null
+  onSetQty: (productId: string, qty: number) => void
+  onRemove: (productId: string) => void
+  onClose: () => void
+}
+
+function BagLineItem({
+  line,
+  product,
+  currency,
+  profile,
+  onSetQty,
+  onRemove,
+  onClose,
+}: BagLineItemProps) {
+  const linePriceUSD = product.priceUSD * line.qty
+  const [flashing, setFlashing] = useState(false)
+  const prevPriceRef = useRef(linePriceUSD)
+
+  // Trigger flash animation whenever the line total changes
+  useEffect(() => {
+    if (prevPriceRef.current !== linePriceUSD) {
+      prevPriceRef.current = linePriceUSD
+      setFlashing(true)
+      const timer = setTimeout(() => setFlashing(false), 360)
+      return () => clearTimeout(timer)
+    }
+  }, [linePriceUSD])
+
+  // Compute supply duration
+  let supplyText: string
+  if (product.category === 'hardware' || product.unit.type === 'hardware') {
+    supplyText = 'One-time purchase'
+  } else if (product.category === 'litter' || product.unit.type === 'litter') {
+    supplyText = 'About 30 days for one cat'
+  } else {
+    const days = supplyDays(
+      product.id,
+      line.qty,
+      profile ?? PLANNER_CONFIG.referenceCat,
+    )
+    if (days) {
+      supplyText = profile
+        ? `Lasts ${formatDays(days, { approximate: true })}`
+        : `Lasts ${formatDays(days, { approximate: true })} · Based on a 4.5 kg neutered adult`
+    } else {
+      supplyText = 'Consumable supply'
+    }
+  }
+
+  return (
+    <div className="flex items-start gap-4 p-3.5 rounded-2xl bg-cream-50 border border-sand-300/80 transition-all duration-200 animate-step-transition motion-reduce:animate-none">
+      {/* Thumbnail on beige tile with Link */}
+      <Link
+        to={`/product/${product.slug}`}
+        onClick={onClose}
+        aria-label={`View ${product.name} details`}
+        className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-xl overflow-hidden bg-beige-200 transition-opacity hover:opacity-85 focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500"
+      >
+        <ProductImage
+          slug={product.slug}
+          imageRole="hero"
+          sizes="80px"
+          className="w-full h-full object-cover"
+        />
+      </Link>
+
+      {/* Product Info & Controls */}
+      <div className="flex-1 min-w-0">
+        <div className="flex items-start justify-between gap-2">
+          <div>
+            <Link
+              to={`/product/${product.slug}`}
+              onClick={onClose}
+              className="font-serif text-base sm:text-lg font-semibold text-espresso-950 truncate block hover:text-terracotta-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 rounded"
+            >
+              {product.name}
+            </Link>
+            <div className="text-xs text-espresso-700 mt-0.5">
+              {product.unit.packSizeLabel}
+            </div>
+          </div>
+
+          {/* Line Price with Quantity Change Flash */}
+          <div className="text-right shrink-0">
+            <span
+              className={`font-serif text-base sm:text-lg font-semibold text-espresso-950 block ${
+                flashing ? 'animate-total-flash' : ''
+              } ${TABULAR_NUMS}`}
+            >
+              {formatPrice(linePriceUSD, currency)}
+            </span>
+          </div>
+        </div>
+
+        {/* Supply Duration Note */}
+        <div className="text-xs font-medium text-terracotta-700 mt-1">
+          {supplyText}
+        </div>
+
+        {/* Quantity Stepper and Remove Action */}
+        <div className="flex items-center justify-between mt-3 pt-2 border-t border-sand-300/50">
+          <div className="flex items-center rounded-full border border-sand-300 bg-cream-50 p-0.5">
+            <button
+              type="button"
+              onClick={() => onSetQty(product.id, line.qty - 1)}
+              disabled={line.qty <= 1}
+              aria-label={`Decrease quantity of ${product.name}`}
+              className="inline-flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold text-espresso-900 hover:bg-oat-100 active:scale-90 disabled:opacity-40 disabled:cursor-not-allowed focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 cursor-pointer transition-all"
+            >
+              −
+            </button>
+            <span
+              aria-label={`Quantity: ${line.qty}`}
+              className={`w-8 text-center text-xs font-semibold text-espresso-950 select-none ${TABULAR_NUMS}`}
+            >
+              {line.qty}
+            </span>
+            <button
+              type="button"
+              onClick={() => onSetQty(product.id, line.qty + 1)}
+              disabled={line.qty >= 9}
+              aria-label={`Increase quantity of ${product.name}`}
+              className="inline-flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold text-espresso-900 hover:bg-oat-100 active:scale-90 disabled:opacity-40 disabled:cursor-not-allowed focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 cursor-pointer transition-all"
+            >
+              +
+            </button>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => onRemove(product.id)}
+            aria-label={`Remove ${product.name} from bag`}
+            className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] text-xs font-medium text-espresso-800 hover:text-terracotta-700 active:scale-95 underline underline-offset-2 transition-all cursor-pointer"
+          >
+            Remove
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export function SmartBag() {
   const dialogRef = useRef<HTMLDialogElement>(null)
@@ -135,126 +283,25 @@ export function SmartBag() {
             const product = products.find((p) => p.id === line.productId)
             if (!product) return null
 
-            const linePriceUSD = product.priceUSD * line.qty
-
-            // Compute supply duration
-            let supplyText: string
-            if (product.category === 'hardware' || product.unit.type === 'hardware') {
-              supplyText = 'One-time purchase'
-            } else if (product.category === 'litter' || product.unit.type === 'litter') {
-              supplyText = 'About 30 days for one cat'
-            } else {
-              const days = supplyDays(
-                product.id,
-                line.qty,
-                profile ?? PLANNER_CONFIG.referenceCat,
-              )
-              if (days) {
-                supplyText = profile
-                  ? `Lasts ${formatDays(days, { approximate: true })}`
-                  : `Lasts ${formatDays(days, { approximate: true })} · Based on a 4.5 kg neutered adult`
-              } else {
-                supplyText = 'Consumable supply'
-              }
-            }
-
             return (
-              <div
+              <BagLineItem
                 key={line.productId}
-                className="flex items-start gap-4 p-3.5 rounded-2xl bg-cream-50/90 border border-sand-300/80 transition-colors"
-              >
-                {/* Thumbnail on beige tile with Link */}
-                <Link
-                  to={`/product/${product.slug}`}
-                  onClick={closeBag}
-                  aria-label={`View ${product.name} details`}
-                  className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-xl overflow-hidden bg-beige-200 transition-opacity hover:opacity-85 focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500"
-                >
-                  <ProductImage
-                    slug={product.slug}
-                    imageRole="hero"
-                    sizes="80px"
-                    className="w-full h-full object-cover"
-                  />
-                </Link>
-
-                {/* Product Info & Controls */}
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-start justify-between gap-2">
-                    <div>
-                      <Link
-                        to={`/product/${product.slug}`}
-                        onClick={closeBag}
-                        className="font-serif text-base sm:text-lg font-semibold text-espresso-950 truncate block hover:text-terracotta-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 rounded"
-                      >
-                        {product.name}
-                      </Link>
-                      <div className="text-xs text-espresso-700 mt-0.5">
-                        {product.unit.packSizeLabel}
-                      </div>
-                    </div>
-
-                    {/* Line Price */}
-                    <div className="text-right shrink-0">
-                      <span className={`font-serif text-base sm:text-lg font-semibold text-espresso-950 block ${TABULAR_NUMS}`}>
-                        {formatPrice(linePriceUSD, currency)}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Supply Duration Note */}
-                  <div className="text-xs font-medium text-terracotta-700 mt-1">
-                    {supplyText}
-                  </div>
-
-                  {/* Quantity Stepper and Remove Action */}
-                  <div className="flex items-center justify-between mt-3 pt-2 border-t border-sand-300/50">
-                    <div className="flex items-center rounded-full border border-sand-300 bg-cream-50 p-0.5">
-                      <button
-                        type="button"
-                        onClick={() => setQty(product.id, line.qty - 1)}
-                        disabled={line.qty <= 1}
-                        aria-label={`Decrease quantity of ${product.name}`}
-                        className="inline-flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold text-espresso-900 hover:bg-oat-100 active:scale-90 disabled:opacity-40 disabled:cursor-not-allowed focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 cursor-pointer transition-all"
-                      >
-                        −
-                      </button>
-                      <span
-                        aria-label={`Quantity: ${line.qty}`}
-                        className={`w-8 text-center text-xs font-semibold text-espresso-950 select-none ${TABULAR_NUMS}`}
-                      >
-                        {line.qty}
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => setQty(product.id, line.qty + 1)}
-                        disabled={line.qty >= 9}
-                        aria-label={`Increase quantity of ${product.name}`}
-                        className="inline-flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold text-espresso-900 hover:bg-oat-100 active:scale-90 disabled:opacity-40 disabled:cursor-not-allowed focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 cursor-pointer transition-all"
-                      >
-                        +
-                      </button>
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={() => remove(product.id)}
-                      aria-label={`Remove ${product.name} from bag`}
-                      className="inline-flex items-center justify-center min-h-[44px] min-w-[44px] text-xs font-medium text-espresso-700 hover:text-terracotta-700 active:scale-95 underline underline-offset-2 transition-all cursor-pointer"
-                    >
-                      Remove
-                    </button>
-                  </div>
-                </div>
-              </div>
+                line={line}
+                product={product}
+                currency={currency}
+                profile={profile}
+                onSetQty={setQty}
+                onRemove={remove}
+                onClose={closeBag}
+              />
             )
           })}
         </div>
       ) : (
-        /* Empty State */
-        <div className="flex-1 flex flex-col items-center justify-center px-6 py-10 text-center">
-          <div className="w-20 h-20 text-espresso-600 mb-3 flex items-center justify-center">
-            <CatPeeking className="w-16 h-16" />
+        /* Empty State with Peeking Cat Edge */
+        <div className="flex-1 flex flex-col items-center justify-center px-6 py-10 text-center animate-fadeIn">
+          <div className="w-24 h-16 text-espresso-700 mb-3 overflow-hidden flex items-end justify-center">
+            <CatPeekEdge className="w-20 h-16 animate-step-transition" />
           </div>
 
           <h3 className="font-serif text-xl font-semibold text-espresso-950 mb-2">

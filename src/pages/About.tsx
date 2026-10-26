@@ -4,6 +4,7 @@ import { Section } from '@/components/ui/Section'
 import { Heading } from '@/components/ui/Heading'
 import { Button } from '@/components/ui/Button'
 import { ProductImage } from '@/components/ui/ProductImage'
+import { Reveal } from '@/components/ui/Reveal'
 import { CatSitting } from '@/components/cat-art/CatSitting'
 import { CatHead } from '@/components/cat-art/CatHead'
 
@@ -113,83 +114,85 @@ export function AboutPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Close-up 1: Chicken Mousse Swirl */}
-            <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4.5 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
-              <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
-                <ProductImage
-                  slug="kitten-growth-mousse-broth"
-                  imageRole="contents"
-                  className="h-full w-full object-cover"
-                />
+          <Reveal>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {/* Close-up 1: Chicken Mousse Swirl */}
+              <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4.5 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
+                <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
+                  <ProductImage
+                    slug="kitten-growth-mousse-broth"
+                    imageRole="contents"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="mt-3.5">
+                  <span className="text-sm font-semibold text-espresso-950 block">
+                    Deboned Chicken &amp; Broth
+                  </span>
+                  <span className="text-xs text-espresso-700 leading-relaxed mt-1 block">
+                    62% fresh deboned chicken gently pureed in broth for smooth hydration and growth.
+                  </span>
+                </div>
               </div>
-              <div className="mt-3.5">
-                <span className="text-sm font-semibold text-espresso-950 block">
-                  Deboned Chicken &amp; Broth
-                </span>
-                <span className="text-xs text-espresso-700 leading-relaxed mt-1 block">
-                  62% fresh deboned chicken gently pureed in broth for smooth hydration and growth.
-                </span>
-              </div>
-            </div>
 
-            {/* Close-up 2: Wild Salmon & Quail Paté */}
-            <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4.5 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
-              <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
-                <ProductImage
-                  slug="wild-salmon-quail-pate"
-                  imageRole="contents"
-                  className="h-full w-full object-cover"
-                />
+              {/* Close-up 2: Wild Salmon & Quail Paté */}
+              <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4.5 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
+                <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
+                  <ProductImage
+                    slug="wild-salmon-quail-pate"
+                    imageRole="contents"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="mt-3.5">
+                  <span className="text-sm font-semibold text-espresso-950 block">
+                    Wild Salmon &amp; Lean Quail
+                  </span>
+                  <span className="text-xs text-espresso-700 leading-relaxed mt-1 block">
+                    Finely ground whole wild salmon and quail with cranberries and controlled minerals.
+                  </span>
+                </div>
               </div>
-              <div className="mt-3.5">
-                <span className="text-sm font-semibold text-espresso-950 block">
-                  Wild Salmon &amp; Lean Quail
-                </span>
-                <span className="text-xs text-espresso-700 leading-relaxed mt-1 block">
-                  Finely ground whole wild salmon and quail with cranberries and controlled minerals.
-                </span>
-              </div>
-            </div>
 
-            {/* Close-up 3: Oven-Baked Duck Kibble */}
-            <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4.5 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
-              <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
-                <ProductImage
-                  slug="duck-sweet-potato-kibble"
-                  imageRole="contents"
-                  className="h-full w-full object-cover"
-                />
+              {/* Close-up 3: Oven-Baked Duck Kibble */}
+              <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4.5 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
+                <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
+                  <ProductImage
+                    slug="duck-sweet-potato-kibble"
+                    imageRole="contents"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="mt-3.5">
+                  <span className="text-sm font-semibold text-espresso-950 block">
+                    Slow-Baked Duck Kibble
+                  </span>
+                  <span className="text-xs text-espresso-700 leading-relaxed mt-1 block">
+                    Single-source duck gently baked at low temperatures with sweet potato and dietary fiber.
+                  </span>
+                </div>
               </div>
-              <div className="mt-3.5">
-                <span className="text-sm font-semibold text-espresso-950 block">
-                  Slow-Baked Duck Kibble
-                </span>
-                <span className="text-xs text-espresso-700 leading-relaxed mt-1 block">
-                  Single-source duck gently baked at low temperatures with sweet potato and dietary fiber.
-                </span>
-              </div>
-            </div>
 
-            {/* Close-up 4: Norwegian Salmon Oil */}
-            <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4.5 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
-              <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
-                <ProductImage
-                  slug="norwegian-salmon-oil"
-                  imageRole="contents"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div className="mt-3.5">
-                <span className="text-sm font-semibold text-espresso-950 block">
-                  Cold-Filtered Salmon Oil
-                </span>
-                <span className="text-xs text-espresso-700 leading-relaxed mt-1 block">
-                  Unrefined Norwegian salmon oil packed with active EPA and DHA omega fatty acids.
-                </span>
+              {/* Close-up 4: Norwegian Salmon Oil */}
+              <div className="flex flex-col rounded-2xl bg-oat-100/50 p-4.5 border border-sand-300/70 shadow-2xs hover:bg-oat-100/75 transition-colors">
+                <div className="relative aspect-square w-full overflow-hidden rounded-xl bg-beige-200">
+                  <ProductImage
+                    slug="norwegian-salmon-oil"
+                    imageRole="contents"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="mt-3.5">
+                  <span className="text-sm font-semibold text-espresso-950 block">
+                    Cold-Filtered Salmon Oil
+                  </span>
+                  <span className="text-xs text-espresso-700 leading-relaxed mt-1 block">
+                    Unrefined Norwegian salmon oil packed with active EPA and DHA omega fatty acids.
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
+          </Reveal>
         </Container>
       </Section>
 

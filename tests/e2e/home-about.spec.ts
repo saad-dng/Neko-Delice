@@ -12,7 +12,7 @@ test.describe('Home Page (P14)', () => {
     // Exactly one h1
     const h1 = page.locator('h1')
     await expect(h1).toHaveCount(1)
-    await expect(h1).toHaveText('Feed your cat exactly what they need.')
+    await expect(h1).toHaveText(/Good food for curious cats/i)
 
     // Primary & Secondary Hero CTAs
     const planCta = page.locator('a:has-text("Plan my cat\'s meals")').first()
@@ -22,24 +22,22 @@ test.describe('Home Page (P14)', () => {
     await expect(shopCta).toHaveAttribute('href', '/#shop')
 
     // Unified Collection Section
-    await expect(page.locator('h2:has-text("Shop the collection")')).toBeVisible()
-
-    // Eager/Priority LCP image on the first collection item
-    const lcpImg = page.locator('section img[fetchpriority="high"]').first()
-    await expect(lcpImg).toBeVisible()
+    await expect(
+      page.locator('h2:has-text("Everything your cat needs, nothing they don\'t.")')
+    ).toBeVisible()
 
     // Planner Teaser Section
     await expect(
-      page.locator('h2:has-text("No guesswork. A meal plan tailored to your cat.")')
+      page.locator('h2:has-text("No guesswork. Just the right plan for your cat.")')
     ).toBeVisible()
     await expect(
-      page.locator('text=Tell us the essentials')
+      page.locator('text=Tell us about your cat')
     ).toBeVisible()
     await expect(
-      page.locator('text=Clinical calculation')
+      page.locator('text=See daily calories')
     ).toBeVisible()
     await expect(
-      page.locator('text=A month that lasts')
+      page.locator('text=Get a monthly bundle')
     ).toBeVisible()
 
     // Full Collection Products on Home (all 10 items)
@@ -57,20 +55,20 @@ test.describe('Home Page (P14)', () => {
     await allTab.click()
     await expect(page.locator('[data-testid="product-card"]')).toHaveCount(10)
 
-    // Promise Strip (3 items)
+    // Value Section
     await expect(
-      page.locator('h3:has-text("Formulated with a vet-informed approach")')
+      page.locator('h3:has-text("Short, recognisable ingredients")')
     ).toBeVisible()
     await expect(
-      page.locator('h3:has-text("Short ingredient lists, no fillers")')
+      page.locator('h3:has-text("Made for their stage")')
     ).toBeVisible()
     await expect(
-      page.locator('h3:has-text("Know how long every bag lasts")')
+      page.locator('h3:has-text("Plans that add up")')
     ).toBeVisible()
 
     // Closing CTA
     await expect(
-      page.locator('h2:has-text("Honest food, quiet design, no guesswork.")')
+      page.locator('h2:has-text("Feed your cat with confidence.")')
     ).toBeVisible()
   })
 

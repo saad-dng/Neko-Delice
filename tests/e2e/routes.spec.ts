@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test'
 
 const CORE_ROUTES = [
-  { path: '/', expectedTitle: /NEKO DELICE/i, expectedH1: /Feed your cat exactly what they need/i },
+  { path: '/', expectedTitle: /NEKO DELICE/i, expectedH1: /Good food for curious cats/i },
   { path: '/meal-plan', expectedTitle: /Meal Planner/i, expectedH1: /Calorie & meal planner/i },
   { path: '/about', expectedTitle: /About/i, expectedH1: /Honest food, quiet design/i },
   { path: '/404', expectedTitle: /Page Not Found/i, expectedH1: /We couldn't find that page/i },
@@ -112,6 +112,6 @@ test.describe('Route Architecture & Prerender Smoke Tests (P07)', () => {
     // Click logo to return home
     await page.locator('header a[aria-label="NEKO DELICE home"]').click()
     await expect(page).toHaveURL(/\/$/)
-    await expect(page.locator('h1')).toHaveText(/Feed your cat exactly what they need/i)
+    await expect(page.locator('h1')).toHaveText(/Good food for curious cats/i)
   })
 })

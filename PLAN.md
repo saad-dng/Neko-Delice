@@ -39,8 +39,8 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 - [x] V2-02 Audit the current site (docs/V2-AUDIT.md compiled, 0 dead buttons, 90/90 tests)
 - [x] V2-03 Cat photo intake (docs/SITE-IMAGE-MAP.md, 6 roles, high-resolution WebPs, approved)
 - [x] V2-04 Reusable playful components (Cormorant italic 500, 5 cat poses, 6 doodles, Annotation, Reveal, Band, CatCard, IdleCat, PawStamp)
-- [ ] V2-05 Rebuild the homepage sections (**stop for owner browser review**)
-- [ ] V2-06 Functional interactions and animation across all pages
+- [x] V2-05 Rebuild the homepage sections (Owner approved)
+- [x] V2-06 Functional interactions and animation across all pages
 - [ ] V2-07 Content, claims and notices cleanup
 - [ ] V2-08 Testing, QA and merge
 
@@ -126,14 +126,23 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
   - 5 New Cat Poses in `src/components/cat-art/`: `CatCurious` (1.70 KB), `CatWalking` (1.76 KB), `CatStretch` (1.68 KB), `CatCurled` (1.36 KB), `CatPeekEdge` (1.72 KB); all monoline 2px, currentColor, aria-hidden, strictly ≤1.8 KB each.
   - 6 Doodles in `src/components/doodles/`: `PawTrail`, `Heart`, `SparkleLine`, `Yarn`, `ScribbleArrow` (curve-left/right), `Wave` (soft sinusoidal divider); total new SVG size: 14.09 KB across all 11 SVGs.
   - Interactive Primitives: `Annotation` (italic note + arrow, aria-hidden), `Reveal` + `useReveal` (prerender-safe, reduced-motion aware, 12px rise), `Band` (cream/oat/sage with 12% color-mix and optional top wave), `CatCard` (real `<a>` or button, 4px lift on hover/focus, 44px min target), `IdleCat` (aria-hidden, ~6s twitch keyframes, pauses offscreen), `PawStamp` & `stampPaw` (brief tactile feedback on button add).
-  - 103/103 Vitest tests passing; 0 typecheck errors, 0 lint warnings/errors; static SSG build passing.
 - 2026-10-26: V2-05 completed. Rebuilt homepage sections per DESIGN-V2.md:
   - Hero: Real cat photo (`cat-hero-01`) LCP image with fetchpriority="high", preloaded in SeoHead with imagesrcset, soft radial mask fade; floating Duck & Sweet Potato Kibble pouch; Cormorant headline with matcha-italic emphasis; handwritten Annotation "Mealtime is the best time."; 3 truthful chips; soft Wave divider.
   - Planner Band: `Band variant="sage"` with `CatCurious` icon, headline, 3 clickable `CatCard`s linking to `/meal-plan?act=lounger|explorer|high-energy&step=1`, 3 steps, and planner disclaimer.
   - Shop Preview: Category tabs with client-side filtering, sort controls, and ProductCard grid with add-to-bag and session tracking.
   - Why Band: `Band variant="oat"` with real eating cat photo, `IdleCat` curled cat badge + "Planned portions" annotation, and 4 truthful value points.
   - Calm Strip & Closing CTA: Truthful standards strip + `CatPeekEdge` card divider.
-  - Responsive verified across 360, 640, 1024, 1536 px; 103/103 Vitest tests passing; ready for owner browser review.
+  - Responsive verified across 360, 640, 1024, 1536 px; owner approved.
+- 2026-10-26: V2-06 completed. Functional interactions and animations implemented across all pages:
+  - Add to bag feedback: Tactile paw stamp (`stampPaw`) on buttons, bag badge bounce, polite live region announcement, and non-blocking floating `<Toast />` (`src/components/ui/Toast.tsx` and `src/store/toast.ts`) with functional Undo action restoring previous quantity, 5s auto-hide with hover/focus pause, and dismiss button.
+  - Meal Planner: Walking cat marker (`CatWalking`) traversing `<PlannerProgress />` alongside native `<progress>` element; 200ms slide/fade transition (`animate-step-transition`) between wizard steps; browser Back button moves back one step (`{ replace: false }`).
+  - Shop preview: Screen reader live region (`aria-live="polite"`) announcing filtered count changes; empty state featuring peeking cat (`CatPeekEdge`).
+  - PDP: Smooth gallery crossfade between images with `z-20` navigation arrows; live recalculation of "Lasts about N days" on quantity changes; mobile sticky add-to-bag bar with scroll threshold detection.
+  - Smart Bag: Extracted `BagLineItem` with `animate-total-flash` on line price change, `animate-step-transition`, and empty state with `CatPeekEdge`.
+  - Header & Brand: Logo ear twitch on hover/focus (`logo-ear-twitch`); visible active route pill indicator (`aria-current="page"`); `CurrencyToggle` with sliding active pill and zero layout shift.
+  - About: `Reveal` wrappers on ingredient close-up cards without motion delays on reading blocks.
+  - Motion & Accessibility: 150ms route opacity transition; `IdleCat` pauses when tab is hidden (`visibilitychange`); all transforms disabled under `prefers-reduced-motion: reduce`.
+  - Verification: `npm run typecheck` passed (0 errors); `npm run lint` passed (0 warnings, 0 errors); `npm test` passed (107/107 Vitest tests across 13 suites); Playwright passed (96/96 tests across all routes and devices).
 
 
 

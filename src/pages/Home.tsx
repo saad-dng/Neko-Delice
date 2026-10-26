@@ -65,7 +65,20 @@ export function HomePage() {
     return 'featured'
   })
 
+  const [shopAnnouncement, setShopAnnouncement] = useState('')
+
   const handleCategoryChange = (catId: HomeCategoryFilter) => {
+    const count =
+      catId === 'all'
+        ? products.length
+        : products.filter(
+            (p) =>
+              p.category === catId ||
+              p.secondaryCategories.includes(catId as ProductCategory),
+          ).length
+    const label = CATEGORY_TABS.find((t) => t.id === catId)?.label || catId
+    setShopAnnouncement(`Showing ${count} ${count === 1 ? 'product' : 'products'} for ${label}`)
+
     const nextParams = new URLSearchParams(searchParams)
     if (catId === 'all') {
       nextParams.delete('category')
@@ -511,6 +524,11 @@ export function HomePage() {
             </div>
           </div>
 
+          {/* Screen Reader Live Region for Shop Count Announcements */}
+          <output aria-live="polite" className="sr-only">
+            {shopAnnouncement}
+          </output>
+
           {/* Product Grid */}
           <div
             id="home-products-panel"
@@ -518,13 +536,35 @@ export function HomePage() {
             aria-labelledby={`tab-${selectedCategory}`}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
           >
-            {displayedProducts.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                priority={false}
-              />
-            ))}
+            {displayedProducts.length > 0 ? (
+              displayedProducts.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  priority={false}
+                />
+              ))
+            ) : (
+              /* Empty state with peeking cat */
+              <div className="col-span-full py-16 flex flex-col items-center justify-center text-center animate-fadeIn">
+                <div className="w-24 h-16 text-espresso-700 mb-4 overflow-hidden flex items-end justify-center">
+                  <CatPeekEdge className="w-20 h-16 animate-step-transition" />
+                </div>
+                <h3 className="font-serif text-2xl font-semibold text-espresso-950 mb-2">
+                  No products found in this category
+                </h3>
+                <p className="text-sm text-espresso-700 max-w-sm mb-6">
+                  Try selecting a different category above or explore our complete cat nutrition collection.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => handleCategoryChange('all')}
+                  className="rounded-full bg-sage-700 text-cream-50 px-5 py-2.5 text-xs font-semibold hover:bg-sage-800 transition-all cursor-pointer"
+                >
+                  View all products
+                </button>
+              </div>
+            )}
           </div>
         </Container>
       </section>

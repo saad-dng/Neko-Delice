@@ -6,13 +6,14 @@ import { PLANNER_CONFIG } from '@/config/planner'
 import { NUTRITION_CONFIG } from '@/config/nutrition'
 import { useCurrency } from '@/store/currency'
 import { useBag } from '@/store/bag'
-import { useBagUi } from '@/store/bag-ui'
+import { useToast } from '@/store/toast'
 import { formatDays, formatPrice, TABULAR_NUMS } from '@/lib/format'
 import { splitRatio } from '@/lib/planner'
 import { useCountUp } from '@/hooks/useCountUp'
 import { ProductImage } from '@/components/ui/ProductImage'
 import { Button } from '@/components/ui/Button'
 import { Heading } from '@/components/ui/Heading'
+import { stampPaw } from '@/components/ui/stampPaw'
 
 export interface PlanResultProps {
   bundle: BundleResult
@@ -76,11 +77,27 @@ export function PlanResult({ bundle, profile, onEditAnswers }: PlanResultProps) 
       }))
 
     if (itemsToAdd.length > 0) {
+      stampPaw(e.currentTarget)
+      const previousState = itemsToAdd.map((i) => ({
+        productId: i.productId,
+        prevQty: useBag.getState().lines.find((l) => l.productId === i.productId)?.qty ?? 0,
+      }))
       addMany(itemsToAdd)
       const count = itemsToAdd.reduce((sum, i) => sum + i.qty, 0)
       setAddedNotice(`Added ${count} items to your bag.`)
       setTimeout(() => setAddedNotice(null), 3000)
-      useBagUi.getState().openBag(e.currentTarget)
+      useToast.getState().showToast({
+        message: `Added ${count} bundle items to your bag.`,
+        undoAction: () => {
+          for (const item of previousState) {
+            if (item.prevQty === 0) {
+              useBag.getState().remove(item.productId)
+            } else {
+              useBag.getState().setQty(item.productId, item.prevQty)
+            }
+          }
+        },
+      })
     }
   }
 

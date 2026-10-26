@@ -15,7 +15,6 @@ export function CurrencyToggle({
   const currency = useCurrency((s) => s.currency)
   const setCurrency = useCurrency((s) => s.setCurrency)
 
-
   const handleUSDClick = (e: React.MouseEvent) => {
     e.stopPropagation()
     if (currency === 'USD') {
@@ -50,25 +49,37 @@ export function CurrencyToggle({
       } border border-sand-300/80 m-0 shadow-2xs select-none touch-manipulation hover:border-sand-400 transition-colors ${className}`}
     >
       <legend className="sr-only">{ariaLabel}</legend>
+
+      {/* Smooth sliding active pill indicator (zero layout shift) */}
+      <span
+        aria-hidden="true"
+        className={`absolute top-0.5 bottom-0.5 rounded-full bg-cream-50 shadow-xs border border-sand-300/50 transition-all duration-200 ease-out pointer-events-none motion-reduce:transition-none ${
+          currency === 'USD'
+            ? 'left-0.5 w-[calc(50%-2px)]'
+            : 'left-[calc(50%+1px)] w-[calc(50%-2px)]'
+        }`}
+      />
+
       <button
         type="button"
         onClick={handleUSDClick}
         aria-pressed={currency === 'USD'}
-        className={`${buttonSizeClasses} font-semibold rounded-full transition-all duration-150 active:scale-95 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-600 ${
+        className={`relative z-10 ${buttonSizeClasses} font-semibold rounded-full transition-all duration-150 active:scale-95 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-600 ${
           currency === 'USD'
-            ? 'bg-cream-50 text-espresso-950 shadow-xs'
+            ? 'text-espresso-950 font-bold'
             : 'text-espresso-700 hover:text-espresso-950'
         }`}
       >
         USD
       </button>
+
       <button
         type="button"
         onClick={handleBDTClick}
         aria-pressed={currency === 'BDT'}
-        className={`${buttonSizeClasses} font-semibold rounded-full transition-all duration-150 active:scale-95 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-600 ${
+        className={`relative z-10 ${buttonSizeClasses} font-semibold rounded-full transition-all duration-150 active:scale-95 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-600 ${
           currency === 'BDT'
-            ? 'bg-cream-50 text-espresso-950 shadow-xs'
+            ? 'text-espresso-950 font-bold'
             : 'text-espresso-700 hover:text-espresso-950'
         }`}
       >
