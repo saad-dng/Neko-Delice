@@ -169,3 +169,10 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 
 
 
+- 2026-10-28: Hero aesthetics & editorial refinement completed:
+  - Eliminated tacky floating white square sticker (`bg-white/95`) and muddy radial-gradient vignette mask that caused the hero photo to feel "slapped on" and cheap.
+  - Housed the high-resolution cat photograph in an archival gallery matting (`bg-[#F0E8DC]` with delicate hairline border `border-sand-300/80` and warm shadow), preserving 100% natural studio lighting and floor shadows.
+  - Introduced an authentic Apothecary Recipe Plaque (`bg-cream-50/98 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-sand-300`) linking directly to Recipe 03 (Duck & Sweet Potato Kibble) with an unblocked view of the cat and bowl.
+  - Elevated display typography with pure Cormorant Garamond 600/500 italic in rich espresso-950 (removing generic green text highlighter), refined the eyebrow badge with terracotta accent, and transformed the 3 SaaS colored-dot pills into 3 elegant editorial brand pillars.
+  - Repositioned the handwritten annotation (`Mealtime is the best time.`) with downward-pointing doodle arrow directing focus towards the bowl and cat.
+  - Verified 0 typecheck errors, 0 lint warnings, 107/107 Vitest tests passing, 97/97 Playwright E2E tests passing, and 100% WCAG AA compliance.

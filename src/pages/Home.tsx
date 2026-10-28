@@ -244,21 +244,21 @@ export function HomePage() {
       {/* 1. HERO SECTION (Real Cat Photography + Editorial Typography + Product Pouch) */}
       <section id="hero" className="relative pt-8 sm:pt-14 pb-12 sm:pb-20 overflow-hidden bg-cream-50">
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-12">
-            {/* Left Column: Headlines, CTAs & Chips (No Reveal wrapping to avoid LCP delay) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-10 lg:gap-14">
+            {/* Left Column: Headlines, CTAs & Pillars (No Reveal wrapping to avoid LCP delay) */}
             <div className="lg:col-span-7 flex flex-col items-start order-2 lg:order-1">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sage-50 border border-sage-200/80 text-sage-800 text-xs font-medium mb-5">
-                <span className="w-1.5 h-1.5 rounded-full bg-sage-600" aria-hidden="true" />
-                Cat nutrition, planned
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-oat-100/70 border border-sand-300/80 text-espresso-800 text-xs font-medium tracking-wide mb-6">
+                <span className="w-1.5 h-1.5 rounded-full bg-terracotta-600" aria-hidden="true" />
+                <span>Quiet cat nutrition, planned</span>
               </div>
 
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-espresso-950 text-balance leading-[1.12] mb-5">
+              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-espresso-950 text-balance leading-[1.1] mb-5">
                 Good food for{' '}
-                <span className="text-[#56744B] italic">curious cats.</span>
+                <span className="italic font-normal">curious cats.</span>
               </h1>
 
               <p className="text-base sm:text-lg text-espresso-800 leading-relaxed max-w-xl mb-8">
-                Short ingredient lists, honest portions, and a plan built around your cat.
+                Short ingredient lists, honest portions, and a vet-informed meal plan built around your cat.
               </p>
 
               <div className="flex flex-wrap items-center gap-4 mb-8">
@@ -283,52 +283,88 @@ export function HomePage() {
                 </Button>
               </div>
 
-              {/* 3 Truthful Chips */}
-              <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-6 border-t border-sand-300/60 w-full text-xs font-medium text-espresso-800">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-oat-100/60 border border-sand-300/70">
-                  <span className="w-1.5 h-1.5 rounded-full bg-sage-600" aria-hidden="true" />
-                  Short ingredient lists
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-oat-100/60 border border-sand-300/70">
-                  <span className="w-1.5 h-1.5 rounded-full bg-ochre-600" aria-hidden="true" />
-                  Formulated for every life stage
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-oat-100/60 border border-sand-300/70">
-                  <span className="w-1.5 h-1.5 rounded-full bg-terracotta-600" aria-hidden="true" />
-                  Know how long each pack lasts
-                </span>
+              {/* 3 Truthful Brand Pillars */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 sm:pt-8 border-t border-sand-300/70 w-full">
+                <div className="flex flex-col gap-0.5">
+                  <div className="flex items-center gap-1.5 mb-0.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-sage-600" aria-hidden="true" />
+                    <span className="font-serif text-sm font-semibold text-espresso-950">Short ingredients</span>
+                  </div>
+                  <span className="text-xs text-espresso-700/80 leading-snug">Full list on every pack, zero fillers</span>
+                </div>
+                <div className="flex flex-col gap-0.5">
+                  <div className="flex items-center gap-1.5 mb-0.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-ochre-600" aria-hidden="true" />
+                    <span className="font-serif text-sm font-semibold text-espresso-950">Every life stage</span>
+                  </div>
+                  <span className="text-xs text-espresso-700/80 leading-snug">Kitten growth to gentle adult care</span>
+                </div>
+                <div className="flex flex-col gap-0.5">
+                  <div className="flex items-center gap-1.5 mb-0.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-terracotta-600" aria-hidden="true" />
+                    <span className="font-serif text-sm font-semibold text-espresso-950">Honest durations</span>
+                  </div>
+                  <span className="text-xs text-espresso-700/80 leading-snug">Know exactly how long each pack lasts</span>
+                </div>
               </div>
             </div>
 
-            {/* Right Column: Hero Cat Photo + Floating Pouch + Annotation */}
+            {/* Right Column: Hero Cat Photo + Editorial Recipe Plaque + Annotation */}
             <div className="lg:col-span-5 relative flex justify-center order-1 lg:order-2">
-              <div className="relative w-full max-w-[500px]">
-                {/* Handwritten-style Annotation */}
-                <Annotation
-                  text="Mealtime is the best time."
-                  arrow="curve-right"
-                  rotate={-3}
-                  className="absolute -top-3 right-4 sm:top-2 sm:right-6 z-20"
-                />
-
-                {/* Primary Hero Cat Photo (LCP) */}
-                <div className="relative rounded-3xl overflow-hidden shadow-sm bg-cream-50 [mask-image:radial-gradient(ellipse_at_65%_50%,black_65%,transparent_100%)]">
-                  <SiteImage
-                    name="hero"
-                    priority={true}
-                    sizes="(max-width: 768px) 100vw, 500px"
-                    className="w-full h-auto aspect-[4/3] object-cover"
+              <div className="relative w-full max-w-[520px]">
+                {/* Handwritten Annotation in the margin */}
+                <div className="absolute -top-7 sm:-top-9 right-4 sm:right-10 z-20 pointer-events-none">
+                  <Annotation
+                    text="Mealtime is the best time."
+                    arrow="down"
+                    rotate={-2}
                   />
                 </div>
 
-                {/* Floating Product Pouch Accent (Duck & Sweet Potato Kibble) */}
-                <div className="absolute -bottom-4 -left-3 sm:bottom-2 sm:-left-6 w-32 sm:w-40 aspect-square rounded-2xl bg-white/95 p-2 shadow-md border border-[#2B211A]/8 backdrop-blur-xs transition-transform duration-300 hover:scale-105 z-10">
-                  <ProductImage
-                    slug="duck-sweet-potato-kibble"
-                    imageRole="hero"
-                    sizes="160px"
-                    className="w-full h-full rounded-xl object-contain"
-                  />
+                {/* Gallery Mat Canvas */}
+                <div className="relative rounded-3xl bg-[#F0E8DC] p-2.5 sm:p-3 border border-sand-300/80 shadow-[0_16px_40px_-16px_rgba(43,33,26,0.12)]">
+                  {/* Inner Image Container with natural studio lighting */}
+                  <div className="relative rounded-2xl overflow-hidden bg-oat-100/50 aspect-[4/3]">
+                    <SiteImage
+                      name="hero"
+                      priority={true}
+                      sizes="(max-width: 768px) 100vw, 520px"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  {/* Editorial Recipe Plaque */}
+                  <div className="absolute -bottom-5 left-3 sm:-bottom-5 sm:-left-4 z-20">
+                    <a
+                      href="/product/duck-sweet-potato-kibble"
+                      className="group flex items-center gap-3.5 bg-cream-50/98 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-sand-300 shadow-[0_12px_28px_-6px_rgba(43,33,26,0.14)] hover:border-terracotta-600/40 hover:shadow-[0_16px_34px_-6px_rgba(43,33,26,0.18)] transition-all duration-200"
+                      
+                    >
+                      <div className="w-12 h-12 rounded-xl bg-oat-100/80 p-1 flex-shrink-0 border border-sand-300/50 flex items-center justify-center overflow-hidden">
+                        <ProductImage
+                          slug="duck-sweet-potato-kibble"
+                          imageRole="hero"
+                          sizes="48px"
+                          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-200"
+                        />
+                      </div>
+                      <div className="flex flex-col pr-1 text-left">
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-[10px] uppercase tracking-wider font-semibold text-ochre-700">
+                            Recipe 03
+                          </span>
+                          <span className="w-1 h-1 rounded-full bg-sand-400" aria-hidden="true" />
+                          <span className="text-[10px] text-espresso-600 font-medium">Dry food</span>
+                        </div>
+                        <span className="font-serif text-sm font-semibold text-espresso-950 group-hover:text-terracotta-700 transition-colors">
+                          Duck & Sweet Potato
+                        </span>
+                        <span className="text-[11px] text-espresso-600/80">
+                          Slow-baked kibble · Transparent recipe
+                        </span>
+                      </div>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
