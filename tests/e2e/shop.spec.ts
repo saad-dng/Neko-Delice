@@ -13,7 +13,7 @@ test.describe('Shop Catalog, Category Filters & URL Sync (P10 Unified)', () => {
 
     // Initial state: 10 products
     const initialCards = page.locator('[data-testid="product-card"]')
-    await expect(initialCards).toHaveCount(4)
+    await expect(initialCards).toHaveCount(10)
 
     // 1. Apply category filter: "Wet Food"
     const wetFoodTab = page.locator('button[role="tab"]:has-text("Wet Food")')
@@ -31,14 +31,14 @@ test.describe('Shop Catalog, Category Filters & URL Sync (P10 Unified)', () => {
     const allTab = page.locator('button[role="tab"]:has-text("All Items")')
     await allTab.click()
     await expect(page).not.toHaveURL(/category=/)
-    await expect(page.locator('[data-testid="product-card"]')).toHaveCount(4)
+    await expect(page.locator('[data-testid="product-card"]')).toHaveCount(10)
   })
 
   test('bad parameter ?category=zzz is ignored safely and shows full catalog', async ({ page }) => {
     await page.goto('/?category=zzz#shop')
 
     const cards = page.locator('[data-testid="product-card"]')
-    await expect(cards).toHaveCount(4)
+    await expect(cards).toHaveCount(10)
   })
 
   test('quick-add button increments bag item count in header', async ({
@@ -91,4 +91,19 @@ test.describe('Shop Catalog, Category Filters & URL Sync (P10 Unified)', () => {
     await expect(priceElement).toContainText('৳')
   })
 
+  test('product sorting rearranges products by price', async ({ page }) => {
+    await page.goto('/#shop')
+
+    const sortSelect = page.locator('select#shop-sort')
+    await expect(sortSelect).toBeVisible()
+
+    // Sort by price ascending
+    await sortSelect.selectOption('price-asc')
+
+    // First card should now be the lowest price ($14)
+    const firstCardPrice = page
+      .locator('[data-testid="product-card"] span.tabular-nums')
+      .first()
+    await expect(firstCardPrice).toContainText('$14')
+  })
 })
