@@ -44,6 +44,14 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 - [x] V2-07 Content, claims and notices cleanup
 - [x] V2-08 Testing, QA and merge (107 unit tests, 97 E2E tests, 100/100/96/100 LHCI, 0 dead UI, clean merge)
 
+## v2.1 — Homepage Premium Pass (prompts/neko-delice-homepage-v2-kit)
+- [x] V2-09 Baseline polish (type floor 14px, 56px buttons, 2.5px strokes, delete calm strip, brand contrast)
+- [x] V2-10 Hero rebuild (full-bleed 58vw cat photo, linear gradient mask, 84px H1 with matcha italic line 2, 56px CTAs, 1px sand dividers, 24px note + 64px arrow)
+- [x] V2-11 Planner band (asymmetric 2-column layout, 260px CatCurious on soft oat circle, 3 flat CatCards with 112px poses on single oat surface, 14px disclaimer)
+- [x] V2-12 Shop preview & backdrop matching (corner-sampled color grading to #DDD0BA across all 48 images, 1-row 4-column preview, clean card anatomy)
+- [x] V2-13 Why band, closing CTA, footer (50/50 Why band with 520px+ photo and 2x2 grid without boxes, CatPeekEdge ≥200px over oat top edge, 15-16px footer links)
+- [x] V2-14 Visual QA loop & final verification (screenshots 1440/1280/768/390, 107/107 vitest, 96/96 Playwright, 100/100/96/100 LHCI, docs/PREMIUM-REVIEW.md)
+
 ## Notes
 - 2026-10-24: P01 completed. Vite + React + TS scaffold configured with vite-react-ssg, Tailwind v4, paths alias, directory structure, and vitest baseline.
 - 2026-10-24: P02 completed. Audited all 48 photos; verified roles, pack forms, and alt texts in docs/IMAGE-MAP.md and src/data/image-map.source.json; owner approved.
@@ -169,10 +177,10 @@ Update the checkbox and "Notes" when a prompt finishes. Do not reorder phases.
 
 
 
-- 2026-10-28: Hero aesthetics & editorial refinement completed:
-  - Eliminated tacky floating white square sticker (`bg-white/95`) and muddy radial-gradient vignette mask that caused the hero photo to feel "slapped on" and cheap.
-  - Housed the high-resolution cat photograph in an archival gallery matting (`bg-[#F0E8DC]` with delicate hairline border `border-sand-300/80` and warm shadow), preserving 100% natural studio lighting and floor shadows.
-  - Introduced an authentic Apothecary Recipe Plaque (`bg-cream-50/98 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-sand-300`) linking directly to Recipe 03 (Duck & Sweet Potato Kibble) with an unblocked view of the cat and bowl.
-  - Elevated display typography with pure Cormorant Garamond 600/500 italic in rich espresso-950 (removing generic green text highlighter), refined the eyebrow badge with terracotta accent, and transformed the 3 SaaS colored-dot pills into 3 elegant editorial brand pillars.
-  - Repositioned the handwritten annotation (`Mealtime is the best time.`) with downward-pointing doodle arrow directing focus towards the bowl and cat.
-  - Verified 0 typecheck errors, 0 lint warnings, 107/107 Vitest tests passing, 97/97 Playwright E2E tests passing, and 100% WCAG AA compliance.
+- 2026-10-28: V2-09 to V2-14 Homepage Premium Pass completed:
+  - V2-09: Baseline typography floors enforced (≥14px everywhere, 13px uppercase eyebrows), CTAs unified to 56px, monoline strokes fixed to 2.5px via `.vector-stroke-2-5`, deleted redundant calm strip, brand contrast verified.
+  - V2-10: Hero rebuilt full-bleed with right 58vw cat photography, linear gradient mask fade, 84px 2-line clamp H1 with matcha italic emphasis on line 2, 56px CTAs, 3-statement proof row with 1px vertical sand dividers, and 24px handwritten annotation with 64px scribble arrow.
+  - V2-11: Planner band converted to asymmetric 2-column layout with 260px `CatCurious` monoline illustration on soft oat circle with 6s idle twitch, single continuous oat surface with 3 flat `CatCard`s (112px poses, head-tilt hover, direct URL query links), steps row, and 14px veterinary disclaimer.
+  - V2-12: Applied automated 4-corner sampling and per-channel linear gain in `scripts/optimize-images.mjs` to grade all 48 product images to uniform `#DDD0BA` backdrop tone. Restructured shop preview to 1 row of 4 curated items on desktop (2x2 grid on mobile), eliminating orphan rows and duplicate controls.
+  - V2-13: Rebuilt Why band into 50/50 desktop split with 520px+ eating cat photo, 2x2 grid without boxes separated by 1px dividers, 16px copy, and "Planned portions" annotation. Rebuilt Closing CTA as full-bleed oat band with `CatPeekEdge` ≥200px peeking over the top border. Refined Footer into 3 clean columns with 15-16px links and shortened care line.
+  - V2-14: Comprehensive Visual QA & Verification across 1440, 1280, 768, and 390 viewports (`docs/screens/premium/final-*.png`). Generated `docs/PREMIUM-REVIEW.md` satisfying all 9 spec checklist criteria. Automated testing: 107/107 Vitest tests passing, 96/96 Playwright E2E tests passing. Lighthouse mobile audit: 100 Perf / 100 A11y / 96 Best Practices / 100 SEO across all routes (LCP 400-700ms, CLS 0.000). Initial JS bundle: 68.16 KB gzip (<= 170 KB budget). Zero dead buttons, zero console errors.
