@@ -12,7 +12,6 @@ import { Band } from '@/components/ui/Band'
 import { CatCard } from '@/components/ui/CatCard'
 import { IdleCat } from '@/components/ui/IdleCat'
 import { Reveal } from '@/components/ui/Reveal'
-import { Wave } from '@/components/doodles/Wave'
 import { SparkleLine } from '@/components/doodles/SparkleLine'
 import { Heart } from '@/components/doodles/Heart'
 import { PawTrail } from '@/components/doodles/PawTrail'
@@ -240,10 +239,43 @@ export function HomePage() {
         }
       />
 
-      {/* 1. HERO SECTION (Real Cat Photography + Editorial Typography + Product Pouch) */}
-      <section id="hero" className="relative bg-cream-50 overflow-hidden min-h-[640px] flex flex-col justify-between">
-        {/* Handwritten Annotation in empty space pointing at cat with >=60px arrow */}
-        <div className="hidden lg:block absolute top-16 left-[41%] xl:left-[40%] z-20 pointer-events-none">
+      {/* 1. HERO SECTION (Full-Bleed Photography + Continuous Header & Seamless Section Blend) */}
+      <section
+        id="hero"
+        className="relative -mt-18 sm:-mt-20 pt-24 sm:pt-28 lg:pt-36 pb-20 sm:pb-24 lg:pb-32 overflow-hidden min-h-[660px] sm:min-h-[720px] lg:min-h-[820px] flex flex-col justify-between"
+      >
+        {/* Full-Bleed Cat Photography across entire viewport width and height */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none select-none z-0">
+          <img
+            src={heroImage?.src || '/images/site/hero-1024.webp'}
+            srcSet={heroImageSrcset}
+            sizes="100vw"
+            alt={heroImage?.alt || 'Fluffy cream cat seated calmly beside a low ceramic bowl filled with kibble on a warm neutral studio backdrop.'}
+            fetchPriority="high"
+            width={2000}
+            height={1493}
+            className="w-full h-full object-cover object-[20%_top] sm:object-[25%_top] lg:object-[center_10%]"
+          />
+
+          {/* Localized soft vignette behind text for crisp legibility without dimming the cat */}
+          <div
+            className="hidden lg:block absolute inset-y-0 left-0 w-[55%] xl:w-[48%] pointer-events-none"
+            style={{
+              background: 'linear-gradient(to right, rgba(251, 246, 238, 0.94) 0%, rgba(251, 246, 238, 0.8) 55%, rgba(251, 246, 238, 0.35) 80%, rgba(251, 246, 238, 0) 100%)',
+            }}
+            aria-hidden="true"
+          />
+          <div
+            className="lg:hidden absolute inset-0 pointer-events-none"
+            style={{
+              background: 'linear-gradient(to right, rgba(251, 246, 238, 0.92) 0%, rgba(251, 246, 238, 0.75) 60%, rgba(251, 246, 238, 0.3) 85%, rgba(251, 246, 238, 0) 100%)',
+            }}
+            aria-hidden="true"
+          />
+        </div>
+
+        {/* Handwritten Annotation in open backdrop pointing toward the cat */}
+        <div className="hidden lg:block absolute top-28 left-[45%] xl:left-[44%] z-20 pointer-events-none">
           <Annotation
             text="Mealtime is the best time."
             arrow="curve-right"
@@ -251,44 +283,10 @@ export function HomePage() {
             rotate={-2}
           />
         </div>
-        {/* Real Cat Photography (LCP) + Overlapping Product Pack */}
-        <div className="relative w-full h-[340px] sm:h-[440px] lg:h-auto lg:absolute lg:top-0 lg:right-0 lg:w-[58%] lg:bottom-0 pointer-events-none overflow-hidden order-1 lg:order-2">
-          <div className="hero-mask w-full h-full">
-            <img
-              src={heroImage?.src || '/images/site/hero-1024.webp'}
-              srcSet={heroImageSrcset}
-              sizes="(max-width: 1024px) 100vw, 58vw"
-              alt={heroImage?.alt || 'Fluffy cream cat seated calmly beside a low ceramic bowl filled with kibble on a warm neutral studio backdrop.'}
-              fetchPriority="high"
-              width={1200}
-              height={896}
-              className="w-full h-full object-cover object-[70%_25%]"
-            />
-          </div>
 
-          {/* Product pack photo overlapping lower right (tuned with beige token container) */}
-          <div className="absolute right-6 bottom-4 sm:right-10 sm:bottom-6 lg:right-12 lg:bottom-10 xl:right-14 xl:bottom-12 w-28 sm:w-36 lg:w-44 pointer-events-auto">
-            <a
-              href="/product/duck-sweet-potato-kibble"
-              className="block group rounded-2xl bg-[#EDE5D8]/95 p-2 sm:p-2.5 border border-sand-300/80 shadow-[0_14px_30px_-6px_rgba(43,33,26,0.14)] hover:border-terracotta-600/40 hover:shadow-[0_18px_36px_-6px_rgba(43,33,26,0.2)] transition-all duration-300"
-              title="View Duck & Sweet Potato Kibble"
-            >
-              <div className="overflow-hidden rounded-xl aspect-[4/5] bg-[#DDD0BA]/50 flex items-center justify-center">
-                <img
-                  src="/images/products/duck-sweet-potato-kibble/duck-sweet-potato-kibble-hero-640.webp"
-                  alt="Neko Delice Duck & Sweet Potato Kibble pack"
-                  width={320}
-                  height={400}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-            </a>
-          </div>
-        </div>
-
-        {/* Content Column: Headlines, CTAs & Proof Row */}
-        <Container className="relative z-10 order-2 lg:order-1 pt-6 pb-12 sm:pb-16 lg:py-24">
-          <div className="max-w-xl lg:max-w-[48%] flex flex-col items-start">
+        {/* Content Column: Eyebrow, Headlines, CTAs & Proof Row */}
+        <Container className="relative z-10 w-full">
+          <div className="max-w-xl md:max-w-lg lg:max-w-[48%] flex flex-col items-start">
             <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-espresso-700/90 mb-5">
               Quiet cat nutrition, planned
             </p>
@@ -324,7 +322,7 @@ export function HomePage() {
               </Button>
             </div>
 
-            {/* Proof row: three short statements, 15 px, separated by 1 px vertical dividers, no dots or icons */}
+            {/* Proof row: three short statements, 15 px, separated by 1 px vertical dividers */}
             <div className="w-full pt-8 border-t border-sand-300/80">
               <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-sand-300/80">
                 <div className="py-2.5 sm:py-0 sm:pr-4 text-[15px] font-medium text-espresso-800 leading-snug">
@@ -341,14 +339,18 @@ export function HomePage() {
           </div>
         </Container>
 
-        {/* Soft Wave Divider leading seamlessly into the Sage Planner Band */}
-        <div className="w-full -mb-px z-10">
-          <Wave fill="color-mix(in srgb, #9DAA8B 12%, #FBF6EE)" />
-        </div>
+        {/* Subtle, carefully tuned gradient fading seamlessly into the Sage Planner Band */}
+        <div
+          className="absolute bottom-0 inset-x-0 h-24 sm:h-28 lg:h-32 pointer-events-none z-10"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(239, 241, 235, 0) 0%, rgba(239, 241, 235, 0.2) 35%, rgba(239, 241, 235, 0.6) 70%, color-mix(in srgb, #9DAA8B 12%, #FBF6EE) 100%)',
+          }}
+          aria-hidden="true"
+        />
       </section>
 
       {/* 2. PLANNER BAND (Sage tint with 3 Clickable Cat Cards) */}
-      <Band variant="sage" padding="none" className="pb-16 sm:pb-20">
+      <Band variant="sage" padding="none" className="pt-8 sm:pt-12 pb-16 sm:pb-20">
         <Container>
           <Reveal>
             <div className="max-w-3xl mx-auto text-center flex flex-col items-center mb-10 sm:mb-12">

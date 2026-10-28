@@ -348,7 +348,11 @@ async function optimizeSiteImages() {
         const relWebpPath = `/images/site/${outFileName}`;
 
         // High quality (quality 90) preserved per user rule, no aggressive down-compression
-        const pipeline = sharp(sourcePath)
+        let pipeline = sharp(sourcePath);
+        if (item.role === 'hero') {
+          pipeline = pipeline.flop();
+        }
+        pipeline = pipeline
           .resize(w, targetHeight, { fit: 'cover' })
           .webp({ quality: 90 });
 
