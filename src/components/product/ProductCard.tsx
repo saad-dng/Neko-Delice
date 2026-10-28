@@ -6,7 +6,6 @@ import { useBag } from '@/store/bag'
 import { useCurrency } from '@/store/currency'
 import { useToast } from '@/store/toast'
 import { ProductImage } from '@/components/ui/ProductImage'
-import { PawPrint } from '@/components/cat-art/PawPrint'
 import { stampPaw } from '@/components/ui/stampPaw'
 
 export interface ProductCardProps {
@@ -54,12 +53,12 @@ export function ProductCard({
   return (
     <article
       id={`product-${product.slug}`}
-      className={`group relative flex flex-col rounded-2xl bg-oat-100/40 overflow-hidden border border-sand-300/40 transition-all duration-200 hover:bg-oat-100/70 hover:border-sand-300/70 hover:shadow-xs scroll-mt-24 sm:scroll-mt-28 ${className}`}
+      className={`group relative flex flex-col rounded-2xl bg-oat-100/40 overflow-hidden border border-sand-300/60 transition-all duration-200 hover:bg-oat-100/70 hover:border-sand-300/80 hover:shadow-xs scroll-mt-24 sm:scroll-mt-28 ${className}`}
       data-testid="product-card"
       data-product-id={product.id}
     >
-      {/* Photo Tile — Full width at top of card so product photos are prominent and large */}
-      <div className="relative aspect-square w-full overflow-hidden bg-beige-200">
+      {/* Photo Tile — 4:5 aspect ratio on consistent background token */}
+      <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#DDD0BA]">
         {/* Default Hero Image */}
         <ProductImage
           slug={product.slug}
@@ -79,21 +78,21 @@ export function ProductCard({
         </div>
       </div>
 
-      {/* Compact Consistent Product Information Bar */}
-      <div className="p-3 sm:px-3 sm:py-2.5 flex flex-col justify-between">
+      {/* Product Information */}
+      <div className="p-3.5 sm:p-4 flex flex-col justify-between flex-1">
         <div>
           {/* Category & Price Row */}
-          <div className="flex items-center justify-between gap-2 h-4">
-            <span className="text-[10px] font-semibold uppercase tracking-wider text-sage-800 leading-none">
+          <div className="flex items-center justify-between gap-2 mb-1.5">
+            <span className="text-[11px] sm:text-[12px] font-semibold uppercase tracking-wider text-sage-900/80 leading-none">
               {categoryLabel}
             </span>
-            <span className="font-sans text-xs sm:text-[13px] font-semibold text-espresso-950 tabular-nums leading-none">
+            <span className="font-sans text-[15px] sm:text-[18px] font-medium text-espresso-950 tabular-nums leading-none">
               {formatPrice(product.priceUSD, currency)}
             </span>
           </div>
 
-          {/* Product Name (Consistent DM Sans, compact 13px, fixed 2-line height 34px) */}
-          <h2 className="mt-1 font-sans text-[13px] font-semibold text-espresso-950 transition-colors group-hover:text-terracotta-700 leading-snug line-clamp-2 h-[34px] flex items-start">
+          {/* Product Name (18px desktop / 15px mobile, font-serif font-semibold) */}
+          <h2 className="font-serif text-[15px] sm:text-[18px] font-semibold text-espresso-950 transition-colors group-hover:text-terracotta-700 leading-snug line-clamp-1 mb-1">
             <Link
               to={`/product/${product.slug}`}
               className="focus:outline-none"
@@ -104,15 +103,15 @@ export function ProductCard({
             </Link>
           </h2>
 
-          {/* Packaging / Spec Line */}
-          <p className="mt-0.5 text-[10.5px] sm:text-[11px] text-espresso-600 line-clamp-1 h-3.5 leading-none">
+          {/* Packaging / Spec Line (14px desktop / 12px mobile) */}
+          <p className="text-[12px] sm:text-[14px] text-espresso-700/80 line-clamp-1 leading-snug">
             {product.unit.packSizeLabel}
           </p>
         </div>
 
-        {/* Compact Footer Actions Row */}
-        <div className="mt-2 flex items-center justify-between pt-1.5 border-t border-sand-300/40">
-          <span className="inline-flex items-center gap-1 text-[11px] font-medium text-espresso-700 transition-colors group-hover:text-terracotta-700 leading-none">
+        {/* Footer Actions: "View details" link + "Add" text-pill without icon */}
+        <div className="mt-3.5 pt-2.5 border-t border-sand-300/50 flex items-center justify-between">
+          <span className="inline-flex items-center gap-1 text-[12px] sm:text-[14px] font-medium text-espresso-700 transition-colors group-hover:text-terracotta-700 leading-none">
             View details <span aria-hidden="true">→</span>
           </span>
 
@@ -120,14 +119,9 @@ export function ProductCard({
             type="button"
             onClick={handleAdd}
             aria-label={`Add ${product.name} to bag`}
-            className="group/btn relative z-10 inline-flex items-center justify-center gap-1.5 rounded-full bg-terracotta-600 px-3 py-1 min-h-[28px] text-[11px] font-semibold text-cream-50 transition-all hover:bg-terracotta-700 hover:shadow-xs active:scale-95 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 cursor-pointer shadow-2xs leading-none"
+            className="group/btn relative z-10 inline-flex items-center justify-center rounded-full bg-terracotta-600 px-4 py-1.5 min-h-[32px] sm:min-h-[36px] text-[12px] sm:text-[14px] font-medium text-cream-50 transition-all hover:bg-terracotta-700 active:scale-95 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta-500 focus-visible:ring-offset-2 cursor-pointer shadow-2xs leading-none"
           >
-            <PawPrint
-              size={12}
-              filled
-              className="text-cream-100 transition-transform duration-200 group-hover/btn:-rotate-12 group-hover/btn:scale-110"
-            />
-            <span>Add</span>
+            Add
           </button>
         </div>
       </div>

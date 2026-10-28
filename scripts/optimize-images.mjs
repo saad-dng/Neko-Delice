@@ -74,7 +74,7 @@ async function optimize() {
     }
 
     const hash = getFileHash(sourcePath);
-    const cacheKey = `${item.slug}:${roleBaseName}`;
+    const cacheKey = `${item.slug}:${roleBaseName}:${JSON.stringify(item.grade || {})}`;
     const cached = cache[cacheKey];
 
     const is1200x896 = item.width === 1200 && item.height === 896;

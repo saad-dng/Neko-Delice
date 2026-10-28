@@ -6,7 +6,12 @@
     "width": 1200,
     "height": 896,
     "alt": "Kitten Growth Mousse & Broth tuck-top carton and stick sachet in sage and cream on beige backdrop.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.0335,
+      "g": 1.0277,
+      "b": 1.0051
+    }
   },
   {
     "slug": "kitten-growth-mousse-broth",
@@ -15,7 +20,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Three-quarter view of Kitten Growth Mousse carton and stick sachet showing box depth.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.0302,
+      "g": 1.0259,
+      "b": 1.0025
+    }
   },
   {
     "slug": "kitten-growth-mousse-broth",
@@ -24,7 +34,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Smooth kitten chicken mousse swirled in broth on a round cream ceramic dish with open stick sachet.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.0631,
+      "g": 1.0757,
+      "b": 1.0754
+    }
   },
   {
     "slug": "kitten-growth-mousse-broth",
@@ -33,7 +48,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Kitten Growth Mousse carton, two stick sachets, and mousse served in ceramic dish.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.032,
+      "g": 1.0306,
+      "b": 1.0077
+    }
   },
   {
     "slug": "kitten-growth-mousse-broth",
@@ -42,7 +62,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Close-up macro of creamy kitten chicken mousse lifted on a silver spoon above ceramic dish.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.12,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "wild-salmon-quail-pate",
@@ -51,7 +76,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Wild Salmon & Quail Paté oat tuck-top carton and single stick sachet with terracotta band.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.0237,
+      "g": 1.0237,
+      "b": 1.0006
+    }
   },
   {
     "slug": "wild-salmon-quail-pate",
@@ -60,7 +90,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Angled view of Wild Salmon & Quail Paté carton and stick sachet on warm neutral backdrop.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.0261,
+      "g": 1.0291,
+      "b": 1.0092
+    }
   },
   {
     "slug": "wild-salmon-quail-pate",
@@ -69,7 +104,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Silky quenelle of wild salmon and quail paté on cream dish with opened stick sachet.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.0604,
+      "g": 1.0768,
+      "b": 1.0754
+    }
   },
   {
     "slug": "wild-salmon-quail-pate",
@@ -78,7 +118,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Wild Salmon & Quail Paté carton, sachets, and salmon paté quenelle in ceramic dish.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.0291,
+      "g": 1.0346,
+      "b": 1.0165
+    }
   },
   {
     "slug": "wild-salmon-quail-pate",
@@ -87,7 +132,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Close-up macro of finely blended salmon and quail paté quenelle with glossy surface texture.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.0734,
+      "g": 1.0907,
+      "b": 1.0951
+    }
   },
   {
     "slug": "duck-sweet-potato-kibble",
@@ -96,7 +146,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Duck & Sweet Potato Kibble stand-up paper pouch with warm ochre band and stretching cat illustration.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.1081,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "duck-sweet-potato-kibble",
@@ -105,7 +160,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Three-quarter rotated view of Duck & Sweet Potato Kibble stand-up pouch showing side gusset.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.103,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "duck-sweet-potato-kibble",
@@ -114,7 +174,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Oven-baked square duck kibble piled in shallow ceramic dish beside a wooden scoop.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.0436,
+      "g": 1.1068,
+      "b": 1.12
+    }
   },
   {
     "slug": "duck-sweet-potato-kibble",
@@ -123,7 +188,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Duck & Sweet Potato Kibble pouch standing beside filled ceramic dish and wooden scoop.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.0877,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "norwegian-salmon-oil",
@@ -132,7 +202,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Pure Norwegian Salmon Oil in 250 ml amber glass pump bottle with sage label and cat face line art.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.1078,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "norwegian-salmon-oil",
@@ -141,7 +216,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Slightly rotated view of amber glass salmon oil bottle showing pump dispenser and glass curve.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.1104,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "norwegian-salmon-oil",
@@ -150,7 +230,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Golden stream of Norwegian salmon oil pouring into a shallow glass dish.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.0355,
+      "g": 1.1107,
+      "b": 1.12
+    }
   },
   {
     "slug": "norwegian-salmon-oil",
@@ -159,7 +244,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Salmon oil bottle beside ceramic bowl of kibble drizzled with golden oil and glass sampling dish.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.1074,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "norwegian-salmon-oil",
@@ -168,7 +258,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Macro close-up of black pump nozzle dispensing a clear golden droplet of salmon oil.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.12,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "freeze-dried-chicken-hearts",
@@ -177,7 +272,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Freeze-Dried Chicken Heart Bites kraft paper pouch with clear window displaying heart bites.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.12,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "freeze-dried-chicken-hearts",
@@ -186,7 +286,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Clean front view of freeze-dried chicken heart pouch on seamless warm neutral background.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.12,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "freeze-dried-chicken-hearts",
@@ -195,7 +300,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Shallow ceramic dish filled with whole freeze-dried chicken heart treats in front of kraft pouch.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.1135,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "freeze-dried-chicken-hearts",
@@ -204,7 +314,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Kraft paper pouch standing beside ceramic plate of freeze-dried chicken heart bites.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.12,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "freeze-dried-chicken-hearts",
@@ -213,7 +328,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Macro detail of porous freeze-dried chicken heart bites resting in a white ceramic spoon.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.12,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "matcha-tofu-litter",
@@ -222,7 +342,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Matcha Green Tea Tofu Litter stand-up kraft pouch with green band and cat-in-tea-leaf illustration.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.12,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "matcha-tofu-litter",
@@ -231,7 +356,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Three-quarter rotated view of matcha tofu litter pouch showing sealed side fold.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.12,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "matcha-tofu-litter",
@@ -240,7 +370,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Pale green matcha tofu litter cylindrical pellets in a ceramic scoop with green tea leaf.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.0963,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "matcha-tofu-litter",
@@ -249,7 +384,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Matcha tofu litter pellets poured from kraft pack onto clean warm surface.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.12,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "matcha-tofu-litter",
@@ -258,7 +398,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Close-up macro mound of dust-free matcha green tea tofu litter pellets.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.12,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "stainless-oak-litter-basin",
@@ -267,7 +412,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Brushed stainless steel cat litter basin set in solid oak wood frame with matching scoop in front perspective.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.0371,
+      "g": 1.1098,
+      "b": 1.12
+    }
   },
   {
     "slug": "stainless-oak-litter-basin",
@@ -276,7 +426,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Three-quarter angled view of stainless cat litter basin in oak frame with slotted scoop.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.0534,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "stainless-oak-litter-basin",
@@ -285,7 +440,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Alternative angle of stainless litter basin and slotted scoop in rounded oak frame.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.0397,
+      "g": 1.1162,
+      "b": 1.12
+    }
   },
   {
     "slug": "stainless-oak-litter-basin",
@@ -294,7 +454,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Kraft corrugated retail carton for The Neko Stainless & Oak Litter Basin.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.0514,
+      "g": 1.1199,
+      "b": 1.12
+    }
   },
   {
     "slug": "tilted-ceramic-whisker-bowl",
@@ -303,7 +468,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Tilted glazed cream ceramic whisker-relief cat bowl resting in wooden cradle stand.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.1029,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "tilted-ceramic-whisker-bowl",
@@ -312,7 +482,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Top-down overhead view into tilted ceramic whisker bowl and four-point wooden base.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.0742,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "tilted-ceramic-whisker-bowl",
@@ -321,7 +496,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Macro detail of rounded rim and glazed ceramic texture of whisker-relief bowl with kibble.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.12,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "tilted-ceramic-whisker-bowl",
@@ -330,7 +510,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Tilted ceramic cat bowl in wood stand shown beside brown branded shipping carton.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.0999,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "tilted-ceramic-whisker-bowl",
@@ -339,7 +524,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Branded corrugated packaging carton for Tilted Ceramic Whisker-Relief Bowl.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.0892,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "ceramic-water-fountain",
@@ -348,7 +538,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Whisper-Quiet Ceramic Water Fountain in warm beige glaze with flowing water arch.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.12,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "ceramic-water-fountain",
@@ -357,7 +552,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Clean side profile of dry ceramic water fountain dome and basin without water.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.12,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "ceramic-water-fountain",
@@ -366,7 +566,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Elevated perspective of active ceramic fountain showing circular basin ripples and water flow.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.1188,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "ceramic-water-fountain",
@@ -375,7 +580,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Macro close-up of water stream arcing smoothly into glazed ceramic fountain pool.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.12,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "ceramic-water-fountain",
@@ -384,7 +594,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Running ceramic water fountain displayed alongside branded retail carton.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.12,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "sisal-birch-scratcher",
@@ -393,7 +608,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Architectural Sisal & Birch Scratcher column mounted on square birch plywood base.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.12,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "sisal-birch-scratcher",
@@ -402,7 +622,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Angled perspective of tall sisal scratching post and plywood base on warm neutral backdrop.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.12,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "sisal-birch-scratcher",
@@ -411,7 +636,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Macro texture of tight natural woven sisal rope and laminated birch base corner.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.12,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "sisal-birch-scratcher",
@@ -420,7 +650,12 @@
     "width": 1024,
     "height": 1024,
     "alt": "Sisal scratching post standing upright beside tall branded retail carton.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.12,
+      "g": 1.12,
+      "b": 1.12
+    }
   },
   {
     "slug": "sisal-birch-scratcher",
@@ -429,6 +664,11 @@
     "width": 1024,
     "height": 1024,
     "alt": "Tall corrugated cardboard carton for Architectural Sisal & Birch Scratcher.",
-    "keep": true
+    "keep": true,
+    "grade": {
+      "r": 1.12,
+      "g": 1.12,
+      "b": 1.12
+    }
   }
 ]

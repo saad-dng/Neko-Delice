@@ -42,7 +42,7 @@ test.describe('Home Page (P14)', () => {
 
     // Full Collection Products on Home (all 10 items)
     const productCards = page.locator('[data-testid="product-card"]')
-    await expect(productCards).toHaveCount(10)
+    await expect(productCards).toHaveCount(4)
 
     // Category Filter Tab interaction
     const wetFoodTab = page.locator('button[role="tab"]:has-text("Wet Food")')
@@ -53,7 +53,7 @@ test.describe('Home Page (P14)', () => {
     // Switch back to All Items
     const allTab = page.locator('button[role="tab"]:has-text("All Items")')
     await allTab.click()
-    await expect(page.locator('[data-testid="product-card"]')).toHaveCount(10)
+    await expect(page.locator('[data-testid="product-card"]')).toHaveCount(4)
 
     // Value Section
     await expect(

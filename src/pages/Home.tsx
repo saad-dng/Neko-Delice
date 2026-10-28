@@ -17,7 +17,6 @@ import {
   CatWalking,
   CatStretch,
   CatPeekEdge,
-  PawPrint,
 } from '@/components/cat-art'
 import { products } from '@/data/products'
 import { siteImages } from '@/data/site-images.manifest'
@@ -188,23 +187,23 @@ export function HomePage() {
     return () => observer.disconnect()
   }, [])
 
+  const PREVIEW_CURATED_SLUGS = [
+    'kitten-growth-mousse-broth',
+    'wild-salmon-quail-pate',
+    'duck-sweet-potato-kibble',
+    'norwegian-salmon-oil',
+  ]
+
   const displayedProducts = useMemo(() => {
-    let list = products
-    if (selectedCategory !== 'all') {
-      list = products.filter(
-        (p) =>
-          p.category === selectedCategory ||
-          p.secondaryCategories.includes(selectedCategory)
-      )
+    if (selectedCategory === 'all') {
+      return PREVIEW_CURATED_SLUGS.map((slug) => products.find((p) => p.slug === slug)!).filter(Boolean)
     }
-    if (selectedSort === 'price-asc') {
-      return [...list].sort((a, b) => a.priceUSD - b.priceUSD)
-    }
-    if (selectedSort === 'price-desc') {
-      return [...list].sort((a, b) => b.priceUSD - a.priceUSD)
-    }
-    return list
-  }, [selectedCategory, selectedSort])
+    return products.filter(
+      (p) =>
+        p.category === selectedCategory ||
+        p.secondaryCategories.includes(selectedCategory)
+    )
+  }, [selectedCategory])
 
   const heroImage = siteImages.hero
   const heroImageSrcset = heroImage
@@ -418,83 +417,49 @@ export function HomePage() {
         </Container>
       </Band>
 
-      {/* 3. THE SHOP (Interactive Storefront) */}
-      <section id="shop" className="bg-cream-50 py-18 lg:py-32 border-t border-sand-300/60 scroll-mt-20 sm:scroll-mt-24">
+      {/* 3. THE SHOP (Interactive Storefront Preview) */}
+      <section id="shop" className="bg-cream-50 py-16 sm:py-24 border-t border-sand-300/60 scroll-mt-20 sm:scroll-mt-24">
         <div id="collection" className="sr-only" aria-hidden="true" />
         <Container>
-          <Reveal>
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-terracotta-700 mb-2">
-                  The Shop
-                </p>
-                <Heading level={2} className="font-serif text-3xl sm:text-4xl font-semibold text-espresso-950">
-                  Everything your cat needs, nothing they don&apos;t.
-                </Heading>
-                <p className="text-sm sm:text-base text-espresso-700 mt-2 max-w-xl">
-                  Ten intentional recipes and essentials crafted without fillers or guesswork.
-                </p>
-              </div>
-
-              <Button
-                asChild
-                to={selectedCategory === 'all' ? '/shop' : `/shop?category=${selectedCategory}`}
-                variant="secondary"
-                className="self-start md:self-auto text-xs"
-              >
-                View full collection →
-              </Button>
+          {/* Header & Tabs in One Row */}
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-10">
+            <div>
+              <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-terracotta-700 mb-2">
+                The Collection
+              </p>
+              <h2 className="font-serif text-3xl sm:text-4xl font-semibold text-espresso-950 tracking-tight leading-[1.08]">
+                Everything your cat needs, nothing they don&apos;t.
+              </h2>
             </div>
-          </Reveal>
 
-          {/* Category Filter Tabs */}
-          <div
-            className="flex items-center gap-2 overflow-x-auto py-1 px-0.5 -my-1 mb-6 scrollbar-none"
-            role="tablist"
-            aria-label="Filter products by category"
-          >
-            {CATEGORY_TABS.map((cat) => {
-              const isSelected = selectedCategory === cat.id
-              const count =
-                cat.id === 'all'
-                  ? products.length
-                  : products.filter(
-                      (p) =>
-                        p.category === cat.id ||
-                        p.secondaryCategories.includes(cat.id as ProductCategory)
-                    ).length
-
-              return (
-                <button
-                  key={cat.id}
-                  type="button"
-                  role="tab"
-                  id={`tab-${cat.id}`}
-                  aria-selected={isSelected}
-                  aria-controls="home-products-panel"
-                  onClick={() => handleCategoryChange(cat.id)}
-                  className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full px-4 py-2 text-xs font-medium transition-all cursor-pointer focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-600 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50 ${
-                    isSelected
-                      ? 'bg-sage-700 text-cream-50 border border-sage-700 shadow-sm'
-                      : 'bg-oat-100/75 border border-sand-300/80 text-espresso-800 hover:bg-sage-50 hover:border-sage-300 hover:text-espresso-950'
-                  }`}
-                >
-                  {isSelected && (
-                    <PawPrint size={12} filled className="text-cream-100" />
-                  )}
-                  <span>{cat.label}</span>
-                  <span
-                    className={`inline-flex items-center justify-center rounded-full px-1.5 py-0.5 text-[10px] font-bold leading-none ${
+            {/* Category Filter Tabs */}
+            <div
+              className="flex items-center gap-2 overflow-x-auto py-1 px-0.5 scrollbar-none"
+              role="tablist"
+              aria-label="Filter products by category"
+            >
+              {CATEGORY_TABS.map((cat) => {
+                const isSelected = selectedCategory === cat.id
+                return (
+                  <button
+                    key={cat.id}
+                    type="button"
+                    role="tab"
+                    id={`tab-${cat.id}`}
+                    aria-selected={isSelected}
+                    aria-controls="home-products-panel"
+                    onClick={() => handleCategoryChange(cat.id)}
+                    className={`inline-flex items-center whitespace-nowrap rounded-full px-4 py-2 text-[14px] font-medium transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-terracotta-600 ${
                       isSelected
-                        ? 'bg-cream-50 text-sage-900'
-                        : 'bg-sand-300/80 text-espresso-900'
+                        ? 'bg-sage-700 text-cream-50 shadow-xs'
+                        : 'bg-oat-100/80 border border-sand-300/80 text-espresso-800 hover:bg-cream-50 hover:text-espresso-950'
                     }`}
                   >
-                    {count}
-                  </span>
-                </button>
-              )
-            })}
+                    <span>{cat.label}</span>
+                  </button>
+                )
+              })}
+            </div>
           </div>
 
           {/* Screen Reader Live Region for Shop Count Announcements */}
@@ -502,12 +467,12 @@ export function HomePage() {
             {shopAnnouncement}
           </output>
 
-          {/* Product Grid */}
+          {/* Product Grid: 4 columns desktop, 2 columns at 390px mobile */}
           <div
             id="home-products-panel"
             role="tabpanel"
             aria-labelledby={`tab-${selectedCategory}`}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
           >
             {displayedProducts.length > 0 ? (
               displayedProducts.map((product) => (
@@ -518,8 +483,7 @@ export function HomePage() {
                 />
               ))
             ) : (
-              /* Empty state with peeking cat */
-              <div className="col-span-full py-16 flex flex-col items-center justify-center text-center animate-fadeIn">
+              <div className="col-span-full py-16 flex flex-col items-center justify-center text-center">
                 <div className="w-24 h-16 text-espresso-700 mb-4 overflow-hidden flex items-end justify-center">
                   <CatPeekEdge className="w-20 h-16 animate-step-transition" />
                 </div>
@@ -529,15 +493,20 @@ export function HomePage() {
                 <p className="text-sm text-espresso-700 max-w-sm mb-6">
                   Try selecting a different category above or explore our complete cat nutrition collection.
                 </p>
-                <button
-                  type="button"
-                  onClick={() => handleCategoryChange('all')}
-                  className="rounded-full bg-sage-700 text-cream-50 px-5 py-2.5 text-xs font-semibold hover:bg-sage-800 transition-all cursor-pointer"
-                >
-                  View all products
-                </button>
               </div>
             )}
+          </div>
+
+          {/* Full collection link button */}
+          <div className="flex justify-center mt-10">
+            <Button
+              asChild
+              to={selectedCategory === 'all' ? '/shop' : `/shop?category=${selectedCategory}`}
+              variant="secondary"
+              className="h-12 px-8 text-[15px]"
+            >
+              View full collection →
+            </Button>
           </div>
         </Container>
       </section>
