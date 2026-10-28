@@ -21,7 +21,6 @@ import {
 import { products } from '@/data/products'
 import { siteImages } from '@/data/site-images.manifest'
 import type { ProductCategory } from '@/data/types'
-import type { ShopSort } from '@/lib/filters'
 import { getShopSession, markInShop, saveShopSession } from '@/lib/shop-session'
 
 type HomeCategoryFilter = 'all' | ProductCategory
@@ -40,6 +39,13 @@ const CATEGORY_TABS: readonly CategoryTab[] = [
   { id: 'hardware', label: 'Hardware' },
 ]
 
+const PREVIEW_CURATED_SLUGS = [
+  'kitten-growth-mousse-broth',
+  'wild-salmon-quail-pate',
+  'duck-sweet-potato-kibble',
+  'norwegian-salmon-oil',
+] as const
+
 export function HomePage() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
@@ -48,14 +54,6 @@ export function HomePage() {
     categoryParam && ['wet-food', 'dry-food', 'treat-topper', 'litter', 'hardware'].includes(categoryParam)
       ? categoryParam
       : 'all'
-
-  const [selectedSort] = useState<ShopSort>(() => {
-    const session = getShopSession()
-    if (session.sort && ['featured', 'price-asc', 'price-desc'].includes(session.sort)) {
-      return session.sort
-    }
-    return 'featured'
-  })
 
   const [shopAnnouncement, setShopAnnouncement] = useState('')
 
@@ -186,13 +184,6 @@ export function HomePage() {
     observer.observe(heroEl)
     return () => observer.disconnect()
   }, [])
-
-  const PREVIEW_CURATED_SLUGS = [
-    'kitten-growth-mousse-broth',
-    'wild-salmon-quail-pate',
-    'duck-sweet-potato-kibble',
-    'norwegian-salmon-oil',
-  ]
 
   const displayedProducts = useMemo(() => {
     if (selectedCategory === 'all') {
@@ -511,126 +502,148 @@ export function HomePage() {
         </Container>
       </section>
 
-      {/* 4. WHY BAND (Oat tint with Eating Cat Photo + 4 Truthful Values) */}
-      <Band variant="oat" padding="md" className="border-t border-sand-300/60">
+      {/* 4. WHY BAND (50/50 Oat band with large eating cat photo + 4 truthful value points) */}
+      <section className="bg-oat-100/70 border-t border-sand-300/80 py-20 sm:py-28 lg:py-32">
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-10 lg:gap-14">
-            {/* Left: Eating Cat Photo with Curled Cat Idle Badge */}
-            <div className="lg:col-span-5 relative flex justify-center">
-              <Reveal>
-                <div className="relative w-full max-w-[420px]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 lg:gap-16">
+            {/* Left: Eating Cat Photo (24px radius, min 520px tall) */}
+            <div className="relative flex flex-col justify-center w-full">
+              <Reveal className="w-full">
+                <div className="relative w-full max-w-[540px] mx-auto">
                   <SiteImage
                     name="eating"
-                    sizes="(max-width: 768px) 100vw, 420px"
-                    className="rounded-3xl shadow-sm aspect-[3/4] object-cover"
+                    sizes="(max-width: 1024px) 100vw, 540px"
+                    className="rounded-3xl shadow-sm aspect-[3/4] min-h-[520px] w-full object-cover"
                   />
-                  {/* Handwritten Annotation beside photo */}
-                  <div className="absolute -bottom-4 right-0 sm:bottom-2 sm:-right-2 z-10 pointer-events-none">
-                    <Annotation text="Planned portions" arrow={false} rotate={2} hideOnMobile={false} />
-                  </div>
+                </div>
+                {/* Handwritten Annotation beside/below photo ("Planned portions") */}
+                <div className="mt-3 flex justify-end max-w-[540px] mx-auto pr-3 sm:pr-6 pointer-events-none">
+                  <Annotation
+                    text="Planned portions"
+                    arrow={false}
+                    rotate={-2}
+                    hideOnMobile={false}
+                  />
                 </div>
               </Reveal>
             </div>
 
-            {/* Right: Truthful Value Points & Philosophy Link */}
-            <div className="lg:col-span-7 flex flex-col items-start">
+            {/* Right: Eyebrow, H2, 4 Truthful Values (2x2 grid without boxes, 1px dividers, 16px text), Philosophy link */}
+            <div className="flex flex-col items-start">
               <Reveal>
-                <p className="text-xs font-semibold uppercase tracking-wider text-terracotta-700 mb-2">
+                <p className="text-[13px] font-bold uppercase tracking-[0.12em] text-terracotta-700 mb-3">
                   Why Neko Delice
                 </p>
 
-                <Heading level={2} className="font-serif text-3xl sm:text-4xl font-semibold text-espresso-950 mb-6 text-balance">
+                <Heading
+                  level={2}
+                  className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-espresso-950 mb-6 text-balance"
+                >
                   Better food. Better days.
                 </Heading>
 
-                {/* 4 Truthful Value Points */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
-                  <div className="py-3 sm:py-4 border-b border-sand-300/60 last:border-b-0 sm:last:border-b sm:[&:nth-last-child(2)]:border-b-0">
-                    <h3 className="text-sm font-semibold text-espresso-950 mb-1">
+                {/* 4 Truthful Value Points: 2x2 grid without boxes, 1px dividers, 16px text */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 sm:gap-y-8 my-8 pt-6 pb-6 border-y border-sand-300/80">
+                  <div className="pb-6 sm:pb-0 sm:pr-6 sm:border-r border-sand-300/80">
+                    <h3 className="text-base font-semibold text-espresso-950 mb-1.5">
                       Short, recognisable ingredients
                     </h3>
-                    <p className="text-xs text-espresso-700 leading-relaxed">
+                    <p className="text-base text-espresso-800 leading-relaxed">
                       The full list is on every product page. Single-source proteins, unrefined oils, no fillers.
                     </p>
                   </div>
 
-                  <div className="py-3 sm:py-4 border-b border-sand-300/60 last:border-b-0 sm:last:border-b sm:[&:nth-last-child(2)]:border-b-0">
-                    <h3 className="text-sm font-semibold text-espresso-950 mb-1">
+                  <div className="pb-6 sm:pb-0 sm:pl-6 border-t sm:border-t-0 border-sand-300/80 pt-6 sm:pt-0">
+                    <h3 className="text-base font-semibold text-espresso-950 mb-1.5">
                       Made for their stage
                     </h3>
-                    <p className="text-xs text-espresso-700 leading-relaxed">
+                    <p className="text-base text-espresso-800 leading-relaxed">
                       Kitten growth mousse, adult formulas, and senior care calibrated by age and nutritional needs.
                     </p>
                   </div>
 
-                  <div className="py-3 sm:py-4 border-b border-sand-300/60 last:border-b-0 sm:last:border-b sm:[&:nth-last-child(2)]:border-b-0">
-                    <h3 className="text-sm font-semibold text-espresso-950 mb-1">
+                  <div className="pt-6 sm:pr-6 sm:border-r border-t border-sand-300/80">
+                    <h3 className="text-base font-semibold text-espresso-950 mb-1.5">
                       Formulated to be gentle
                     </h3>
-                    <p className="text-xs text-espresso-700 leading-relaxed">
+                    <p className="text-base text-espresso-800 leading-relaxed">
                       Recipes that support sensitive stomachs, smooth digestion, and healthy coat condition.
                     </p>
                   </div>
 
-                  <div className="py-3 sm:py-4 border-b border-sand-300/60 last:border-b-0 sm:last:border-b sm:[&:nth-last-child(2)]:border-b-0">
-                    <h3 className="text-sm font-semibold text-espresso-950 mb-1">
+                  <div className="pt-6 sm:pl-6 border-t border-sand-300/80">
+                    <h3 className="text-base font-semibold text-espresso-950 mb-1.5">
                       Plans that add up
                     </h3>
-                    <p className="text-xs text-espresso-700 leading-relaxed">
+                    <p className="text-base text-espresso-800 leading-relaxed">
                       Portions and pack length calculated for your cat so you know how long every box lasts.
                     </p>
                   </div>
                 </div>
 
-                <Button asChild to="/about" variant="secondary" >
+                <Button
+                  asChild
+                  to="/about"
+                  variant="secondary"
+                  className="h-12 sm:h-14 px-8 text-base font-medium rounded-full"
+                >
                   Our philosophy →
                 </Button>
               </Reveal>
             </div>
           </div>
         </Container>
-      </Band>
+      </section>
 
-      
+      {/* 5. CLOSING CTA (Full-bleed oat band per PREMIUM-SPEC) */}
+      <section className="relative bg-oat-100/70 border-t border-sand-300/80 py-24 sm:py-28 lg:py-32 overflow-visible">
+        {/* CatPeekEdge peeking over the top border on the right */}
+        <div className="absolute top-0 right-6 sm:right-16 lg:right-28 -translate-y-[92%] w-52 sm:w-60 lg:w-64 text-espresso-900 pointer-events-none select-none z-10">
+          <CatPeekEdge className="w-full h-auto vector-stroke-2-5" />
+        </div>
 
-      {/* 6. CLOSING CTA (Full-bleed oat band per PREMIUM-SPEC) */}
-      <section className="py-20 sm:py-28 lg:py-32 bg-oat-100/60 border-t border-sand-300/70 overflow-hidden relative">
-        <Container className="max-w-4xl text-center relative">
-          {/* CatPeekEdge centered peeking over top rim */}
-          <div className="absolute -top-28 sm:-top-32 left-1/2 -translate-x-1/2 w-44 sm:w-52 text-espresso-900 pointer-events-none">
-            <CatPeekEdge className="w-full h-auto" />
-          </div>
-
-          <Reveal>
-            <Heading level={2} className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-espresso-950 mb-4 text-balance">
-              Feed your cat with confidence.
-            </Heading>
-
-            <p className="text-base sm:text-lg text-espresso-800 leading-relaxed mb-8 max-w-xl mx-auto text-balance">
-              Take the guesswork out of mealtime with a personalised plan or explore our honest collection.
-            </p>
-
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              <Button asChild to="/meal-plan" variant="primary">
-                Plan my cat's meals
-              </Button>
-              <Button
-                asChild
-                to="/#shop"
-                variant="secondary"
-                onClick={(e) => {
-                  e.preventDefault()
-                  const el = document.getElementById('shop') || document.getElementById('collection')
-                  if (el) {
-                    el.scrollIntoView({ behavior: 'smooth' })
-                    window.history.pushState(null, '', '/#shop')
-                  }
-                }}
+        <Container>
+          <div className="max-w-2xl">
+            <Reveal>
+              <Heading
+                level={2}
+                className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-espresso-950 mb-4 text-balance"
               >
-                Shop the collection
-              </Button>
-            </div>
-          </Reveal>
+                Feed your cat with confidence.
+              </Heading>
+
+              <p className="text-base sm:text-lg text-espresso-800 leading-relaxed mb-8 max-w-xl text-balance">
+                Take the guesswork out of mealtime with a personalised plan or explore our honest collection.
+              </p>
+
+              <div className="flex flex-wrap items-center gap-4">
+                <Button
+                  asChild
+                  to="/meal-plan"
+                  variant="primary"
+                  className="h-12 sm:h-14 px-8 text-base font-medium rounded-full"
+                >
+                  Plan my cat's meals
+                </Button>
+                <Button
+                  asChild
+                  to="/#shop"
+                  variant="secondary"
+                  className="h-12 sm:h-14 px-8 text-base font-medium rounded-full"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    const el = document.getElementById('shop') || document.getElementById('collection')
+                    if (el) {
+                      el.scrollIntoView({ behavior: 'smooth' })
+                      window.history.pushState(null, '', '/#shop')
+                    }
+                  }}
+                >
+                  Shop the collection
+                </Button>
+              </div>
+            </Reveal>
+          </div>
         </Container>
       </section>
     </>

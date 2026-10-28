@@ -88,7 +88,7 @@ test.describe('E2E Key User Journeys & State Resilience (P15)', () => {
 
     // Switch back to All Items
     await page.locator('button[role="tab"]:has-text("All Items")').click()
-    await expect(cards).toHaveCount(10)
+    await expect(cards).toHaveCount(4)
   })
 
   test('Corrupted localStorage resilience: app initializes safely without crashing', async ({

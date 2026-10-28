@@ -27,14 +27,15 @@ async function main() {
   const pageDesktop = await contextDesktop.newPage();
   await pageDesktop.goto('http://localhost:4173', { waitUntil: 'networkidle' });
   
-  // Slowly scroll down to trigger lazy loading
-  for (let y = 0; y <= 3000; y += 400) {
+  // Slowly scroll down to trigger lazy loading and IntersectionObservers
+  const totalHeightDesktop = await pageDesktop.evaluate(() => document.body.scrollHeight);
+  for (let y = 0; y <= totalHeightDesktop; y += 400) {
     await pageDesktop.evaluate((scrollY) => window.scrollTo(0, scrollY), y);
     await pageDesktop.waitForTimeout(100);
   }
   await waitForAllImages(pageDesktop);
   await pageDesktop.evaluate(() => window.scrollTo(0, 0));
-  await pageDesktop.waitForTimeout(300);
+  await pageDesktop.waitForTimeout(400);
 
   await pageDesktop.screenshot({ path: `docs/screens/premium/${prefix}-1440.png`, fullPage: false });
   await pageDesktop.screenshot({ path: `docs/screens/premium/${prefix}-1440-full.png`, fullPage: true });
@@ -47,13 +48,14 @@ async function main() {
   const pageMobile = await contextMobile.newPage();
   await pageMobile.goto('http://localhost:4173', { waitUntil: 'networkidle' });
 
-  for (let y = 0; y <= 4000; y += 400) {
+  const totalHeightMobile = await pageMobile.evaluate(() => document.body.scrollHeight);
+  for (let y = 0; y <= totalHeightMobile; y += 400) {
     await pageMobile.evaluate((scrollY) => window.scrollTo(0, scrollY), y);
     await pageMobile.waitForTimeout(100);
   }
   await waitForAllImages(pageMobile);
   await pageMobile.evaluate(() => window.scrollTo(0, 0));
-  await pageMobile.waitForTimeout(300);
+  await pageMobile.waitForTimeout(400);
 
   await pageMobile.screenshot({ path: `docs/screens/premium/${prefix}-390.png`, fullPage: false });
   await pageMobile.screenshot({ path: `docs/screens/premium/${prefix}-390-full.png`, fullPage: true });
