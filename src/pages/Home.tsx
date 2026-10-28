@@ -340,76 +340,81 @@ export function HomePage() {
       </section>
 
       {/* 2. PLANNER BAND (Sage tint with 3 Clickable Cat Cards) */}
-      <Band variant="sage" padding="none" className="pb-16 sm:pb-20">
+      <Band variant="sage" padding="none" className="py-16 sm:py-24">
         <Container>
-          <Reveal>
-            <div className="max-w-3xl mx-auto text-center flex flex-col items-center mb-10 sm:mb-12">
-              <div className="w-14 h-14 rounded-full bg-cream-50 text-sage-800 flex items-center justify-center shadow-2xs mb-3">
-                <CatCurious className="w-9 h-9" />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            {/* Left Column: CatCurious >= 260px on soft oat circle with idle twitch */}
+            <div className="lg:col-span-4 flex items-center justify-center order-1 lg:order-1">
+              <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full bg-[#EDE5D8]/90 border border-sand-300/80 shadow-xs flex items-center justify-center">
+                <CatCurious className="w-[260px] h-[260px] text-espresso-800 animate-idle-cat vector-stroke-2-5" />
               </div>
+            </div>
 
-              <p className="text-xs font-semibold uppercase tracking-wider text-sage-800 mb-2">
+            {/* Right Column: Eyebrow, H2, Copy, 3 Cat Cards on single oat surface, Steps, Disclaimer */}
+            <div className="lg:col-span-8 flex flex-col items-start text-left order-2 lg:order-2">
+              <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-sage-900/90 mb-3">
                 Cat Nutrition Planner
               </p>
 
-              <Heading level={2} className="font-serif text-3xl sm:text-4xl font-semibold text-espresso-950 mb-3 text-balance">
+              <h2 className="font-serif font-semibold text-espresso-950 tracking-tight leading-[1.08] text-[clamp(2rem,3.6vw,3.5rem)] mb-4 text-balance">
                 No guesswork. Just the right plan for your cat.
-              </Heading>
+              </h2>
 
-              <p className="text-sm sm:text-base text-espresso-800 leading-relaxed max-w-xl text-balance">
+              <p className="text-[18px] text-espresso-800 leading-[1.5] max-w-2xl mb-8">
                 Every cat is different. Tell us their routine and we work out the calories, portions, and a balanced monthly bundle.
               </p>
-            </div>
-          </Reveal>
 
-          {/* Three Clickable Cat Cards linking to /meal-plan with preselected activity */}
-          <Reveal delay={100}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 max-w-4xl mx-auto mb-10">
-              <CatCard
-                href="/meal-plan?act=lounger&step=1"
-                title="Indoor lounger"
-                description="Gentle daily strolls, sunlit naps, and quiet afternoon stretches."
-                pose={<CatSleeping className="w-16 h-16 text-espresso-800" />}
-              />
-              <CatCard
-                href="/meal-plan?act=explorer&step=1"
-                title="Playful explorer"
-                description="Daily chasing, window birdwatching, and steady room-to-room patrols."
-                pose={<CatWalking className="w-16 h-16 text-espresso-800" />}
-                
-              />
-              <CatCard
-                href="/meal-plan?act=high-energy&step=1"
-                title="High-energy"
-                description="Climbing, sprint bursts, high vertical jumps, and energetic playtime."
-                pose={<CatStretch className="w-16 h-16 text-espresso-800" />}
-              />
-            </div>
-          </Reveal>
+              {/* Three cat cards in one row on a single oat surface */}
+              <div className="w-full bg-[#EDE5D8]/80 rounded-3xl p-2 sm:p-3 border border-sand-300/80 mb-8">
+                <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-sand-300/80">
+                  <CatCard
+                    variant="flat"
+                    href="/meal-plan?act=lounger&step=1"
+                    title="Indoor lounger"
+                    description="Gentle daily strolls and sunlit naps."
+                    pose={<CatSleeping className="w-28 h-28 vector-stroke-2-5" />}
+                  />
+                  <CatCard
+                    variant="flat"
+                    href="/meal-plan?act=explorer&step=1"
+                    title="Playful explorer"
+                    description="Daily chasing and steady patrols."
+                    pose={<CatWalking className="w-28 h-28 vector-stroke-2-5" />}
+                  />
+                  <CatCard
+                    variant="flat"
+                    href="/meal-plan?act=high-energy&step=1"
+                    title="High-energy"
+                    description="Climbing trees and high-speed sprints."
+                    pose={<CatStretch className="w-28 h-28 vector-stroke-2-5" />}
+                  />
+                </div>
+              </div>
 
-          {/* Three Steps Overview */}
-          <Reveal delay={200}>
-            <div className="max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center py-4 px-6 rounded-2xl bg-cream-50/70 border border-sand-300/60 mb-6">
-              <div className="flex items-center gap-2">
-                <span className="w-5 h-5 rounded-full bg-sage-200 text-sage-900 text-xs font-bold flex items-center justify-center">1</span>
-                <span className="text-xs font-medium text-espresso-900">Tell us about your cat</span>
+              {/* Quiet inline steps row */}
+              <div className="flex flex-wrap items-center gap-3 sm:gap-6 text-[14px] text-espresso-800/85 mb-6 font-medium">
+                <div className="flex items-center gap-2">
+                  <span className="font-mono text-xs text-sage-800 font-bold">01</span>
+                  <span>Tell us about your cat</span>
+                </div>
+                <span className="text-sand-400" aria-hidden="true">→</span>
+                <div className="flex items-center gap-2">
+                  <span className="font-mono text-xs text-sage-800 font-bold">02</span>
+                  <span>See daily calories</span>
+                </div>
+                <span className="text-sand-400" aria-hidden="true">→</span>
+                <div className="flex items-center gap-2">
+                  <span className="font-mono text-xs text-sage-800 font-bold">03</span>
+                  <span>Get a monthly bundle</span>
+                </div>
               </div>
-              <span className="hidden sm:inline text-sand-300 text-sm">→</span>
-              <div className="flex items-center gap-2">
-                <span className="w-5 h-5 rounded-full bg-sage-200 text-sage-900 text-xs font-bold flex items-center justify-center">2</span>
-                <span className="text-xs font-medium text-espresso-900">See daily calories</span>
-              </div>
-              <span className="hidden sm:inline text-sand-300 text-sm">→</span>
-              <div className="flex items-center gap-2">
-                <span className="w-5 h-5 rounded-full bg-sage-200 text-sage-900 text-xs font-bold flex items-center justify-center">3</span>
-                <span className="text-xs font-medium text-espresso-900">Get a monthly bundle</span>
-              </div>
-            </div>
 
-            <p className="text-[11px] sm:text-xs text-center text-espresso-700/80 max-w-xl mx-auto leading-relaxed">
-              An estimate for healthy cats, not veterinary advice. Check with your vet for medical conditions, pregnancy, or rapid weight change.
-            </p>
-          </Reveal>
+              {/* Planner disclaimer at 14 px */}
+              <p className="text-[14px] text-espresso-700/80 leading-relaxed border-t border-sand-300/70 pt-4 w-full">
+                An estimate for healthy cats, not veterinary advice. Check with your vet for medical conditions, pregnancy, or rapid weight change.
+              </p>
+            </div>
+          </div>
         </Container>
       </Band>
 

@@ -395,3 +395,10 @@ input[type="range"]:active::-moz-range-thumb {
     -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 22%);
   }
 }
+
+/* Monoline SVG illustration uniform 2.5px stroke scaling */
+.vector-stroke-2-5 path,
+.vector-stroke-2-5 circle {
+  vector-effect: non-scaling-stroke;
+  stroke-width: 2.5px;
+}
