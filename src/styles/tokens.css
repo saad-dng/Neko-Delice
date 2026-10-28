@@ -51,7 +51,8 @@
   --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-note: 'Cormorant Garamond', Georgia, serif;
 
-  --radius-card: 12px;
+  --radius-card: 16px;
+  --radius-image-lg: 24px;
   --radius-modal: 20px;
   --radius-pill: 9999px;
 

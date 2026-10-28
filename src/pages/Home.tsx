@@ -4,25 +4,19 @@ import { SeoHead } from '@/components/seo/SeoHead'
 import { Container } from '@/components/ui/Container'
 import { Heading } from '@/components/ui/Heading'
 import { Button } from '@/components/ui/Button'
-import { CurrencyToggle } from '@/components/ui/CurrencyToggle'
 import { SiteImage } from '@/components/ui/SiteImage'
 import { ProductImage } from '@/components/ui/ProductImage'
 import { ProductCard } from '@/components/product/ProductCard'
 import { Annotation } from '@/components/ui/Annotation'
 import { Band } from '@/components/ui/Band'
 import { CatCard } from '@/components/ui/CatCard'
-import { IdleCat } from '@/components/ui/IdleCat'
 import { Reveal } from '@/components/ui/Reveal'
 import { Wave } from '@/components/doodles/Wave'
-import { SparkleLine } from '@/components/doodles/SparkleLine'
-import { Heart } from '@/components/doodles/Heart'
-import { PawTrail } from '@/components/doodles/PawTrail'
 import {
   CatCurious,
   CatSleeping,
   CatWalking,
   CatStretch,
-  CatCurled,
   CatPeekEdge,
   PawPrint,
 } from '@/components/cat-art'
@@ -57,7 +51,7 @@ export function HomePage() {
       ? categoryParam
       : 'all'
 
-  const [selectedSort, setSelectedSort] = useState<ShopSort>(() => {
+  const [selectedSort] = useState<ShopSort>(() => {
     const session = getShopSession()
     if (session.sort && ['featured', 'price-asc', 'price-desc'].includes(session.sort)) {
       return session.sort
@@ -94,10 +88,6 @@ export function HomePage() {
     navigate(dest, { replace: true })
   }
 
-  const handleSortChange = (newSort: ShopSort) => {
-    setSelectedSort(newSort)
-    saveShopSession({ sort: newSort, inShop: true })
-  }
 
   // Restore user to where they left off in the shop segment if returning
   useEffect(() => {
@@ -262,14 +252,14 @@ export function HomePage() {
               </p>
 
               <div className="flex flex-wrap items-center gap-4 mb-8">
-                <Button asChild to="/meal-plan" variant="primary" catIcon="paw">
+                <Button asChild to="/meal-plan" variant="primary" >
                   Plan my cat's meals
                 </Button>
                 <Button
                   asChild
                   to="/#shop"
                   variant="secondary"
-                  catIcon="head"
+                  
                   onClick={(e) => {
                     e.preventDefault()
                     const el = document.getElementById('shop') || document.getElementById('collection')
@@ -414,7 +404,7 @@ export function HomePage() {
                 title="Playful explorer"
                 description="Daily chasing, window birdwatching, and steady room-to-room patrols."
                 pose={<CatWalking className="w-16 h-16 text-espresso-800" />}
-                badge="Popular"
+                
               />
               <CatCard
                 href="/meal-plan?act=high-energy&step=1"
@@ -452,7 +442,7 @@ export function HomePage() {
       </Band>
 
       {/* 3. THE SHOP (Interactive Storefront) */}
-      <section id="shop" className="bg-cream-50 py-14 sm:py-20 border-t border-sand-300/60 scroll-mt-20 sm:scroll-mt-24">
+      <section id="shop" className="bg-cream-50 py-18 lg:py-32 border-t border-sand-300/60 scroll-mt-20 sm:scroll-mt-24">
         <div id="collection" className="sr-only" aria-hidden="true" />
         <Container>
           <Reveal>
@@ -530,36 +520,6 @@ export function HomePage() {
             })}
           </div>
 
-          {/* Shop Toolbar: Product Count & Currency Switcher + Sort */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-8 pb-4 border-b border-sand-300/60">
-            <p className="text-xs sm:text-sm font-medium text-espresso-700">
-              Showing <span className="font-semibold text-espresso-950">{displayedProducts.length}</span> {displayedProducts.length === 1 ? 'product' : 'products'}
-            </p>
-
-            <div className="flex items-center gap-3">
-              <CurrencyToggle ariaLabel="Shop currency" size="sm" />
-
-              <div className="flex items-center gap-2">
-                <label
-                  htmlFor="shop-sort"
-                  className="text-xs font-semibold uppercase tracking-wider text-espresso-800 shrink-0"
-                >
-                  Sort by
-                </label>
-                <select
-                  id="shop-sort"
-                  value={selectedSort}
-                  onChange={(e) => handleSortChange(e.target.value as ShopSort)}
-                  className="rounded-full border border-sand-300 bg-cream-50/90 py-1.5 pl-3.5 pr-8 text-xs font-medium text-espresso-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-600 focus-visible:ring-offset-2 cursor-pointer transition-colors hover:border-sand-400"
-                >
-                  <option value="featured">Featured</option>
-                  <option value="price-asc">Price: Low to High</option>
-                  <option value="price-desc">Price: High to Low</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
           {/* Screen Reader Live Region for Shop Count Announcements */}
           <output aria-live="polite" className="sr-only">
             {shopAnnouncement}
@@ -618,11 +578,8 @@ export function HomePage() {
                     sizes="(max-width: 768px) 100vw, 420px"
                     className="rounded-3xl shadow-sm aspect-[3/4] object-cover"
                   />
-                  {/* Floating Curled Cat Badge with Annotation */}
-                  <div className="absolute -bottom-4 -right-2 sm:bottom-4 sm:-right-4 inline-flex items-center gap-2.5 bg-cream-50/95 py-2 px-3 rounded-2xl shadow-sm border border-[#2B211A]/8">
-                    <IdleCat>
-                      <CatCurled className="w-10 h-10 text-espresso-800" />
-                    </IdleCat>
+                  {/* Handwritten Annotation beside photo */}
+                  <div className="absolute -bottom-4 right-0 sm:bottom-2 sm:-right-2 z-10 pointer-events-none">
                     <Annotation text="Planned portions" arrow={false} rotate={2} hideOnMobile={false} />
                   </div>
                 </div>
@@ -642,7 +599,7 @@ export function HomePage() {
 
                 {/* 4 Truthful Value Points */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
-                  <div className="p-4 rounded-xl bg-cream-50/70 border border-sand-300/60">
+                  <div className="py-3 sm:py-4 border-b border-sand-300/60 last:border-b-0 sm:last:border-b sm:[&:nth-last-child(2)]:border-b-0">
                     <h3 className="text-sm font-semibold text-espresso-950 mb-1">
                       Short, recognisable ingredients
                     </h3>
@@ -651,7 +608,7 @@ export function HomePage() {
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-xl bg-cream-50/70 border border-sand-300/60">
+                  <div className="py-3 sm:py-4 border-b border-sand-300/60 last:border-b-0 sm:last:border-b sm:[&:nth-last-child(2)]:border-b-0">
                     <h3 className="text-sm font-semibold text-espresso-950 mb-1">
                       Made for their stage
                     </h3>
@@ -660,7 +617,7 @@ export function HomePage() {
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-xl bg-cream-50/70 border border-sand-300/60">
+                  <div className="py-3 sm:py-4 border-b border-sand-300/60 last:border-b-0 sm:last:border-b sm:[&:nth-last-child(2)]:border-b-0">
                     <h3 className="text-sm font-semibold text-espresso-950 mb-1">
                       Formulated to be gentle
                     </h3>
@@ -669,7 +626,7 @@ export function HomePage() {
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-xl bg-cream-50/70 border border-sand-300/60">
+                  <div className="py-3 sm:py-4 border-b border-sand-300/60 last:border-b-0 sm:last:border-b sm:[&:nth-last-child(2)]:border-b-0">
                     <h3 className="text-sm font-semibold text-espresso-950 mb-1">
                       Plans that add up
                     </h3>
@@ -679,7 +636,7 @@ export function HomePage() {
                   </div>
                 </div>
 
-                <Button asChild to="/about" variant="secondary" catIcon="head">
+                <Button asChild to="/about" variant="secondary" >
                   Our philosophy →
                 </Button>
               </Reveal>
@@ -688,79 +645,44 @@ export function HomePage() {
         </Container>
       </Band>
 
-      {/* 5. CALM STRIP (Truthful Standards without Inflated Claims) */}
-      <section className="bg-cream-50 py-8 border-y border-sand-300/70">
-        <Container>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
-            <div className="flex items-center justify-center md:justify-start gap-3">
-              <div className="w-8 h-8 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center shrink-0">
-                <SparkleLine className="w-4 h-4" />
-              </div>
-              <span className="text-sm font-medium text-espresso-900">
-                Plan in about a minute
-              </span>
-            </div>
+      
 
-            <div className="flex items-center justify-center md:justify-start gap-3">
-              <div className="w-8 h-8 rounded-full bg-terracotta-100 text-terracotta-800 flex items-center justify-center shrink-0">
-                <Heart className="w-4 h-4" />
-              </div>
-              <span className="text-sm font-medium text-espresso-900">
-                Ingredients listed in full
-              </span>
-            </div>
-
-            <div className="flex items-center justify-center md:justify-start gap-3">
-              <div className="w-8 h-8 rounded-full bg-oat-200 text-espresso-800 flex items-center justify-center shrink-0">
-                <PawTrail count={2} className="w-8 h-5" />
-              </div>
-              <span className="text-sm font-medium text-espresso-900">
-                Supply length shown on every pack
-              </span>
-            </div>
+      {/* 6. CLOSING CTA (Full-bleed oat band per PREMIUM-SPEC) */}
+      <section className="py-20 sm:py-28 lg:py-32 bg-oat-100/60 border-t border-sand-300/70 overflow-hidden relative">
+        <Container className="max-w-4xl text-center relative">
+          {/* CatPeekEdge centered peeking over top rim */}
+          <div className="absolute -top-28 sm:-top-32 left-1/2 -translate-x-1/2 w-44 sm:w-52 text-espresso-900 pointer-events-none">
+            <CatPeekEdge className="w-full h-auto" />
           </div>
-        </Container>
-      </section>
 
-      {/* 6. CLOSING CTA (CatPeekEdge Peeking Over the Card) */}
-      <section className="py-20 sm:py-28 bg-cream-50 overflow-hidden">
-        <Container className="max-w-3xl">
           <Reveal>
-            <div className="relative pt-10 sm:pt-12 pb-10 sm:pb-14 px-6 sm:px-12 rounded-3xl bg-oat-100/50 border border-sand-300/70 text-center">
-              {/* CatPeekEdge centered peeking over top rim */}
-              <div className="absolute -top-10 sm:-top-11 left-1/2 -translate-x-1/2 w-28 sm:w-32 text-espresso-900 pointer-events-none">
-                <CatPeekEdge className="w-full h-auto" />
-              </div>
+            <Heading level={2} className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-espresso-950 mb-4 text-balance">
+              Feed your cat with confidence.
+            </Heading>
 
-              <Heading level={2} className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-espresso-950 mb-4 text-balance">
-                Feed your cat with confidence.
-              </Heading>
+            <p className="text-base sm:text-lg text-espresso-800 leading-relaxed mb-8 max-w-xl mx-auto text-balance">
+              Take the guesswork out of mealtime with a personalised plan or explore our honest collection.
+            </p>
 
-              <p className="text-base sm:text-lg text-espresso-800 leading-relaxed mb-8 max-w-xl mx-auto text-balance">
-                Take the guesswork out of mealtime with a personalised plan or explore our honest collection.
-              </p>
-
-              <div className="flex flex-wrap items-center justify-center gap-4">
-                <Button asChild to="/meal-plan" variant="primary" catIcon="paw">
-                  Plan my cat's meals
-                </Button>
-                <Button
-                  asChild
-                  to="/#shop"
-                  variant="secondary"
-                  catIcon="head"
-                  onClick={(e) => {
-                    e.preventDefault()
-                    const el = document.getElementById('shop') || document.getElementById('collection')
-                    if (el) {
-                      el.scrollIntoView({ behavior: 'smooth' })
-                      window.history.pushState(null, '', '/#shop')
-                    }
-                  }}
-                >
-                  Shop the collection
-                </Button>
-              </div>
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <Button asChild to="/meal-plan" variant="primary">
+                Plan my cat's meals
+              </Button>
+              <Button
+                asChild
+                to="/#shop"
+                variant="secondary"
+                onClick={(e) => {
+                  e.preventDefault()
+                  const el = document.getElementById('shop') || document.getElementById('collection')
+                  if (el) {
+                    el.scrollIntoView({ behavior: 'smooth' })
+                    window.history.pushState(null, '', '/#shop')
+                  }
+                }}
+              >
+                Shop the collection
+              </Button>
             </div>
           </Reveal>
         </Container>
