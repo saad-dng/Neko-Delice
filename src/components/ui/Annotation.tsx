@@ -4,6 +4,7 @@ import { ScribbleArrow } from '@/components/doodles/ScribbleArrow'
 export interface AnnotationProps extends React.HTMLAttributes<HTMLDivElement> {
   text: string
   arrow?: 'curve-left' | 'curve-right' | 'down' | 'up' | boolean
+  arrowClassName?: string
   rotate?: number
   hideOnMobile?: boolean
   className?: string
@@ -16,6 +17,7 @@ export interface AnnotationProps extends React.HTMLAttributes<HTMLDivElement> {
 export function Annotation({
   text,
   arrow = false,
+  arrowClassName = 'w-8 h-6',
   rotate = -3,
   hideOnMobile = true,
   className = '',
@@ -44,13 +46,13 @@ export function Annotation({
       }}
       {...props}
     >
-      <span className="font-note text-lg md:text-xl text-terracotta-700 whitespace-nowrap leading-tight">
+      <span className="font-note text-2xl text-terracotta-700 whitespace-nowrap leading-tight">
         {text}
       </span>
       {arrowVariant ? (
         <ScribbleArrow
           variant={arrowVariant}
-          className="w-8 h-6 text-terracotta-600 shrink-0"
+          className={`text-terracotta-600 shrink-0 ${arrowClassName}`}
         />
       ) : null}
     </div>

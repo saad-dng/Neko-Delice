@@ -382,3 +382,16 @@ input[type="range"]:active::-moz-range-thumb {
 }
 
 
+
+/* Hero photo fade mask (bottom on mobile, left on desktop) */
+.hero-mask {
+  mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+}
+
+@media (min-width: 1024px) {
+  .hero-mask {
+    mask-image: linear-gradient(to right, transparent 0%, #000 22%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 22%);
+  }
+}
